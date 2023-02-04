@@ -57,6 +57,6 @@ export default function App() {
           ))}
         </div>
       </header>
-    </div> 
+    </div>
   );
 }

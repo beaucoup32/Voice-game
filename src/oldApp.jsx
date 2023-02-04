@@ -1,9 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Hint from "./components/Hint";
- import { Fragment } from 'react';
-import React, { useEffect, useState } from "react";
+// import { Fragment } from 'react';
+import React, { useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -12,8 +11,7 @@ import SpeechRecognition, {
 const username = "Player 1";
 
 function App() {
-
-  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState("");
 
   // template for command handling
   const commands = [
@@ -27,34 +25,26 @@ function App() {
     },
     {
       command: "Marco",
-      callback: () => setMessage("Polo?"),
+      callback: () => setResponse("Polo?"),
     },
     {
       command: "Ping",
-      callback: () => setMessage("Pong!"),
+      callback: () => setResponse("Pong!"),
     },
     {
-      command: "Start" || "star",
-      callback: () => setMessage("Starting Adventure!"),
-    }
+      command: "Start",
+      callback: () => {
+        setResponse("Starting Adventure!")
+        resetTranscript();
+      },
+    },
   ];
 
   const {
     transcript,
-    interimTranscript,
-    finalTranscript,
     resetTranscript,
-    listening,
+    
   } = useSpeechRecognition({ commands });
-
-  // converts speech to text and stores in finalTranscript
-  useEffect(() => {
-    if (finalTranscript !== "") {
-      console.log("Got final result:", finalTranscript);
-
-      resetTranscript();
-    }
-  }, [interimTranscript, finalTranscript]);
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
@@ -80,13 +70,9 @@ function App() {
       <Navbar playerName={username} />
       <Hint />
       <header className="App-header">
-        
-        <div>
-          Input : {transcript}
-        </div>
-        <div>
-          Response : {message}
-        </div>
+        <img src={logo} className="App-logo" alt="logo" />
+        <div>Input : {transcript}</div>
+        <div>Response : {response}</div>
       </header>
     </div>
   );

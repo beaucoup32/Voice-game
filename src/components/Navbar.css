@@ -1,0 +1,15 @@
+.navbar{
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-brand{
+  border: solid;
+  border-radius: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.navbar-text{
+  font-size: 2em;
+}

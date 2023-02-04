@@ -1,19 +1,28 @@
-import { Fragment, useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import useListen from "./hooks/useListen";
+// import { Fragment } from 'react';
+import React, { useEffect, useState } from "react";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 
-export default function App() {
-  let username = "Player 1";
+// fixed data for username
+const username = "Player 1";
+
+function App() {
+
+  const [message, setMessage] = useState("");
+
+  // template for command handling
   const commands = [
     {
       command: "reset",
-      callback: () => resetTranscript,
+      callback: () => resetTranscript(),
     },
     {
       command: "clear",
-      callback: () => resetTranscript,
+      callback: () => resetTranscript(),
     },
     {
       command: "Marco",
@@ -24,39 +33,61 @@ export default function App() {
       callback: () => setMessage("Pong!"),
     },
     {
-      command: "Start",
+      command: "Start" || "star",
       callback: () => setMessage("Starting Adventure!"),
-    },
+    }
   ];
+
   const {
-    listenContinuously,
     transcript,
-    message,
-    setMessage,
+    interimTranscript,
+    finalTranscript,
     resetTranscript,
-    dialog,
-  } = useListen(commands);
+    listening,
+  } = useSpeechRecognition({ commands });
+
+  // converts speech to text and stores in finalTranscript
   useEffect(() => {
-    listenContinuously();
-  }, []);
+    if (finalTranscript !== "") {
+      console.log("Got final result:", finalTranscript);
+
+      resetTranscript();
+    }
+  }, [interimTranscript, finalTranscript]);
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null;
+  }
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    console.log(
+      "Your browser does not support speech recognition software! Try Chrome desktop, maybe?"
+    );
+  }
+
+  const listenContinuously = () => {
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: "en-GB",
+    });
+  };
+
+  listenContinuously();
 
   return (
     <div className="App">
       <Navbar playerName={username} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>Input : {transcript}</div>
-        <div>Response : {message}</div>
         <div>
-          Dialog:{" "}
-          {dialog.map((entry, index) => (
-            <div key={index}>
-              User: {entry.user}
-              Response: {entry.response}
-            </div>
-          ))}
+          Input : {transcript}
+        </div>
+        <div>
+          Response : {message}
         </div>
       </header>
     </div>
   );
 }
+
+export default App;

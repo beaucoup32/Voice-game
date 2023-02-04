@@ -1,8 +1,8 @@
 import { useState, } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
+import Hint from "./components/Hint";
 
 // placeholder data for username. will be changed/removed
 let username = "Player 1";
@@ -42,6 +42,16 @@ export default function App() {
         resetTranscript()
       },
     },
+// this command will clear the response message
+// when triggered, it will set the response message to an empty string ""
+// and reset the voice transcript to allow for new voice commands to be recorded.
+    {
+      command: "clear response",
+      callback: () => {
+      setResponse("");
+      resetTranscript();
+      },
+      },
   ];
 
   // custom hook values ./hooks/useListen
@@ -58,8 +68,8 @@ export default function App() {
   return (
     <div className="App">
       <Navbar playerName={username} />
+      <Hint transcript={transcript} />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         {/* place holder input/response for debugging */}
         <div>Input : {transcript}</div>
         <div>Response : {response}</div>

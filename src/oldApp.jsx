@@ -11,7 +11,7 @@ import SpeechRecognition, {
 const username = "Player 1";
 
 function App() {
-  const [message, setMessage] = useState("");
+  const [response, setResponse] = useState("");
 
   // template for command handling
   const commands = [
@@ -25,16 +25,16 @@ function App() {
     },
     {
       command: "Marco",
-      callback: () => setMessage("Polo?"),
+      callback: () => setResponse("Polo?"),
     },
     {
       command: "Ping",
-      callback: () => setMessage("Pong!"),
+      callback: () => setResponse("Pong!"),
     },
     {
       command: "Start",
       callback: () => {
-        setMessage("Starting Adventure!")
+        setResponse("Starting Adventure!")
         resetTranscript();
       },
     },
@@ -45,15 +45,6 @@ function App() {
     resetTranscript,
     
   } = useSpeechRecognition({ commands });
-
-  // converts speech to text and stores in finalTranscript
-  // useEffect(() => {
-  //   if (finalTranscript !== "") {
-  //     console.log("Got final result:", finalTranscript);
-
-  //     // resetTranscript();
-  //   }
-  // }, [interimTranscript, finalTranscript]);
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return null;
@@ -80,7 +71,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>Input : {transcript}</div>
-        <div>Response : {message}</div>
+        <div>Response : {response}</div>
       </header>
     </div>
   );

@@ -1,61 +1,68 @@
-import { Fragment, useState, useEffect } from "react";
+import { useState, } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
 
+// fixed data for username will be changed
+let username = "Player 1";
+
 export default function App() {
-  let username = "Player 1";
+  // response when command voice command triggered
+  const [response, setResponse] = useState("");
+
   const commands = [
     {
       command: "reset",
-      callback: () => resetTranscript,
+      callback: () => resetTranscript(),
     },
     {
       command: "clear",
-      callback: () => resetTranscript,
+      callback: () => resetTranscript(),
     },
     {
       command: "Marco",
-      callback: () => setMessage("Polo?"),
+      callback: () => {
+        setResponse("Polo?")
+        // transcript resets when command is triggered
+        resetTranscript()
+      },
     },
     {
       command: "Ping",
-      callback: () => setMessage("Pong!"),
+      callback: () => {
+        setResponse("Pong!")
+        resetTranscript()
+      },
     },
     {
       command: "Start",
-      callback: () => setMessage("Starting Adventure!"),
+      callback: () => {
+        setResponse("Starting Adventure!")
+        resetTranscript()
+      },
     },
   ];
+
+  // custom hook values ./hooks/useListen
   const {
     listenContinuously,
     transcript,
-    message,
-    setMessage,
-    resetTranscript,
-    dialog,
+    resetTranscript, 
   } = useListen(commands);
-  useEffect(() => {
-    listenContinuously();
-  }, []);
+  
+  // browser starts recording on load
+  listenContinuously();
+  
 
   return (
     <div className="App">
       <Navbar playerName={username} />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        {/* place holder input/response for debugging */}
         <div>Input : {transcript}</div>
-        <div>Response : {message}</div>
-        <div>
-          Dialog:{" "}
-          {dialog.map((entry, index) => (
-            <div key={index}>
-              User: {entry.user}
-              Response: {entry.response}
-            </div>
-          ))}
-        </div>
+        <div>Response : {response}</div>
       </header>
     </div>
   );

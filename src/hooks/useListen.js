@@ -1,34 +1,33 @@
-import { useSpeechRecognition } from "react-speech-recognition";
+import { useState, useEffect } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 
-export default function useListen(keyword) {
+export default function useListen(commands) {
+  const [message, setMessage] = useState("");
+  const [dialog, setDialog] = useState([]);
   const {
     startListening,
     stopListening,
     listening,
     transcript,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
-  const [listenState, setListenState] = useState(false);
+    interimTranscript,
+    finalTranscript,
+    resetTranscript
+  } = useSpeechRecognition({ commands });
+  
+  const listenContinuously = () => {
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: "en-GB"
+    });
+  };
 
   useEffect(() => {
-    startListening();
-    return () => {
-      if (transcript.toLowerCase() === 'stop listening') {
-        stopListening();
-      }
-    };
-  }, []);
- 
-  useEffect(() => {
-    if (transcript.toLowerCase() === keyword) {
-      console.log('User said "Start."');
+    if (finalTranscript !== "") {
+      console.log("final result:", finalTranscript);
       resetTranscript();
-      setListenState(true);
-    } else if {
-      console.log(`User said ${transcript.toLowerCase()}`);
-      resetTranscript();
+      setDialog(prev => [...prev, { user:finalTranscript, response: message }]);
     }
-  }, [transcript, resetTranscript]);
-
+    setMessage(interimTranscript)
+  }, [interimTranscript, finalTranscript]);
+  return { listenContinuously, transcript, message, setMessage, dialog };
 }

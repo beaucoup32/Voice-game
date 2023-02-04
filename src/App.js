@@ -1,9 +1,13 @@
+import { Fragment, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar'
-// import { Fragment } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
-function App() {
+
+export default function App() {
+  
+
   return (
     
     
@@ -27,4 +31,3 @@ function App() {
   );
 }
 
-export default App;

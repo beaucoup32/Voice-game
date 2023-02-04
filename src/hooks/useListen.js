@@ -7,7 +7,7 @@ export default function useListen(commands) {
   const { transcript, interimTranscript, finalTranscript, resetTranscript } =
     useSpeechRecognition({ commands });
 
-  // transcript debugging
+  // transcript debugging (client console)
   useEffect(() => {
     if (finalTranscript !== "") {
       console.log("final result:", finalTranscript);

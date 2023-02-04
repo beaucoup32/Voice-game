@@ -4,7 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
 
-// fixed data for username will be changed
+// placeholder data for username. will be changed/removed
 let username = "Player 1";
 
 export default function App() {

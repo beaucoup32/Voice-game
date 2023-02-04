@@ -1,7 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
-// import { Fragment } from 'react';
+import Hint from "./components/Hint";
+ import { Fragment } from 'react';
 import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -77,8 +78,9 @@ function App() {
   return (
     <div className="App">
       <Navbar playerName={username} />
+      <Hint />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
         <div>
           Input : {transcript}
         </div>

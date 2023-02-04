@@ -4,8 +4,10 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
 
+
+let username = "Player 1";
+
 export default function App() {
-  let username = "Player 1";
   const commands = [
     {
       command: "reset",
@@ -36,9 +38,9 @@ export default function App() {
     resetTranscript,
     dialog,
   } = useListen(commands);
-  useEffect(() => {
-    listenContinuously();
-  }, []);
+ 
+  listenContinuously();
+
 
   return (
     <div className="App">

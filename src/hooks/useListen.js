@@ -13,7 +13,7 @@ export default function useListen(commands) {
     finalTranscript,
     resetTranscript
   } = useSpeechRecognition({ commands });
-  
+
   const listenContinuously = () => {
     SpeechRecognition.startListening({
       continuous: true,
@@ -25,9 +25,9 @@ export default function useListen(commands) {
     if (finalTranscript !== "") {
       console.log("final result:", finalTranscript);
       resetTranscript();
-      setDialog(prev => [...prev, { user:finalTranscript, response: message }]);
+      setDialog(prev => [...prev, { user: finalTranscript, response: message }]);
     }
-    setMessage(interimTranscript)
+    setMessage(interimTranscript);
   }, [interimTranscript, finalTranscript]);
   return { listenContinuously, transcript, message, setMessage, dialog };
 }

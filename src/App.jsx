@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
+import useTTS from "./hooks/useTTS";
 
 export default function App() {
   let username = "Player 1";
@@ -17,15 +18,18 @@ export default function App() {
     },
     {
       command: "Marco",
-      callback: () => setMessage("Polo?"),
+      callback: () => setMessage("Polo?")
     },
     {
       command: "Ping",
-      callback: () => setMessage("Pong!"),
+      callback: () => setMessage("Pong!")
     },
     {
       command: "Start",
-      callback: () => setMessage("Starting Adventure!"),
+      callback: () => {
+        setMessage("Starting Adventure!")
+        handleTTS()
+      },
     },
   ];
   const {
@@ -36,6 +40,9 @@ export default function App() {
     resetTranscript,
     dialog,
   } = useListen(commands);
+
+  const [handleTTS] = useTTS(message);
+
   useEffect(() => {
     listenContinuously();
   }, []);

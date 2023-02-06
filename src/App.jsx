@@ -3,22 +3,29 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
+import useVisualMode from "./hooks/useVisualMode";
+import GameStart from "./components/GameStart";
 
 // placeholder data for username. will be changed/removed
 let username = "Player 1";
 
 export default function App() {
+  // modes to change layout
+  const HOME = 'HOME';
+  const GAMESTART = 'GAMESTART';
+
+  const { mode, transition } = useVisualMode(HOME);
+
   // response when command voice command triggered
   const [response, setResponse] = useState("");
 
   const commands = [
     {
-      command: "reset",
-      callback: () => resetTranscript(),
-    },
-    {
-      command: "clear",
-      callback: () => resetTranscript(),
+      command: ["reset", "clear"],
+      callback: () => {
+        transition(HOME)
+        resetTranscript()
+      },
     },
     {
       command: "Marco",
@@ -39,7 +46,10 @@ export default function App() {
       command: "Start",
       callback: () => {
         setResponse("Starting Adventure!")
+        // changes mode to show GAMESTART component
+        transition(GAMESTART)
         resetTranscript()
+        
       },
     },
   ];
@@ -59,11 +69,16 @@ export default function App() {
     <div className="App">
       <Navbar playerName={username} />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         {/* place holder input/response for debugging */}
-        <div>Input : {transcript}</div>
         <div>Response : {response}</div>
       </header>
+      <body className="App-body">
+        {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
+        {mode === GAMESTART && < GameStart mode={mode} transition={transition} useListen={useListen}/>}
+      </body>
+      <footer className="App-footer">
+        <div className="voiceIcon">{">>"}</div><h3 className="userInput" >{transcript}</h3>
+      </footer>
     </div>
   );
 }

@@ -12,7 +12,18 @@ export default function useListen(commands) {
     if (finalTranscript !== "") {
       console.log("final result:", finalTranscript);
     }
-  }, [interimTranscript, finalTranscript]);
+
+    // resets transcript when it at 250 characters
+    if (finalTranscript.length > 250) {
+      resetTranscript();
+    }
+
+    // resets transcript after 8 seconds
+    // setTimeout(()=>{
+    //   resetTranscript();
+    //   listenContinuously();
+    // }, 8000)
+  }, [interimTranscript, finalTranscript, resetTranscript]);
 
   // checks if browser supports speech recognition
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {

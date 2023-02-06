@@ -1,18 +1,20 @@
-import { useState, } from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
+import logo from "./logo.svg";
 import Navbar from "./components/Navbar";
 import useListen from "./hooks/useListen";
 import useVisualMode from "./hooks/useVisualMode";
 import GameStart from "./components/GameStart";
+import Hint from "./components/Hint";
+import useTTS from "./hooks/useTTS";
 
 // placeholder data for username. will be changed/removed
 let username = "Player 1";
 
 export default function App() {
   // modes to change layout
-  const HOME = 'HOME';
-  const GAMESTART = 'GAMESTART';
+  const HOME = "HOME";
+  const GAMESTART = "GAMESTART";
 
   const { mode, transition } = useVisualMode(HOME);
 
@@ -21,63 +23,75 @@ export default function App() {
 
   const commands = [
     {
+      // this command will clear the response message
+      // when triggered, it will set the response message to an empty string ""
+      // and reset the voice transcript to allow for new voice commands to be recorded.
       command: ["reset", "clear"],
       callback: () => {
-        transition(HOME)
-        resetTranscript()
-      },
+        transition(HOME);
+        resetTranscript();
+      }
     },
     {
       command: "Marco",
       callback: () => {
-        setResponse("Polo?")
+        setResponse("Polo?");
+        handleTTS();
         // transcript resets when command is triggered
-        resetTranscript()
-      },
+        resetTranscript();
+      }
     },
     {
       command: "Ping",
       callback: () => {
-        setResponse("Pong!")
-        resetTranscript()
+        setResponse("Pong!");
+        handleTTS();
+        resetTranscript();
       },
     },
     {
       command: "Start",
       callback: () => {
-        setResponse("Starting Adventure!")
-        // changes mode to show GAMESTART component
-        transition(GAMESTART)
-        resetTranscript()
+        setResponse("Starting Adventure!");
+        handleTTS();
         
+        // changes mode to show GAMESTART component
+        transition(GAMESTART);
+        resetTranscript();
       },
     },
   ];
 
   // custom hook values ./hooks/useListen
-  const {
-    listenContinuously,
-    transcript,
-    resetTranscript, 
-  } = useListen(commands);
-  
+  const { listenContinuously, transcript, resetTranscript } =
+    useListen(commands);
+
+  const [handleTTS] = useTTS(response);
+
   // browser starts recording on load
   listenContinuously();
-  
 
   return (
     <div className="App">
       <Navbar playerName={username} />
+      <Hint transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}
         <div>Response : {response}</div>
       </header>
       <body className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && < GameStart mode={mode} transition={transition} useListen={useListen}/>}
+        {mode === GAMESTART && (
+          <GameStart
+            mode={mode}
+            transition={transition}
+            useListen={useListen}
+          />
+        )}
       </body>
       <footer className="App-footer">
-        <div className="voiceIcon">{">>"}</div><h3 className="userInput" >{transcript}</h3>
+        <div className="voiceIcon">{">>"}</div>
+        <h3 className="userInput">{transcript}</h3>
       </footer>
     </div>
   );

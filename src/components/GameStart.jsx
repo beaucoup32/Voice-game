@@ -4,7 +4,7 @@ const GameStart = (props) => {
     {
       command: "yes",
       callback: () => {
-        // transition(WEEK_1);
+        transition(WEEK_1);
         resetTranscript();
       },
     },

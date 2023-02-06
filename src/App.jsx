@@ -20,7 +20,7 @@ export default function App() {
 
   // response when command voice command triggered
   const [response, setResponse] = useState("");
-
+  
   const commands = [
     {
       // this command will clear the response message
@@ -79,7 +79,7 @@ export default function App() {
         {/* place holder input/response for debugging */}
         <div>Response : {response}</div>
       </header>
-      <body className="App-body">
+      <main className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
         {mode === GAMESTART && (
           <GameStart
@@ -88,7 +88,7 @@ export default function App() {
             useListen={useListen}
           />
         )}
-      </body>
+      </main>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>
         <h3 className="userInput">{transcript}</h3>

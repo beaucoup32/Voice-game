@@ -1,18 +1,9 @@
+import useCommand from "../hooks/useCommand";
 
 const GameStart = (props) => {
-  const WEEK_0 = "PrepWeek";
-  const commands = [
-    {
-      command: "yes",
-      callback: () => {
-        transition(WEEK_0);
-        resetTranscript();
-      },
-    },
-  ];
-
-  const transition = props.transition;
-  const { transcript, resetTranscript } = props.useListen(commands);
+  const {mode} = props;
+  const {resetTranscript, transcript} = useCommand([{mode}])
+  const WEEK_0 = "WEEK_0";  
 
   return (
     <div className="container">

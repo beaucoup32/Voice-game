@@ -7,7 +7,7 @@ const Navbar = function(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/"> Logo </a>
-      <span className="navbar-text">
+      <span className="navbar-text nav-title">
         Say <strong>"Start"</strong> to begin.
       </span>
       <span className='navbar-text'>

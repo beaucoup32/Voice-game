@@ -1,38 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import logo from "./logo.svg";
 import Navbar from "./components/Navbar";
-import useListen from "./hooks/useListen";
+// import useListen from "./hooks/useListen";
 import useVisualMode from "./hooks/useVisualMode";
 import GameStart from "./components/GameStart";
+import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
 import useTTS from "./hooks/useTTS";
 import useCommand from "./hooks/useCommand";
 
-// placeholder data for username. will be changed/removed
-let username = "Player 1";
 
 export default function App() {
   // modes to change layout
   const HOME = "HOME";
   const GAMESTART = "GAMESTART";
-  const week = {
-    WEEK_0: "WEEK_0",
-    WEEK_1: "WEEK_1",
-  }
+  const CONFIRM_NAME = "ConfirmName";
+  // const week = {
+  //   WEEK_0: "WEEK_0",
+  //   WEEK_1: "WEEK_1",
+  // }
 
 
   const { mode, transition } = useVisualMode(HOME);
 
   // response when command voice command triggered
   const [response, setResponse] = useState("");
-  
+
+  // set player name
+  const [player, setPlayer] = useState("")
   
   // custom hook values ./hooks/useListen
   
   const [handleTTS] = useTTS(response);
 
-  const {commands, listenContinuously, transcript, resetTranscript } = useCommand({mode, transition, setResponse, handleTTS});
+  const {commands, listenContinuously, transcript } = useCommand({mode, transition, setResponse, handleTTS, setPlayer});
   
   
   // browser starts recording on load
@@ -40,7 +42,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Navbar playerName={username} />
+      <Navbar playerName={player} />
       <Hint commands= {commands} transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}
@@ -48,7 +50,8 @@ export default function App() {
       </header>
       <main className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && <GameStart />}
+        {mode === GAMESTART && <GameStart playerName={player}/>}
+        {mode === CONFIRM_NAME && <ConfirmName playerName={player}/>}
       </main>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>

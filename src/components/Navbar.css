@@ -13,3 +13,7 @@
 .navbar-text{
   font-size: 2em;
 }
+
+.nav-title {
+  align-self: center;
+}

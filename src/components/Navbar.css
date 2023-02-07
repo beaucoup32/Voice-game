@@ -20,5 +20,7 @@
 }
 
 .player {
-  min-width: 1em
+  display: flex;
+  min-width: 1em;
+  gap: 0.25em;
 }

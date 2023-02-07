@@ -8,7 +8,7 @@ const PrepWeek = () => {
       setScenario(
         "Here you will be put through a impossible set of scenarios to hone your coding skills to become an expert programmer"
       );
-    }, 6000);
+    }, 4000);
 
     setTimeout(() => {
       setScenario("In this game, use your voice to determine your actions.");

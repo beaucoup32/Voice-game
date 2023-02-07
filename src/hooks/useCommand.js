@@ -7,31 +7,32 @@ export default function useCommand(props) {
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
+  const StaticCommands = [{
+    // this command will clear the response message
+    // when triggered, it will set the response message to an empty string ""
+    // and reset the voice transcript to allow for new voice commands to be recorded.
+    command: ["reset", "clear"],
+    callback: () => {
+      transition(HOME);
+      resetTranscript();
+    },
+    isFuzzyMatch: true,
+  },
+  {
+    command: "Marco",
+    callback: () => {
+      setResponse("Polo?");
+      handleTTS();
+      // transcript resets when command is triggered
+      resetTranscript();
+    },
+  }];
 
   useEffect(() => {
     switch (mode) {
       case "HOME":
         setCommands([
-          {
-            // this command will clear the response message
-            // when triggered, it will set the response message to an empty string ""
-            // and reset the voice transcript to allow for new voice commands to be recorded.
-            command: ["reset", "clear"],
-            callback: () => {
-              transition(HOME);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: "Marco",
-            callback: () => {
-              setResponse("Polo?");
-              handleTTS();
-              // transcript resets when command is triggered
-              resetTranscript();
-            },
-          },
+          ...StaticCommands,
           {
             command: "Ping",
             callback: () => {
@@ -56,6 +57,7 @@ export default function useCommand(props) {
         break;
       case "GAMESTART":
         setCommands([
+          ...StaticCommands,
           {
             command: ["home"],
             callback: () => {
@@ -78,10 +80,11 @@ export default function useCommand(props) {
         break;
       case "ConfirmName":
         setCommands([
+          ...StaticCommands,
           {
             command: ["reset", "clear", "no"],
             callback: () => {
-              setResponse("Lets try this again..")
+              setResponse("Lets try this again..");
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();
@@ -91,7 +94,7 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm"],
             callback: () => {
-              setResponse(`Welcome to hell ${player} 😈`)
+              setResponse(`Welcome to hell ${player} 😈`);
               transition(PREPWEEK);
               resetTranscript();
             },
@@ -101,6 +104,7 @@ export default function useCommand(props) {
         break;
       case "PREP_WEEK":
         setCommands([
+          ...StaticCommands,
           {
             command: ["home"],
             callback: () => {

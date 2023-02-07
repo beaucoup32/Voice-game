@@ -1,6 +1,4 @@
 const GameStart = (props) => {  
-  console.log(props);  
-  // set player name
 
   return (
     <div className="container">

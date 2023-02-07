@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
-  const { mode, transition, setResponse, handleTTS, setPlayer } = props;
+  const { mode, transition, setResponse, handleTTS, setPlayer, player } = props;
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
@@ -21,6 +21,7 @@ export default function useCommand(props) {
               transition(HOME);
               resetTranscript();
             },
+            isFuzzyMatch: true,
           },
           {
             command: "Marco",
@@ -56,11 +57,19 @@ export default function useCommand(props) {
       case "GAMESTART":
         setCommands([
           {
+            command: ["home"],
+            callback: () => {
+              transition(HOME);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
             command: "(My name is) :name",
             callback: (name) => {
               setResponse(`Did you say ${name}?`);
               setPlayer(name);
-              transition(ConfirmName)
+              transition(ConfirmName);
               // transcript resets when command is triggered
               resetTranscript();
             },
@@ -72,15 +81,17 @@ export default function useCommand(props) {
           {
             command: ["reset", "clear", "no"],
             callback: () => {
+              setResponse("Lets try this again..")
               transition(GAMESTART);
-              setPlayer("")
+              setPlayer("");
               resetTranscript();
             },
-            isFuzzyMatch: true
+            isFuzzyMatch: true,
           },
           {
-            command: "yes",
+            command: ["yes", "confirm"],
             callback: () => {
+              setResponse(`Welcome to hell ${player} 😈`)
               transition(PREPWEEK);
               resetTranscript();
             },
@@ -88,19 +99,19 @@ export default function useCommand(props) {
           },
         ]);
         break;
-      case "WEEK_0":
+      case "PREP_WEEK":
         setCommands([
           {
-            command: "no",
+            command: ["home"],
             callback: () => {
-              transition(WEEK_1);
+              transition(HOME);
               resetTranscript();
             },
           },
           {
-            command: ["reset", "clear"],
+            command: "no",
             callback: () => {
-              transition(HOME);
+              transition(WEEK_1);
               resetTranscript();
             },
           },
@@ -115,6 +126,6 @@ export default function useCommand(props) {
 
 const HOME = "HOME";
 const GAMESTART = "GAMESTART";
-const ConfirmName = "ConfirmName"
-const PREPWEEK = "PREPWEEK";
+const ConfirmName = "ConfirmName";
+const PREPWEEK = "PREP_WEEK";
 const WEEK_1 = "WEEK_1";

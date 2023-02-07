@@ -29,12 +29,15 @@ export default function App() {
 
   // set player name
   const [player, setPlayer] = useState("")
+
+  // set navbar text
+  const [navText, setNavText] = useState("Say 'Start' to begin.")
   
   // custom hook values ./hooks/useListen
   
   const [handleTTS] = useTTS(response);
 
-  const {commands, listenContinuously, transcript } = useCommand({mode, transition, setResponse, handleTTS, setPlayer});
+  const {commands, listenContinuously, transcript } = useCommand({mode, transition, setResponse, handleTTS, setPlayer, player, setNavText});
   
   
   // browser starts recording on load
@@ -42,7 +45,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <Navbar playerName={player} />
+      <Navbar playerName={player} text={navText}/>
       <Hint commands= {commands} transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}

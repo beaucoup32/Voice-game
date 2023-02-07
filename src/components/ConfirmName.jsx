@@ -1,12 +1,11 @@
-const ConfirmName = (props) => {  
-  console.log(props);  
+const ConfirmName = (props) => {
+  console.log(props);
   // set player name
-  const {playerName} = props;
+  const { playerName } = props;
 
   // commands:
-  // yes - continue to prep week
+  // yes/confirm - continue to prep week
   // no/reset/clear - resets name -> gamestart
-  
   return (
     <div className="container">
       <h2>Is your name :</h2>

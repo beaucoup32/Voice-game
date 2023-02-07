@@ -2,13 +2,13 @@
 import './Navbar.css'
 
 const Navbar = function(props) {
-  const playerName = props.playerName
+  const {playerName, text} = props;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/"> Logo </a>
       <span className="navbar-text nav-title">
-        Say <strong>"Start"</strong> to begin.
+        {text}
       </span>
       <span className='navbar-text'>
         {playerName}

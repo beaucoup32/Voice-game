@@ -68,6 +68,7 @@ function App() {
   return (
     <div className="App">
       <Navbar playerName={username} />
+      <Hint />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>Input : {transcript}</div>

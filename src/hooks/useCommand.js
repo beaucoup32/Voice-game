@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
-  const { mode, transition, setResponse, handleTTS, setPlayer } = props;
+  const { mode, transition, setResponse, handleTTS, setPlayer, player } = props;
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
@@ -57,6 +57,14 @@ export default function useCommand(props) {
       case "GAMESTART":
         setCommands([
           {
+            command: ["home"],
+            callback: () => {
+              transition(HOME);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
             command: "(My name is) :name",
             callback: (name) => {
               setResponse(`Did you say ${name}?`);
@@ -73,6 +81,7 @@ export default function useCommand(props) {
           {
             command: ["reset", "clear", "no"],
             callback: () => {
+              setResponse("Lets try this again..")
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();
@@ -82,6 +91,7 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm"],
             callback: () => {
+              setResponse(`Welcome to hell ${player} 😈`)
               transition(PREPWEEK);
               resetTranscript();
             },
@@ -92,16 +102,16 @@ export default function useCommand(props) {
       case "PREP_WEEK":
         setCommands([
           {
+            command: ["home"],
+            callback: () => {
+              transition(HOME);
+              resetTranscript();
+            }
+          },
+          {
             command: "no",
             callback: () => {
               transition(WEEK_1);
-              resetTranscript();
-            },
-          },
-          {
-            command: ["reset", "clear"],
-            callback: () => {
-              transition(HOME);
               resetTranscript();
             },
           },

@@ -18,26 +18,28 @@ export default function useCommand(props) {
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
-  const StaticCommands = [{
-    // this command will clear the response message
-    // when triggered, it will set the response message to an empty string ""
-    // and reset the voice transcript to allow for new voice commands to be recorded.
-    command: ["reset", "clear"],
-    callback: () => {
-      transition(HOME);
-      resetTranscript();
+  const StaticCommands = [
+    {
+      // this command will clear the response message
+      // when triggered, it will set the response message to an empty string ""
+      // and reset the voice transcript to allow for new voice commands to be recorded.
+      command: ["reset", "clear"],
+      callback: () => {
+        transition(HOME);
+        resetTranscript();
+      },
+      isFuzzyMatch: true,
     },
-    isFuzzyMatch: true,
-  },
-  {
-    command: "Marco",
-    callback: () => {
-      setResponse("Polo?");
-      handleTTS();
-      // transcript resets when command is triggered
-      resetTranscript();
+    {
+      command: "Marco",
+      callback: () => {
+        setResponse("Polo?");
+        handleTTS();
+        // transcript resets when command is triggered
+        resetTranscript();
+      },
     },
-  }];
+  ];
 
   useEffect(() => {
     switch (mode) {
@@ -68,7 +70,6 @@ export default function useCommand(props) {
         break;
       case "GAMESTART":
         setCommands([
-          ...StaticCommands,
           {
             command: ["home"],
             callback: () => {
@@ -92,7 +93,6 @@ export default function useCommand(props) {
         break;
       case "ConfirmName":
         setCommands([
-          ...StaticCommands,
           {
             command: ["reset", "clear", "no"],
             callback: () => {
@@ -118,7 +118,6 @@ export default function useCommand(props) {
         break;
       case "PREP_WEEK":
         setCommands([
-          ...StaticCommands,
           {
             command: ["home"],
             callback: () => {
@@ -150,7 +149,13 @@ export default function useCommand(props) {
       case "PREP_WEEK_S1":
         setCommands([
           {
-            command: ["(take a quick) break", "(short) break", "keep going", "(quick) break", "(take a) break"],
+            command: [
+              "(take a quick) break",
+              "(short) break",
+              "keep going",
+              "(quick) break",
+              "(take a) break",
+            ],
 
             callback: () => {
               setResponse("That one was easy 🥱");
@@ -173,7 +178,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("PREP WEEK: SCENARIO 2");
                 transition(PREPWEEKS2);
-                setScenario("")
+                setScenario("");
               }, 5000);
               resetTranscript();
             },
@@ -195,7 +200,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("")
+                setScenario("");
               }, 5000);
               resetTranscript();
             },
@@ -212,7 +217,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("")
+                setScenario("");
                 setResponse("");
               }, 5000);
               resetTranscript();
@@ -230,9 +235,9 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 transition(PREPWEEKS3);
-                
+
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("")
+                setScenario("");
                 setResponse("");
               }, 5000);
               resetTranscript();
@@ -253,7 +258,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(HOME);
                 setNavText("Say 'Start' to begin.");
-                setScenario("")
+                setScenario("");
 
                 setResponse("");
               }, 5000);
@@ -276,28 +281,31 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(WEEK_1);
                 setNavText("WEEK 1: SCENARIO 1");
-                setScenario("")
-                setScenario("")
-
+                setScenario("");
               }, 6000);
               resetTranscript();
             },
           },
           {
-            command: ["no", "stop", "(I) quit", "(return to) old life", "give up"],
+            command: [
+              "no",
+              "stop",
+              "(I) quit",
+              "(return to) old life",
+              "give up",
+            ],
             callback: () => {
               setScenario(
                 "Fearing you may not be cut out to be a developer you decide to opt out and restock on your precious coffee beans. Also you slip on a banana peel and die"
               );
               setResponse("Had a feeling you'd say that 🥱");
-              
+
               setLives(0);
 
               setTimeout(() => {
                 transition(HOME);
                 setNavText("Say 'Start' to begin.");
-                setScenario("")
-
+                setScenario("");
               }, 7000);
               resetTranscript();
             },
@@ -307,7 +315,7 @@ export default function useCommand(props) {
       default:
         setCommands([]);
     }
-  }, [mode, handleTTS, player, resetTranscript, setPlayer, setResponse, transition]);
+  }, [mode]);
   return { commands, listenContinuously, transcript, resetTranscript };
 }
 

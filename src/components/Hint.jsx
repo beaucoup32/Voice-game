@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./hint.css";
 
-const Hint = ({ transcript }) => {
+const Hint = (props) => {
+  const { transcript, commands } = props;
   const [showHint, setShowHint] = useState(false);
   const [message, setMessage] = useState("");
 

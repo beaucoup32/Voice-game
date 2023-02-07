@@ -48,7 +48,7 @@ export default function App() {
       </header>
       <main className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && <GameStart mode={mode} transition={transition}/>}
+        {mode === GAMESTART && <GameStart />}
       </main>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>

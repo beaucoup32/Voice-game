@@ -5,7 +5,8 @@ const Week1 = (props) => {
 
   const scenario = [
     "Congratulations! You completed all your Prep Work.",
-    "What's that smell you ask? Well you can only get into the Lighthouse during low-tide." ]
+    "What's that smell you ask? Well you can only get into the Lighthouse during low-tide.",
+    "The ground is wet, reeking of F" ]
     
   return (
     <div className="container">

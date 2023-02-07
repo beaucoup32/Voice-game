@@ -1,0 +1,49 @@
+"Welcome to bootcamp!"
+
+"Here you will be put through a impossible set of scenarios to hone your coding skills to become an expert programmer"
+
+"In this game, use your voice to determine your action"
+
+"If you get stuck, say "Hint" to get some help"
+
+"PREP WEEK"
+
+"You are one of the lucky few to get accepted into a prestigious coding bootcamp, eager to learn new skills and launch your tech career. Every decision you make will determine your path and impact your success."
+
+"Its Prep week and you are faced with your first challenge"
+
+"SCENARIO : You are tasked to complete a series of coding challenges to prepate you for the weeks ahead, you breeze through the first 25% of the challenges, feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
+
+"COMMANDS :
+  - Take a quick break and continue the course work 
+    transition to next scenario
+
+  - [Reward yourself, Play TEKKEN]
+    -"Unfortunatly the exictement from making it into bootcamp threw off your game, after losing your rank you decide to continue your course work"
+      - lose 1 life
+      - transition next scenario
+
+SCENARIO 2 : "After taking a quick break you continue on but struggle trying to get one of your functions to work, what do you do?"
+
+  COMMANDS : 
+    - ask for help 
+    - check online/google
+    - press on
+      "After x you finaly figure where your bug was and fix that pesky function"
+        - transition to next scenario 
+
+    -give up
+      - lose all lives
+      - transition to game over
+
+SCENARIO 3: "Several days pass and you've finaly submitted your last GIST. Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?"
+
+  COMMANDS :
+    - [continue, yes]
+      "Your eyes light up fircely as you add an order of instant coffee to your amazon cart as you get ready for the following week"
+      - transition to week 1
+
+    -[no, stop]
+      - lose all lives
+      - transition to game over
+      "Fearing you may not be cut out to be a developer you decide to opt out and restock on your precious coffee beans. Also you slip on a banana peel and die"

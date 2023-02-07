@@ -1,10 +1,11 @@
+
 const GameStart = (props) => {
-  const WEEK_1 = "WEEK_1";
+  const WEEK_0 = "PrepWeek";
   const commands = [
     {
       command: "yes",
       callback: () => {
-        transition(WEEK_1);
+        transition(WEEK_0);
         resetTranscript();
       },
     },

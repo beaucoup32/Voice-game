@@ -54,7 +54,7 @@ export default function App() {
       callback: () => {
         setResponse("Starting Adventure!");
         handleTTS();
-        
+
         // changes mode to show GAMESTART component
         transition(GAMESTART);
         resetTranscript();
@@ -86,8 +86,11 @@ export default function App() {
             mode={mode}
             transition={transition}
             useListen={useListen}
+            response={response}
+            setResponse={setResponse}
           />
         )}
+        
       </body>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>

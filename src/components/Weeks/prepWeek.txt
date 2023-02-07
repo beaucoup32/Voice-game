@@ -1,0 +1,13 @@
+"Welcome to bootcamp! in order to start your journey, please provide your name"
+
+say : (Donnell)
+
+"Nice to meet you #{Donnell}!"
+
+"Here you will be put through a impossible set of scenarios to hone your coding skills"
+
+"In this game, use your voice to determine your action"
+
+"If you get stuck, say "Hint" to bring up a list of possible commands"
+
+""

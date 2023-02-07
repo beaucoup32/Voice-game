@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import useVisualMode from "./useVisualMode";
+// import useVisualMode from "./useVisualMode";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
-  const { mode, transition, setResponse, handleTTS } = props;
+  const { mode, transition, setResponse, handleTTS, setPlayer, player } = props;
   const [commands, setCommands] = useState([]);
-  const { listenContinuously, transcript, resetTranscript } = useListen(commands);
-  let username = "Player 1";
+  const { listenContinuously, transcript, resetTranscript } =
+    useListen(commands);
+
   useEffect(() => {
     switch (mode) {
       case "HOME":
@@ -19,7 +20,8 @@ export default function useCommand(props) {
             callback: () => {
               transition(HOME);
               resetTranscript();
-            }
+            },
+            isFuzzyMatch: true,
           },
           {
             command: "Marco",
@@ -28,7 +30,7 @@ export default function useCommand(props) {
               handleTTS();
               // transcript resets when command is triggered
               resetTranscript();
-            }
+            },
           },
           {
             command: "Ping",
@@ -39,7 +41,7 @@ export default function useCommand(props) {
             },
           },
           {
-            command: "Start",
+            command: ["Start", "thought"],
             callback: () => {
               setResponse("Starting Adventure!");
               handleTTS();
@@ -48,31 +50,64 @@ export default function useCommand(props) {
               transition(GAMESTART);
               resetTranscript();
             },
+            isFuzzyMatch: true,
           },
         ]);
         break;
       case "GAMESTART":
         setCommands([
           {
-            command: "yes",
+            command: ["home"],
             callback: () => {
-              transition(WEEK_0);
+              transition(HOME);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: "(My name is) :name",
+            callback: (name) => {
+              setResponse(`Did you say ${name}?`);
+              setPlayer(name);
+              transition(ConfirmName);
+              // transcript resets when command is triggered
               resetTranscript();
             },
           },
+        ]);
+        break;
+      case "ConfirmName":
+        setCommands([
           {
-            command: 'My name is *',
-            callback: (name) => {
-              setResponse(`No way! ${name} is my step-brother's name too, ....Did we just become best friends?`);
-              username = name;
-              handleTTS();
+            command: ["reset", "clear", "no"],
+            callback: () => {
+              setResponse("Lets try this again..")
+              transition(GAMESTART);
+              setPlayer("");
               resetTranscript();
-            }
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["yes", "confirm"],
+            callback: () => {
+              setResponse(`Welcome to hell ${player} 😈`)
+              transition(PREPWEEK);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
         ]);
         break;
-      case "WEEK_0":
+      case "PREP_WEEK":
         setCommands([
+          {
+            command: ["home"],
+            callback: () => {
+              transition(HOME);
+              resetTranscript();
+            },
+          },
           {
             command: "no",
             callback: () => {
@@ -80,25 +115,17 @@ export default function useCommand(props) {
               resetTranscript();
             },
           },
-          {
-            command: "Marco",
-            callback: () => {
-              setResponse("Polo?");
-              handleTTS();
-              resetTranscript();
-            }
-          },
         ]);
         break;
       default:
         setCommands([]);
     }
-
-  }, [mode]);
-  return { commands, listenContinuously, transcript, resetTranscript, username };
+  }, [mode, handleTTS, player, resetTranscript, setPlayer, setResponse, transition]);
+  return { commands, listenContinuously, transcript, resetTranscript };
 }
 
 const HOME = "HOME";
 const GAMESTART = "GAMESTART";
-const WEEK_0 = "WEEK_0";
+const ConfirmName = "ConfirmName";
+const PREPWEEK = "PREP_WEEK";
 const WEEK_1 = "WEEK_1";

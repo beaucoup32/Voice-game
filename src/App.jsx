@@ -1,56 +1,60 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import logo from "./logo.svg";
 import Navbar from "./components/Navbar";
-import useListen from "./hooks/useListen";
+// import useListen from "./hooks/useListen";
 import useVisualMode from "./hooks/useVisualMode";
 import GameStart from "./components/GameStart";
+import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
 import useTTS from "./hooks/useTTS";
 import useCommand from "./hooks/useCommand";
 
-// placeholder data for username. will be changed/removed
 
 export default function App() {
   // modes to change layout
   const HOME = "HOME";
   const GAMESTART = "GAMESTART";
-  const week = {
-    WEEK_0: "WEEK_0",
-    WEEK_1: "WEEK_1",
-  };
+  const CONFIRM_NAME = "ConfirmName";
+  // const week = {
+  //   WEEK_0: "WEEK_0",
+  //   WEEK_1: "WEEK_1",
+  // }
+
 
   const { mode, transition } = useVisualMode(HOME);
 
   // response when command voice command triggered
   const [response, setResponse] = useState("");
 
+  // set player name
+  const [player, setPlayer] = useState("")
+
+  // set navbar text
+  const [navText, setNavText] = useState("Say 'Start' to begin.")
+  
   // custom hook values ./hooks/useListen
 
   const [handleTTS] = useTTS(response);
 
-  const {
-    commands,
-    listenContinuously,
-    transcript,
-    resetTranscript,
-    username,
-  } = useCommand({ mode, transition, setResponse, handleTTS });
-    
+  const {commands, listenContinuously, transcript } = useCommand({mode, transition, setResponse, handleTTS, setPlayer, player, setNavText});
+  
+  
   // browser starts recording on load
   listenContinuously();
 
   return (
     <div className="App">
-      <Navbar playerName={username} />
-      <Hint commands={commands} transcript={transcript} />
+      <Navbar playerName={player} text={navText}/>
+      <Hint commands= {commands} transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}
         <div>Response : {response}</div>
       </header>
       <main className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && <GameStart />}
+        {mode === GAMESTART && <GameStart playerName={player}/>}
+        {mode === CONFIRM_NAME && <ConfirmName playerName={player}/>}
       </main>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>

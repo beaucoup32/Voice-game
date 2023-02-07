@@ -120,7 +120,7 @@ export default function useCommand(props) {
       default:
         setCommands([]);
     }
-  }, [mode]);
+  }, [mode, handleTTS, player, resetTranscript, setPlayer, setResponse, transition]);
   return { commands, listenContinuously, transcript, resetTranscript };
 }
 

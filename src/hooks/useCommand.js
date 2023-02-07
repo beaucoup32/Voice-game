@@ -179,7 +179,7 @@ export default function useCommand(props) {
                 setNavText("PREP WEEK: SCENARIO 2");
                 transition(PREPWEEKS2);
                 setScenario("");
-              }, 5000);
+              }, 7000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -273,7 +273,7 @@ export default function useCommand(props) {
             command: ["continue", "yes"],
             callback: () => {
               setScenario(
-                "Your eyes light up fircely as you add an order of instant coffee to your amazon cart as you get ready for the following week"
+                "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week"
               );
 
               setResponse("Good luck! 😏");
@@ -282,7 +282,7 @@ export default function useCommand(props) {
                 transition(WEEK_1);
                 setNavText("WEEK 1: SCENARIO 1");
                 setScenario("");
-              }, 6000);
+              }, 6500);
               resetTranscript();
             },
           },

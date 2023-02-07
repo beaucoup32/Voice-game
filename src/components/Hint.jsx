@@ -6,10 +6,6 @@ const Hint = (props) => {
   const [showHint, setShowHint] = useState(false);
   const [message, setMessage] = useState("");
 
-  /*
- When the client requests a "Hint" using a voice command, a list of all hints will be displayed. The client can click on any hint to view the message for that particular hint. The hint will then disappear after 5 seconds
-*/
-
   useEffect(() => {
     if (transcript.includes("hint")) {
       setShowHint(true);
@@ -30,21 +26,13 @@ const Hint = (props) => {
     <div className="hint">
       <p>Click To View Hint:</p>
       <ul>
-        <li>
-          <button onClick={() => handleClick("Start")}>Start</button>
-        </li>
-        <li>
-          <button onClick={() => handleClick("Reset")}>Reset</button>
-        </li>
-        <li>
-          <button onClick={() => handleClick("Clear")}>Clear</button>
-        </li>
-        <li>
-          <button onClick={() => handleClick("Marco")}>Marco</button>
-        </li>
-        <li>
-          <button onClick={() => handleClick("Ping")}>Ping</button>
-        </li>
+        {commands.map((command, index) => (
+          <li key={index}>
+            <button onClick={() => handleClick(command.command)}>
+              {command.command}
+            </button>
+          </li>
+        ))}
       </ul>
       <p>{message}</p>
     </div>

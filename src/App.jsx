@@ -10,7 +10,6 @@ import useTTS from "./hooks/useTTS";
 import useCommand from "./hooks/useCommand";
 
 // placeholder data for username. will be changed/removed
-let username = "Player 1";
 
 export default function App() {
   // modes to change layout
@@ -19,29 +18,32 @@ export default function App() {
   const week = {
     WEEK_0: "WEEK_0",
     WEEK_1: "WEEK_1",
-  }
-
+  };
 
   const { mode, transition } = useVisualMode(HOME);
 
   // response when command voice command triggered
   const [response, setResponse] = useState("");
-  
-  
+
   // custom hook values ./hooks/useListen
-  
+
   const [handleTTS] = useTTS(response);
 
-  const {commands, listenContinuously, transcript, resetTranscript } = useCommand({mode, transition, setResponse, handleTTS});
-  
-  
+  const {
+    commands,
+    listenContinuously,
+    transcript,
+    resetTranscript,
+    username,
+  } = useCommand({ mode, transition, setResponse, handleTTS });
+    
   // browser starts recording on load
-  listenContinuously(); 
+  listenContinuously();
 
   return (
     <div className="App">
       <Navbar playerName={username} />
-      <Hint commands= {commands} transcript={transcript} />
+      <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}
         <div>Response : {response}</div>

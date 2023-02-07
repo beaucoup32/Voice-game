@@ -13,7 +13,7 @@ const Hint = (props) => {
   useEffect(() => {
     if (transcript.includes("hint")) {
       setShowHint(true);
-    } else if (transcript === "ok") {
+    } else if (transcript === "dismiss") {
       setShowHint(false);
     }
   }, [transcript]);

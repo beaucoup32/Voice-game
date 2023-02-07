@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import useVisualMode from "./useVisualMode";
 import useListen from "./useListen";
 
-
-
-export default function useCommand(props) {  
-  const {mode, transition, setResponse, handleTTS} = props;  
+export default function useCommand(props) {
+  const { mode, transition, setResponse, handleTTS } = props;
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } = useListen(commands);
-  
+  let username = "Player 1";
   useEffect(() => {
     switch (mode) {
       case "HOME":
@@ -63,17 +61,17 @@ export default function useCommand(props) {
             },
           },
           {
-            command: "Marco",
-            callback: () => {
-              setResponse("Polo?");
+            command: 'My name is *',
+            callback: (name) => {
+              setResponse(`No way! ${name} is my step-brother's name too, ....Did we just become best friends?`);
+              username = name;
               handleTTS();
-              // transcript resets when command is triggered
               resetTranscript();
             }
           },
         ]);
         break;
-        case "WEEK_0":
+      case "WEEK_0":
         setCommands([
           {
             command: "no",
@@ -87,7 +85,6 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("Polo?");
               handleTTS();
-              // transcript resets when command is triggered
               resetTranscript();
             }
           },
@@ -95,13 +92,13 @@ export default function useCommand(props) {
         break;
       default:
         setCommands([]);
-    }    
+    }
 
   }, [mode]);
-  return { commands, listenContinuously, transcript, resetTranscript };
+  return { commands, listenContinuously, transcript, resetTranscript, username };
 }
 
 const HOME = "HOME";
 const GAMESTART = "GAMESTART";
-const WEEK_0 ="WEEK_0";
-const WEEK_1 ="WEEK_1";
+const WEEK_0 = "WEEK_0";
+const WEEK_1 = "WEEK_1";

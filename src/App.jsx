@@ -9,18 +9,20 @@ import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
 import useTTS from "./hooks/useTTS";
 import useCommand from "./hooks/useCommand";
-
+import PrepWeek from "./components/Weeks/PrepWeek/PrepWeek";
+import PrepWeekS1 from "./components/Weeks/PrepWeek/PrepWeekS1";
 
 export default function App() {
   // modes to change layout
   const HOME = "HOME";
   const GAMESTART = "GAMESTART";
   const CONFIRM_NAME = "ConfirmName";
+  const PREPWEEK = "PREP_WEEK";
+  const PREPWEEKS1 = "PREP_WEEK_S1";
   // const week = {
   //   WEEK_0: "WEEK_0",
   //   WEEK_1: "WEEK_1",
   // }
-
 
   const { mode, transition } = useVisualMode(HOME);
 
@@ -28,30 +30,46 @@ export default function App() {
   const [response, setResponse] = useState("");
 
   // set player name
-  const [player, setPlayer] = useState("")
-  
+  const [player, setPlayer] = useState("");
+
+  // player lives
+  const [lives, setLives ] = useState(3)
+
+  // set navbar text
+  const [navText, setNavText] = useState("Say 'Start' to begin.");
+
   // custom hook values ./hooks/useListen
-  
+
   const [handleTTS] = useTTS(response);
 
-  const {commands, listenContinuously, transcript } = useCommand({mode, transition, setResponse, handleTTS, setPlayer, player});
-  
-  
+  const { commands, listenContinuously, transcript } = useCommand({
+    mode,
+    transition,
+    setResponse,
+    handleTTS,
+    setPlayer,
+    player,
+    setNavText,
+    setLives,
+  });
+
   // browser starts recording on load
-  listenContinuously(); 
+  listenContinuously();
 
   return (
     <div className="App">
-      <Navbar playerName={player} />
-      <Hint commands= {commands} transcript={transcript} />
+      <Navbar playerName={player} playerLives={lives} text={navText} />
+      <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
         {/* place holder input/response for debugging */}
         <div>Response : {response}</div>
       </header>
       <main className="App-body">
         {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && <GameStart playerName={player}/>}
-        {mode === CONFIRM_NAME && <ConfirmName playerName={player}/>}
+        {mode === GAMESTART && <GameStart playerName={player} />}
+        {mode === CONFIRM_NAME && <ConfirmName playerName={player} />}
+        {mode === PREPWEEK && <PrepWeek />}
+        {mode === PREPWEEKS1 && <PrepWeekS1 />}
       </main>
       <footer className="App-footer">
         <div className="voiceIcon">{">>"}</div>

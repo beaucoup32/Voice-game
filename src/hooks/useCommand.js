@@ -3,7 +3,15 @@ import { useEffect, useState } from "react";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
-  const { mode, transition, setResponse, handleTTS, setPlayer, player } = props;
+  const {
+    mode,
+    transition,
+    setResponse,
+    handleTTS,
+    setPlayer,
+    player,
+    setNavText,
+  } = props;
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
@@ -81,7 +89,7 @@ export default function useCommand(props) {
           {
             command: ["reset", "clear", "no"],
             callback: () => {
-              setResponse("Lets try this again..")
+              setResponse("Lets try this again..");
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();
@@ -91,7 +99,8 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm"],
             callback: () => {
-              setResponse(`Welcome to hell ${player} 😈`)
+              setResponse(`Welcome to hell ${player} 😈`);
+              setNavText("PREP WEEK");
               transition(PREPWEEK);
               resetTranscript();
             },
@@ -106,14 +115,47 @@ export default function useCommand(props) {
             callback: () => {
               transition(HOME);
               resetTranscript();
-            }
+            },
           },
           {
             command: "no",
             callback: () => {
-              transition(WEEK_1);
+              setResponse("🐔🐔🐔");
+              setNavText("Say 'Start' to begin.");
+              transition(HOME);
               resetTranscript();
             },
+          },
+          {
+            command: "yes",
+            callback: () => {
+              setNavText("PREP WEEK: SCENARIO 1");
+              setResponse("");
+              transition(PREPWEEKS1);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "PREP_WEEK_S1":
+        setCommands([
+          {
+            command: ["(take a) break", "(short) break", "keep going"],
+            callback: () => {
+              transition(PREPWEEKS2);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["reward", "(play) tekken"],
+            callback: () => {
+              setResponse("😬");
+              transition(PREPWEEKS2);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
         ]);
         break;
@@ -128,4 +170,6 @@ const HOME = "HOME";
 const GAMESTART = "GAMESTART";
 const ConfirmName = "ConfirmName";
 const PREPWEEK = "PREP_WEEK";
-const WEEK_1 = "WEEK_1";
+const PREPWEEKS1 = "PREP_WEEK_S1";
+const PREPWEEKS2 = "PREP_WEEK_S2";
+// const WEEK_1 = "WEEK_1";

@@ -1,6 +1,7 @@
 .navbar{
   display: flex;
   justify-content: space-between;
+  height: 5em;
 }
 
 .navbar-brand{
@@ -12,4 +13,12 @@
 
 .navbar-text{
   font-size: 2em;
+}
+
+.nav-title {
+  align-self: center;
+}
+
+.player {
+  min-width: 1em
 }

@@ -83,11 +83,10 @@ export default function useCommand(props) {
             },
           },
           {
-            command: "Marco",
+
+            command: ["reset", "clear"],
             callback: () => {
-              setResponse("Polo?");
-              handleTTS();
-              // transcript resets when command is triggered
+              transition(HOME);
               resetTranscript();
             }
           },

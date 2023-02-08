@@ -1,13 +1,37 @@
-let big = false
-navTitle = "Fun Fun Functional Fungus"
+import { useState, useEffect, useMemo } from "react";
 
+export default function Week1S1(props) {
+  const { scenario, setScenario } = useState("")
+  const { index, setIndex } = useState(0);
+
+  const welcome = useMemo(() => [
+    "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
+    "They are so comfy you can barely Function",
+    "Enough of that, let's have some fun guy...",
+    "What do you want to do now?",
+  ], []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => {
+        if (prev === welcome.length - 1) {
+          clearInterval(timer);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 2000);
+    return () => clearInterval(timer);
+  }, [setIndex, welcome.length]);
+
+  useEffect(() => {
+    setScenario(welcome[index]);
+  }, [index, welcome, setScenario]);
+
+  return <h1>{scenario}</h1>;
+}
+
+//  SHOW: Mushrooms gif/image
 /*
-      SHOW: Mushrooms gif/image
-        "You make your way over to a patch of Mushrooms and sit down atop them like a cheshire cat"
-        "They are so comfy you can barely Function"
-        "Now lets have some fun guy." 
-        display <>What do you want to do here?</>
-
       Commands:
         - eat{
           "You pop a tasty looking Mushroom into your mouth"
@@ -94,14 +118,3 @@ navTitle = "Fun Fun Functional Fungus"
 
 
   */
-   
-    
-  return (
-    <div className="container">
-      <h2>Tell me your name :</h2>
-      {transcript}
-    </div>
-  );
-};
-
-export default GameStart;

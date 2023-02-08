@@ -7,7 +7,7 @@ export default function useCommand(props) {
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
     useListen(commands);
-  const StaticCommands = [{
+  const staticCommands = [{
     // this command will clear the response message
     // when triggered, it will set the response message to an empty string ""
     // and reset the voice transcript to allow for new voice commands to be recorded.
@@ -32,7 +32,7 @@ export default function useCommand(props) {
     switch (mode) {
       case "HOME":
         setCommands([
-          ...StaticCommands,
+          ...staticCommands,
           {
             command: "Ping",
             callback: () => {
@@ -57,7 +57,7 @@ export default function useCommand(props) {
         break;
       case "GAMESTART":
         setCommands([
-          ...StaticCommands,
+          ...staticCommands,
           {
             command: ["home"],
             callback: () => {
@@ -80,7 +80,7 @@ export default function useCommand(props) {
         break;
       case "ConfirmName":
         setCommands([
-          ...StaticCommands,
+          ...staticCommands,
           {
             command: ["reset", "clear", "no"],
             callback: () => {
@@ -104,7 +104,7 @@ export default function useCommand(props) {
         break;
       case "PREP_WEEK":
         setCommands([
-          ...StaticCommands,
+          ...staticCommands,
           {
             command: ["home"],
             callback: () => {

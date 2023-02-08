@@ -29,10 +29,21 @@ SCENARIO 2 : "After taking a quick break you continue on but struggle trying to 
     - ask for help 
     - check online/google
     - press on
+      "After x you finaly figure where your bug was and fix that pesky function"
+        - transition to next scenario 
 
     -give up
       - lose all lives
       - transition to game over
 
+SCENARIO 3: "Several days pass and you've finaly submitted your last GIST. Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?"
 
-  
+  COMMANDS :
+    - [continue, yes]
+      "Your eyes light up fircely as you add an order of instant coffee to your amazon cart as you get ready for the following week"
+      - transition to week 1
+
+    -[no, stop]
+      - lose all lives
+      - transition to game over
+      "Fearing you may not be cut out to be a developer you decide to opt out and restock on your precious coffee beans. Also you slip on a banana peel and die"

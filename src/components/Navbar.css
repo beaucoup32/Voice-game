@@ -1,6 +1,7 @@
 .navbar{
   display: flex;
   justify-content: space-between;
+  height: 5em;
 }
 
 .navbar-brand{
@@ -16,4 +17,10 @@
 
 .nav-title {
   align-self: center;
+}
+
+.player {
+  display: flex;
+  min-width: 1em;
+  gap: 0.25em;
 }

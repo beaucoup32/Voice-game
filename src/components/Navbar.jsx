@@ -2,7 +2,15 @@
 import './Navbar.css'
 
 const Navbar = function(props) {
-  const {playerName, text} = props;
+  const {playerName, text, playerLives} = props;
+
+  const formatLives = () => {
+    const lives = []
+    for (let life = 0; life < playerLives; life++ ) {
+     lives.push("❤️")
+    }
+    return lives
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -10,8 +18,11 @@ const Navbar = function(props) {
       <span className="navbar-text nav-title">
         {text}
       </span>
-      <span className='navbar-text'>
+      <span className='navbar-text player'>
         {playerName}
+        <div>
+          {formatLives()}
+        </div>
       </span>
     </nav>
   );

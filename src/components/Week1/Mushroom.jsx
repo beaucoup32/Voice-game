@@ -87,22 +87,6 @@ navTitle = "Fun Fun Functional Fungus"
                   transistion(Leech)                        
         }
 
-
-
-    
-      - Objects / Oyster
-        
-    
-    
-      - Conditionals / Coral
-    
-      - Array / Anemone
-      
-      - Loop / Leech
-      
-      - Lighthouse
-        `Silly ${username}, you can't just warp there through a pipe like some video game.`
-        "So seriously, which way do you want to go?"
     
       
 
@@ -110,7 +94,7 @@ navTitle = "Fun Fun Functional Fungus"
 
 
   */
-   ]
+   
     
   return (
     <div className="container">

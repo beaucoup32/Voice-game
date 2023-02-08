@@ -19,7 +19,7 @@ export default function Week1(props) {
     }, 3000);
 
     setTimeout(() => {
-      setScenario("The ground is wet, reeking of Functional Fungus, Objective Oysters, Contidtional Coral, Arrays of Anemones, and Looping Leeches");
+      setScenario("The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches");
     }, 6000);
 
     setTimeout(() => {

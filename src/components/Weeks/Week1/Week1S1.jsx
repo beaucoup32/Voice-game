@@ -1,15 +1,19 @@
 import { useState, useEffect, useMemo } from "react";
 
 export default function Week1S1(props) {
-  const { scenario, setScenario } = useState("")
-  const { index, setIndex } = useState(0);
+  const [scenario, setScenario] = useState("");
+  const [index, setIndex] = useState(0);
 
-  const welcome = useMemo(() => [
-    "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
-    "They are so comfy you can barely Function",
-    "Enough of that, let's have some fun guy...",
-    "What do you want to do now?",
-  ], []);
+  const welcome = useMemo(
+    () => [
+      "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
+      "They are so comfy you can barely Function",
+      "Enough of that, let's have some fun guy...",
+      "What do you want to do now?",
+    ],
+    []
+  );
+
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((prev) => {
@@ -19,7 +23,7 @@ export default function Week1S1(props) {
         }
         return prev + 1;
       });
-    }, 2000);
+    }, 5000);
     return () => clearInterval(timer);
   }, [setIndex, welcome.length]);
 

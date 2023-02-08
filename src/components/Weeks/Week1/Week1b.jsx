@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export default Week1 = (props) => {
   const [scenario, setScenario] = useState("Welcome back. Where to next?");  
+  
 
   return <h1>{scenario}</h1>;
 };

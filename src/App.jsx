@@ -14,6 +14,7 @@ import PrepWeekS1 from "./components/Weeks/PrepWeek/PrepWeekS1";
 import PrepWeekS2 from "./components/Weeks/PrepWeek/PrepWeekS2";
 import PrepWeekS3 from "./components/Weeks/PrepWeek/PrepWeekS3";
 import Week1 from "./components/Weeks/Week1/Week1";
+import Week1b from "./components/Weeks/Week1/Week1b";
 import Week1S1 from "./components/Weeks/Week1/Week1S1";
 import Week2 from "./components/Weeks/Week2";
 import Week3 from "./components/Weeks/Week3";
@@ -29,8 +30,8 @@ export default function App() {
   const PREPWEEKS2 = "PREP_WEEK_S2";
   const PREPWEEKS3 = "PREP_WEEK_S3";
   const WEEK_1 = "WEEK_1";
+  const WEEK_1B = "WEEK_1B";
   const WEEK_1_S1 = "WEEK_1_S1";
-  const WEEK_1_S1B = "WEEK_1_S1B";
   const WEEK_1_S2 = "WEEK_2_S2";
   const WEEK_1_S3 = "WEEK_3_S3";
   const WEEK_1_S4 = "WEEK_4_S4";
@@ -112,6 +113,7 @@ export default function App() {
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
         {mode === WEEK_1 && <Week1 playerName={player} />}
+        {mode === WEEK_1B && <Week1b playerName={player} />}
         {mode === WEEK_1_S1 && <Week1S1 playerName={player} />}
         {mode === WEEK_1_S2 && <Week1S2 playerName={player} />}
         {mode === WEEK_1_S3 && <Week1S3 playerName={player} />}

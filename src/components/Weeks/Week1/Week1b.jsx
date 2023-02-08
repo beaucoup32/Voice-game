@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default Week1 = (props) => {
+export default function Week1b(props) {
   const [scenario, setScenario] = useState("Welcome back. Where to next?");  
   
 

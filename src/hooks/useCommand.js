@@ -48,15 +48,7 @@ export default function useCommand(props) {
     switch (mode) {
       case "HOME":
         setCommands([
-          ...staticCommands,
-          {
-            command: "Ping",
-            callback: () => {
-              setResponse("Pong!");
-              handleTTS();
-              resetTranscript();
-            },
-          },
+          ...staticCommands,         
           {
             command: ["Start", "thought"],
             callback: () => {
@@ -335,6 +327,7 @@ export default function useCommand(props) {
                 setNavText("W1: Fun Fun Fn(Fungus)");
                 transition(WEEK_1_S1);
                 setScenario("");
+                setResponse("");
               }, 3000);
               resetTranscript();
             },
@@ -482,32 +475,27 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["take", "pocket", "keep"],
+            command: ["pick up","take", "pocket", "keep"],
 
             callback: () => {
               if (!mushroom) {
                 setResponse("Sure, why not. Mushroom foraging is legal, right?");
-                setScenario(
-                  "You decide to put a mushroom in your pocket for later"
-                );
+                setScenario("You decide to put a mushroom in your pocket for later");
                 setMushroom(true);
               }
               else {
                 setResponse("Calm down greedy! You already have one.");
-                setScenario(
-                  "You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too"
-                );
+                setScenario("You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too");
                 setMushroom(true);
               }
-
-              setLives(lives - 1);
               // after a delay, will continue on to next scenario
               setTimeout(() => {
                 setScenario("");
+                setResponse("");
               }, 5000);
             },
             isFuzzyMatch: true,
-          },
+          },          
           {
             command: ["Leave", "get up", "stand"],
 
@@ -520,7 +508,7 @@ export default function useCommand(props) {
               }
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
-                setResponse("Ovjective Oysters, Conditional Coral, Array of Anemones and Looping Leeches Awaie")
+                setResponse("Welcome back. Where to next?")
                 transition(WEEK_1B);
               }, 3000);
               resetTranscript();

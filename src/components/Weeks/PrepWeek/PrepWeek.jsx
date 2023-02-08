@@ -23,7 +23,7 @@ const PrepWeek = () => {
     }, 19000);
   }, []);
 
-  return <h1>{scenario}</h1>;
+  return <p className="prep-week-intro">{scenario}</p>;
 };
 
 export default PrepWeek;

@@ -50,7 +50,7 @@ export default function App() {
 
   const [handleTTS] = useTTS(response);
 
-  const { commands, listenContinuously, transcript } = useCommand({
+  const { commands, listenContinuously, transcript, listening } = useCommand({
     mode,
     transition,
     setResponse,
@@ -84,7 +84,7 @@ export default function App() {
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario}/>}
       </main>
       <footer className="App-footer">
-        <div className="voiceIcon">{">>"}</div>
+        <div className="voiceIcon">{listening ? ">>" : "<<"}</div>
         <h3 className="userInput">{transcript}</h3>
       </footer>
     </div>

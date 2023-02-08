@@ -4,8 +4,13 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 export default function useListen(commands) {
-  const { transcript, interimTranscript, finalTranscript, resetTranscript } =
-    useSpeechRecognition({ commands });
+  const {
+    transcript,
+    interimTranscript,
+    finalTranscript,
+    resetTranscript,
+    listening,
+  } = useSpeechRecognition({ commands });
 
   // transcript debugging (client console)
   useEffect(() => {
@@ -40,5 +45,5 @@ export default function useListen(commands) {
     });
   };
 
-  return { listenContinuously, transcript, resetTranscript };
+  return { listenContinuously, transcript, resetTranscript, listening };
 }

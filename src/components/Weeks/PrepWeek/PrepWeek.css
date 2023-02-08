@@ -1,0 +1,146 @@
+.scenario {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  align-items: center;
+  background-color: #333841;
+  color: turquoise;
+}
+
+.typed {
+  position: relative;
+  font-size: 2em;
+  width: 50ch;
+  color: #0000;
+  /* line-height: 1.2; */
+  overflow: hidden;
+  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
+    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: t 1s forwards, b 1s 0.8s forwards;
+}
+
+@keyframes t {
+  from {
+    background-size: 0 95%, 0 100%;
+  }
+}
+@keyframes b {
+  100% {
+    background-position: -200% 50%, 0 0;
+  }
+}
+
+.scenario-text {
+  font-size: 2em;
+  width: 50ch;
+  color: magenta;
+}
+
+.prep-week-intro {
+  font-size: 2em;
+  width: 50ch;
+  color: orangered;
+  margin-top: 5em;
+}
+
+/* old typewritter animation code */
+/* @keyframes letters {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50ch;
+  }
+}
+@keyframes lines {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes cursor-style {
+  50% {
+    border-color: magenta;
+  }
+}
+@keyframes cursor-wait {
+  0% {
+    box-shadow: inset 2px 0 0 0 rgba(0, 0, 0, 0);
+  }
+  1% {
+    box-shadow: inset 2px 0 0 0 magenta;
+  }
+  40% {
+    box-shadow: inset 2px 0 0 0 magenta;
+  }
+}
+
+@supports (width: 1ch) {
+  .typed:before, .typed:after {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    z-index: 1;
+    display: block;
+    height: 1.2em;
+    width: 100%;
+    background-color: #333841;
+  }
+  .typed:before {
+    border-left: 2px solid transparent;
+    top: 100%;
+    animation-name: letters, lines, cursor-style, cursor-wait;
+    animation-fill-mode: both, both, both, backwards;
+  }
+  .typed:after {
+    content: '';
+    height: 100%;
+    top: 100%;
+    left: 0;
+    margin-top: 1.2em;
+  }
+
+  .typed:before {
+    animation-duration: 1.4285714286s, 4.2857142857s, 0.0285714286s, 0.8s;
+    animation-timing-function: steps(50, end), steps(3, end), step-end, ease-out;
+    animation-iteration-count: 3, 1, 120, 2;
+    animation-delay: 1.6s, 1.6s, 1.6s, 1.6s;
+  }
+  .typed:after {
+    animation: lines 4.2857142857s steps(3, end) 1;
+    animation-fill-mode: both;
+    animation-delay: 1.6s;
+  }
+
+  .typed + .typed:before {
+    animation-duration: 1.4285714286s, 4.2857142857s, 0.0285714286s, 0.8s;
+    animation-timing-function: steps(50, end), steps(3, end), step-end, ease-out;
+    animation-iteration-count: 3, 1, 120, 2;
+    animation-delay: 6000ms, 6000ms, 6000ms, 6000ms;
+  }
+  .typed + .typed:after {
+    animation: lines 6000ms steps(3, end) 1;
+    animation-fill-mode: both;
+    animation-delay: 6000ms;
+  }
+
+  .typed + .typed + .typed:before {
+    animation-duration: 1.4285714286s, 4.2857142857s, 0.0285714286s, 0.8s;
+    animation-timing-function: steps(50, end), steps(3, end), step-end, ease-out;
+    animation-iteration-count: 3, 1, 120, 2;
+    animation-delay: 10.9714285714s, 10.9714285714s, 10.9714285714s, 9.3714285714s;
+  }
+  .typed + .typed + .typed:after {
+    animation: lines 4.2857142857s steps(3, end) 1;
+    animation-fill-mode: both;
+    animation-delay: 10.9714285714s;
+  }
+} */

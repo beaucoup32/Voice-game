@@ -16,7 +16,7 @@ export default function useCommand(props) {
     lives,
   } = props;
   const [commands, setCommands] = useState([]);
-  const { listenContinuously, transcript, resetTranscript } =
+  const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
   const StaticCommands = [
     {
@@ -104,7 +104,7 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["yes", "confirm"],
+            command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
             callback: () => {
               setResponse(`Welcome to hell ${player} 😈`);
               setNavText("PREP WEEK");
@@ -119,14 +119,7 @@ export default function useCommand(props) {
       case "PREP_WEEK":
         setCommands([
           {
-            command: ["home"],
-            callback: () => {
-              transition(HOME);
-              resetTranscript();
-            },
-          },
-          {
-            command: "no",
+            command: ["no", "nope", "nevermind"],
             callback: () => {
               setResponse("🐔🐔🐔");
               setNavText("Say 'Start' to begin.");
@@ -135,7 +128,7 @@ export default function useCommand(props) {
             },
           },
           {
-            command: ["yes", "yes (i am)", "yeah"],
+            command: ["yes", "yeah", "yep", "skip"],
             callback: () => {
               setNavText("PREP WEEK: SCENARIO 1");
               setResponse("");
@@ -168,9 +161,9 @@ export default function useCommand(props) {
           {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
-              setResponse("😬");
+              setResponse("That was hard to watch... 😬");
               setScenario(
-                "Unfortunatly the exictement from making it into bootcamp threw off your game, after losing your rank you decide to continue your course work"
+                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
               );
 
               setLives(lives - 1);
@@ -201,7 +194,7 @@ export default function useCommand(props) {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
                 setScenario("");
-              }, 5000);
+              }, 7000);
               resetTranscript();
             },
           },
@@ -219,12 +212,12 @@ export default function useCommand(props) {
                 setNavText("PREP WEEK: SCENARIO 3");
                 setScenario("");
                 setResponse("");
-              }, 5000);
+              }, 7000);
               resetTranscript();
             },
           },
           {
-            command: ["continue", "press on"],
+            command: ["continue", "press on", "keep going"],
             callback: () => {
               setScenario(
                 "Hours pass and its late. Very late. At 2 AM you finaly figure where your bug was and fix that pesky function... But at what cost?"
@@ -239,7 +232,7 @@ export default function useCommand(props) {
                 setNavText("PREP WEEK: SCENARIO 3");
                 setScenario("");
                 setResponse("");
-              }, 5000);
+              }, 7000);
               resetTranscript();
             },
           },
@@ -261,7 +254,7 @@ export default function useCommand(props) {
                 setScenario("");
 
                 setResponse("");
-              }, 5000);
+              }, 7000);
               resetTranscript();
             },
           },
@@ -270,7 +263,7 @@ export default function useCommand(props) {
       case "PREP_WEEK_S3":
         setCommands([
           {
-            command: ["continue", "yes"],
+            command: ["continue", "yes", "keep going"],
             callback: () => {
               setScenario(
                 "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week"
@@ -282,7 +275,7 @@ export default function useCommand(props) {
                 transition(WEEK_1);
                 setNavText("WEEK 1: SCENARIO 1");
                 setScenario("");
-              }, 6500);
+              }, 9000);
               resetTranscript();
             },
           },
@@ -306,7 +299,7 @@ export default function useCommand(props) {
                 transition(HOME);
                 setNavText("Say 'Start' to begin.");
                 setScenario("");
-              }, 7000);
+              }, 9000);
               resetTranscript();
             },
           },
@@ -316,7 +309,13 @@ export default function useCommand(props) {
         setCommands([]);
     }
   }, [mode]);
-  return { commands, listenContinuously, transcript, resetTranscript };
+  return {
+    commands,
+    listenContinuously,
+    transcript,
+    resetTranscript,
+    listening,
+  };
 }
 
 const HOME = "HOME";

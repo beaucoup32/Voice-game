@@ -1,3 +1,5 @@
+import "../App.css"
+
 const GameStart = (props) => {  
 
   return (

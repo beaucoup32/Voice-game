@@ -3,7 +3,7 @@
   color: white;
   padding: 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 3.7em; ;
   left: 50px; /* or any other value that works for you */
   transition: all 0.3s ease-out;
 }

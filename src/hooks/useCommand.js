@@ -99,7 +99,7 @@ export default function useCommand(props) {
               // transcript resets when command is triggered
               resetTranscript();
             },
-            isFuzzyMatch: true,
+            // isFuzzyMatch: true,
           },
         ]);
         break;

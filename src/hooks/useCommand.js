@@ -30,7 +30,7 @@ export default function useCommand(props) {
     setL,
     boolean,
     setBoolean,
-    
+
   } = props;
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript } =
@@ -115,15 +115,12 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm"],
             callback: () => {
-              // setResponse(`Welcome to hell ${player} 😈`);
-              // setNavText("PREP WEEK");
-              // transition(PREPWEEK);
+              setResponse(`Welcome to hell ${player} 😈`);
+              setNavText("PREP WEEK");
+              transition(PREPWEEK);
               resetTranscript();
               setLives(3);
-              transition(WEEK_1);
-              setNavText("WEEK 1: Wading into Lotide");
-              setScenario("");
-              setResponse("");
+             
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -332,6 +329,7 @@ export default function useCommand(props) {
               }
               else {
                 setF(true);
+                setScenario("");
                 setResponse("You mosey over to the Mushrooms");
                 setTimeout(() => {
                   setNavText("W1: Fun Fun Fn(Fungus)");
@@ -354,6 +352,7 @@ export default function useCommand(props) {
               }
               else {
                 setO(true);
+                setScenario("");
                 setResponse("You saunter slowly to see some shellfish");
                 setTimeout(() => {
                   transition(WEEK_1_S2);
@@ -375,6 +374,7 @@ export default function useCommand(props) {
               }
               else {
                 setC(true);
+                setScenario("");
                 setResponse("You cruise to the cool colored Coral");
                 setTimeout(() => {
                   setNavText("W1: If (Condition) then Coral");
@@ -396,6 +396,7 @@ export default function useCommand(props) {
               }
               else {
                 setA(true);
+                setScenario("");
                 setResponse("You approach an Array of Anemones");
                 setTimeout(() => {
                   setNavText("W1: Array = [ A, n, e, m, o, n, e, s ] ");
@@ -418,6 +419,7 @@ export default function useCommand(props) {
               }
               else {
                 setL(true);
+                setScenario("");
                 setResponse("You'd like to linger no longer, so let's look at lots of Looping Leeches");
                 setTimeout(() => {
                   setNavText("W1: for (Leech of Leeches)");
@@ -434,6 +436,8 @@ export default function useCommand(props) {
             command: ["Lighthouse", "Entrance", "Test"],
 
             callback: () => {
+              setResponse("");
+              setScenario("");
               if (!f && !o && !c && !a && !l) {
                 setResponse(`Silly ${player}, you can't just warp there through a pipe like some video game.`);
 
@@ -490,54 +494,59 @@ export default function useCommand(props) {
       case "WEEK_1_S1":
         setCommands([
           {
-            command: ["eat *", "taste", "bite"],
+            command: ["eat *", "taste", " bite"],
 
             callback: () => {
-              setScenario("As you chew you feel a weird tingling sensation");
               setResponse("You pop a tasty looking 🍄 into your mouth");
+              setScenario("As you chew you feel a weird tingling sensation");
               setTimeout(() => {
                 const mushrooms = ["1up", "big", "poison"];
                 const rngMush = mushrooms[Math.floor(Math.random() * 3)];
                 switch (rngMush) {
                   case "1up":
                     setScenario(
-                      `Wow ${player} with the gamer accumen! You found a secret 1up!`
+                      `Wow ${player}! That's what you call gamer accumen!`
                     );
                     setResponse("You found a secret 1up!💖");
                     setLives(lives + 1);
                     break;
                   case "big":
                     setScenario("You found a Super Mushroom! You quickly double in size");
-                    setResponse(`It's uh... you, Super ${player}!`);
+                    setResponse(`It's a-you, Super ${player}!`);
                     setBig(true);
                     break;
                   case "poison":
-                    setScenario("A few minutes pass and your tongue goes numb, your stomach begins to cramp up");
+                    setScenario("A few minutes pass when your tongue goes num and your stomach begins to cramp up");
 
                     setTimeout(() => {
-                    setResponse("This particular mushroom is not magically delicious");
+                      setScenario("This particular mushroom is not magically delicious");
+                      setTimeout(() => {
+                        setResponse("it's magically DEADLY! ☠");
+                        setTimeout(() => {
+                          setScenario("The Fn(Fungus) hit you with an arrow function => ");
+                          setResponse("Oh no! You can't handle *this*!");
+                          setTimeout(() => {
+
+                            if (big) {
+                              setResponse("You shrink back down to regular size");
+                              setBig(false);
+                            } else {
+                              setResponse("You lost a life! 💔");
+                              setLives(lives - 1);
+                              if (lives === 0) {
+                                setScenario("Many have died to mushrooms, you were just the Last of Us😏");
+                              }
+                            }
+                          }, 3000);
+                        }, 3000);
+                      }, 3000);
                     }, 3000);
-                    setTimeout(() => {                                          
-                    setResponse("it's magically DEADLY!");
-                  }, 3000);
-                    setTimeout(() => {
-                        setResponse("The Fn(Fungus) hit you with an arrow function => ");
-                        setScenario("Oh no! You can't handle *this*!");
-                        if (big) {
-                          setResponse("You shrink back down to regular size");
-                          setBig(false);
-                        } else {
-                          setResponse("You lost a life! 💔");
-                          setLives(lives - 1);
-                          if (lives === 0) {
-                            setScenario("Many have died to mushrooms, you were just the Last of Us😏");
-                          }
-                        }
-                    }, 6000);
                     break;
                   default:
                 }
               }, 5000);
+              setResponse("");
+              setScenario("");
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -580,7 +589,7 @@ export default function useCommand(props) {
                 setResponse("");
                 setScenario("");
                 transition(WEEK_1B);
-              }, 3000);
+              }, 7000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -601,13 +610,13 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setResponse("You lost a life! 💔");
                 setLives(lives - 1);
-              }, 5000);
+              }, 4000);
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("");
                 setScenario("");
                 transition(WEEK_1B);
-              }, 7000);
+              }, 10000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -625,6 +634,7 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
                 setScenario("");
+                setResponse("");
               }, 10000);
               resetTranscript();
             },
@@ -654,7 +664,7 @@ export default function useCommand(props) {
 
               } else {
                 setScenario(
-                  "You put your shoes back on before doing anything else because you realize the Condition your feet would be in if you didn't. You can now leave the Coral with your feet in-tact"
+                  "You put your shoes back on before doing anything else because you realize the Condition your feet would be in if you didn't. Now you can walk around the Coral with your feet in-tact"
                 );
               }
 
@@ -684,6 +694,7 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
                 setScenario("");
+                setResponse("");
               }, 10000);
               resetTranscript();
             },
@@ -698,6 +709,12 @@ export default function useCommand(props) {
                 setScenario(
                   "You take a step closer to inspect the coral... CRUNCH!!! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet and walk away in shame."
                 );
+              } 
+              if (!boolean) {
+                setResponse("Oh no! your feet!! 👣");
+                setScenario(
+                  "You severly cut your feet trying get close to the coral without your shoes. You shove your toes back into your now blood-red shoes."
+                );
               } else {
                 setScenario(
                   "You spend the exact right amount of time learning about Ifs, Thens, and everything Else. You learn so much about Conditionals, you even improve your heart Condition!"
@@ -711,6 +728,7 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
                 setScenario("");
+                setResponse("");
               }, 8000);
 
               resetTranscript();
@@ -750,7 +768,9 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
+                setResponse("");
                 setScenario("");
+
               }, 10000);
               resetTranscript();
             },
@@ -773,6 +793,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
+                setResponse("");
                 setScenario("");
               }, 10000);
 
@@ -782,12 +803,12 @@ export default function useCommand(props) {
           },
         ]);
         break;
-        case "WEEK_1_S5":
+      case "WEEK_1_S5":
         setCommands([
           ...staticCommands,
           {
             command: ["Study", "(take) notes"],
-            callback: () => {              
+            callback: () => {
               setResponse("No Break, Continue to study? You got it sucker!");
               setScenario(
                 "You stay amongst the Leeches and study how they were able to suck you back in. Learning about loops and realizing that you are in an infinite loop. The Leeches are positive you didn't close off your code properly. If the Looping Leeches never become false, you can't get out!"
@@ -805,7 +826,7 @@ export default function useCommand(props) {
             command: ["Leave", "go back"],
 
             callback: () => {
-              
+
               setScenario(
                 "You decide to leave. "
               );
@@ -813,6 +834,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
+                setResponse("");
                 setScenario("");
               }, 10000);
               resetTranscript();
@@ -828,7 +850,7 @@ export default function useCommand(props) {
 
               setScenario(
                 "Your Final project has an infinite loop on the main branch. You don't waste time re-writing all of the new code. Instead you take a Break and chat with your team to resolve. Bothou and the Looping Leeches in your code got a Break."
-              );            
+              );
 
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
@@ -845,7 +867,7 @@ export default function useCommand(props) {
       default:
         setCommands([]);
     }
-  }, [mode, big, mushroom, boolean ]);
+  }, [mode, big, mushroom, boolean]);
   return { commands, listenContinuously, transcript, resetTranscript };
 }
 

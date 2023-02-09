@@ -137,7 +137,7 @@ export default function App() {
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
         {mode === WEEK_1 && <Week1 playerName={player} />}
-        {mode === WEEK_1B && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l}/>}
+        {mode === WEEK_1B && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l} scenario={scenario}/>}
         {mode === WEEK_1_S1 && <Week1S1 playerName={player} scenario={scenario} />}
         {mode === WEEK_1_S2 && <Week1S2 playerName={player} scenario={scenario}/>}
         {mode === WEEK_1_S3 && <Week1S3 playerName={player} scenario={scenario}/>}

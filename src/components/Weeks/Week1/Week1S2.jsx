@@ -11,8 +11,7 @@ export default function Week1S2(props) {
       "You vaguely recall Objects from your prep work studying",      
       "However something smells fishy.... these Objects are actually Oysters!", 
       "Unfortunately you find these Objects are a tough shell to crack",
-      "You have been hammering away at them for hours",
-      "What do you want to now?"
+      "You have been hammering away at them for hours. What do you want to do now?"
     ],
     []
   );
@@ -26,7 +25,7 @@ export default function Week1S2(props) {
         }
         return prev + 1;
       });
-    }, 3000);
+    }, 4500);
     return () => clearInterval(timer);
   }, [setIndex, welcome.length]);
 

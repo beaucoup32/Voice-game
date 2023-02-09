@@ -8,8 +8,10 @@ export default function Week1S1(props) {
   const welcome = useMemo(
     () => [
       "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
-      "You get up close and study how they Function until you can barely Function",      
-      "What do you want to do now?"      
+      "You get up close and study how they Function",
+      "You study until you can barely Function",
+      "Now let's have some fun, guy!",
+      "What do you want to do next?"      
     ],
     []
   );
@@ -23,7 +25,7 @@ export default function Week1S1(props) {
         }
         return prev + 1;
       });
-    }, 4000);
+    }, 4500);
     return () => clearInterval(timer);
   }, [setIndex, welcome.length]);
 

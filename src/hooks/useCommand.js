@@ -36,7 +36,7 @@ export default function useCommand(props) {
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
-  const StaticCommands = [
+  const staticCommands = [
     {
       // this command will clear the response message
       // when triggered, it will set the response message to an empty string ""

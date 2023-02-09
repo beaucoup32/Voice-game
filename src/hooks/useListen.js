@@ -22,7 +22,6 @@ export default function useListen(commands) {
     if (finalTranscript.length >= 150) {
       resetTranscript();
     }
-
   }, [interimTranscript, finalTranscript, resetTranscript]);
 
   // checks if browser supports speech recognition

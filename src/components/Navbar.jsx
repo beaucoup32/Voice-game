@@ -4,10 +4,12 @@ import "./Navbar.css";
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;
 
+  const heartIcon = <i class="fa-solid fa-heart fa-beat" />;
+
   const formatLives = () => {
     const lives = [];
     for (let life = 0; life < playerLives; life++) {
-      lives.push("❤️");
+      lives.push(heartIcon);
     }
     return lives;
   };
@@ -20,7 +22,7 @@ const Navbar = function (props) {
       <span className="navbar-text nav-title">{text}</span>
       <span className="navbar-text player">
         {playerName}
-        <div>{formatLives()}</div>
+        <div className="hearts">{formatLives()}</div>
       </span>
     </nav>
   );

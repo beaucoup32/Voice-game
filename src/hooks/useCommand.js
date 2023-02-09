@@ -43,12 +43,12 @@ export default function useCommand(props) {
     {
       command: ["game over", "death"],
       callback: () => {
-        transition(GAMEOVER)
-        setGameOverText("Test: loreum ipsum loreum ipsum")
-        resetTranscript()
+        transition(GAMEOVER);
+        setGameOverText("Test: loreum ipsum loreum ipsum");
+        resetTranscript();
       },
-      isFuzzyMatch: true
-    }
+      isFuzzyMatch: true,
+    },
   ];
 
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function useCommand(props) {
             command: ["Start", "thought"],
             callback: () => {
               setResponse("Starting Adventure!");
-              setPlayer("")
+              setPlayer("");
               handleTTS();
 
               // changes mode to show GAMESTART component
@@ -100,7 +100,7 @@ export default function useCommand(props) {
             command: ["home", "restart", "reset"],
             callback: () => {
               transition(HOME);
-              setPlayer("")
+              setPlayer("");
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -211,7 +211,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
-                setResponse("")
+                setResponse("");
                 setScenario("");
               }, 7000);
               resetTranscript();
@@ -270,12 +270,9 @@ export default function useCommand(props) {
               setLives(0);
 
               setTimeout(() => {
-
                 transition(GAMEOVER);
-                setGameOverText("Say 'restart' to return to Main Menu")
+                setGameOverText("Say 'restart' to return to Main Menu");
                 setResponse("");
-
-
               }, 7000);
               resetTranscript();
             },
@@ -319,7 +316,7 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 transition(GAMEOVER);
-                setGameOverText("A banana peel? Really? 🤣")
+                setGameOverText("A banana peel? Really? 🤣");
                 setNavText("Say 'restart' to return to Main Menu");
               }, 9000);
               resetTranscript();

@@ -23,5 +23,13 @@
 .player {
   display: flex;
   min-width: 1em;
-  gap: 0.25em;
+  gap: 0.5em;
+}
+
+.hearts {
+  color: red;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.4em;
+  align-items: center;
 }

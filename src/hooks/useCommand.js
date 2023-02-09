@@ -69,7 +69,7 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("Starting Adventure!");
               setPlayer("");
-              handleTTS();
+              // handleTTS();
 
               // changes mode to show GAMESTART component
               transition(GAMESTART);

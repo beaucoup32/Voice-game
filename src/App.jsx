@@ -153,7 +153,7 @@ export default function App() {
       </main>
       <footer className="App-footer">
         <div className="mic">
-          <i class="fa-solid fa-microphone fa-beat-fade"/>
+          <i className="fa-solid fa-microphone fa-beat-fade"/>
         </div>
         <h3 className="userInput">{transcript}</h3>
       </footer>

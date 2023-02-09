@@ -14,19 +14,34 @@ export default function useCommand(props) {
     setLives,
     lives,
     setGameOverText,
+    big,
+    setBig,
+    mushroom,
+    setMushroom,
+    f,
+    o,
+    c,
+    a,
+    l,
+    setF,
+    setO,
+    setC,
+    setA,
+    setL,
+    boolean,
+    setBoolean,
   } = props;
 
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
-  const StaticCommands = [
+  const staticCommands = [
     {
       // this command will clear the response message
       // when triggered, it will set the response message to an empty string ""
       // and reset the voice transcript to allow for new voice commands to be recorded.
       command: ["reset", "clear"],
       callback: () => {
-        transition(HOME);
         resetTranscript();
       },
       isFuzzyMatch: true,
@@ -55,15 +70,7 @@ export default function useCommand(props) {
     switch (mode) {
       case "HOME":
         setCommands([
-          ...StaticCommands,
-          {
-            command: "Ping",
-            callback: () => {
-              setResponse("Pong!");
-              handleTTS();
-              resetTranscript();
-            },
-          },
+          ...staticCommands,
           {
             command: ["Start", "thought", "dot", "begin"],
             callback: () => {
@@ -82,6 +89,7 @@ export default function useCommand(props) {
         break;
       case "GAMESTART":
         setCommands([
+          ...staticCommands,
           {
             command: "(My name is) :name",
             callback: (name) => {
@@ -127,6 +135,8 @@ export default function useCommand(props) {
               transition(PREPWEEK);
               resetTranscript();
               setLives(3);
+
+              resetTranscript();
             },
             isFuzzyMatch: true,
           },
@@ -150,6 +160,7 @@ export default function useCommand(props) {
               setResponse("");
               transition(PREPWEEKS1);
               resetTranscript();
+
             },
             isFuzzyMatch: true,
           },
@@ -296,8 +307,10 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 transition(WEEK_1);
-                setNavText("WEEK 1: SCENARIO 1");
+                setNavText("WEEK 1: Wading into Lotide");
                 setScenario("");
+                setResponse("");
+
               }, 9000);
               resetTranscript();
             },
@@ -329,6 +342,554 @@ export default function useCommand(props) {
           },
         ]);
         break;
+      case "WEEK_1":
+      case "WEEK_1B":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Function", "Fungus", "Mushroom(s)"],
+
+            callback: () => {
+              if (f) {
+                setResponse("You already learned about Functions, Where to now?");
+              }
+              else {
+                setF(true);
+                setScenario("");
+                setResponse("You mosey over to the Mushrooms");
+                setTimeout(() => {
+                  setNavText("W1: Fun Fun Fn(Fungus)");
+                  transition(WEEK_1_S1);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Objective (Oysters)", "Objects", "Oyster"],
+
+            callback: () => {
+              if (o) {
+                setResponse("You already learned about Objects, Where to now?");
+              }
+              else {
+                setO(true);
+                setScenario("");
+                setResponse("You saunter slowly to see some shellfish");
+                setTimeout(() => {
+                  transition(WEEK_1_S2);
+                  setNavText("W1: { Objective: Oysters }");
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Contitional (Coral)", "Coral", "Condidtion"],
+
+            callback: () => {
+              if (c) {
+                setResponse("You already learned about Conditionals, Where to now?");
+              }
+              else {
+                setC(true);
+                setScenario("");
+                setResponse("You cruise to the cool colored Coral");
+                setTimeout(() => {
+                  setNavText("W1: If (Condition) then Coral");
+                  transition(WEEK_1_S3);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Array (of Anemones)", "Anemone", "An Enemy", "Anemones", "An Enemies"],
+
+            callback: () => {
+              if (a) {
+                setResponse("You already learned about Arrays, Where to now?");
+              }
+              else {
+                setA(true);
+                setScenario("");
+                setResponse("You approach an Array of Anemones");
+                setTimeout(() => {
+                  setNavText("W1: Array = [ A, n, e, m, o, n, e, s ] ");
+                  transition(WEEK_1_S4);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Loop", "Leech", "Looping Leeches"],
+
+            callback: () => {
+              if (l) {
+                setResponse("You already learned about Loops, Where to now?");
+              }
+              else {
+                setL(true);
+                setScenario("");
+                setResponse("You'd like to linger no longer, so let's look at lots of Looping Leeches");
+                setTimeout(() => {
+                  setNavText("W1: for (Leech of Leeches)");
+                  transition(WEEK_1_S4);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Lighthouse", "Entrance", "Test"],
+
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (!f && !o && !c && !a && !l) {
+                setResponse(`Silly ${player}, you can't just warp there through a pipe like some video game.`);
+
+              }
+              else {
+                setResponse("Pop Quiz Hotshot!");
+                setScenario("To progress further in Lighthouse Labs you must pass your Week 1 test!");
+                let score = 0;
+                if (f) { score += 20; };
+                if (o) { score += 20; };
+                if (c) { score += 20; };
+                if (a) { score += 20; };
+                if (l) { score += 20; };
+                setTimeout(() => {
+                  if (score === 100) {
+                    setScenario(`Check out the big brain on ${player}! You got 100%. You must have studied very hard. You've earned an extra life for fully understanding our FOCAL points`);
+                    setResponse("You earn a gold star! ⭐ (And an extra life 💖)");
+                    setLives(lives + 1);
+                  } else {
+                    setScenario(`Ooh tough break ${player}! You got ${score} out of 100. You needed 90% to pass. You are going to have to study extra hard over the weekends to get caught up. Not off to a great start, better try harder in Week 2!`);
+                  }
+                }, 3000);
+                setTimeout(() => {
+                  setNavText("WEEK 2: Cats & ISS & API oh my!");
+                  transition(WEEK_2);
+                  setScenario("");
+                  setResponse("");
+                }, 10000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["home", "bed", "back"],
+            callback: () => {
+              setScenario("Fearing another step forward you choose to take a step back. The door hits you on the way out.");
+              setResponse("Wow so much self doubt. Bye I guess 👋");
+
+              setLives(0);
+
+              setTimeout(() => {
+                transition(HOME);
+                setNavText("Say 'Start' to begin.");
+                setScenario("");
+                setResponse("");
+
+              }, 7000);
+              resetTranscript();
+            },
+          },
+        ]);
+        break;
+      case "WEEK_1_S1":
+        setCommands([
+          {
+            command: ["eat *", "taste", " bite"],
+
+            callback: () => {
+              setResponse("You pop a tasty looking 🍄 into your mouth");
+              setScenario("As you chew you feel a weird tingling sensation");
+              setTimeout(() => {
+                const mushrooms = ["1up", "big", "poison"];
+                const rngMush = mushrooms[Math.floor(Math.random() * 3)];
+                switch (rngMush) {
+                  case "1up":
+                    setScenario(
+                      `Wow ${player}! That's what you call gamer accumen!`
+                    );
+                    setResponse("You found a secret 1up!💖");
+                    setLives(lives + 1);
+                    break;
+                  case "big":
+                    setScenario("You found a Super Mushroom! You quickly double in size");
+                    setResponse(`It's a-you, Super ${player}!`);
+                    setBig(true);
+                    break;
+                  case "poison":
+                    setScenario("A few minutes pass when your tongue goes num and your stomach begins to cramp up");
+
+                    setTimeout(() => {
+                      setScenario("This particular mushroom is not magically delicious");
+                      setTimeout(() => {
+                        setResponse("it's magically DEADLY! ☠");
+                        setTimeout(() => {
+                          setScenario("The Fn(Fungus) hit you with an arrow function => ");
+                          setResponse("Oh no! You can't handle *this*!");
+                          setTimeout(() => {
+
+                            if (big) {
+                              setResponse("You shrink back down to regular size");
+                              setBig(false);
+                            } else {
+                              setResponse("You lost a life! 💔");
+                              setLives(lives - 1);
+                              if (lives === 0) {
+                                setScenario("Many have died to mushrooms, you were just the Last of Us😏");
+                              }
+                            }
+                          }, 3000);
+                        }, 3000);
+                      }, 3000);
+                    }, 3000);
+                    break;
+                  default:
+                }
+              }, 5000);
+              setResponse("");
+              setScenario("");
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["pick up", "take", "pocket", "keep"],
+
+            callback: () => {
+              if (!mushroom) {
+                setScenario("");
+                setResponse("Sure, why not. Mushroom foraging is legal, right?");
+                setScenario("You decide to put a mushroom in your pocket for later");
+                setMushroom(true);
+              }
+              else {
+                setResponse("Calm down greedy! You already have one.");
+                setScenario("You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too");
+                setMushroom(true);
+              }
+              // after a delay, will continue on to next scenario
+              setTimeout(() => {
+                setScenario("");
+                setResponse("");
+              }, 5000);
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Leave", "get up", "stand"],
+
+            callback: () => {
+              if (big) {
+                setResponse("You pounce to your feet, towering over the Functional Fungus");
+                setScenario("You crushed the entire room into mush with your giant feet.");
+              } else {
+                setResponse("You rise to your feet to flee these fungi");
+              }
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                setResponse("");
+                setScenario("");
+                transition(WEEK_1B);
+              }, 7000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "WEEK_1_S2":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["(keep) hammering (away)", "hammer", "keep going"],
+
+            callback: () => {
+              setResponse("Alright, stubborn brute force it is");
+              setScenario(
+                "You grab a bigger hammer, and smash apart all the Oysters. You might not have learned alot but you got through them. However that wasn't the objective of studying these Objects"
+              );
+              setTimeout(() => {
+                setResponse("You lost a life! 💔");
+                setLives(lives - 1);
+              }, 4000);
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                setResponse("");
+                setScenario("");
+                transition(WEEK_1B);
+              }, 10000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["(ask for) help", "Assistance (Request)", "ask a *"],
+
+            callback: () => {
+              setResponse("You've gained a pearl of wisdom! 🦪");
+              setScenario(
+                "You decide to make an Assistance Request and you are greeted by a mentor named Walrus. He reviews your work and notices the hammer in your carpenter like hands. He offers you some eSTEAMed insights on how to crack open the solution. Thankful and wiser, you continue your journey"
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setScenario("");
+                setResponse("");
+              }, 10000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "WEEK_1_S3":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["(put on) shoes", "lace (up)"],
+
+            callback: () => {
+              setResponse("You can't be de-FEET-ed now!");
+              setBoolean(true);
+              if (big) {
+                setScenario(
+                  "You throw on your shoes and take a step... CRUNCH!!! Oops! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet as you walk away"
+                );
+                setTimeout(() => {
+                  setNavText("WEEK 1: Wading into Lotide");
+                  setResponse("");
+                  setScenario("");
+                  transition(WEEK_1B);
+                }, 8000);
+
+              } else {
+                setScenario(
+                  "You put your shoes back on before doing anything else because you realize the Condition your feet would be in if you didn't. Now you can walk around the Coral with your feet in-tact"
+                );
+              }
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Leave", "go back"],
+
+            callback: () => {
+              if (!boolean) {
+                setResponse("Oh no! your feet!! 👣");
+                setScenario(
+                  "Eager to return on your quest to be the best programmer, you left before learning enough about Conditionals and Coral. You severly cut your feet trying to leave without your shoes. You shove your toes back into your now blood-red shoes."
+                );
+                setTimeout(() => {
+                  setResponse("You lost a life! 💔");
+                  setLives(lives - 1);
+                }, 8000);
+              } else {
+                setScenario(
+                  "You feel good about the Condition you are leaving the Coral in and your understanding of both Coral and Conditionals"
+                );
+              }
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setScenario("");
+                setResponse("");
+              }, 10000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["study", "look (closer)"],
+
+            callback: () => {
+              setResponse("You are so eager to learn! Smart decision, probably");
+              if (big) {
+                setScenario(
+                  "You take a step closer to inspect the coral... CRUNCH!!! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet and walk away in shame."
+                );
+              }
+              if (!boolean) {
+                setResponse("Oh no! your feet!! 👣");
+                setScenario(
+                  "You severly cut your feet trying get close to the coral without your shoes. You shove your toes back into your now blood-red shoes."
+                );
+              } else {
+                setScenario(
+                  "You spend the exact right amount of time learning about Ifs, Thens, and everything Else. You learn so much about Conditionals, you even improve your heart Condition!"
+                );
+                setTimeout(() => {
+                  setResponse("You found a secret 1up!💖");
+                  setLives(lives + 1);
+                }, 6000);
+              }
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setScenario("");
+                setResponse("");
+              }, 8000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "WEEK_1_S4":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Study", "(take) notes"],
+
+            callback: () => {
+              setResponse("Index cards for Arrays? Nice.");
+              setScenario(
+                "You whip out some Index cards and take an Array of notes. You learn you can push, pop, and even slice them"
+              );
+              setTimeout(() => {
+                setResponse("");
+                setScenario("What do you want to do now?");
+              }, 4000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Leave", "go back"],
+
+            callback: () => {
+              setScenario(
+                "You decide to leave. Anemones are fine and all but if you are going to spend any more time here, you want Arrays"
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setResponse("");
+                setScenario("");
+
+              }, 10000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["pop", "push", "slice", "splice"],
+
+            callback: () => {
+              setResponse("You use your Array methods on the Anemones");
+
+              setScenario(
+                "You get your hands dirty by finding, filtering, popping, pushing, splicing and slicing the Anemones. For purposes of this exercise we'll say you both had a great time. You tickled their fancy and you enjoyed learning code from these creatures. You leave the Array after having made a friend out of Anemone!"
+              );
+              setTimeout(() => {
+                setResponse("Your heart grew one size that day!💖");
+                setLives(lives + 1);
+              }, 8000);
+
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setResponse("");
+                setScenario("");
+              }, 10000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "WEEK_1_S5":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Study", "(take) notes"],
+            callback: () => {
+              setResponse("No Break, Continue to study? You got it sucker!");
+              setScenario(
+                "You stay amongst the Leeches and study how they were able to suck you back in. Learning about loops and realizing that you are in an infinite loop. The Leeches are positive you didn't close off your code properly. If the Looping Leeches never become false, you can't get out!"
+              );
+              setTimeout(() => {
+                setResponse("How now, Inspector?");
+                setScenario("");
+              }, 12000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Leave", "go back"],
+
+            callback: () => {
+
+              setScenario(
+                "You decide to leave. "
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setResponse("");
+                setScenario("");
+              }, 10000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["(take a quick) break", "(short) break", "keep going", "(quick) break", "(take a) break"],
+
+            callback: () => {
+              setBoolean(true);
+              setResponse("Is this a little too meta?");
+
+              setScenario(
+                "Your Final project has an infinite loop on the main branch. You don't waste time re-writing all of the new code. Instead you take a Break and chat with your team to resolve. Bothou and the Looping Leeches in your code got a Break."
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 1: Wading into Lotide");
+                transition(WEEK_1B);
+                setScenario("");
+              }, 12000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
       default:
         setCommands([]);
     }
@@ -352,3 +913,10 @@ const PREPWEEKS1 = "PREP_WEEK_S1";
 const PREPWEEKS2 = "PREP_WEEK_S2";
 const PREPWEEKS3 = "PREP_WEEK_S3";
 const WEEK_1 = "WEEK_1";
+const WEEK_1B = "WEEK_1B";
+const WEEK_1_S1 = "WEEK_1_S1";
+const WEEK_1_S2 = "WEEK_1_S2";
+const WEEK_1_S3 = "WEEK_1_S3";
+const WEEK_1_S4 = "WEEK_1_S4";
+const WEEK_1_S5 = "WEEK_1_S5";
+const WEEK_2 = "WEEK_2"

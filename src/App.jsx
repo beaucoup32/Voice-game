@@ -16,6 +16,12 @@ import PrepWeekS3 from "./components/Weeks/PrepWeek/PrepWeekS3";
 import Week1 from "./components/Weeks/Week1/Week1";
 import Week1b from "./components/Weeks/Week1/Week1b";
 import Week1S1 from "./components/Weeks/Week1/Week1S1";
+import Week1S2 from "./components/Weeks/Week1/Week1S2";
+import Week1S3 from "./components/Weeks/Week1/Week1S3";
+import Week1S4 from "./components/Weeks/Week1/Week1S4";
+import Week1S5 from "./components/Weeks/Week1/Week1S5";
+
+
 import Week2 from "./components/Weeks/Week2";
 import Week3 from "./components/Weeks/Week3";
 import Week4 from "./components/Weeks/Week4";
@@ -29,12 +35,13 @@ export default function App() {
   const PREPWEEKS1 = "PREP_WEEK_S1";
   const PREPWEEKS2 = "PREP_WEEK_S2";
   const PREPWEEKS3 = "PREP_WEEK_S3";
-  const WEEK_1 = "WEEK_1";
-  const WEEK_1B = "WEEK_1B";
+  const WEEK_1 = "WEEK_1";  
+  const WEEK_1B = "WEEK_1B";  
   const WEEK_1_S1 = "WEEK_1_S1";
-  const WEEK_1_S2 = "WEEK_2_S2";
-  const WEEK_1_S3 = "WEEK_3_S3";
-  const WEEK_1_S4 = "WEEK_4_S4";
+  const WEEK_1_S2 = "WEEK_1_S2";
+  const WEEK_1_S3 = "WEEK_1_S3";
+  const WEEK_1_S4 = "WEEK_1_S4";
+  const WEEK_1_S5 = "WEEK_1_S5";
   const WEEK_2 = "WEEK_2";
   const WEEK_3 = "WEEK_3";
   const WEEK_4 = "WEEK_4";
@@ -57,10 +64,7 @@ export default function App() {
 
   // toggle big
   const [big, setBig] = useState(false);
-
-   // toggle death
-   const [death, setDeath] = useState(false);
-
+  
    // toggle mushroom
    const [mushroom, setMushroom] = useState(false);
 
@@ -69,6 +73,16 @@ export default function App() {
 
   // set scenario text
   const [scenario, setScenario] = useState("");
+
+  //set FOCAL validation for W1
+  const [f, setF] = useState(false);
+  const [o, setO] = useState(false);
+  const [c, setC] = useState(false);
+  const [a, setA] = useState(false);
+  const [l, setL] = useState(false);
+
+  //set shoe state for character
+  const [boolean, setBoolean] = useState(false)
 
   // custom hook values ./hooks/useListen
 
@@ -87,10 +101,20 @@ export default function App() {
     setScenario,
     big,
     setBig,
-    death,
-    setDeath,
     mushroom,
     setMushroom,
+    f,
+    o,
+    c,
+    a,
+    l,
+    setF,
+    setO,
+    setC,
+    setA,
+    setL,
+    boolean,
+    setBoolean,
   });
 
   // browser starts recording on load
@@ -113,12 +137,12 @@ export default function App() {
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
         {mode === WEEK_1 && <Week1 playerName={player} />}
-        {mode === WEEK_1B && <Week1b playerName={player} />}
-        {mode === WEEK_1_S1 && <Week1S1 playerName={player} />}
-        {mode === WEEK_1_S2 && <Week1S2 playerName={player} />}
-        {mode === WEEK_1_S3 && <Week1S3 playerName={player} />}
-        {mode === WEEK_1_S4 && <Week1S4 playerName={player} />}
-
+        {mode === WEEK_1B && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l}/>}
+        {mode === WEEK_1_S1 && <Week1S1 playerName={player} scenario={scenario} />}
+        {mode === WEEK_1_S2 && <Week1S2 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S3 && <Week1S3 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S4 && <Week1S4 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S5 && <Week1S5 playerName={player} scenario={scenario}/>}
         {mode === WEEK_2 && <Week2 playerName={player} />}
         {mode === WEEK_3 && <Week3 playerName={player} />}
         {mode === WEEK_4 && <Week4 playerName={player} />}

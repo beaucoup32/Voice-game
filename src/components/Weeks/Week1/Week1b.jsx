@@ -1,26 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 
 export default function Week1b(props) {
   const [scenario, setScenario] = useState("Welcome back. Where to next?");  
-  
+  if (props.f && props.o && props.c && props.a && props.l) {
+    setScenario(`Excellent job! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`)
+  }
 
-  return <h1>{scenario}</h1>;
+  return <h1>{props.scenario ? props.scenario : scenario}</h1>;
 };
-
-// SHOW: Lighthouse nearby across low water (with text overlay)
-
-/* Commands: 
-    - Function / Fungus / Mushroom
-    
-    - Objects / Oyster
-      
-    - Conditionals / Coral
-    
-    - Array / Anemone
-    
-    - Loop / Leech
-    
-    - Lighthouse
-      `Silly ${username}, you can't just warp there through a pipe like some video game.`
-      "So seriously, which way do you want to go?"
-*/

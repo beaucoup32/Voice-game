@@ -4,12 +4,12 @@ export default function Week1S1(props) {
   const [scenario, setScenario] = useState("");
   const [index, setIndex] = useState(0);
 
+
   const welcome = useMemo(
     () => [
       "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
-      "They are so comfy you can barely Function",
-      "Enough lounging, let's have some fun guy...",
-      "What do you want to do now?",
+      "You get up close and study how they Function until you can barely Function",      
+      "What do you want to do now?"      
     ],
     []
   );
@@ -23,7 +23,7 @@ export default function Week1S1(props) {
         }
         return prev + 1;
       });
-    }, 6000);
+    }, 4000);
     return () => clearInterval(timer);
   }, [setIndex, welcome.length]);
 
@@ -31,7 +31,10 @@ export default function Week1S1(props) {
     setScenario(welcome[index]);
   }, [index, welcome, setScenario]);
 
-  return <h1>{scenario}</h1>;
+  return (
+
+  <h1>{props.scenario ? props.scenario : scenario}</h1>
+  );
 }
 
 //  SHOW: Mushrooms gif/image

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const PrepWeek = () => {
   const [scenario, setScenario] = useState("Welcome to bootcamp!");
+  // check hooks/useCommand for commands
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,7 +24,7 @@ const PrepWeek = () => {
     }, 19000);
   }, []);
 
-  return <h1>{scenario}</h1>;
+  return <p className="prep-week-intro">{scenario}</p>;
 };
 
 export default PrepWeek;

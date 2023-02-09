@@ -4,25 +4,24 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 
 export default function useListen(commands) {
-  const { transcript, interimTranscript, finalTranscript, resetTranscript } =
-    useSpeechRecognition({ commands });
+  const {
+    transcript,
+    interimTranscript,
+    finalTranscript,
+    resetTranscript,
+    listening,
+  } = useSpeechRecognition({ commands });
 
-  // transcript debugging (client console)
   useEffect(() => {
+    // transcript debugging (client console)
     if (finalTranscript !== "") {
       console.log("final result:", finalTranscript);
     }
 
     // resets transcript when it at 250 characters
-    if (finalTranscript.length > 250) {
+    if (finalTranscript.length >= 150) {
       resetTranscript();
     }
-
-    // resets transcript after 8 seconds
-    // setTimeout(()=>{
-    //   resetTranscript();
-    //   listenContinuously();
-    // }, 8000)
   }, [interimTranscript, finalTranscript, resetTranscript]);
 
   // checks if browser supports speech recognition
@@ -40,5 +39,5 @@ export default function useListen(commands) {
     });
   };
 
-  return { listenContinuously, transcript, resetTranscript };
+  return { listenContinuously, transcript, resetTranscript, listening };
 }

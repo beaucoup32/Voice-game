@@ -1,17 +1,18 @@
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   height: 5em;
 }
 
-.navbar-brand{
+.navbar-brand {
   border: solid;
   border-radius: 1em;
   padding-left: 1em;
   padding-right: 1em;
+  width: 6em;
 }
 
-.navbar-text{
+.navbar-text {
   font-size: 2em;
 }
 
@@ -22,5 +23,13 @@
 .player {
   display: flex;
   min-width: 1em;
-  gap: 0.25em;
+  gap: 0.5em;
+}
+
+.hearts {
+  color: red;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 0.4em;
+  align-items: center;
 }

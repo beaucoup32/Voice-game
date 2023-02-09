@@ -80,7 +80,7 @@ export default function App() {
   const [a, setA] = useState(false);
   const [l, setL] = useState(false);
 
-  // set boolean state (multi-use, set back to false once done using)
+  // set boolean T/F (multi-use, set back to false once done using)
   const [boolean, setBoolean] = useState(false)
 
   // set gameOver message
@@ -132,20 +132,6 @@ export default function App() {
         <div>{response}</div>
       </header>
       <main className="App-body">
-        {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
-        {mode === GAMESTART && <GameStart playerName={player} />}
-        {mode === CONFIRM_NAME && <ConfirmName playerName={player} />}
-        {mode === PREPWEEK && <PrepWeek />}
-        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
-        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
-        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_1 && <Week1 playerName={player} />}
-        {mode === WEEK_1B && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l} scenario={scenario}/>}
-        {mode === WEEK_1_S1 && <Week1S1 playerName={player} scenario={scenario} />}
-        {mode === WEEK_1_S2 && <Week1S2 playerName={player} scenario={scenario}/>}
-        {mode === WEEK_1_S3 && <Week1S3 playerName={player} scenario={scenario}/>}
-        {mode === WEEK_1_S4 && <Week1S4 playerName={player} scenario={scenario}/>}
-        {mode === WEEK_1_S5     && <Week1S5 playerName={player} scenario={scenario}/>}
         {mode === HOME          && <img src={logo} className="App-logo" alt="logo" />}
         {mode === GAMESTART     && <GameStart playerName={player} />}
         {mode === GAMEOVER      && <GameOver playerName={player} playerLives={lives} text={gameOverText} />}
@@ -154,9 +140,16 @@ export default function App() {
         {mode === PREPWEEKS1    && <PrepWeekS1 scenario={scenario} />}
         {mode === PREPWEEKS2    && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3    && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_2 && <Week2 playerName={player} />}
-        {mode === WEEK_3 && <Week3 playerName={player} />}
-        {mode === WEEK_4 && <Week4 playerName={player} />}
+        {mode === WEEK_1        && <Week1 playerName={player} />}
+        {mode === WEEK_1B       && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l} scenario={scenario}/>}
+        {mode === WEEK_1_S1     && <Week1S1 playerName={player} scenario={scenario} />}
+        {mode === WEEK_1_S2     && <Week1S2 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S3     && <Week1S3 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S4     && <Week1S4 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S5     && <Week1S5 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_2        && <Week2 playerName={player} />}
+        {mode === WEEK_3        && <Week3 playerName={player} />}
+        {mode === WEEK_4        && <Week4 playerName={player} />}
       </main>
       <footer className="App-footer">
         <div className="mic">

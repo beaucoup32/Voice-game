@@ -1,10 +1,10 @@
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   height: 5em;
 }
 
-.navbar-brand{
+.navbar-brand {
   border: solid;
   border-radius: 1em;
   padding-left: 1em;
@@ -12,7 +12,7 @@
   width: 6em;
 }
 
-.navbar-text{
+.navbar-text {
   font-size: 2em;
 }
 

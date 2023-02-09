@@ -1,7 +1,6 @@
-import "../App.css"
+import "../App.css";
 
-const GameStart = (props) => {  
-
+const GameStart = (props) => {
   return (
     <div className="container">
       <h2>Tell me your name :</h2>

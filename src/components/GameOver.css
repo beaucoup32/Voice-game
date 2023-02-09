@@ -1,0 +1,18 @@
+.game-over-container {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+}
+
+.game-over-title {
+  color: orangered;
+  font-size: 6em;
+  margin-bottom: 2em;
+}
+
+.game-over-text {
+  color: azure;
+  font-size: 4em;
+}

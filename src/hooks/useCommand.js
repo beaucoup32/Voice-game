@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import useVisualMode from "./useVisualMode";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
@@ -14,7 +13,9 @@ export default function useCommand(props) {
     setScenario,
     setLives,
     lives,
+    setGameOverText,
   } = props;
+
   const [commands, setCommands] = useState([]);
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
@@ -39,6 +40,15 @@ export default function useCommand(props) {
         resetTranscript();
       },
     },
+    {
+      command: ["game over", "death"],
+      callback: () => {
+        transition(GAMEOVER)
+        setGameOverText("Test: loreum ipsum loreum ipsum")
+        resetTranscript()
+      },
+      isFuzzyMatch: true
+    }
   ];
 
   useEffect(() => {
@@ -58,10 +68,12 @@ export default function useCommand(props) {
             command: ["Start", "thought"],
             callback: () => {
               setResponse("Starting Adventure!");
+              setPlayer("")
               handleTTS();
 
               // changes mode to show GAMESTART component
               transition(GAMESTART);
+              setNavText("Speak into the mic 🎙️");
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -71,15 +83,6 @@ export default function useCommand(props) {
       case "GAMESTART":
         setCommands([
           {
-            command: ["home"],
-            callback: () => {
-              transition(HOME);
-              resetTranscript();
-              setLives(0);
-            },
-            isFuzzyMatch: true,
-          },
-          {
             command: "(My name is) :name",
             callback: (name) => {
               setResponse(`Did you say ${name}?`);
@@ -88,6 +91,19 @@ export default function useCommand(props) {
               // transcript resets when command is triggered
               resetTranscript();
             },
+          },
+        ]);
+        break;
+      case "GAME_OVER":
+        setCommands([
+          {
+            command: ["home", "restart", "reset"],
+            callback: () => {
+              transition(HOME);
+              setPlayer("")
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
         ]);
         break;
@@ -166,7 +182,9 @@ export default function useCommand(props) {
                 "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
               );
 
+              // current lives is 2
               setLives(lives - 1);
+
               // after a delay, will continue on to next scenario
               setTimeout(() => {
                 setNavText("PREP WEEK: SCENARIO 2");
@@ -193,6 +211,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
+                setResponse("")
                 setScenario("");
               }, 7000);
               resetTranscript();
@@ -202,7 +221,7 @@ export default function useCommand(props) {
             command: ["google", "* online"],
             callback: () => {
               setScenario(
-                "After searching online for answers you come across a helpful video tutorial. you finaly figure where your bug was and fix that pesky function!"
+                "After searching online for answers you come across a helpful video tutorial. You finaly figure where your bug was and fix that pesky function!"
               );
 
               setResponse("Thank god for Google search 😅");
@@ -224,6 +243,8 @@ export default function useCommand(props) {
               );
 
               setResponse("Maybe you should've reached out for help 🤷");
+
+              // current lives is 1 or 2
               setLives(lives - 1);
 
               setTimeout(() => {
@@ -249,11 +270,12 @@ export default function useCommand(props) {
               setLives(0);
 
               setTimeout(() => {
-                transition(HOME);
-                setNavText("Say 'Start' to begin.");
-                setScenario("");
 
+                transition(GAMEOVER);
+                setGameOverText("Say 'restart' to return to Main Menu")
                 setResponse("");
+
+
               }, 7000);
               resetTranscript();
             },
@@ -296,9 +318,9 @@ export default function useCommand(props) {
               setLives(0);
 
               setTimeout(() => {
-                transition(HOME);
-                setNavText("Say 'Start' to begin.");
-                setScenario("");
+                transition(GAMEOVER);
+                setGameOverText("A banana peel? Really? 🤣")
+                setNavText("Say 'restart' to return to Main Menu");
               }, 9000);
               resetTranscript();
             },
@@ -309,6 +331,7 @@ export default function useCommand(props) {
         setCommands([]);
     }
   }, [mode]);
+
   return {
     commands,
     listenContinuously,
@@ -320,6 +343,7 @@ export default function useCommand(props) {
 
 const HOME = "HOME";
 const GAMESTART = "GAMESTART";
+const GAMEOVER = "GAME_OVER";
 const ConfirmName = "ConfirmName";
 const PREPWEEK = "PREP_WEEK";
 const PREPWEEKS1 = "PREP_WEEK_S1";

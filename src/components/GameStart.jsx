@@ -1,5 +1,6 @@
-const GameStart = (props) => {  
+import "../App.css";
 
+const GameStart = (props) => {
   return (
     <div className="container">
       <h2>Tell me your name :</h2>

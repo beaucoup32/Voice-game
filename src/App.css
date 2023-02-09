@@ -1,4 +1,6 @@
-#root {
+html,
+#root,
+.App {
   height: 100%;
 }
 
@@ -18,7 +20,6 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-
 }
 
 .App-header {
@@ -34,7 +35,7 @@
 
 .App-body {
   background-color: #333841;
-  height: 636px;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-grow: 2;
@@ -53,22 +54,41 @@
   font-size: large;
   width: 100%;
   position: fixed;
-  top: 755px;
-  
+  bottom: 0;
+
   text-overflow: clip;
   gap: 1em;
 }
 
-.userInput{
+.userInput {
   overflow: hidden;
   white-space: nowrap;
   direction: rtl;
   margin-right: 1em;
+  margin-bottom: 0;
 }
 
 .voiceIcon {
   margin-left: 1em;
 }
+
+.container {
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: orangered;
+  margin-bottom: 2em;
+  font-size: 3em;
+}
+
+h4 {
+  color: aliceblue;
+  font-size: 4em;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -76,4 +96,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.mic {
+  margin-left: 1.5em;
+  font-size: 1.25em;
 }

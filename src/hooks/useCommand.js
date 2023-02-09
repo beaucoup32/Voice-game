@@ -65,7 +65,7 @@ export default function useCommand(props) {
             },
           },
           {
-            command: ["Start", "thought"],
+            command: ["Start", "thought", "dot", "begin"],
             callback: () => {
               setResponse("Starting Adventure!");
               setPlayer("");

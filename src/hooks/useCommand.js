@@ -13,6 +13,7 @@ export default function useCommand(props) {
     setScenario,
     setLives,
     lives,
+    setGameOverText,
     big,
     setBig,
     mushroom,
@@ -29,8 +30,6 @@ export default function useCommand(props) {
     setL,
     boolean,
     setBoolean,
-
-    setGameOverText,
   } = props;
 
   const [commands, setCommands] = useState([]);
@@ -43,7 +42,6 @@ export default function useCommand(props) {
       // and reset the voice transcript to allow for new voice commands to be recorded.
       command: ["reset", "clear"],
       callback: () => {
-        transition(HOME);
         resetTranscript();
       },
       isFuzzyMatch: true,
@@ -91,6 +89,7 @@ export default function useCommand(props) {
         break;
       case "GAMESTART":
         setCommands([
+          ...staticCommands,
           {
             command: "(My name is) :name",
             callback: (name) => {
@@ -137,7 +136,7 @@ export default function useCommand(props) {
               transition(PREPWEEK);
               resetTranscript();
               setLives(3);
-             
+
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -339,6 +338,181 @@ export default function useCommand(props) {
                 setGameOverText("A banana peel? Really? 🤣");
                 setNavText("Say 'restart' to return to Main Menu");
               }, 9000);
+              resetTranscript();
+            },
+          },
+        ]);
+        break;
+      case "WEEK_1":
+      case "WEEK_1B":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Function", "Fungus", "Mushroom(s)"],
+
+            callback: () => {
+              if (f) {
+                setResponse("You already learned about Functions, Where to now?");
+              }
+              else {
+                setF(true);
+                setScenario("");
+                setResponse("You mosey over to the Mushrooms");
+                setTimeout(() => {
+                  setNavText("W1: Fun Fun Fn(Fungus)");
+                  transition(WEEK_1_S1);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Objective (Oysters)", "Objects", "Oyster"],
+
+            callback: () => {
+              if (o) {
+                setResponse("You already learned about Objects, Where to now?");
+              }
+              else {
+                setO(true);
+                setScenario("");
+                setResponse("You saunter slowly to see some shellfish");
+                setTimeout(() => {
+                  transition(WEEK_1_S2);
+                  setNavText("W1: { Objective: Oysters }");
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Contitional (Coral)", "Coral", "Condidtion"],
+
+            callback: () => {
+              if (c) {
+                setResponse("You already learned about Conditionals, Where to now?");
+              }
+              else {
+                setC(true);
+                setScenario("");
+                setResponse("You cruise to the cool colored Coral");
+                setTimeout(() => {
+                  setNavText("W1: If (Condition) then Coral");
+                  transition(WEEK_1_S3);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Array (of Anemones)", "Anemone", "An Enemy", "Anemones", "An Enemies"],
+
+            callback: () => {
+              if (a) {
+                setResponse("You already learned about Arrays, Where to now?");
+              }
+              else {
+                setA(true);
+                setScenario("");
+                setResponse("You approach an Array of Anemones");
+                setTimeout(() => {
+                  setNavText("W1: Array = [ A, n, e, m, o, n, e, s ] ");
+                  transition(WEEK_1_S4);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Loop", "Leech", "Looping Leeches"],
+
+            callback: () => {
+              if (l) {
+                setResponse("You already learned about Loops, Where to now?");
+              }
+              else {
+                setL(true);
+                setScenario("");
+                setResponse("You'd like to linger no longer, so let's look at lots of Looping Leeches");
+                setTimeout(() => {
+                  setNavText("W1: for (Leech of Leeches)");
+                  transition(WEEK_1_S4);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["Lighthouse", "Entrance", "Test"],
+
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (!f && !o && !c && !a && !l) {
+                setResponse(`Silly ${player}, you can't just warp there through a pipe like some video game.`);
+
+              }
+              else {
+                setResponse("Pop Quiz Hotshot!");
+                setScenario("To progress further in Lighthouse Labs you must pass your Week 1 test!");
+                let score = 0;
+                if (f) { score += 20; };
+                if (o) { score += 20; };
+                if (c) { score += 20; };
+                if (a) { score += 20; };
+                if (l) { score += 20; };
+                setTimeout(() => {
+                  if (score === 100) {
+                    setScenario(`Check out the big brain on ${player}! You got 100%. You must have studied very hard. You've earned an extra life for fully understanding our FOCAL points`);
+                    setResponse("You earn a gold star! ⭐ (And an extra life 💖)");
+                    setLives(lives + 1);
+                  } else {
+                    setScenario(`Ooh tough break ${player}! You got ${score} out of 100. You needed 90% to pass. You are going to have to study extra hard over the weekends to get caught up. Not off to a great start, better try harder in Week 2!`);
+                  }
+                }, 3000);
+                setTimeout(() => {
+                  setNavText("WEEK 2: Cats & ISS & API oh my!");
+                  transition(WEEK_2);
+                  setScenario("");
+                  setResponse("");
+                }, 10000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["home", "bed", "back"],
+            callback: () => {
+              setScenario("Fearing another step forward you choose to take a step back. The door hits you on the way out.");
+              setResponse("Wow so much self doubt. Bye I guess 👋");
+
+              setLives(0);
+
+              setTimeout(() => {
+                transition(HOME);
+                setNavText("Say 'Start' to begin.");
+                setScenario("");
+                setResponse("");
+
+              }, 7000);
               resetTranscript();
             },
           },
@@ -562,7 +736,7 @@ export default function useCommand(props) {
                 setScenario(
                   "You take a step closer to inspect the coral... CRUNCH!!! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet and walk away in shame."
                 );
-              } 
+              }
               if (!boolean) {
                 setResponse("Oh no! your feet!! 👣");
                 setScenario(

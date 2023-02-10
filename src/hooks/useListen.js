@@ -24,6 +24,8 @@ export default function useListen(commands) {
     // }
   }, [interimTranscript, finalTranscript, resetTranscript]);
 
+  
+
   // checks if browser supports speech recognition
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     console.log(

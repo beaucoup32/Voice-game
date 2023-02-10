@@ -37,9 +37,12 @@ export default function useCommand(props) {
     const max = 10;
     return Math.floor(Math.random() * max);
   };
+
   const [commands, setCommands] = useState([]);
+
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
+
   const staticCommands = [
     {
       // this command will clear the response message
@@ -70,6 +73,7 @@ export default function useCommand(props) {
       isFuzzyMatch: true,
     },
     {
+      // testing for week 4
       command: ["week 4"],
       callback: () => {
         transition(WEEK_4);
@@ -78,6 +82,16 @@ export default function useCommand(props) {
         setScenario("");
       },
       isFuzzyMatch: true,
+    },
+    {
+      // manually set lives for debugging
+      command: "set lives (to) :number",
+      callback: (number) => {
+        if (!isNaN(number)) {
+          setLives(number);
+        }
+        resetTranscript();
+      },
     },
   ];
 
@@ -99,6 +113,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -128,6 +143,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -142,6 +158,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
@@ -155,6 +172,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -168,6 +186,7 @@ export default function useCommand(props) {
               transition(HOME);
               resetTranscript();
             },
+            matchInterim: true,
           },
           {
             command: ["yes", "yeah", "yep", "skip"],
@@ -178,6 +197,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -199,6 +219,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["reward (myself)", "(play) tekken"],
@@ -220,6 +241,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -243,6 +265,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["google", "* online"],
@@ -262,6 +285,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["continue", "press on", "keep going"],
@@ -285,6 +309,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["give up"],
@@ -306,6 +331,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -329,6 +355,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: [
@@ -353,6 +380,8 @@ export default function useCommand(props) {
               }, 9000);
               resetTranscript();
             },
+            matchInterim: true,
+            isFuzzyMatch: true,
           },
         ]);
         break;
@@ -964,6 +993,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -1009,6 +1039,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["(ask) classmates", "(ask) peers"],
@@ -1025,6 +1056,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["mentor", "queue"],
@@ -1054,6 +1086,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -1108,6 +1141,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["bribe guards", "talk to *"],
@@ -1153,6 +1187,7 @@ export default function useCommand(props) {
               }
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -1232,6 +1267,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -1290,13 +1326,14 @@ export default function useCommand(props) {
                     );
                     transition(GAMEOVER);
                     setGameOverText("And its allll your fault 🙂");
-                    setLives(0)
+                    setLives(0);
                   }, 5000);
                 }, 6000);
               }, 7000);
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;

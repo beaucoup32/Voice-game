@@ -31,7 +31,7 @@ const Week4 = (props) => {
     setTimeout(() => {
       setScenario("")
       transition(WEEK_4_S1);
-      setNavText("WEEK 4 : SCENARIO 1")
+      setNavText("WEEK 4: SCENARIO 1")
     }, 18000);
   }, [playerName, transition, setNavText]);
 

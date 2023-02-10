@@ -6,7 +6,6 @@
   align-items: center;
   background-color: #333841;
   color: turquoise;
-  text-align-last: center;
 }
 
 .typed {
@@ -43,7 +42,7 @@
   color: magenta;
 }
 
-.prep-week-intro {
+.week4-intro {
   font-size: 3em;
   width: 50ch;
   color: springgreen;

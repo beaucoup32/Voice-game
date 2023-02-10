@@ -4,7 +4,7 @@ import "./Navbar.css";
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;
 
-  const heartIcon = <i class="fa-solid fa-heart fa-beat" />;
+  const heartIcon = <i className="fa-solid fa-heart fa-beat" />;
 
   const formatLives = () => {
     const lives = [];

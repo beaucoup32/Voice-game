@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 const PrepWeek = () => {
   const [scenario, setScenario] = useState("Welcome to bootcamp!");
+  
   // check hooks/useCommand for commands
-
   useEffect(() => {
+
     setTimeout(() => {
       setScenario(
         "Here you will be put through a impossible set of scenarios to hone your coding skills to become an expert programmer"

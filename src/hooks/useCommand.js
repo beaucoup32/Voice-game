@@ -72,11 +72,11 @@ export default function useCommand(props) {
         setCommands([
           ...staticCommands,
           {
-            command: ["Start", "thought"],
+            command: ["Start", "thought", "dot", "begin"],
             callback: () => {
               setResponse("Starting Adventure!");
               setPlayer("");
-              handleTTS();
+              // handleTTS();
 
               // changes mode to show GAMESTART component
               transition(GAMESTART);
@@ -99,7 +99,6 @@ export default function useCommand(props) {
               // transcript resets when command is triggered
               resetTranscript();
             },
-            // isFuzzyMatch: true,
           },
         ]);
         break;
@@ -920,3 +919,4 @@ const WEEK_1_S2 = "WEEK_1_S2";
 const WEEK_1_S3 = "WEEK_1_S3";
 const WEEK_1_S4 = "WEEK_1_S4";
 const WEEK_1_S5 = "WEEK_1_S5";
+const WEEK_2 = "WEEK_2"

@@ -21,7 +21,7 @@ import Week1S4 from "./components/Weeks/Week1/Week1S4";
 import Week1S5 from "./components/Weeks/Week1/Week1S5";
 
 
-import Week2 from "./components/Weeks/Week2";
+
 import Week3 from "./components/Weeks/Week3";
 import Week4 from "./components/Weeks/Week4";
 import GameOver from "./components/GameOver";
@@ -147,7 +147,7 @@ export default function App() {
         {mode === WEEK_1_S3     && <Week1S3 playerName={player} scenario={scenario}/>}
         {mode === WEEK_1_S4     && <Week1S4 playerName={player} scenario={scenario}/>}
         {mode === WEEK_1_S5     && <Week1S5 playerName={player} scenario={scenario}/>}
-        {mode === WEEK_2        && <Week2 playerName={player} />}
+      
         {mode === WEEK_3        && <Week3 playerName={player} />}
         {mode === WEEK_4        && <Week4 playerName={player} />}
       </main>

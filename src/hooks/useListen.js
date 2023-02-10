@@ -16,12 +16,12 @@ export default function useListen(commands) {
     // transcript debugging (client console)
     if (finalTranscript !== "") {
       console.log("final result:", finalTranscript);
+      resetTranscript();
     }
 
     // resets transcript when it at 250 characters
-    if (finalTranscript.length >= 150) {
-      resetTranscript();
-    }
+    // if (finalTranscript.length >= 150) {
+    // }
   }, [interimTranscript, finalTranscript, resetTranscript]);
 
   // checks if browser supports speech recognition

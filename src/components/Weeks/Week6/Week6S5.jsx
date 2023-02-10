@@ -1,4 +1,4 @@
-export default function Week1S5(props) {
+export default function Week6S5(props) {
   const {scenario} = props;
 
   return (    

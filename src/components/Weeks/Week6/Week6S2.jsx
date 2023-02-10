@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-export default function Week1S2(props) {
+export default function Week6S2(props) {
   const [scenario, setScenario] = useState("");
   const [index, setIndex] = useState(0);
 

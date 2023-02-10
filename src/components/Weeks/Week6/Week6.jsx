@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Week1(props) {
+export default function Week6(props) {
   const [scenario, setScenario] = useState(
     `Congratulations on making it to Week 6,  ${props.playerName}. You will have no Lectures this week.`
   );
@@ -8,13 +8,13 @@ export default function Week1(props) {
   useEffect(() => {
     setTimeout(() => {
       setScenario(
-        "You have an assigned group with ."
+        "You have an assigned a random group with colleagues Ki Neer and Neva Derr."
       );
       setTimeout(() => {
-        setScenario("Please be careful as you trek into Lighthouse Labs");
+        setScenario("You will have to coordinate with them and make a plan");
         setTimeout(() => {
           setScenario(
-            "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches"
+            "You have 5 days to make a full stack app using everything you've learned so far"
           );
           setTimeout(() => {
             setScenario("Which way do you want to go?");

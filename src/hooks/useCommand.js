@@ -449,7 +449,7 @@ export default function useCommand(props) {
                 setResponse("You'd like to linger no longer, so let's look at lots of Looping Leeches");
                 setTimeout(() => {
                   setNavText("W1: for (Leech of Leeches)");
-                  transition(WEEK_1_S4);
+                  transition(WEEK_1_S5);
                   setScenario("");
                   setResponse("");
                 }, 3000);

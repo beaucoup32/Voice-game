@@ -19,8 +19,9 @@ import Week1S2 from "./components/Weeks/Week1/Week1S2";
 import Week1S3 from "./components/Weeks/Week1/Week1S3";
 import Week1S4 from "./components/Weeks/Week1/Week1S4";
 import Week1S5 from "./components/Weeks/Week1/Week1S5";
-
-
+import Week2 from "./components/Weeks/Week2/Week2";
+import Week2S1 from "./components/Weeks/Week2/Week2S1";
+import Week2S2 from "./components/Weeks/Week2/Week2S2";
 
 import Week3 from "./components/Weeks/Week3";
 import Week4 from "./components/Weeks/Week4";
@@ -46,6 +47,8 @@ export default function App() {
   const WEEK_1_S4     = "WEEK_1_S4";
   const WEEK_1_S5     = "WEEK_1_S5";
   const WEEK_2        = "WEEK_2";
+  const WEEK_2_S1      = "WEEK_2_S1";
+  const WEEK_2_S2      = "WEEK_2_S2";
   const WEEK_3        = "WEEK_3";
   const WEEK_4        = "WEEK_4";
 
@@ -144,10 +147,13 @@ export default function App() {
         {mode === WEEK_1B       && <Week1b playerName={player} f={f} o={o} c={c} a={a} l={l} scenario={scenario}/>}
         {mode === WEEK_1_S1     && <Week1S1 playerName={player} scenario={scenario} />}
         {mode === WEEK_1_S2     && <Week1S2 playerName={player} scenario={scenario}/>}
-        {mode === WEEK_1_S3     && <Week1S3 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1_S3     && <Week1S3 playerName={player} scenario={scenario}/>}        
         {mode === WEEK_1_S4     && <Week1S4 playerName={player} scenario={scenario}/>}
         {mode === WEEK_1_S5     && <Week1S5 playerName={player} scenario={scenario}/>}
-      
+        {mode === WEEK_2        && <Week2 playerName={player} />}
+        {mode === WEEK_2_S1     && <Week2S1 playerName={player} scenario={scenario} />}
+        {mode === WEEK_2_S2     && <Week2S2 playerName={player} scenario={scenario}/>}
+
         {mode === WEEK_3        && <Week3 playerName={player} />}
         {mode === WEEK_4        && <Week4 playerName={player} />}
       </main>

@@ -7,5 +7,10 @@ export default function Week1b(props) {
     setScenario(`Excellent job! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`)
   }
 
-  return <h1>{props.scenario ? props.scenario : scenario}</h1>;
+  return (
+    <>
+      <h1>{props.scenario ? props.scenario : scenario}</h1>
+      <img src="images/lighthouse-zoom.gif" className="scene-gif"/>
+    </>
+  );
 };

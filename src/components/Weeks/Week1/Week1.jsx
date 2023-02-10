@@ -24,7 +24,12 @@ export default function Week1(props) {
     }, 4500);
   }, []);
 
-  return <h1>{props.scenario ? props.scenario : scenario}</h1>;
+  return (
+    <>
+      <h1>{props.scenario ? props.scenario : scenario}</h1>
+      <img src="images/lighthouse-zoom.gif" className="scene-gif"/>
+    </>
+  );
 }
 
 // SHOW: Lighthouse nearby across low water (with text overlay)

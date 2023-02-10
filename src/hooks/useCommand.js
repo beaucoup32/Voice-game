@@ -520,7 +520,7 @@ export default function useCommand(props) {
       case "WEEK_1_S1":
         setCommands([
           {
-            command: ["eat *", "taste", " bite"],
+            command: ["eat", "taste", " bite"],
 
             callback: () => {
               setResponse("You pop a tasty looking 🍄 into your mouth");
@@ -770,6 +770,7 @@ export default function useCommand(props) {
             command: ["Study", "(take) notes"],
 
             callback: () => {
+              
               setResponse("Index cards for Arrays? Nice.");
               setScenario(
                 "You whip out some Index cards and take an Array of notes. You learn you can push, pop, and even slice them"
@@ -852,18 +853,23 @@ export default function useCommand(props) {
             command: ["Leave", "go back"],
 
             callback: () => {
-
-              setScenario(
-                "You decide to leave. "
-              );
-
-              setTimeout(() => {
-                setNavText("WEEK 1: Wading into Lotide");
-                transition(WEEK_1B);
-                setResponse("");
-                setScenario("");
-              }, 10000);
-              resetTranscript();
+              if (!boolean) {
+                setScenario(
+                  "You decide to leave. You run out of the water, ripping Leeches off of you. A second later you are back in the water, covered in Leeches again. You are still stuck in this loop. How can you break out of it?"
+                );
+              } else {
+                setScenario(
+                  "You decide to leave. Good thing you took that break and resolved the infinite loop. You can finally continue your coding journey!"
+                  );
+                
+                setTimeout(() => {
+                  setNavText("WEEK 1: Wading into Lotide");
+                  transition(WEEK_1B);
+                  setResponse("");
+                  setScenario("");
+                }, 10000);
+              }
+                resetTranscript();
             },
             isFuzzyMatch: true,
           },
@@ -875,7 +881,7 @@ export default function useCommand(props) {
               setResponse("Is this a little too meta?");
 
               setScenario(
-                "Your Final project has an infinite loop on the main branch. You don't waste time re-writing all of the new code. Instead you take a Break and chat with your team to resolve. Bothou and the Looping Leeches in your code got a Break."
+                "Your Final project has an infinite loop on the main branch. You don't waste time re-writing all of the new code. Instead you take a Break and chat with your team to resolve. Both you and the Looping Leeches in your code got a Break."
               );
 
               setTimeout(() => {

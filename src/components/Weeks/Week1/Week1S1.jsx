@@ -34,8 +34,10 @@ export default function Week1S1(props) {
   }, [index, welcome, setScenario]);
 
   return (
-
-  <h1>{props.scenario ? props.scenario : scenario}</h1>
+    <>
+      <h1>{props.scenario ? props.scenario : scenario}</h1>
+      <img src="images/mushroom-patch.gif" className="scene-gif"/>
+    </>
   );
 }
 

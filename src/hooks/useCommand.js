@@ -32,9 +32,17 @@ export default function useCommand(props) {
     setBoolean,
   } = props;
 
+  // returns rand int between 0 - 9
+  const randInt = () => {
+    const max = 10;
+    return Math.floor(Math.random() * max);
+  };
+
   const [commands, setCommands] = useState([]);
+
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
+
   const staticCommands = [
     {
       // this command will clear the response message
@@ -64,6 +72,27 @@ export default function useCommand(props) {
       },
       isFuzzyMatch: true,
     },
+    {
+      // testing for week 4
+      command: ["week 4"],
+      callback: () => {
+        transition(WEEK_4);
+        setLives(3);
+        setPlayer("Donny");
+        setScenario("");
+      },
+      isFuzzyMatch: true,
+    },
+    {
+      // manually set lives for debugging
+      command: "set lives (to) :number",
+      callback: (number) => {
+        if (!isNaN(number)) {
+          setLives(number);
+        }
+        resetTranscript();
+      },
+    },
   ];
 
   useEffect(() => {
@@ -84,6 +113,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -109,9 +139,11 @@ export default function useCommand(props) {
             callback: () => {
               transition(HOME);
               setPlayer("");
+              setNavText("Say 'Start' to begin.");
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -126,6 +158,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
@@ -139,6 +172,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -152,6 +186,7 @@ export default function useCommand(props) {
               transition(HOME);
               resetTranscript();
             },
+            matchInterim: true,
           },
           {
             command: ["yes", "yeah", "yep", "skip"],
@@ -160,9 +195,9 @@ export default function useCommand(props) {
               setResponse("");
               transition(PREPWEEKS1);
               resetTranscript();
-
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -184,6 +219,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["reward (myself)", "(play) tekken"],
@@ -205,6 +241,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -228,6 +265,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["google", "* online"],
@@ -247,6 +285,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["continue", "press on", "keep going"],
@@ -270,6 +309,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["give up"],
@@ -291,6 +331,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -310,11 +351,11 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setScenario("");
                 setResponse("");
-
               }, 9000);
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: [
@@ -339,6 +380,8 @@ export default function useCommand(props) {
               }, 9000);
               resetTranscript();
             },
+            matchInterim: true,
+            isFuzzyMatch: true,
           },
         ]);
         break;
@@ -351,9 +394,10 @@ export default function useCommand(props) {
 
             callback: () => {
               if (f) {
-                setResponse("You already learned about Functions, Where to now?");
-              }
-              else {
+                setResponse(
+                  "You already learned about Functions, Where to now?"
+                );
+              } else {
                 setF(true);
                 setScenario("");
                 setResponse("You mosey over to the Mushrooms");
@@ -375,8 +419,7 @@ export default function useCommand(props) {
             callback: () => {
               if (o) {
                 setResponse("You already learned about Objects, Where to now?");
-              }
-              else {
+              } else {
                 setO(true);
                 setScenario("");
                 setResponse("You saunter slowly to see some shellfish");
@@ -396,9 +439,10 @@ export default function useCommand(props) {
 
             callback: () => {
               if (c) {
-                setResponse("You already learned about Conditionals, Where to now?");
-              }
-              else {
+                setResponse(
+                  "You already learned about Conditionals, Where to now?"
+                );
+              } else {
                 setC(true);
                 setScenario("");
                 setResponse("You cruise to the cool colored Coral");
@@ -414,13 +458,18 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["Array (of Anemones)", "Anemone", "An Enemy", "Anemones", "An Enemies"],
+            command: [
+              "Array (of Anemones)",
+              "Anemone",
+              "An Enemy",
+              "Anemones",
+              "An Enemies",
+            ],
 
             callback: () => {
               if (a) {
                 setResponse("You already learned about Arrays, Where to now?");
-              }
-              else {
+              } else {
                 setA(true);
                 setScenario("");
                 setResponse("You approach an Array of Anemones");
@@ -442,11 +491,12 @@ export default function useCommand(props) {
             callback: () => {
               if (l) {
                 setResponse("You already learned about Loops, Where to now?");
-              }
-              else {
+              } else {
                 setL(true);
                 setScenario("");
-                setResponse("You'd like to linger no longer, so let's look at lots of Looping Leeches");
+                setResponse(
+                  "You'd like to linger no longer, so let's look at lots of Looping Leeches"
+                );
                 setTimeout(() => {
                   setNavText("W1: for (Leech of Leeches)");
                   transition(WEEK_1_S5);
@@ -465,25 +515,43 @@ export default function useCommand(props) {
               setResponse("");
               setScenario("");
               if (!f && !o && !c && !a && !l) {
-                setResponse(`Silly ${player}, you can't just warp there through a pipe like some video game.`);
-
-              }
-              else {
+                setResponse(
+                  `Silly ${player}, you can't just warp there through a pipe like some video game.`
+                );
+              } else {
                 setResponse("Pop Quiz Hotshot!");
-                setScenario("To progress further in Lighthouse Labs you must pass your Week 1 test!");
+                setScenario(
+                  "To progress further in Lighthouse Labs you must pass your Week 1 test!"
+                );
                 let score = 0;
-                if (f) { score += 20; };
-                if (o) { score += 20; };
-                if (c) { score += 20; };
-                if (a) { score += 20; };
-                if (l) { score += 20; };
+                if (f) {
+                  score += 20;
+                }
+                if (o) {
+                  score += 20;
+                }
+                if (c) {
+                  score += 20;
+                }
+                if (a) {
+                  score += 20;
+                }
+                if (l) {
+                  score += 20;
+                }
                 setTimeout(() => {
                   if (score === 100) {
-                    setScenario(`Check out the big brain on ${player}! You got 100%. You must have studied very hard. You've earned an extra life for fully understanding our FOCAL points`);
-                    setResponse("You earn a gold star! ⭐ (And an extra life 💖)");
+                    setScenario(
+                      `Check out the big brain on ${player}! You got 100%. You must have studied very hard. You've earned an extra life for fully understanding our FOCAL points`
+                    );
+                    setResponse(
+                      "You earn a gold star! ⭐ (And an extra life 💖)"
+                    );
                     setLives(lives + 1);
                   } else {
-                    setScenario(`Ooh tough break ${player}! You got ${score} out of 100. You needed 90% to pass. You are going to have to study extra hard over the weekends to get caught up. Not off to a great start, better try harder in Week 2!`);
+                    setScenario(
+                      `Ooh tough break ${player}! You got ${score} out of 100. You needed 90% to pass. You are going to have to study extra hard over the weekends to get caught up. Not off to a great start, better try harder in Week 2!`
+                    );
                   }
                 }, 3000);
                 setTimeout(() => {
@@ -500,7 +568,9 @@ export default function useCommand(props) {
           {
             command: ["home", "bed", "back"],
             callback: () => {
-              setScenario("Fearing another step forward you choose to take a step back. The door hits you on the way out.");
+              setScenario(
+                "Fearing another step forward you choose to take a step back. The door hits you on the way out."
+              );
               setResponse("Wow so much self doubt. Bye I guess 👋");
 
               setLives(0);
@@ -510,7 +580,6 @@ export default function useCommand(props) {
                 setNavText("Say 'Start' to begin.");
                 setScenario("");
                 setResponse("");
-
               }, 7000);
               resetTranscript();
             },
@@ -537,30 +606,41 @@ export default function useCommand(props) {
                     setLives(lives + 1);
                     break;
                   case "big":
-                    setScenario("You found a Super Mushroom! You quickly double in size");
+                    setScenario(
+                      "You found a Super Mushroom! You quickly double in size"
+                    );
                     setResponse(`It's a-you, Super ${player}!`);
                     setBig(true);
                     break;
                   case "poison":
-                    setScenario("A few minutes pass when your tongue goes num and your stomach begins to cramp up");
+                    setScenario(
+                      "A few minutes pass when your tongue goes num and your stomach begins to cramp up"
+                    );
 
                     setTimeout(() => {
-                      setScenario("This particular mushroom is not magically delicious");
+                      setScenario(
+                        "This particular mushroom is not magically delicious"
+                      );
                       setTimeout(() => {
                         setResponse("it's magically DEADLY! ☠");
                         setTimeout(() => {
-                          setScenario("The Fn(Fungus) hit you with an arrow function => ");
+                          setScenario(
+                            "The Fn(Fungus) hit you with an arrow function => "
+                          );
                           setResponse("Oh no! You can't handle *this*!");
                           setTimeout(() => {
-
                             if (big) {
-                              setResponse("You shrink back down to regular size");
+                              setResponse(
+                                "You shrink back down to regular size"
+                              );
                               setBig(false);
                             } else {
                               setResponse("You lost a life! 💔");
                               setLives(lives - 1);
                               if (lives === 0) {
-                                setScenario("Many have died to mushrooms, you were just the Last of Us😏");
+                                setScenario(
+                                  "Many have died to mushrooms, you were just the Last of Us😏"
+                                );
                               }
                             }
                           }, 3000);
@@ -583,13 +663,18 @@ export default function useCommand(props) {
             callback: () => {
               if (!mushroom) {
                 setScenario("");
-                setResponse("Sure, why not. Mushroom foraging is legal, right?");
-                setScenario("You decide to put a mushroom in your pocket for later");
+                setResponse(
+                  "Sure, why not. Mushroom foraging is legal, right?"
+                );
+                setScenario(
+                  "You decide to put a mushroom in your pocket for later"
+                );
                 setMushroom(true);
-              }
-              else {
+              } else {
                 setResponse("Calm down greedy! You already have one.");
-                setScenario("You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too");
+                setScenario(
+                  "You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too"
+                );
                 setMushroom(true);
               }
               // after a delay, will continue on to next scenario
@@ -605,8 +690,12 @@ export default function useCommand(props) {
 
             callback: () => {
               if (big) {
-                setResponse("You pounce to your feet, towering over the Functional Fungus");
-                setScenario("You crushed the entire room into mush with your giant feet.");
+                setResponse(
+                  "You pounce to your feet, towering over the Functional Fungus"
+                );
+                setScenario(
+                  "You crushed the entire room into mush with your giant feet."
+                );
               } else {
                 setResponse("You rise to your feet to flee these fungi");
               }
@@ -687,7 +776,6 @@ export default function useCommand(props) {
                   setScenario("");
                   transition(WEEK_1B);
                 }, 8000);
-
               } else {
                 setScenario(
                   "You put your shoes back on before doing anything else because you realize the Condition your feet would be in if you didn't. Now you can walk around the Coral with your feet in-tact"
@@ -730,7 +818,9 @@ export default function useCommand(props) {
             command: ["study", "look (closer)"],
 
             callback: () => {
-              setResponse("You are so eager to learn! Smart decision, probably");
+              setResponse(
+                "You are so eager to learn! Smart decision, probably"
+              );
               if (big) {
                 setScenario(
                   "You take a step closer to inspect the coral... CRUNCH!!! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet and walk away in shame."
@@ -797,7 +887,6 @@ export default function useCommand(props) {
                 transition(WEEK_1B);
                 setResponse("");
                 setScenario("");
-
               }, 10000);
               resetTranscript();
             },
@@ -874,7 +963,13 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["(take a quick) break", "(short) break", "keep going", "(quick) break", "(take a) break"],
+            command: [
+              "(take a quick) break",
+              "(short) break",
+              "keep going",
+              "(quick) break",
+              "(take a) break",
+            ],
 
             callback: () => {
               setBoolean(true);
@@ -893,6 +988,361 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+          },
+        ]);
+        break;
+      case "WEEK_4":
+        setCommands([
+          {
+            command: ["skip"],
+            callback: () => {
+              setResponse("");
+              setNavText("WEEK 4: SCENARIO 1");
+              transition(WEEK_4_S1);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_4_S1":
+        setCommands([
+          {
+            command: [
+              "hack (into tweeter)",
+              "hack",
+              "back",
+              "* into twitter",
+              "* into tweeter",
+            ],
+            callback: () => {
+              setResponse("🚨🚨🚨");
+              setScenario(
+                "You successfully hack into Tweeter's systems, but trigger the security alarms."
+              );
+
+              setLives(lives - 1);
+              setTimeout(() => {
+                setScenario(
+                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a (not so) secure system"
+                );
+                setTimeout(() => {
+                  if (lives <= 0) {
+                    setScenario("");
+                    transition(GAMEOVER);
+                    setGameOverText(
+                      "Looks like you ran out of lives. Better luck next time."
+                    );
+                    setNavText(
+                      "Say 'Restart' or 'Home' to return to Main menu"
+                    );
+                    setResponse("");
+                  }
+
+                  setScenario("");
+                  setNavText("WEEK 4: SCENARIO 2");
+                  transition(WEEK_4_S2);
+                }, 6000);
+              }, 7000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["(ask) classmates", "(ask) peers"],
+            callback: () => {
+              setNavText("WEEK 4: SCENARIO 1");
+              setScenario(
+                "You ask your classmates for help, but they are all too busy with their own projects."
+              );
+
+              setTimeout(() => {
+                setScenario("");
+                transition(WEEK_4_S1);
+              }, 6000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["mentor", "queue"],
+            callback: () => {
+              setLives(lives + 1);
+
+              setScenario(
+                "After waiting in the queue for what feels like ages, you finaly connect with a Mentor and explain your situation."
+              );
+
+              setTimeout(() => {
+                setScenario(
+                  "Lucky for you, this mentor was an Ex Tweeter employee who knew the ins and outs of Tweeter's source code."
+                );
+                setTimeout(() => {
+                  setScenario(
+                    "The mentor shares their knowledge and you carry on with your research"
+                  );
+                  setTimeout(() => {
+                    setNavText("WEEK 4: SCENARIO 3");
+                    setScenario("");
+                    transition(WEEK_4_S3);
+                  }, 5000);
+                }, 6000);
+              }, 6000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_4_S2":
+        setCommands([
+          {
+            command: ["hack", "(use) laptop"],
+            callback: () => {
+              if (randInt() > 4) {
+                setResponse("Jailbreak! 😈");
+                setScenario(
+                  "You grab the laptop and use your coding skills to open your jail cell"
+                );
+
+                setTimeout(() => {
+                  setScenario(
+                    "While the guards are looking away you sneak out and successfully escape"
+                  );
+
+                  setTimeout(() => {
+                    setScenario(
+                      "You get back home safely continue your mission to save Tweeter."
+                    );
+
+                    setTimeout(() => {
+                      setNavText("WEEK 4: SCENARIO 3");
+                      setScenario("");
+                      transition(WEEK_4_S3);
+                    }, 6000);
+                  }, 6500);
+                }, 7000);
+              } else {
+                setLives(lives - 1);
+                setScenario(
+                  "Whoops...You pick up the laptop, but it slips and lands right on your toe"
+                );
+
+                if (lives <= 0) {
+                  transition(GAMEOVER);
+                  setGameOverText(
+                    "Death by dusty laptop. Thats pretty embarassing..."
+                  );
+                  setNavText("Say 'Restart' or 'Home' to return to Main menu");
+                  setScenario("");
+                }
+
+                setTimeout(() => {
+                  setScenario("");
+                  transition(WEEK_4_S2);
+                }, 7000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["bribe guards", "talk to *"],
+            callback: () => {
+              resetTranscript();
+              setResponse("");
+
+              if (randInt() < 4) {
+                setScenario(
+                  "You bribe the guards with the last of your coffee bean fund and successfully escape jail."
+                );
+
+                setTimeout(() => {
+                  setScenario(
+                    "You get back home safely continue your mission to save Tweeter."
+                  );
+                  setTimeout(() => {
+                    setNavText("WEEK 4: SCENARIO 3");
+                    transition(WEEK_4_S3);
+                  }, 4000);
+                }, 7000);
+              } else {
+                setLives(lives - 1);
+
+                if (lives <= 0) {
+                  transition(GAMEOVER);
+                  setGameOverText("Maybe the guard went a bit overboard...");
+                  setNavText("Say 'Restart' or 'Home' to return to Main menu");
+                  setScenario("");
+                }
+
+                setScenario(
+                  "The guard roasts your haircut and goes back to his duties."
+                );
+
+                setTimeout(() => {
+                  setScenario("It was super effective.");
+                  setTimeout(() => {
+                    transition(WEEK_4_S2);
+                    setNavText();
+                  }, 5000);
+                }, 6000);
+              }
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_4_S3":
+        setCommands([
+          {
+            command: ["fly", "* helicopter"],
+            callback: () => {
+              setResponse("");
+              setScenario("You use your TELUS benefits to rent a helicopter");
+              setLives(lives - 1);
+              setTimeout(() => {
+                setScenario(
+                  "But you crash as soon as you take off because you forgot you're a programmer, not a pilot"
+                );
+
+                if (lives <= 0) {
+                  setTimeout(() => {
+                    transition(GAMEOVER);
+                    setGameOverText(
+                      "Should've probably packed a parachute too."
+                    );
+                    setNavText(
+                      "Say 'Restart' or 'Home' to return to Main menu"
+                    );
+                    setScenario("");
+                  }, 6000);
+                } else {
+                  setTimeout(() => {
+                    setScenario("You walk back home in shame");
+
+                    setTimeout(() => {
+                      transition(WEEK_4_S4);
+                      setNavText("WEEK 4: SCENARIO 4");
+                      setScenario("");
+                    });
+                  }, 6000);
+                }
+              }, 7000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["transit", "public transport"],
+            callback: () => {
+              setResponse("");
+
+              setScenario(
+                "After checking transit routes, you find out it will be a 7 hour commute, you take emotional damage and reconcider."
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 4: SCENARIO 4");
+                transition(WEEK_4_S4);
+              }, 7000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["walk"],
+            callback: () => {
+              setResponse("...really?");
+
+              setScenario(
+                "After a couple steps outside you return home exhausted and embarassed."
+              );
+
+              setTimeout(() => {
+                setResponse("");
+                transition(WEEK_4_S3);
+                setScenario("");
+              }, 6000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_4_S4":
+        setCommands([
+          {
+            command: ["make tweeter", "make twitter", "tweeter", "twitter"],
+            callback: () => {
+              setResponse("");
+
+              setScenario(
+                "You use your coding skills to create a virtual version of Tweeter called 'Two-weeter' and successfully save all the tweets."
+              );
+
+              setTimeout(() => {
+                setScenario(
+                  "You are hailed as a hero and thanked personally from the CEO of Tweeter. Just in time for week 5 of bootcamp 😉"
+                );
+
+                setTimeout(() => {
+                  setScenario("A cheque would've been nice though...");
+                  setTimeout(() => {
+                    setNavText("WEEK 4: SCENARIO 1");
+                    transition(WEEK_5);
+                    setScenario("");
+                  }, 5000);
+                }, 6000);
+              }, 7000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: [
+              "time machine",
+              "go back in time",
+              "build (time machine)",
+            ],
+            callback: () => {
+              setResponse("");
+
+              setScenario(
+                "You decide to build a time machine, but it sends you to the year 2077."
+              );
+
+              setTimeout(() => {
+                setScenario(
+                  "You discover that Tweeter no longer exists. With no place for people to post thier questionable Tweets, the world has plunged into utter chaos."
+                );
+
+                setTimeout(() => {
+                  setScenario("Mission Failed.");
+                  setTimeout(() => {
+                    setNavText(
+                      "Say 'Restart' or 'Home' to return to Main menu"
+                    );
+                    transition(GAMEOVER);
+                    setGameOverText("And its allll your fault 🙂");
+                    setLives(0);
+                  }, 5000);
+                }, 6000);
+              }, 7000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -925,4 +1375,12 @@ const WEEK_1_S2 = "WEEK_1_S2";
 const WEEK_1_S3 = "WEEK_1_S3";
 const WEEK_1_S4 = "WEEK_1_S4";
 const WEEK_1_S5 = "WEEK_1_S5";
-const WEEK_2 = "WEEK_2"
+const WEEK_2 = "WEEK_2";
+
+const WEEK_4 = "WEEK_4";
+const WEEK_4_S1 = "WEEK_4_S1";
+const WEEK_4_S2 = "WEEK_4_S2";
+const WEEK_4_S3 = "WEEK_4_S3";
+const WEEK_4_S4 = "WEEK_4_S4";
+
+const WEEK_5 = "WEEK_5";

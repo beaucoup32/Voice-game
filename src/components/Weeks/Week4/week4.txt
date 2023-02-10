@@ -1,0 +1,128 @@
+- if lives === 1
+  "Already Hanging on by a thread huh?"
+
+"You wake up to an emergency Zoom meeting by the Head director of the bootcamp!"
+
+"Tweeter has been hacked and is on the brink of destruction!"
+
+"Totaly at random, the Head Director assigns the task of saving Tweeter to #{playerName}"
+
+"#{playerName}, fearing being called a chicken in front of his peers, decides to take on the challenge"
+
+"DAY 1"
+
+SCENARIO: 
+
+You begin your day by reasearching the issue, but quickly realize you need to access to more information.
+
+What do you do?
+
+COMMANDS :
+  - [hack into tweeter, hack]
+    - You successfully hack into Tweeter's systems, but trigger the security alarms.
+    - After puhsing to main, the Tweeter Police show up and you are arrested for hacking into a (not so) secure system
+    - lives - 1
+
+    -transition to week4 scenario 2 (jail)
+
+  - [ask classmates]
+    - You ask your classmates for help, but they are all too busy with their own projects.
+
+    - transition back to week4 s1
+
+  - [mentor queue]
+    -After waiting in the queue for what feels like ages,
+      you finaly connect with a Mentor and explain your situation.
+    - Lucky for you, this mentor was an Ex Tweeter employee who knew the ins and outs of Tweeter's source code.
+    - The mentor shares their knowledge and you carry on with your research
+    - lives + 1
+
+    - transition to week4 scenario 3
+  
+SCENARIO 2 (JAIL):
+
+You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.
+
+Convieniently. In your cell, there happens to be a dusty laptop that still happens to power on
+
+Alternatively, you could take your chances with the gaurds who seem to be busy outside your cell.
+
+What do you choose to do?
+
+COMMANDS 
+  - [hack, stage jailbreak,(use) laptop]
+    50% lose 1 lives transition to week4 scenario 2
+    - You grab the laptop and use your coding skills to open your jail cell
+    - While the guards are looking away you sneak out and successfully escape
+    - You continue your mission to save Tweeter
+
+    - transition to week4 scenario 3
+  
+
+  - [bribe guards, bribe, talk to *]
+    50% lose 1 lives transition to week4 scenario 2
+    - You bribe the guards with the last of your coffee bean fund and successfully escape jail.
+    - You continue your mission to save Twitter.
+
+    - transition week4 scenario 3
+
+    50% fail
+    - The guard roasts your haircut and goes back to his duties.
+    - it was super effective.
+    - lose 1 life
+    - transition week4 scenario 2
+
+SCENARIO 3 :
+
+You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers.
+
+How will you get there?
+
+COMMANDS :
+
+  - [fly, helicopter]
+    - You use your TELUS benefits to rent a helicopter
+    - But you crash as soon as you take off because you forgot you're a programmer, not a pilot 
+    - You walk back home in shame
+    - lives - 1
+
+    - transition week4 s4
+
+  - [transit, public transport]
+    - After checking transit routes, you find out it will be a 7 hour commute, you take emotional damage and reconcider.
+    - lives - 1
+
+    - transition week4 s4
+
+  - [walk]
+    - After a couple steps outside you return home exhausted and embarassed
+    - lives - 1
+
+    - transition week4 s3
+
+SCENARIO 4:
+
+With very little time left, you decide to get creative and come up with a new plan to save Tweeter.
+
+After days of planning, you settle on two options
+
+Use your coding skills to create a virtual version of Tweeter
+
+Or use those skills to build a time machine and prevent the problem from even happening 
+
+COMMANDS : 
+
+  - [make tweeter, make (twitter), tweeter]
+    - You use your coding skills to create a virtual version of Tweeter called 'Two-weeter' and successfully save all the tweets.
+    - You are hailed as a hero and thanked personally from the CEO of Tweeter. Just in time for week 5 of bootcamp 😉
+    - A cheque would've been nice though...
+
+    - transition w5
+
+  - [time machine, go back in time, build (time machine)]
+    - You decide to build a time machine, but it sends you to the year 2077.
+    - You discover that Tweeter no longer exists. With no place for people to post thier questionable Tweets, the world has plunged into utter chaos. 
+
+    - mission failed.
+
+    - transition game over

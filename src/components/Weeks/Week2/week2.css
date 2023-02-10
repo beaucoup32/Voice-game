@@ -1,0 +1,36 @@
+.week-2-intro {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.typed {
+  font-size: 16px;
+  text-align: left;
+  color: #555;
+}
+
+.scenario {
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  /* box-shadow: 2px 2px #ccc; */
+  margin: 20px 0;
+}
+
+.scenario-text {
+  font-size: 18px;
+  text-align: center;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 16px;
+  margin-top: 10px;
+}

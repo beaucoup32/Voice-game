@@ -1,28 +1,55 @@
 .week-2-intro {
-  font-size: 20px;
+  font-size: 3em;
   font-weight: bold;
   text-align: center;
-  color: #333;
+  color: rgb(255, 0, 212);
+  margin-top: 5em;
 }
 
 .typed {
-  font-size: 16px;
-  text-align: left;
-  color: #555;
+  position: relative;
+  font-size: 2em;
+  width: 50ch;color: #00dffc;
+  overflow: hidden;
+  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
+    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: t 1s forwards, b 1s 0.8s forwards;
+}
+
+@keyframes t {
+  from {
+    background-size: 0 95%, 0 100%;
+  }
+}
+@keyframes b {
+  100% {
+    background-position: -200% 50%, 0 0;
+  }
 }
 
 .scenario {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  align-items: center;
+  background-color: #333841;
+  color: turquoise;
   padding: 20px;
-  background-color: #f2f2f2;
   border-radius: 10px;
-  /* box-shadow: 2px 2px #ccc; */
-  margin: 20px 0;
+  box-shadow: 2px 2px #ccc;
 }
 
 .scenario-text {
-  font-size: 18px;
+  font-size: 3em;
+  width: 50ch;
+  color: magenta;
   text-align: center;
-  color: #333;
 }
 
 ul {
@@ -33,4 +60,5 @@ ul {
 li {
   font-size: 16px;
   margin-top: 10px;
+  color: #ff6600;
 }

@@ -1,19 +1,16 @@
-.scenario {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  align-items: center;
-  background-color: #333841;
-  color: turquoise;
+.week-3-intro {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(255, 0, 212);
+  margin-top: 5em;
 }
 
 .typed {
   position: relative;
   font-size: 2em;
   width: 50ch;
-  color: #0000;
-  /* line-height: 1.2; */
+  color: #00dffc;
   overflow: hidden;
   background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
     linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
@@ -36,15 +33,33 @@
   }
 }
 
-.scenario-text {
-  font-size: 2em;
-  width: 80%;
-  color: magenta;
+.scenario {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  align-items: center;
+  background-color: #333841;
+  color: turquoise;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px #ccc;
 }
 
-.week4-intro {
+.scenario-text {
   font-size: 3em;
-  width: 80%;
-  color: springgreen;
-  margin-top: 5em;
+  width: 50ch;
+  color: magenta;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  font-size: 16px;
+  margin-top: 10px;
+  color: #ff6600;
 }

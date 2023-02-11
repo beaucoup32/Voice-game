@@ -5,6 +5,7 @@
   position: absolute;
   bottom: 3.7em; ;
   left: 50px; /* or any other value that works for you */
+  z-index: 1;
   transition: all 0.3s ease-out;
 }
   

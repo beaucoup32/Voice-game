@@ -23,15 +23,15 @@ import Week1S5 from "./components/Weeks/Week1/Week1S5";
 import Week2 from "./components/Weeks/Week2/Week2";
 import Week2S1 from "./components/Weeks/Week2/Week2S1";
 import Week2S2 from "./components/Weeks/Week2/Week2S2";
-
-import Week3 from "./components/Weeks/Week3";
-
+import Week3 from "./components/Weeks/Week3/Week3";
+import Week3S1 from "./components/Weeks/Week3/Week3S1";
+import Week3S2 from "./components/Weeks/Week3/Week3S2";
+import Week3S3 from "./components/Weeks/Week3/Week3S3";
 import Week4 from "./components/Weeks/Week4/Week4";
 import Week4S1 from "./components/Weeks/Week4/Week4S1";
 import Week4S2 from "./components/Weeks/Week4/Week4S2";
 import Week4S3 from "./components/Weeks/Week4/Week4S3";
 import Week4S4 from "./components/Weeks/Week4/Week4S4";
-
 import Week5 from "./components/Weeks/Week5/Week5";
 import Week5S1 from "./components/Weeks/Week5/Week5S1";
 import Week5S2 from "./components/Weeks/Week5/Week5S2";
@@ -60,7 +60,11 @@ export default function App() {
   const WEEK_2        = "WEEK_2";
   const WEEK_2_S1     = "WEEK_2_S1";
   const WEEK_2_S2     = "WEEK_2_S2";
+  
   const WEEK_3        = "WEEK_3";
+  const WEEK_3_S1     = "WEEK_3_S1";
+  const WEEK_3_S2     = "WEEK_3_S2";
+  const WEEK_3_S3     = "WEEK_3_S3";
   const WEEK_4        = "WEEK_4";
   const WEEK_4_S1     = "WEEK_4_S1";
   const WEEK_4_S2     = "WEEK_4_S2";
@@ -173,7 +177,12 @@ export default function App() {
         {mode === WEEK_2        && <Week2 playerName={player} />}
         {mode === WEEK_2_S1     && <Week2S1 playerName={player} scenario={scenario} />}
         {mode === WEEK_2_S2     && <Week2S2 playerName={player} scenario={scenario} />}
-        {mode === WEEK_3        && <Week3 playerName={player} />}
+        
+        {mode === WEEK_3        && <Week3 transition={transition} playerName={player} setNavText={setNavText} />}
+        {mode === WEEK_3_S1     && <Week3S1 scenario={scenario} />}
+        {mode === WEEK_3_S2     && <Week3S2 scenario={scenario} />}
+        {mode === WEEK_3_S3     && <Week3S3 scenario={scenario} />}
+       
         {mode === WEEK_4        && <Week4 transition={transition} playerName={player} setNavText={setNavText} />}
         {mode === WEEK_4_S1     && <Week4S1 scenario={scenario} />}
         {mode === WEEK_4_S2     && <Week4S2 scenario={scenario} />}

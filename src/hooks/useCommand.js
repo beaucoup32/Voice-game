@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import useListen from "./useListen";
 
+
 export default function useCommand(props) {
+  
   const {
     mode,
     transition,
     setResponse,
-    handleTTS,
+    // handleTTS,
     setPlayer,
     player,
     setNavText,
@@ -58,7 +60,7 @@ export default function useCommand(props) {
       command: "Marco",
       callback: () => {
         setResponse("Polo?");
-        handleTTS();
+        // handleTTS();
         // transcript resets when command is triggered
         resetTranscript();
       },

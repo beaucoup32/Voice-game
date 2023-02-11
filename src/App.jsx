@@ -32,6 +32,13 @@ import Week4S2 from "./components/Weeks/Week4/Week4S2";
 import Week4S3 from "./components/Weeks/Week4/Week4S3";
 import Week4S4 from "./components/Weeks/Week4/Week4S4";
 
+import Week5 from "./components/Weeks/Week5/Week5";
+import Week5S1 from "./components/Weeks/Week5/Week5S1";
+import Week5S2 from "./components/Weeks/Week5/Week5S2";
+import Week5S3 from "./components/Weeks/Week5/Week5S3";
+import Week5S4 from "./components/Weeks/Week5/Week5S4";
+
+
 export default function App() {
   // modes to change layout
 
@@ -59,6 +66,11 @@ export default function App() {
   const WEEK_4_S2     = "WEEK_4_S2";
   const WEEK_4_S3     = "WEEK_4_S3";
   const WEEK_4_S4     = "WEEK_4_S4";
+  const WEEK_5        = "WEEK_5";
+  const WEEK_5_S1     = "WEEK_5_S1";
+  const WEEK_5_S2     = "WEEK_5_S2";
+  const WEEK_5_S3     = "WEEK_5_S3";
+  const WEEK_5_S4     = "WEEK_5_S4";
 
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
@@ -79,7 +91,7 @@ export default function App() {
   const [mushroom, setMushroom] = useState(false);
 
   // set navbar text
-  const [navText, setNavText] = useState("Say 'Start' to begin.");
+  const [navText, setNavText] = useState(`Say 'Start' to begin.`);
 
   // set scenario text
   const [scenario, setScenario] = useState("");
@@ -163,10 +175,15 @@ export default function App() {
         {mode === WEEK_2_S2     && <Week2S2 playerName={player} scenario={scenario} />}
         {mode === WEEK_3        && <Week3 playerName={player} />}
         {mode === WEEK_4        && <Week4 transition={transition} playerName={player} setNavText={setNavText} />}
-        {mode === WEEK_4_S1     && <Week4S1 scenario={scenario}/>}
+        {mode === WEEK_4_S1     && <Week4S1 scenario={scenario} />}
         {mode === WEEK_4_S2     && <Week4S2 scenario={scenario} />}
         {mode === WEEK_4_S3     && <Week4S3 scenario={scenario} />}
         {mode === WEEK_4_S4     && <Week4S4 scenario={scenario} />}
+        {mode === WEEK_5        && <Week5 transition={transition} setNavText={setNavText} />}
+        {mode === WEEK_5_S1     && <Week5S1 scenario={scenario} />}
+        {mode === WEEK_5_S2     && <Week5S2 scenario={scenario} />}
+        {mode === WEEK_5_S3     && <Week5S3 scenario={scenario} />}
+        {mode === WEEK_5_S4     && <Week5S4 scenario={scenario} />}
       </main>
       <footer className="App-footer">
         <div className="mic">

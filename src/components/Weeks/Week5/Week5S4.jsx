@@ -1,13 +1,13 @@
-const Week4S3 = (props) => {
+const Week5S4 = (props) => {
   const { scenario } = props;
 
   const text = (
     <>
       <p className="typed">
-        You finally find the source of the problem and realize that the issue
-        can be fixed by manually going into Tweeter's servers.
+        After inspecting the hackers database table you find the only solution
+        is to get rid of it.
       </p>
-      <p className="typed">How will you get there?</p>
+      <p className="typed">What command will get the job done?</p>
     </>
   );
   return (
@@ -17,4 +17,4 @@ const Week4S3 = (props) => {
   );
 };
 
-export default Week4S3;
+export default Week5S4;

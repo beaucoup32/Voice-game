@@ -38,14 +38,14 @@
 }
 
 .scenario-text {
-  font-size: 3em;
-  width: 50ch;
+  font-size: 2em;
+  width: 80%;
   color: magenta;
 }
 
 .prep-week-intro {
   font-size: 3em;
-  width: 50ch;
+  width: 80%;
   color: springgreen;
   margin-top: 5em;
 }

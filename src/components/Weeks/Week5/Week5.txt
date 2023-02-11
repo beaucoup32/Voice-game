@@ -1,0 +1,122 @@
+"Wow. You actually managed to save Tweeter.."
+
+"Not bad, im impressed."
+
+"Unfortunatly for us however, it looks like you upset the hackers..."
+
+"Now they are targeting our bootcamps Databases!"
+
+"Get into our database and drop them once and for all!"
+
+SCENARIO 1
+
+You open up your terminal and proceed to type 'psql'. To connect to the database.
+Uh oh, we got an error 'psql: could not connect to server'? What does that even mean?
+
+What do we do?
+
+COMMANDS  :
+
+  - [startpostgres, 'start postgres']
+    - transition week5 scenario 2
+
+  - [hack, hack into *]
+    - You attempt to hack into the bootcamps database!
+    - It wasnt very effective...
+
+    - transition week5 scenario 1
+
+  - [buy a macbook, use macbook, macbook]
+    - You take out a $4000 loan to buy a macbook.
+    - I really hope it was worth it.
+    - lose 1 life
+
+    - transition week5 scenario 2
+
+SCENARIO 2
+
+You are greeted with a password input!
+
+I wonder what the password could be...?
+
+COMMANDS :
+
+  - [monkeyfuzz]
+    - It worked!
+    - I think i see why they got hacked...
+
+    - transition
+
+  - [:password]
+    - Incorrect password
+    - transition week5 SCENARIO 2
+  
+    - Wow... :password was really the password?
+    - I think i see how we got hacked...
+
+    - transition week5 scenario 3
+
+SCENARIO 3
+
+We're finally in the Database!
+
+You find an out of place table named 'hackers(do not touch)'
+
+Suddenly, your phone rings
+
+Its mom. oh no.
+
+its been 5 weeks since youve facetimed her and she's not happy.
+
+what do you do?
+
+COMMANDS : 
+
+  - [ignore, select hackers]
+
+    - With no regard for your life, you let call goto voicemail and select the hacker table
+
+    - transition week5 scenario 4
+
+
+  - [pick up, phone, mom, mum]
+    - You pick up the phone expecting to get an earfull but you are greeted with encouragement and some words of wisdom 🙂
+    - lives + 1
+
+    - transition week5 scenario 4
+
+SCENARIO 4
+
+After inspecting the hackers database table you find the only solution is to get rid of it
+
+what command will get the job done?
+
+COMMANDS : 
+
+  - [drop table cascade]
+    - TABLE DELETED
+    - Look at you, another day saved!
+    - transition week 6
+
+  - [drop table]
+    - ERROR
+    - That didnt work?!
+    - I wonder if we are missing something...
+
+    - transition week 5 scenario 4
+
+  - [delete table]
+    - You delete the contents of the hackers table!
+    - But suddenly see the table repopulate before your eyes
+    - There has to be a better way.
+
+    - transition week 5 scenario 4
+
+  - [insert *]
+    - lose 1 life
+
+    - ...I think that made it stronger?
+
+    - transition week 5 scenario 4
+
+

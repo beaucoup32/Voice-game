@@ -84,6 +84,17 @@ export default function useCommand(props) {
       isFuzzyMatch: true,
     },
     {
+      // testing for week 5
+      command: ["week 5"],
+      callback: () => {
+        transition(WEEK_5);
+        setLives(3);
+        setPlayer("Donny");
+        setScenario("");
+      },
+      isFuzzyMatch: true,
+    },
+    {
       // manually set lives for debugging
       command: "set lives (to) :number",
       callback: (number) => {
@@ -219,7 +230,6 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
           },
           {
             command: ["reward (myself)", "(play) tekken"],
@@ -241,7 +251,6 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
           },
         ]);
         break;
@@ -251,7 +260,7 @@ export default function useCommand(props) {
             command: ["(ask for) help", "ask a *"],
             callback: () => {
               setScenario(
-                "After reaching out for some assistance, a peer offers to lend a hand. you finaly figure where your bug was and fix that pesky function!"
+                "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!"
               );
 
               setResponse("Good call 👍");
@@ -265,7 +274,6 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
           },
           {
             command: ["google", "* online"],
@@ -285,7 +293,6 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
           },
           {
             command: ["continue", "press on", "keep going"],
@@ -331,7 +338,6 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
           },
         ]);
         break;
@@ -380,7 +386,6 @@ export default function useCommand(props) {
               }, 9000);
               resetTranscript();
             },
-            matchInterim: true,
             isFuzzyMatch: true,
           },
         ]);
@@ -1337,6 +1342,277 @@ export default function useCommand(props) {
           },
         ]);
         break;
+      case "WEEK_5":
+        setCommands([
+          {
+            command: ["skip"],
+            callback: () => {
+              setResponse("");
+              setNavText("WEEK 5: SCENARIO 1");
+              transition(WEEK_5_S1);
+              resetTranscript();
+              setScenario("");
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_5_S1":
+        setCommands([
+          {
+            command: ["startpostgres", "start postgres", "thought postgres"],
+            callback: () => {
+              setResponse("");
+              setNavText("WEEK 5: SCENARIO 2");
+              transition(WEEK_5_S2);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["hack", "hack into (database)"],
+            callback: () => {
+              setResponse("");
+
+              setScenario("You attempt to hack into the bootcamps database!");
+
+              setTimeout(() => {
+                setScenario("It wasnt very effective...");
+
+                setTimeout(() => {
+                  transition(WEEK_5_S1);
+                  setNavText("WEEK 5: SCENARIO 1");
+                  setScenario("");
+                }, 5000);
+              }, 5000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["buy a mac(book)", "use mac(book)", "mac(book)"],
+            callback: () => {
+              setResponse("");
+
+              setLives(lives - 1);
+              setScenario("You take out a $4000 loan to buy a macbook.");
+
+              setTimeout(() => {
+                setScenario("I really hope it was worth it.");
+
+                setTimeout(() => {
+                  if (lives <= 0) {
+                    transition(GAMEOVER);
+                    setResponse("");
+                    setGameOverText("Spoiler: It wasnt.");
+                    setNavText("Say 'Reset' or 'Home' to return to Main menu");
+                  } else {
+                    transition(WEEK_5_S2);
+                    setNavText("WEEK 5: SCENARIO 2");
+                    setScenario("");
+                  }
+                }, 5000);
+              }, 6000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_5_S2":
+        setCommands([
+          {
+            command: ["monkeyfuzz", "monkey fuzz"],
+            callback: () => {
+              setResponse("");
+
+              setScenario("It Worked!");
+
+              setTimeout(() => {
+                setScenario("I think I see why we got hacked...");
+
+                setTimeout(() => {
+                  setNavText("WEEK 5: SCENARIO 3");
+                  transition(WEEK_5_S3);
+                  setScenario("");
+                }, 3000);
+              }, 3000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: [":password"],
+            callback: (password) => {
+              setResponse("");
+
+              if (randInt() > 2) {
+                setScenario("Incorrect Password. Try again.");
+
+                setTimeout(() => {
+                  transition(WEEK_5_S2);
+                  setScenario("");
+                }, 2000);
+              } else {
+                setResponse("lucky lucky 🍀")
+                setScenario(`Wow. You guessed it... ${password} was really the password.`);
+
+                setTimeout(() => {
+                  setScenario("I think I see how we got hacked...");
+                  setTimeout(() => {
+                    setNavText("WEEK 5: SCENARIO 3");
+                    transition(WEEK_5_S3);
+                    setScenario("");
+                  }, 4000);
+                }, 4000);
+              }
+
+              resetTranscript();
+            },
+          },
+        ]);
+        break;
+      case "WEEK_5_S3":
+        setCommands([
+          {
+            command: ["ignore", "select hacker(s)", "select table", "hang up"],
+            callback: () => {
+              setResponse("");
+
+              setScenario(
+                "With no regard for your life, you let call goto voicemail and SELECT the hacker table"
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 5: SCENARIO 4");
+                transition(WEEK_5_S4);
+
+                setScenario("");
+              }, 5000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+          {
+            command: ["pick up (phone)", "mom", "mum", "call", "pick up"],
+            callback: () => {
+              setResponse("Aww.. 🥺");
+              setLives(lives + 1);
+
+              setScenario(
+                "You pick up the phone expecting to get an earfull but you are greeted with encouragement and some words of wisdom 🙂"
+              );
+
+              setTimeout(() => {
+                setNavText("WEEK 5: SCENARIO 4");
+                transition(WEEK_5_S4);
+                setScenario("");
+              }, 6000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+            matchInterim: true,
+          },
+        ]);
+        break;
+      case "WEEK_5_S4":
+        setCommands([
+          {
+            command: ["drop table cascade"],
+            callback: () => {
+              setResponse("");
+
+              setScenario("TABLE DELETED");
+              setTimeout(() => {
+                setScenario("Look at you, another day saved!");
+
+                setTimeout(() => {
+                  transition(WEEK_6);
+                  setNavText("WEEK 6");
+                  setScenario("");
+                }, 4000);
+              }, 4000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["drop table"],
+            callback: () => {
+              setResponse("");
+
+              setScenario("ERROR: table has dependencies");
+              setTimeout(() => {
+                setScenario("That didnt work?!");
+
+                setTimeout(() => {
+                  setScenario("I wonder if we are missing something...");
+                  setTimeout(() => {
+                    transition(WEEK_5_S4);
+                    setScenario("");
+                  }, 4000);
+                }, 4000);
+              }, 5000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["delete table"],
+            callback: () => {
+              setResponse("");
+
+              setScenario("You delete the contents of the hackers table!");
+              setTimeout(() => {
+                setScenario(
+                  "But suddenly see the table repopulate before your eyes"
+                );
+
+                setTimeout(() => {
+                  setScenario("There has to be a better way.");
+                  setTimeout(() => {
+                    transition(WEEK_5_S4);
+                    setScenario("");
+                  }, 2500);
+                }, 4000);
+              }, 5000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+          {
+            command: ["insert *"],
+            callback: () => {
+              setResponse("");
+              setLives(lives - 1);
+              setScenario("...I think that made it stronger?");
+
+              setTimeout(() => {
+                if (lives <= 0) {
+                  transition(GAMEOVER);
+                  setGameOverText("...I mean, what did you expect?");
+                  setNavText("Say 'Reset' or 'Home' to return to Main menu");
+                } else {
+                  transition(WEEK_5_S4);
+                  setScenario("");
+                }
+              }, 4000);
+
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
+          },
+        ]);
+        break;
       default:
         setCommands([]);
     }
@@ -1375,3 +1651,9 @@ const WEEK_4_S3 = "WEEK_4_S3";
 const WEEK_4_S4 = "WEEK_4_S4";
 
 const WEEK_5 = "WEEK_5";
+const WEEK_5_S1 = "WEEK_5_S1";
+const WEEK_5_S2 = "WEEK_5_S2";
+const WEEK_5_S3 = "WEEK_5_S3";
+const WEEK_5_S4 = "WEEK_5_S4";
+
+const WEEK_6 = "WEEK_6";

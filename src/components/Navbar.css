@@ -22,7 +22,7 @@
 
 .player {
   display: flex;
-  min-width: 1em;
+  min-width: 120px;
   gap: 0.5em;
 }
 

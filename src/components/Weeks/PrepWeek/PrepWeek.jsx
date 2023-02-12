@@ -20,11 +20,12 @@ export default function PrepWeek() {
   return (
     <>
       {/* replace with appropriate gif */}
-      <img src="images/lighthouse-zoom.gif" className="scene-gif" />
+      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
       <p className="prep-week-intro">{scenario}</p>
     </>
   );
 }
+/* previous code for this page is below */
 
 // const [scenario, setScenario] = useState("Welcome to bootcamp!");
 // // check hooks/useCommand for commands

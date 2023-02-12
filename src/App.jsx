@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import logo from "./logo.svg";
 import Navbar from "./components/Navbar";
@@ -7,7 +7,8 @@ import GameStart from "./components/GameStart";
 import GameOver from "./components/GameOver";
 import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
-import useTTS from "./hooks/useTTS";
+import { start } from "./hooks/useTTS";
+
 import useCommand from "./hooks/useCommand";
 import PrepWeek from "./components/Weeks/PrepWeek/PrepWeek";
 import PrepWeekS1 from "./components/Weeks/PrepWeek/PrepWeekS1";
@@ -37,6 +38,7 @@ import Week5S1 from "./components/Weeks/Week5/Week5S1";
 import Week5S2 from "./components/Weeks/Week5/Week5S2";
 import Week5S3 from "./components/Weeks/Week5/Week5S3";
 import Week5S4 from "./components/Weeks/Week5/Week5S4";
+
 
 
 export default function App() {
@@ -118,8 +120,9 @@ export default function App() {
   // useTTS(response);
   // useTTS(scenario);
   // handleTTS(scenario);
+  // useDisplayTTS(scenario)
 
-  const { commands, listenContinuously, transcript } = useCommand({
+  const { commands, listenContinuously, transcript, stopListening } = useCommand({
     mode,
     transition,
     setResponse,
@@ -150,15 +153,8 @@ export default function App() {
   });
 
   // browser starts recording on load
-  listenContinuously();
-
-  {
-    console.log(
-      window.speechSynthesis
-        .getVoices()
-        .filter((voice) => voice.lang.startsWith("en"))
-    );
-  }
+  listenContinuously()
+   
   return (
     <div className="App">
       <Navbar playerName={player} playerLives={lives} text={navText} />
@@ -182,7 +178,7 @@ export default function App() {
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_1 && <Week1 playerName={player} />}
+        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} />}
         {mode === WEEK_1B && (
           <Week1b
             playerName={player}

@@ -19,5 +19,5 @@ export default function useDisplayTTS(textArray) {
   }, [sentences, current]);
 
   return (
-    Array.isArray(textArray) ? textOutput : console.log(`Please use correct syntax: useDisplayTTS(["sentence one", "sentence two", "etc..."])`));
+    Array.isArray(textArray) ? textOutput : console.log(textArray,`Please use correct syntax: useDisplayTTS(["sentence one", "sentence two", "etc..."])`));
 };

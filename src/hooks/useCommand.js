@@ -42,7 +42,7 @@ export default function useCommand(props) {
 
   const [commands, setCommands] = useState([]);
 
-  const { listenContinuously, transcript, resetTranscript, listening } =
+  const { listenContinuously, transcript, resetTranscript, listening, stopListening } =
     useListen(commands);
 
   const staticCommands = [
@@ -176,9 +176,13 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
             callback: () => {
-              setResponse(`Welcome to hell ${player} 😈`);
-              setNavText("PREP WEEK");
-              transition(PREPWEEK);
+              setNavText("WEEK 1: Wading into Lotide");
+              setScenario("");
+              setResponse("");              
+              transition(WEEK_1);
+              // setResponse(`Welcome to hell ${player} 😈`);
+              // setNavText("PREP WEEK");
+              // transition(PREPWEEK);
               resetTranscript();
               setLives(3);
 
@@ -395,7 +399,25 @@ export default function useCommand(props) {
       case "WEEK_1":
       case "WEEK_1B":
         setCommands([
-          ...staticCommands,
+          ...staticCommands,          
+          {
+            command: ["where (can I)", "repeat", "options"],
+
+            callback: () => {             
+                setResponse("Spoiled with choice aren't we?");
+                setScenario(
+                  ["Options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches"]
+                );
+                setMushroom(true);
+              
+              // after a delay, will continue on to next scenario
+              setTimeout(() => {
+                setScenario("");
+                setResponse("");
+              }, 5000);
+            },
+            isFuzzyMatch: true,
+          },
           {
             command: ["Function", "Fungus", "Mushroom(s)"],
 
@@ -516,7 +538,7 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["Lighthouse", "Entrance", "Test"],
+            command: ["(the) Lighthouse", "Entrance", "Test", "lighthouse (labs)"],
 
             callback: () => {
               setResponse("");

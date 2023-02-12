@@ -152,13 +152,6 @@ export default function App() {
   // browser starts recording on load
   listenContinuously();
 
-  {
-    console.log(
-      window.speechSynthesis
-        .getVoices()
-        .filter((voice) => voice.lang.startsWith("en"))
-    );
-  }
   return (
     <div className="App">
       <Navbar playerName={player} playerLives={lives} text={navText} />

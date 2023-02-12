@@ -2,11 +2,8 @@ import { useEffect } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import useTTS from "./useTTS";
-
 
 export default function useListen(commands) {
-  const { start, end } = useTTS();
   const {
     transcript,
     interimTranscript,
@@ -36,16 +33,16 @@ export default function useListen(commands) {
     );
     return null;
   }
-  const stopListening = SpeechRecognition.stopListening;
+
+  const stopListening = () => {
+    SpeechRecognition.stopListening();
+  };
+
   const listenContinuously = () => {
-    if (start) {
-      SpeechRecognition.stopListening;
-    } else {
-      SpeechRecognition.startListening({
-        continuous: true,
-        language: "en-GB",
-      });
-    };
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: "en-GB",
+    });
   };
 
   return { listenContinuously, transcript, resetTranscript, listening, stopListening };

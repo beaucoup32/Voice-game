@@ -7,8 +7,6 @@ import GameStart from "./components/GameStart";
 import GameOver from "./components/GameOver";
 import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
-import { start } from "./hooks/useTTS";
-
 import useCommand from "./hooks/useCommand";
 import PrepWeek from "./components/Weeks/PrepWeek/PrepWeek";
 import PrepWeekS1 from "./components/Weeks/PrepWeek/PrepWeekS1";
@@ -39,44 +37,42 @@ import Week5S2 from "./components/Weeks/Week5/Week5S2";
 import Week5S3 from "./components/Weeks/Week5/Week5S3";
 import Week5S4 from "./components/Weeks/Week5/Week5S4";
 
-
-
 export default function App() {
   // modes to change layout
 
-  const HOME          = "HOME";
-  const GAMESTART     = "GAMESTART";
-  const GAMEOVER      = "GAME_OVER";
-  const CONFIRM_NAME  = "ConfirmName";
-  const PREPWEEK      = "PREP_WEEK";
-  const PREPWEEKS1    = "PREP_WEEK_S1";
-  const PREPWEEKS2    = "PREP_WEEK_S2";
-  const PREPWEEKS3    = "PREP_WEEK_S3";
-  const WEEK_1        = "WEEK_1";
-  const WEEK_1B       = "WEEK_1B";
-  const WEEK_1_S1     = "WEEK_1_S1";
-  const WEEK_1_S2     = "WEEK_1_S2";
-  const WEEK_1_S3     = "WEEK_1_S3";
-  const WEEK_1_S4     = "WEEK_1_S4";
-  const WEEK_1_S5     = "WEEK_1_S5";
-  const WEEK_2        = "WEEK_2";
-  const WEEK_2_S1     = "WEEK_2_S1";
-  const WEEK_2_S2     = "WEEK_2_S2";
-  
-  const WEEK_3        = "WEEK_3";
-  const WEEK_3_S1     = "WEEK_3_S1";
-  const WEEK_3_S2     = "WEEK_3_S2";
-  const WEEK_3_S3     = "WEEK_3_S3";
-  const WEEK_4        = "WEEK_4";
-  const WEEK_4_S1     = "WEEK_4_S1";
-  const WEEK_4_S2     = "WEEK_4_S2";
-  const WEEK_4_S3     = "WEEK_4_S3";
-  const WEEK_4_S4     = "WEEK_4_S4";
-  const WEEK_5        = "WEEK_5";
-  const WEEK_5_S1     = "WEEK_5_S1";
-  const WEEK_5_S2     = "WEEK_5_S2";
-  const WEEK_5_S3     = "WEEK_5_S3";
-  const WEEK_5_S4     = "WEEK_5_S4";
+  const HOME = "HOME";
+  const GAMESTART = "GAMESTART";
+  const GAMEOVER = "GAME_OVER";
+  const CONFIRM_NAME = "ConfirmName";
+  const PREPWEEK = "PREP_WEEK";
+  const PREPWEEKS1 = "PREP_WEEK_S1";
+  const PREPWEEKS2 = "PREP_WEEK_S2";
+  const PREPWEEKS3 = "PREP_WEEK_S3";
+  const WEEK_1 = "WEEK_1";
+  const WEEK_1B = "WEEK_1B";
+  const WEEK_1_S1 = "WEEK_1_S1";
+  const WEEK_1_S2 = "WEEK_1_S2";
+  const WEEK_1_S3 = "WEEK_1_S3";
+  const WEEK_1_S4 = "WEEK_1_S4";
+  const WEEK_1_S5 = "WEEK_1_S5";
+  const WEEK_2 = "WEEK_2";
+  const WEEK_2_S1 = "WEEK_2_S1";
+  const WEEK_2_S2 = "WEEK_2_S2";
+
+  const WEEK_3 = "WEEK_3";
+  const WEEK_3_S1 = "WEEK_3_S1";
+  const WEEK_3_S2 = "WEEK_3_S2";
+  const WEEK_3_S3 = "WEEK_3_S3";
+  const WEEK_4 = "WEEK_4";
+  const WEEK_4_S1 = "WEEK_4_S1";
+  const WEEK_4_S2 = "WEEK_4_S2";
+  const WEEK_4_S3 = "WEEK_4_S3";
+  const WEEK_4_S4 = "WEEK_4_S4";
+  const WEEK_5 = "WEEK_5";
+  const WEEK_5_S1 = "WEEK_5_S1";
+  const WEEK_5_S2 = "WEEK_5_S2";
+  const WEEK_5_S3 = "WEEK_5_S3";
+  const WEEK_5_S4 = "WEEK_5_S4";
 
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
@@ -116,45 +112,47 @@ export default function App() {
   const [gameOverText, setGameOverText] = useState("");
 
   // custom hook values ./hooks/useListen
-// const { handleTTS, speaking } = useTTS(scenario);
+  // const { handleTTS, speaking } = useTTS(scenario);
   // useTTS(response);
   // useTTS(scenario);
   // handleTTS(scenario);
   // useDisplayTTS(scenario)
 
-  const { commands, listenContinuously, transcript, stopListening } = useCommand({
-    mode,
-    transition,
-    setResponse,
-    // handleTTS,
-    setPlayer,
-    player,
-    setNavText,
-    setLives,
-    lives,
-    setScenario,
-    big,
-    setBig,
-    mushroom,
-    setMushroom,
-    f,
-    o,
-    c,
-    a,
-    l,
-    setF,
-    setO,
-    setC,
-    setA,
-    setL,
-    boolean,
-    setBoolean,
-    setGameOverText,
-  });
+  const { commands, listenContinuously, transcript } =
+    useCommand({
+      mode,
+      transition,
+      setResponse,
+      // handleTTS,
+      setPlayer,
+      player,
+      setNavText,
+      setLives,
+      lives,
+      setScenario,
+      big,
+      setBig,
+      mushroom,
+      setMushroom,
+      f,
+      o,
+      c,
+      a,
+      l,
+      setF,
+      setO,
+      setC,
+      setA,
+      setL,
+      boolean,
+      setBoolean,
+      setGameOverText,
+    });
 
   // browser starts recording on load
-  listenContinuously()
-   
+  listenContinuously();
+  
+
   return (
     <div className="App">
       <Navbar playerName={player} playerLives={lives} text={navText} />
@@ -212,12 +210,18 @@ export default function App() {
         {mode === WEEK_2_S2 && (
           <Week2S2 playerName={player} scenario={scenario} />
         )}
-        
-        {mode === WEEK_3 && <Week3 transition={transition} playerName={player} setNavText={setNavText} />}
-        {mode === WEEK_3_S1     && <Week3S1 scenario={scenario} />}
-        {mode === WEEK_3_S2     && <Week3S2 scenario={scenario} />}
-        {mode === WEEK_3_S3     && <Week3S3 scenario={scenario} />}
-       
+
+        {mode === WEEK_3 && (
+          <Week3
+            transition={transition}
+            playerName={player}
+            setNavText={setNavText}
+          />
+        )}
+        {mode === WEEK_3_S1 && <Week3S1 scenario={scenario} />}
+        {mode === WEEK_3_S2 && <Week3S2 scenario={scenario} />}
+        {mode === WEEK_3_S3 && <Week3S3 scenario={scenario} />}
+
         {mode === WEEK_4 && (
           <Week4
             transition={transition}
@@ -225,15 +229,17 @@ export default function App() {
             setNavText={setNavText}
           />
         )}
-        {mode === WEEK_4_S1 && <Week4S1 scenario={scenario}  />}
+        {mode === WEEK_4_S1 && <Week4S1 scenario={scenario} />}
         {mode === WEEK_4_S2 && <Week4S2 scenario={scenario} />}
         {mode === WEEK_4_S3 && <Week4S3 scenario={scenario} />}
         {mode === WEEK_4_S4 && <Week4S4 scenario={scenario} />}
-        {mode === WEEK_5        && <Week5 transition={transition} setNavText={setNavText} />}
-        {mode === WEEK_5_S1     && <Week5S1 scenario={scenario} />}
-        {mode === WEEK_5_S2     && <Week5S2 scenario={scenario} />}
-        {mode === WEEK_5_S3     && <Week5S3 scenario={scenario} />}
-        {mode === WEEK_5_S4     && <Week5S4 scenario={scenario} />}
+        {mode === WEEK_5 && (
+          <Week5 transition={transition} setNavText={setNavText} />
+        )}
+        {mode === WEEK_5_S1 && <Week5S1 scenario={scenario} />}
+        {mode === WEEK_5_S2 && <Week5S2 scenario={scenario} />}
+        {mode === WEEK_5_S3 && <Week5S3 scenario={scenario} />}
+        {mode === WEEK_5_S4 && <Week5S4 scenario={scenario} />}
       </main>
       <footer className="App-footer">
         <div className="mic">

@@ -49,6 +49,7 @@ export default function useTTS(sentences) {
     current,
     sentences,
     setStart,
+    start,
     end
   };
 }

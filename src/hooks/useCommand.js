@@ -42,7 +42,7 @@ export default function useCommand(props) {
 
   const [commands, setCommands] = useState([]);
 
-  const { listenContinuously, transcript, resetTranscript, listening, stopListening } =
+  const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
 
   const staticCommands = [

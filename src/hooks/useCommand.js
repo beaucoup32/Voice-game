@@ -96,7 +96,7 @@ export default function useCommand(props) {
     },
     {
       // manually set lives for debugging
-      command: "set lives (to) :number",
+      command: "set lives to :number",
       callback: (number) => {
         if (!isNaN(number)) {
           setLives(number);

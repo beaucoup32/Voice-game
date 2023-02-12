@@ -7,7 +7,7 @@ export default function useDisplayTTS(textArray) {
   const [textOutput, setTextOutput] = useState("");
   const [playback, setPlayback] = useState(false);
 
-  const { stopListening } = useListen();
+  const { stopListening, listenContinuously } = useListen();
 
   //extracts current from useTTS after providing an array of sentences
   const { sentences, current, setStart, end } = useTTS(textArray);
@@ -17,11 +17,12 @@ export default function useDisplayTTS(textArray) {
     if (end) {
       setStart(false);
       setPlayback(false);
+      listenContinuously();
     } else {
       setPlayback(true);
       setStart(true);
     }
-  }, [end, setStart]);
+  }, [end, setStart, listenContinuously]);
 
   useEffect(() => {
     if (playback) {

@@ -10,7 +10,9 @@ export default function PrepWeek() {
     "Here you will be put through a impossible set of scenarios to hone your coding skills to become an expert programmer",
     "In this game, use your voice to determine your actions.",
     "If you get stuck, say 'Hint' to get some help. Are you ready?",
-  ]);  
+  ]);
+  
+  //updates scenario each time current sentence changes
   useEffect(() => {
     setScenario(textOutput);
   }, [textOutput]);

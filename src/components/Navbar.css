@@ -2,9 +2,15 @@
   display: flex;
   justify-content: space-between;
   height: 5em;
+  background-image: url('https://your-image-url.com/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
+
 .navbar-brand {
+  display: flex;
+  align-items: center;
   border: solid;
   border-radius: 1em;
   padding-left: 1em;
@@ -32,4 +38,22 @@
   justify-content: space-evenly;
   gap: 0.4em;
   align-items: center;
+}
+
+.logo {
+  width: 62px;
+  height: 62px;
+}
+
+@keyframes moveInCircles {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logo {
+  animation: moveInCircles 2s linear infinite;
 }

@@ -18,11 +18,11 @@ export default function PrepWeek() {
   }, [textOutput]);
 
   return (
-    <>
+    <div className="prep-week-container">
       {/* replace with appropriate gif */}
-      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
       <p className="prep-week-intro">{scenario}</p>
-    </>
+      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
+    </div>
   );
 }
 /* previous code for this page is below */

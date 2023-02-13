@@ -18,7 +18,7 @@ const Navbar = function (props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-      <img src={logo} alt="Logo" className="logo" />
+        W T T
       </a>
       <span className="navbar-text nav-title">{text}</span>
       <span className="navbar-text player">

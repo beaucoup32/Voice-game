@@ -1,0 +1,23 @@
+.home-container {
+  font-size: 10em;
+  display: flex;
+  width: 100%;
+}
+
+.home-container .logo {
+  height: 2em;
+  width: 2em;
+}
+
+@keyframes moveInCircles {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.logo {
+  animation: moveInCircles 5s linear infinite;
+}

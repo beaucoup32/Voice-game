@@ -11,11 +11,17 @@
 .navbar-brand {
   display: flex;
   align-items: center;
+  justify-content: center;
   border: solid;
   border-radius: 1em;
   padding-left: 1em;
   padding-right: 1em;
   width: 6em;
+}
+
+.navbar-dark .navbar-brand {
+  color: #944dff;
+
 }
 
 .navbar-text {
@@ -24,6 +30,8 @@
 
 .nav-title {
   align-self: center;
+  color: orange;
+
 }
 
 .player {
@@ -40,20 +48,3 @@
   align-items: center;
 }
 
-.logo {
-  width: 62px;
-  height: 62px;
-}
-
-@keyframes moveInCircles {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.logo {
-  animation: moveInCircles 2s linear infinite;
-}

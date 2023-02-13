@@ -191,7 +191,7 @@ export default function App() {
                   alt="Image 4"
                   className="home-img"
                 />
-                <figcaption className="home-figcaption">Image 4</figcaption>
+                <figcaption className="home-figcaption">Programmers' Antidote to Stress: A Story of Hilarious Misadventures</figcaption>
               </figure>
             </div>
           </div>

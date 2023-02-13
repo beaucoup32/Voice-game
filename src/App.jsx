@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import logo from "./logo.svg";
 import Navbar from "./components/Navbar";
 import useVisualMode from "./hooks/useVisualMode";
 import GameStart from "./components/GameStart";
@@ -59,8 +58,7 @@ export default function App() {
   const WEEK_1_S5     = "WEEK_1_S5";
   const WEEK_2        = "WEEK_2";
   const WEEK_2_S1     = "WEEK_2_S1";
-  const WEEK_2_S2     = "WEEK_2_S2";
-  
+  const WEEK_2_S2     = "WEEK_2_S2";  
   const WEEK_3        = "WEEK_3";
   const WEEK_3_S1     = "WEEK_3_S1";
   const WEEK_3_S2     = "WEEK_3_S2";
@@ -157,11 +155,47 @@ export default function App() {
       <Navbar playerName={player} playerLives={lives} text={navText} />
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
-        {/* place holder input/response for debugging */}
-        <div>{response}</div>
+        <h1 className="App-title">Join the Fun-Filled Coding Game: Bootcamp Edition!</h1>
       </header>
       <main className="App-body">
-        {mode === HOME && <img src={logo} className="App-logo" alt="logo" />}
+        {mode === "HOME" && (
+          <div className="home-container">
+            <div className="masonry">
+              <figure className="home-figure">
+                <img
+                  src="https://st.depositphotos.com/1037238/4364/v/450/depositphotos_43641985-stock-illustration-computer-programmer-working-on-his.jpg"
+                  alt="Image 1"
+                  className="home-img"
+                />
+                <figcaption className="home-figcaption">Code Crusader Conquers the Keyboard with a Chuckle</figcaption>
+              </figure>
+              <figure className="home-figure">
+                <img
+                  src="https://st2.depositphotos.com/5313596/7758/v/600/depositphotos_77585368-stock-illustration-java-programmer-at-work.jpg"
+                  alt="Image 2"
+                  className="home-img"
+                />
+                <figcaption className="home-figcaption">Java Guru at Work</figcaption>
+              </figure>
+              <figure className="home-figure">
+                <img
+                  src="https://st.depositphotos.com/1429923/3996/v/600/depositphotos_39965389-stock-illustration-flat-vector-illustration-of-programmer.jpg"
+                  alt="Image 3"
+                  className="home-img"
+                />
+                <figcaption className="home-figcaption">Code Warrior Tackling Bugs with a Smile</figcaption>
+              </figure>
+              <figure className="home-figure">
+                <img
+                  src="https://miro.medium.com/max/1400/0*C-cPP9D2MIyeexAT.gif"
+                  alt="Image 4"
+                  className="home-img"
+                />
+                <figcaption className="home-figcaption">Image 4</figcaption>
+              </figure>
+            </div>
+          </div>
+        )}
         {mode === GAMESTART && <GameStart playerName={player} />}
         {mode === GAMEOVER && (
           <GameOver

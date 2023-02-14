@@ -165,7 +165,7 @@ export default function App() {
           />
         )}
         {mode === CONFIRM_NAME && <ConfirmName playerName={player} scenario={scenario} />}
-        {mode === PREPWEEK && <PrepWeek />}
+        {mode === PREPWEEK && <PrepWeek scenario={scenario}/>}
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} setScenario={setScenario}/>}

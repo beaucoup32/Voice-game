@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import useListen from "./useListen";
 
-
 export default function useCommand(props) {
-
   const {
     mode,
     transition,
@@ -116,7 +114,12 @@ export default function useCommand(props) {
           {
             command: ["Start", "thought", "dot", "begin"],
             callback: () => {
-              setScenario(["loading human voice", "Starting Adventure!", "It's time to Walk the Talk", "Please tell me your name?"]);
+              setScenario([
+                "Loading human voice",
+                "Starting Adventure!",
+                "It's time to Walk the Talk",
+                "Please tell me your name",
+              ]);
               setPlayer("");
               // handleTTS();
 
@@ -177,14 +180,18 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
             callback: () => {
-
               setResponse(`Welcome to hell ${player} 😈`);
               setNavText("PREP WEEK");
+              setScenario([
+                "Welcome to bootcamp!",
+                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
+                "In this game, use your voice to determine your actions.",
+                "If you get stuck, say 'Hint' to get some help. Are you ready?",
+              ]);
               transition(PREPWEEK);
               resetTranscript();
               setLives(3);
 
-              resetTranscript();
             },
             isFuzzyMatch: true,
             matchInterim: true,
@@ -239,7 +246,8 @@ export default function useCommand(props) {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
               setResponse("That was hard to watch... 😬");
-              setScenario("Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
+              setScenario(
+                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
               );
 
               // current lives is 2
@@ -357,16 +365,14 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
-                setScenario(
-                  [
-                    `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
-                    "What's that smell you ask?",
-                    "Well, you can only make it inside the Lighthouse during low-tide.",
-                    "Please be careful as you trek into Lighthouse Labs",
-                    "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
-                    "Where would you like to go first?",
-                  ]
-                );
+                setScenario([
+                  `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
+                  "What's that smell you ask?",
+                  "Well, you can only make it inside the Lighthouse during low-tide.",
+                  "Please be careful as you trek into Lighthouse Labs",
+                  "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+                  "Where would you like to go first?",
+                ]);
                 setResponse("");
                 transition(WEEK_1);
               }, 9000);
@@ -411,9 +417,9 @@ export default function useCommand(props) {
 
             callback: () => {
               // setResponse("Spoiled with choice aren't we?");
-              setScenario(
-                ["Options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches"]
-              );
+              setScenario([
+                "Options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+              ]);
               // after a delay, will continue on to next scenario
               setTimeout(() => {
                 // setScenario();
@@ -542,7 +548,12 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["(the) Lighthouse", "Entrance", "Test", "lighthouse (labs)"],
+            command: [
+              "(the) Lighthouse",
+              "Entrance",
+              "Test",
+              "lighthouse (labs)",
+            ],
 
             callback: () => {
               setResponse("");
@@ -893,7 +904,6 @@ export default function useCommand(props) {
             command: ["Study", "(take) notes"],
 
             callback: () => {
-
               setResponse("Index cards for Arrays? Nice.");
               setScenario(
                 "You whip out some Index cards and take an Array of notes. You learn you can push, pop, and even slice them"
@@ -1497,7 +1507,9 @@ export default function useCommand(props) {
                 }, 2000);
               } else {
                 setResponse("lucky lucky 🍀");
-                setScenario(`Wow. You guessed it... ${password} was really the password.`);
+                setScenario(
+                  `Wow. You guessed it... ${password} was really the password.`
+                );
 
                 setTimeout(() => {
                   setScenario("I think I see how we got hacked...");

@@ -1,27 +1,18 @@
 // import { useEffect, useState } from "react";
 import useTTS from "../../../hooks/useTTS";
 
-export default function PrepWeek() {
-  // const {scenario, setScenario} = props;
+export default function PrepWeek(props) {
+  const { scenario } = props;
 
   /* useTTS relays an array of sentences to useTTS & returns textOutput sentence being spoken */
-  const text = [
-    "Welcome to bootcamp!",
-    "Here you will be put through an impossible set of scenarios to hone your coding skills to become an expert programmer",
-    "In this game, use your voice to determine your actions.",
-    "If you get stuck, say 'Hint' to get some help.",
-    "Are you ready?",
-  ];
   
 
   //updates scenario each time current sentence changes
-  // useEffect(() => {
-  //   setScenario(textOutput);
-  // }, [textOutput]);
+  const currentSentence = useTTS(scenario)
 
   return (
     <div className="prep-week-container">
-      <p className="prep-week-intro">{useTTS(text)}</p>
+      <p className="prep-week-intro">{currentSentence}</p>
     </div>
   );
 }

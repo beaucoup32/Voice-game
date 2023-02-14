@@ -1,4 +1,5 @@
 import "./Navbar.css";
+import icon from "./favicon.png"
 
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;
@@ -16,7 +17,7 @@ const Navbar = function (props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        W T T
+        <img className="icon" src={icon} alt="" />
       </a>
       <span className="navbar-text nav-title">{text}</span>
       <span className="navbar-text player">

@@ -180,6 +180,8 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
             callback: () => {
+              resetTranscript();
+              setLives(3);
               setResponse(`Welcome to hell ${player} 😈`);
               setNavText("PREP WEEK");
               setScenario([
@@ -189,8 +191,6 @@ export default function useCommand(props) {
                 "If you get stuck, say 'Hint' to get some help. Are you ready?",
               ]);
               transition(PREPWEEK);
-              resetTranscript();
-              setLives(3);
 
             },
             isFuzzyMatch: true,
@@ -215,6 +215,13 @@ export default function useCommand(props) {
             callback: () => {
               setNavText("PREP WEEK: SCENARIO 1");
               setResponse("");
+              setScenario([
+                "Every decision you make will determine your path and impact your success.", 
+                        "It's Prep week and you are faced with your first challenge.",
+                        "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
+                        "You breeze through the first 1/4 of the challenges.",
+                        "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
+              ])
               transition(PREPWEEKS1);
               resetTranscript();
             },

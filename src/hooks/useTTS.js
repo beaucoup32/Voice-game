@@ -5,7 +5,7 @@ export default function useTTS(sentences) {
   const femaleVoice = window.speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Female')
   const { stopListening, listenContinuously } = useListen();
   const [current, setCurrent] = useState(0);
-  const [voice, setVoice] = useState(null);
+  const [ stop, setStop ] = useState(false);
   // const [isSpeaking, setIsSpeaking] = useState(true);
   // const [start, setStart] = useState(false);
   // const [end, setEnd] = useState(false);
@@ -24,7 +24,7 @@ export default function useTTS(sentences) {
   const currentSentence = sentences[current];
   const endTTS = () => {
     listenContinuously();
-    setCurrent(null);
+    setStop(true);
   };
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function useTTS(sentences) {
 
   useEffect(() => {
     //required speachSynthesis.speak() user-activation check
-    if (current === null) {
+    if (stop === true) {
       return;
     }
     stopListening();

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useTTS from "../../../hooks/useTTS";
 
 export default function PrepWeek(props) {

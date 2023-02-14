@@ -9,7 +9,7 @@ const GameStart = (props) => {
   return (
     <div className="container">
       <h2>{currentSentence}</h2>
-      <h4>{props.playerName ? props.playerName : "My name is ... "}</h4>
+      <h4>{props.playerName ? props.playerName : "My name is ... "}</h4>      
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
@@ -39,7 +39,6 @@ import Week5S4 from "./components/Weeks/Week5/Week5S4";
 
 export default function App() {
   // modes to change layout
-
 
   const HOME = "HOME";
   const GAMESTART = "GAMESTART";
@@ -111,36 +110,35 @@ export default function App() {
   // set gameOver message
   const [gameOverText, setGameOverText] = useState("");
 
-  const { commands, listenContinuously, transcript } =
-    useCommand({
-      mode,
-      transition,
-      setResponse,
-      // handleTTS,
-      setPlayer,
-      player,
-      setNavText,
-      setLives,
-      lives,
-      setScenario,
-      big,
-      setBig,
-      mushroom,
-      setMushroom,
-      f,
-      o,
-      c,
-      a,
-      l,
-      setF,
-      setO,
-      setC,
-      setA,
-      setL,
-      boolean,
-      setBoolean,
-      setGameOverText,
-    });
+  const { commands, listenContinuously, transcript } = useCommand({
+    mode,
+    transition,
+    setResponse,
+    // handleTTS,
+    setPlayer,
+    player,
+    setNavText,
+    setLives,
+    lives,
+    setScenario,
+    big,
+    setBig,
+    mushroom,
+    setMushroom,
+    f,
+    o,
+    c,
+    a,
+    l,
+    setF,
+    setO,
+    setC,
+    setA,
+    setL,
+    boolean,
+    setBoolean,
+    setGameOverText,
+  });
 
   // browser starts recording on load
   listenContinuously();
@@ -150,13 +148,13 @@ export default function App() {
       <Navbar playerName={player} playerLives={lives} text={navText} />
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
-        <h1 className="App-title">
-          Think you can make it all 6 weeks?
-        </h1>
+        <h1 className="App-title">{response}</h1>
       </header>
       <main className="App-body">
         {mode === HOME && <HomePage />}
-        {mode === GAMESTART && <GameStart playerName={player} scenario={scenario}/>}
+        {mode === GAMESTART && (
+          <GameStart playerName={player} scenario={scenario} />
+        )}
         {mode === GAMEOVER && (
           <GameOver
             playerName={player}
@@ -164,11 +162,13 @@ export default function App() {
             text={gameOverText}
           />
         )}
-        {mode === CONFIRM_NAME && <ConfirmName playerName={player} scenario={scenario} />}
-        {mode === PREPWEEK && <PrepWeek scenario={scenario}/>}
-        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
-        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}
-        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} setScenario={setScenario}/>}
+        {mode === CONFIRM_NAME && (
+          <ConfirmName playerName={player} scenario={scenario} />
+        )}
+        {mode === PREPWEEK && <PrepWeek scenario={scenario} />}
+        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
+        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
+        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
         {mode === WEEK_1 && <Week1 playerName={player} />}
         {mode === WEEK_1B && (
           <Week1b
@@ -196,7 +196,7 @@ export default function App() {
         {mode === WEEK_1_S5 && (
           <Week1S5 playerName={player} scenario={scenario} />
         )}
-        
+
         {mode === WEEK_2 && (
           <Week2
             transition={transition}

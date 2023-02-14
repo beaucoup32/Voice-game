@@ -1,9 +1,15 @@
-export default function Week1S4(props) {
-  const {scenario} = props;
+import "./Week1.css";
+import useTTS from "../../../hooks/useTTS";
 
-  return (
-    
-    <p>{scenario ? scenario : "You approach the Anenomes with caution as you don't want to make any enemies. You sneak up as to not Arrays 😉 their awareness. You peer under the pier they reside in and .find them lined up in an easy to access .sort of numbered order [0, 1, 2, 3 ]. What do you want to do next?"}</p>
-  );
-};
 
+    export default function Week1S4(props) {
+    const { scenario } = props;
+  
+    const currentSentence = useTTS(scenario);
+    return (
+      <>
+        <h1>{currentSentence}</h1>
+        <img src="images/anemones.gif" alt="anemones-gif" className="scene-gif anemones" />
+      </>
+    );
+  }

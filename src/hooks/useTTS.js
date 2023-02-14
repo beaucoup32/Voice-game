@@ -21,17 +21,17 @@ export default function useTTS(sentences) {
     ukMale: 'Google UK English Male'
   };
   */
-  const currentSentence = sentences[current];
-  const endTTS = () => {
-    listenContinuously();
-    setStop(true);
+ const endTTS = () => {
+   listenContinuously();
+   setStop(true);
   };
-
+  
+  
+  
+  const currentSentence = sentences[current];
   useEffect(() => {
-    setCurrent(0);
-  }, [sentences]);
-
-
+  setCurrent(0);
+}, [sentences]);
   useEffect(() => {
     //required speachSynthesis.speak() user-activation check
     if (stop === true) {
@@ -60,7 +60,7 @@ export default function useTTS(sentences) {
     return () => {
       window.speechSynthesis.cancel();
     };
-  }, [current, setCurrent, sentences]);
+  }, [current, sentences]);
 
   return currentSentence;
 

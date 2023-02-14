@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   height: 5em;
-  background-image: url('https://your-image-url.com/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }

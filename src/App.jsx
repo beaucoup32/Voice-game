@@ -151,6 +151,9 @@ export default function App() {
 
   // browser starts recording on load
   listenContinuously();
+  //
+  // const femaleVoice = window.speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Female')
+
   
 
   return (
@@ -176,7 +179,7 @@ export default function App() {
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} />}
+        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} setScenario={setScenario} />}
         {mode === WEEK_1B && (
           <Week1b
             playerName={player}

@@ -1,9 +1,15 @@
 html,
 #root,
 .App {
-  height: 100%;
+    margin-bottom: 1.75em;
   font-family: 'Open Sans', sans-serif;
   background-color: #333841;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .App-logo {
@@ -17,12 +23,6 @@ html,
   }
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
 
 .App-header {
   display: flex;
@@ -38,7 +38,7 @@ html,
 .App-body {
   background-color: #333841;
   height: 100%;
-  display: flex;
+ 
   justify-content: center;
   flex-grow: 2;
 }
@@ -117,3 +117,58 @@ h4 {
   margin-left: 1.5em;
   font-size: 1.25em;
 }
+
+.home-container {
+ 
+  justify-content: center;
+  align-items: center;
+
+}
+
+.masonry {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.home-figcaption {
+  font-size: 8em;
+  color: black;
+
+}
+
+.home-figure {
+  width: calc(50% - 20px);
+  margin: 10px;
+  text-align: center;
+}
+
+.home-img {
+  width: 100%;
+  height: auto;
+}
+
+.masonry figure {
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+
+.masonry img {
+  display: block;
+  max-width: 100%;
+}
+
+.masonry figcaption {
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+  
+}
+.App-title {
+  color: #944dff ;
+  }

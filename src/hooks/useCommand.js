@@ -74,17 +74,17 @@ export default function useCommand(props) {
       },
       isFuzzyMatch: true,
     },
-    // {
+    {
     // testing for week 4
-    //   command: ["week 4"],
-    //   callback: () => {
-    //     transition(WEEK_4);
-    //     setLives(3);
-    //     setPlayer("Donny");
-    //     setScenario("");
-    //   },
-    //   isFuzzyMatch: true,
-    // },
+      command: ["week 4"],
+      callback: () => {
+        transition(WEEK_4);
+        setLives(3);
+        setPlayer("Donny");
+        setScenario("");
+      },
+      isFuzzyMatch: true,
+    },
     // {
     //   // testing for week 5
     //   command: ["week 5"],
@@ -227,7 +227,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
+            // matchInterim: true,
           },
         ]);
         break;
@@ -383,15 +383,11 @@ export default function useCommand(props) {
               ]);
 
               transition(WEEK_1);
-
-              setTimeout(() => {
-                setNavText("WEEK 1: Wading into Lotide");
-                setResponse("");
-              }, 9000);
+              setNavText("WEEK 1: Wading into Lotide");
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
+            // matchInterim: true,
           },
           {
             command: [
@@ -694,7 +690,7 @@ export default function useCommand(props) {
                     setResponse("Heartbreaking defeat! 💔");
                     setLives(lives - 1);
                   }
-                }, 3000);
+                }, 7000);
                 setTimeout(() => {
                   setNavText("WEEK 2: Cats & ISS & API oh my!");
                   transition(WEEK_2);
@@ -787,9 +783,9 @@ export default function useCommand(props) {
                       transition(WEEK_1_S1);
                     }, 1);
                     setTimeout(() => {
-                      setResponse(
-                        "The Fn(Fungus) hit you with an arrow function => "
-                      );
+                      // setResponse(
+                      //   "The Fn(Fungus) hit you with an arrow function => "
+                      // );
                       setTimeout(() => {
                         if (big) {
                           setResponse("You shrink back down to regular size");
@@ -1217,10 +1213,6 @@ export default function useCommand(props) {
                   "Good thing you took that break and resolved the infinite loop.",
                   "You can finally continue your coding journey!",
                 ]);
-                transition(WEEK_1);
-                setTimeout(() => {
-                  transition(WEEK_1_S5);
-                }, 1);
                 setTimeout(() => {
                   setNavText("WEEK 1: Wading into Lotide");
                   transition(WEEK_1B);

@@ -110,13 +110,6 @@ export default function App() {
   // set gameOver message
   const [gameOverText, setGameOverText] = useState("");
 
-  // custom hook values ./hooks/useListen
-  // const { handleTTS, speaking } = useTTS(scenario);
-  // useTTS(response);
-  // useTTS(scenario);
-  // handleTTS(scenario);
-  // useDisplayTTS(scenario)
-
   const { commands, listenContinuously, transcript } =
     useCommand({
       mode,
@@ -162,7 +155,7 @@ export default function App() {
       </header>
       <main className="App-body">
         {mode === HOME && <HomePage />}
-        {mode === GAMESTART && <GameStart playerName={player} />}
+        {mode === GAMESTART && <GameStart playerName={player} scenario={scenario}/>}
         {mode === GAMEOVER && (
           <GameOver
             playerName={player}
@@ -170,7 +163,7 @@ export default function App() {
             text={gameOverText}
           />
         )}
-        {mode === CONFIRM_NAME && <ConfirmName playerName={player} />}
+        {mode === CONFIRM_NAME && <ConfirmName playerName={player} scenario={scenario} />}
         {mode === PREPWEEK && <PrepWeek />}
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}

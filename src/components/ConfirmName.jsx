@@ -1,15 +1,15 @@
+import useTTS from "../hooks/useTTS";
+
 const ConfirmName = (props) => {
   // set player name
-  const { playerName } = props;
+  const { scenario } = props;
 
-  // commands:
-  // yes/confirm - continue to prep week
-  // no/reset/clear - resets name -> transition to gamestart
+  const currentSentence = useTTS(scenario);
 
   return (
     <div className="container">
-      <h2>Is your name :</h2>
-      <h4>{playerName} ?</h4>
+      <h2>{currentSentence}</h2>
+      {/* <h4>Say yes to confirm your name as {playerName}</h4> */}
     </div>
   );
 };

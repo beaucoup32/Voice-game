@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 
 const PrepWeekS2 = (props) => {
   const { scenario } = props;

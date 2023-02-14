@@ -361,10 +361,10 @@ export default function useCommand(props) {
                 setScenario(
                   [
                     `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
-                    // "What's that smell you ask?",
-                    // "Well, you can only make it inside the Lighthouse during low-tide.",
-                    // "Please be careful as you trek into Lighthouse Labs",
-                    // "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+                    "What's that smell you ask?",
+                    "Well, you can only make it inside the Lighthouse during low-tide.",
+                    "Please be careful as you trek into Lighthouse Labs",
+                    "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
                     "Where would you like to go first?",
                   ]
                 );

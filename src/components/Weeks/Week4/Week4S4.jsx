@@ -14,9 +14,8 @@ const Week4S4 = (props) => {
 // const text = (
 //   <>
 //     <p className="typed">
-//       With very little time left, you decide to get creative and come up with
-//       a new plan to save Tweeter.
-//     </p>
+      // With very little time left, you decide to get creative and come up with
+      // a new plan to save Tweeter.
 //     <p className="typed">
 //       After days of planning, you settle on two options:
 //     </p>

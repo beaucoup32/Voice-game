@@ -1,6 +1,3 @@
-// import useDisplayTTS from "../../../hooks/useDisplayTTS";
-import { useEffect, useState } from "react";
-import useARHook from "../../../hooks/useARHook";
 import useTTS from "../../../hooks/useTTS";
 
 export default function Week1(props) {

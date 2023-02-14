@@ -1,11 +1,10 @@
-// import useDisplayTTS from "../../../hooks/useDisplayTTS";
 import { useEffect, useState } from "react";
 import useTTS from "../../../hooks/useTTS";
 
 export default function PrepWeek() {
   const [scenario, setScenario] = useState("");
 
-  /* useDisplay relays an array of sentences to useTTS & returns textOutput sentence being spoken */
+  /* useTTS relays an array of sentences to useTTS & returns textOutput sentence being spoken */
   const textOutput = useTTS([
     "Welcome to bootcamp!",
     "Here you will be put through an impossible set of scenarios to hone your coding skills to become an expert programmer",

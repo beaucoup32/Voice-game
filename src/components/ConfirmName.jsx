@@ -1,7 +1,7 @@
+import useTTS from "../hooks/useTTS";
+
 const ConfirmName = (props) => {
   // set player name
-  const { playerName, scenario } = props;
-
   const { scenario } = props;
 
   const currentSentence = useTTS(scenario);

@@ -1,5 +1,5 @@
 //import { useState, useEffect } from "react";
-import "./week3.css";
+// import "./week3.css";
 
 const Week32S = (props) => {
   const { scenario } = props;

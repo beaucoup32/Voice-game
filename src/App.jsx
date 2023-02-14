@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import useVisualMode from "./hooks/useVisualMode";
 import GameStart from "./components/GameStart";
@@ -39,38 +40,38 @@ import Week5S4 from "./components/Weeks/Week5/Week5S4";
 export default function App() {
   // modes to change layout
 
-  const HOME          = "HOME";
-  const GAMESTART     = "GAMESTART";
-  const GAMEOVER      = "GAME_OVER";
-  const CONFIRM_NAME  = "ConfirmName";
-  const PREPWEEK      = "PREP_WEEK";
-  const PREPWEEKS1    = "PREP_WEEK_S1";
-  const PREPWEEKS2    = "PREP_WEEK_S2";
-  const PREPWEEKS3    = "PREP_WEEK_S3";
-  const WEEK_1        = "WEEK_1";
-  const WEEK_1B       = "WEEK_1B";
-  const WEEK_1_S1     = "WEEK_1_S1";
-  const WEEK_1_S2     = "WEEK_1_S2";
-  const WEEK_1_S3     = "WEEK_1_S3";
-  const WEEK_1_S4     = "WEEK_1_S4";
-  const WEEK_1_S5     = "WEEK_1_S5";
-  const WEEK_2        = "WEEK_2";
-  const WEEK_2_S1     = "WEEK_2_S1";
-  const WEEK_2_S2     = "WEEK_2_S2";  
-  const WEEK_3        = "WEEK_3";
-  const WEEK_3_S1     = "WEEK_3_S1";
-  const WEEK_3_S2     = "WEEK_3_S2";
-  const WEEK_3_S3     = "WEEK_3_S3";
-  const WEEK_4        = "WEEK_4";
-  const WEEK_4_S1     = "WEEK_4_S1";
-  const WEEK_4_S2     = "WEEK_4_S2";
-  const WEEK_4_S3     = "WEEK_4_S3";
-  const WEEK_4_S4     = "WEEK_4_S4";
-  const WEEK_5        = "WEEK_5";
-  const WEEK_5_S1     = "WEEK_5_S1";
-  const WEEK_5_S2     = "WEEK_5_S2";
-  const WEEK_5_S3     = "WEEK_5_S3";
-  const WEEK_5_S4     = "WEEK_5_S4";
+  const HOME = "HOME";
+  const GAMESTART = "GAMESTART";
+  const GAMEOVER = "GAME_OVER";
+  const CONFIRM_NAME = "ConfirmName";
+  const PREPWEEK = "PREP_WEEK";
+  const PREPWEEKS1 = "PREP_WEEK_S1";
+  const PREPWEEKS2 = "PREP_WEEK_S2";
+  const PREPWEEKS3 = "PREP_WEEK_S3";
+  const WEEK_1 = "WEEK_1";
+  const WEEK_1B = "WEEK_1B";
+  const WEEK_1_S1 = "WEEK_1_S1";
+  const WEEK_1_S2 = "WEEK_1_S2";
+  const WEEK_1_S3 = "WEEK_1_S3";
+  const WEEK_1_S4 = "WEEK_1_S4";
+  const WEEK_1_S5 = "WEEK_1_S5";
+  const WEEK_2 = "WEEK_2";
+  const WEEK_2_S1 = "WEEK_2_S1";
+  const WEEK_2_S2 = "WEEK_2_S2";
+  const WEEK_3 = "WEEK_3";
+  const WEEK_3_S1 = "WEEK_3_S1";
+  const WEEK_3_S2 = "WEEK_3_S2";
+  const WEEK_3_S3 = "WEEK_3_S3";
+  const WEEK_4 = "WEEK_4";
+  const WEEK_4_S1 = "WEEK_4_S1";
+  const WEEK_4_S2 = "WEEK_4_S2";
+  const WEEK_4_S3 = "WEEK_4_S3";
+  const WEEK_4_S4 = "WEEK_4_S4";
+  const WEEK_5 = "WEEK_5";
+  const WEEK_5_S1 = "WEEK_5_S1";
+  const WEEK_5_S2 = "WEEK_5_S2";
+  const WEEK_5_S3 = "WEEK_5_S3";
+  const WEEK_5_S4 = "WEEK_5_S4";
 
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
@@ -148,47 +149,12 @@ export default function App() {
       <Navbar playerName={player} playerLives={lives} text={navText} />
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
-        <h1 className="App-title">Join the Fun-Filled Coding Game: Bootcamp Edition!</h1>
+        <h1 className="App-title">
+          Think you can make it all 6 weeks?
+        </h1>
       </header>
       <main className="App-body">
-        {mode === "HOME" && (
-          <div className="home-container">
-            <div className="masonry">
-              <figure className="home-figure">
-                <img
-                  src="https://st.depositphotos.com/1037238/4364/v/450/depositphotos_43641985-stock-illustration-computer-programmer-working-on-his.jpg"
-                  alt="Image 1"
-                  className="home-img"
-                />
-                <figcaption className="home-figcaption">Code Crusader Conquers the Keyboard with a Chuckle</figcaption>
-              </figure>
-              <figure className="home-figure">
-                <img
-                  src="https://st2.depositphotos.com/5313596/7758/v/600/depositphotos_77585368-stock-illustration-java-programmer-at-work.jpg"
-                  alt="Image 2"
-                  className="home-img"
-                />
-                <figcaption className="home-figcaption">Java Guru at Work</figcaption>
-              </figure>
-              <figure className="home-figure">
-                <img
-                  src="https://st.depositphotos.com/1429923/3996/v/600/depositphotos_39965389-stock-illustration-flat-vector-illustration-of-programmer.jpg"
-                  alt="Image 3"
-                  className="home-img"
-                />
-                <figcaption className="home-figcaption">Code Warrior Tackling Bugs with a Smile</figcaption>
-              </figure>
-              <figure className="home-figure">
-                <img
-                  src="https://miro.medium.com/max/1400/0*C-cPP9D2MIyeexAT.gif"
-                  alt="Image 4"
-                  className="home-img"
-                />
-                <figcaption className="home-figcaption">Programmers' Antidote to Stress: A Story of Hilarious Misadventures</figcaption>
-              </figure>
-            </div>
-          </div>
-        )}
+        {mode === HOME && <HomePage />}
         {mode === GAMESTART && <GameStart playerName={player} scenario={scenario}/>}
         {mode === GAMEOVER && (
           <GameOver
@@ -199,10 +165,10 @@ export default function App() {
         )}
         {mode === CONFIRM_NAME && <ConfirmName playerName={player} scenario={scenario} />}
         {mode === PREPWEEK && <PrepWeek />}
-        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
-        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
-        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} setScenario={setScenario} />}
+        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
+        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}
+        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} setScenario={setScenario}/>}
+        {mode === WEEK_1 && <Week1 playerName={player} />}
         {mode === WEEK_1B && (
           <Week1b
             playerName={player}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./week3.css";
+// import "./week3.css";
 
 const Week3 = (props) => {
   const WEEK_3_S1 = "WEEK_3_S1";
@@ -28,7 +28,7 @@ const Week3 = (props) => {
     }, 14000);
 
     setTimeout(() => {
-      setScenario("")
+      setScenario("");
       transition(WEEK_3_S1);
       setNavText("WEEK 3: SCENARIO 1");
     }, 18000);

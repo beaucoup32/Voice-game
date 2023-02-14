@@ -99,7 +99,7 @@ export default function useCommand(props) {
     },
     {
       // manually set lives for debugging
-      command: "set lives (to) :number",
+      command: "set lives to :number",
       callback: (number) => {
         if (!isNaN(number)) {
           setLives(number);
@@ -239,8 +239,7 @@ export default function useCommand(props) {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
               setResponse("That was hard to watch... 😬");
-              setScenario(
-                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
+              setScenario("Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
               );
 
               // current lives is 2

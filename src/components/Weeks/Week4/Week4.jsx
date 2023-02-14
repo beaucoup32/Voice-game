@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Week4.css";
+// import "./Week4.css";
 
 const Week4 = (props) => {
   const WEEK_4_S1 = "WEEK_4_S1";
@@ -29,9 +29,9 @@ const Week4 = (props) => {
     }, 14000);
 
     setTimeout(() => {
-      setScenario("")
+      setScenario("");
       transition(WEEK_4_S1);
-      setNavText("WEEK 4: SCENARIO 1")
+      setNavText("WEEK 4: SCENARIO 1");
     }, 18000);
   }, [playerName, transition, setNavText]);
 

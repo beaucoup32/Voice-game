@@ -1,38 +1,37 @@
-import { useState, useEffect } from "react";
+// import useDisplayTTS from "../../../hooks/useDisplayTTS";
+import { useEffect, useState } from "react";
+import useARHook from "../../../hooks/useARHook";
+import useTTS from "../../../hooks/useTTS";
 
 export default function Week1(props) {
-  const [scenario, setScenario] = useState(
-    `Congratulations ${props.playerName}! It looks like you've completed all your Prep Work.`
-  );
+  // const [output, setOutput] = useState("");
+  const { scenario } = props;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setScenario(
-        "What's that smell you ask? Well, you can only make it in the Lighthouse during low-tide."
-      );
-      setTimeout(() => {
-        setScenario("Please be careful as you trek into Lighthouse Labs");
-        setTimeout(() => {
-          setScenario(
-            "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches"
-          );
-          setTimeout(() => {
-            setScenario("Which way do you want to go?");
-          }, 9000);
-        }, 4500);
-      }, 4500);
-    }, 4500);
-  }, []);
+  const currentSentence = useTTS(scenario);
 
   return (
     <>
-      <h1>{props.scenario ? props.scenario : scenario}</h1>
-      <img src="images/lighthouse-zoom.gif" className="scene-gif"/>
+      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
+      <h1>{currentSentence}</h1>
     </>
   );
 }
 
-// SHOW: Lighthouse nearby across low water (with text overlay)
+// to be set at transition to component:
+
+//               setNavText("WEEK 1: Wading into Lotide");
+//               setScenario(
+//                 [ "initiating human voice",
+//                   `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
+//                   // "What's that smell you ask?",
+//                   // "Well, you can only make it inside the Lighthouse during low-tide.",
+//                   // "Please be careful as you trek into Lighthouse Labs",
+//                   // "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+//                   "Where would you like to go first?",
+//                 ]
+//               );
+//               setResponse("");
+//               transition(WEEK_1);
 
 /* Commands: 
     - Function / Fungus / Mushroom

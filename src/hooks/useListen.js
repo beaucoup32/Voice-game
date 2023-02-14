@@ -24,7 +24,7 @@ export default function useListen(commands) {
     // }
   }, [interimTranscript, finalTranscript, resetTranscript]);
 
-  
+
 
   // checks if browser supports speech recognition
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -34,6 +34,10 @@ export default function useListen(commands) {
     return null;
   }
 
+  const stopListening = () => {
+    SpeechRecognition.stopListening();
+  };
+
   const listenContinuously = () => {
     SpeechRecognition.startListening({
       continuous: true,
@@ -41,5 +45,5 @@ export default function useListen(commands) {
     });
   };
 
-  return { listenContinuously, transcript, resetTranscript, listening };
+  return { listenContinuously, transcript, resetTranscript, listening, stopListening };
 }

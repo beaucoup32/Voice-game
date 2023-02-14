@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import useDisplayTTS from "./useDisplayTTS";
 import useListen from "./useListen";
 
 
 export default function useCommand(props) {
-  
+
   const {
     mode,
     transition,
@@ -176,6 +177,7 @@ export default function useCommand(props) {
           {
             command: ["yes", "confirm", "yeah", "yep", "yes (it is)"],
             callback: () => {
+
               setResponse(`Welcome to hell ${player} 😈`);
               setNavText("PREP WEEK");
               transition(PREPWEEK);
@@ -354,10 +356,19 @@ export default function useCommand(props) {
               setResponse("Good luck! 😏");
 
               setTimeout(() => {
-                transition(WEEK_1);
                 setNavText("WEEK 1: Wading into Lotide");
-                setScenario("");
+                setScenario(
+                  [
+                    `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
+                    "What's that smell you ask?",
+                    "Well, you can only make it inside the Lighthouse during low-tide.",
+                    "Please be careful as you trek into Lighthouse Labs",
+                    "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+                    "Where would you like to go first?",
+                  ]
+                );
                 setResponse("");
+                transition(WEEK_1);
               }, 9000);
               resetTranscript();
             },
@@ -395,6 +406,22 @@ export default function useCommand(props) {
       case "WEEK_1B":
         setCommands([
           ...staticCommands,
+          {
+            command: ["where (can I)", "repeat", "options"],
+
+            callback: () => {
+              // setResponse("Spoiled with choice aren't we?");
+              setScenario(
+                ["Options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches"]
+              );
+              // after a delay, will continue on to next scenario
+              setTimeout(() => {
+                // setScenario();
+                setResponse("");
+              }, 5000);
+            },
+            isFuzzyMatch: true,
+          },
           {
             command: ["Function", "Fungus", "Mushroom(s)"],
 
@@ -515,7 +542,7 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["Lighthouse", "Entrance", "Test"],
+            command: ["(the) Lighthouse", "Entrance", "Test", "lighthouse (labs)"],
 
             callback: () => {
               setResponse("");
@@ -866,7 +893,7 @@ export default function useCommand(props) {
             command: ["Study", "(take) notes"],
 
             callback: () => {
-              
+
               setResponse("Index cards for Arrays? Nice.");
               setScenario(
                 "You whip out some Index cards and take an Array of notes. You learn you can push, pop, and even slice them"
@@ -955,8 +982,8 @@ export default function useCommand(props) {
               } else {
                 setScenario(
                   "You decide to leave. Good thing you took that break and resolved the infinite loop. You can finally continue your coding journey!"
-                  );
-                
+                );
+
                 setTimeout(() => {
                   setNavText("WEEK 1: Wading into Lotide");
                   transition(WEEK_1B);
@@ -964,7 +991,7 @@ export default function useCommand(props) {
                   setScenario("");
                 }, 10000);
               }
-                resetTranscript();
+              resetTranscript();
             },
             isFuzzyMatch: true,
           },
@@ -1469,7 +1496,7 @@ export default function useCommand(props) {
                   setScenario("");
                 }, 2000);
               } else {
-                setResponse("lucky lucky 🍀")
+                setResponse("lucky lucky 🍀");
                 setScenario(`Wow. You guessed it... ${password} was really the password.`);
 
                 setTimeout(() => {

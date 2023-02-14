@@ -1,5 +1,5 @@
 import "./PrepWeek.css";
-import useDisplayTTS from "../../../hooks/useDisplayTTS";
+import useDisplayTTS from "../../../hooks/useTTS";
 import { useEffect } from "react";
 
 const PrepWeekS1 = (props) => {
@@ -7,7 +7,7 @@ const PrepWeekS1 = (props) => {
 
   const challenge = "You breeze through the first 1/4 of the challenges, feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
 
-  const textOutput = useDisplayTTS([
+  const textOutput = useTTS([
     "You are one of the lucky few to get accepted into a prestigious coding  bootcamp, eager to learn new skills and launch your tech career.",
     "Every decision you make will determine your path and impact your success.",
     "It's Prep week and you are faced with your first challenge.",

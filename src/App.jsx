@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
@@ -7,7 +7,6 @@ import GameStart from "./components/GameStart";
 import GameOver from "./components/GameOver";
 import ConfirmName from "./components/ConfirmName";
 import Hint from "./components/Hint";
-import useTTS from "./hooks/useTTS";
 import useCommand from "./hooks/useCommand";
 import PrepWeek from "./components/Weeks/PrepWeek/PrepWeek";
 import PrepWeekS1 from "./components/Weeks/PrepWeek/PrepWeekS1";
@@ -116,36 +115,38 @@ export default function App() {
   // useTTS(response);
   // useTTS(scenario);
   // handleTTS(scenario);
+  // useDisplayTTS(scenario)
 
-  const { commands, listenContinuously, transcript } = useCommand({
-    mode,
-    transition,
-    setResponse,
-    // handleTTS,
-    setPlayer,
-    player,
-    setNavText,
-    setLives,
-    lives,
-    setScenario,
-    big,
-    setBig,
-    mushroom,
-    setMushroom,
-    f,
-    o,
-    c,
-    a,
-    l,
-    setF,
-    setO,
-    setC,
-    setA,
-    setL,
-    boolean,
-    setBoolean,
-    setGameOverText,
-  });
+  const { commands, listenContinuously, transcript } =
+    useCommand({
+      mode,
+      transition,
+      setResponse,
+      // handleTTS,
+      setPlayer,
+      player,
+      setNavText,
+      setLives,
+      lives,
+      setScenario,
+      big,
+      setBig,
+      mushroom,
+      setMushroom,
+      f,
+      o,
+      c,
+      a,
+      l,
+      setF,
+      setO,
+      setC,
+      setA,
+      setL,
+      boolean,
+      setBoolean,
+      setGameOverText,
+    });
 
   // browser starts recording on load
   listenContinuously();

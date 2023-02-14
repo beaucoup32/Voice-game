@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import useListen from './useListen';
 
-const femaleVoice = window.speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Female')
-
 export default function useTTS(sentences) {
+  const femaleVoice = window.speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Female')
   const { stopListening, listenContinuously } = useListen();
   const [current, setCurrent] = useState(0);
+  const [voice, setVoice] = useState(null);
   // const [isSpeaking, setIsSpeaking] = useState(true);
   // const [start, setStart] = useState(false);
   // const [end, setEnd] = useState(false);
@@ -41,6 +41,8 @@ export default function useTTS(sentences) {
 
     //Variable of one sentence from array
     const utterance = new SpeechSynthesisUtterance(currentSentence);
+
+
 
     //assigns voice
     utterance.voice = femaleVoice;

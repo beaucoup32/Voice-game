@@ -59,7 +59,7 @@ export default function useCommand(props) {
     {
       command: "Marco",
       callback: () => {
-        setResponse("Polo?");
+        setScenario("Polo?");
         // handleTTS();
         // transcript resets when command is triggered
         resetTranscript();
@@ -74,28 +74,28 @@ export default function useCommand(props) {
       },
       isFuzzyMatch: true,
     },
-    {
+    // {
       // testing for week 4
-      command: ["week 4"],
-      callback: () => {
-        transition(WEEK_4);
-        setLives(3);
-        setPlayer("Donny");
-        setScenario("");
-      },
-      isFuzzyMatch: true,
-    },
-    {
-      // testing for week 5
-      command: ["week 5"],
-      callback: () => {
-        transition(WEEK_5);
-        setLives(3);
-        setPlayer("Donny");
-        setScenario("");
-      },
-      isFuzzyMatch: true,
-    },
+    //   command: ["week 4"],
+    //   callback: () => {
+    //     transition(WEEK_4);
+    //     setLives(3);
+    //     setPlayer("Donny");
+    //     setScenario("");
+    //   },
+    //   isFuzzyMatch: true,
+    // },
+    // {
+    //   // testing for week 5
+    //   command: ["week 5"],
+    //   callback: () => {
+    //     transition(WEEK_5);
+    //     setLives(3);
+    //     setPlayer("Donny");
+    //     setScenario("");
+    //   },
+    //   isFuzzyMatch: true,
+    // },
     {
       // manually set lives for debugging
       command: "set lives to :number",
@@ -116,7 +116,7 @@ export default function useCommand(props) {
           {
             command: ["Start", "thought", "dot", "begin"],
             callback: () => {
-              setScenario(["Starting Adventure!", "It's time to Walk the Talk", "Please tell me your name?"]);
+              setScenario(["loading human voice", "Starting Adventure!", "It's time to Walk the Talk", "Please tell me your name?"]);
               setPlayer("");
               // handleTTS();
 
@@ -136,7 +136,7 @@ export default function useCommand(props) {
           {
             command: "(My name is) :name",
             callback: (name) => {
-              setScenario(`Did you say ${name}?`);
+              setScenario([`Did you say ${name}?`]);
               setPlayer(name);
               transition(ConfirmName);
               // transcript resets when command is triggered
@@ -166,6 +166,7 @@ export default function useCommand(props) {
             command: ["reset", "clear", "no"],
             callback: () => {
               setResponse("Lets try this again..");
+              setScenario(["My bad, What is your name?"])
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();

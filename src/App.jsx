@@ -40,6 +40,7 @@ import Week5S4 from "./components/Weeks/Week5/Week5S4";
 export default function App() {
   // modes to change layout
 
+
   const HOME = "HOME";
   const GAMESTART = "GAMESTART";
   const GAMEOVER = "GAME_OVER";

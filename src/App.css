@@ -1,7 +1,7 @@
 html,
 #root,
 .App {
-  margin-bottom: 1.75em;
+  height: 100%;
   font-family: 'Open Sans', sans-serif;
   background-color: #333841;
 }

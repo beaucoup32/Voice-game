@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./week3.css";
+// import "./week3.css";
 
 const Week3S1 = (props) => {
   const { scenario } = props;

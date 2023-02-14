@@ -1,6 +1,4 @@
-// import React from "react";
 import "./Navbar.css";
-import logo from "./logo.png";
 
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;

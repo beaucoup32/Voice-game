@@ -160,7 +160,7 @@ export default function App() {
         </h1>
       </header>
       <main className="App-body">
-        {mode === "HOME" && <HomePage />}
+        {mode === HOME && <HomePage />}
         {mode === GAMESTART && <GameStart playerName={player} />}
         {mode === GAMEOVER && (
           <GameOver
@@ -171,9 +171,9 @@ export default function App() {
         )}
         {mode === CONFIRM_NAME && <ConfirmName playerName={player} />}
         {mode === PREPWEEK && <PrepWeek />}
-        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
-        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
-        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
+        {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
+        {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}
+        {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} setScenario={setScenario}/>}
         {mode === WEEK_1 && <Week1 playerName={player} />}
         {mode === WEEK_1B && (
           <Week1b

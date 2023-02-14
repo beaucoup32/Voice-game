@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Week5.css";
+// import "./Week5.css";
 
 const Week5 = (props) => {
   const WEEK_5_S1 = "WEEK_5_S1";

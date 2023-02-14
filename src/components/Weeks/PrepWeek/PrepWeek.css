@@ -7,6 +7,9 @@
   background-color: #333841;
   color: turquoise;
   text-align-last: center;
+  gap: 1.25em;
+  flex-wrap: wrap;
+
 }
 
 .typed {
@@ -26,6 +29,7 @@
   animation: t 1s forwards, b 1s 0.8s forwards;
 }
 
+
 @keyframes t {
   from {
     background-size: 0 95%, 0 100%;
@@ -38,8 +42,8 @@
 }
 
 .scenario-text {
-  font-size: 2em;
-  width: 80%;
+  font-size: 2.5em;
+  width: 90%;
   color: magenta;
 }
 
@@ -58,7 +62,12 @@
   width: 100%;
 }
 
-.scene-gif {
-  height: 23em;
-  width: 20em;
+.scenario-gif {
+  height: 28em;
+  width: 28em;
+}
+
+.image-container {
+  display: flex;
+  justify-content: space-between;
 }

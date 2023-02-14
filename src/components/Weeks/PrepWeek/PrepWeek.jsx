@@ -7,7 +7,7 @@ export default function PrepWeek() {
   /* useDisplay relays an array of sentences to useTTS & returns textOutput sentence being spoken */
   const textOutput = useDisplayTTS([
     "Welcome to bootcamp!",
-    "Here you will be put through a impossible set of scenarios to hone your coding skills to become an expert programmer",
+    "Here you will be put through an impossible set of scenarios to hone your coding skills to become an expert programmer",
     "In this game, use your voice to determine your actions.",
     "If you get stuck, say 'Hint' to get some help. Are you ready?",
   ]);
@@ -19,9 +19,8 @@ export default function PrepWeek() {
 
   return (
     <div className="prep-week-container">
-      {/* replace with appropriate gif */}
       <p className="prep-week-intro">{scenario}</p>
-      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
+      
     </div>
   );
 }

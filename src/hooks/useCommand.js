@@ -185,31 +185,15 @@ export default function useCommand(props) {
             callback: () => {
               resetTranscript();
               setLives(3);
-              // setResponse(`Welcome to hell ${player} 😈`);
-              // setNavText("PREP WEEK");
-              // setScenario([
-              //   "Welcome to bootcamp!",
-              //   "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
-              //   "In this game, use your voice to determine your actions.",
-              //   "If you get stuck, say 'Hint' to get some help. Are you ready?",
-              // ]);
-              // transition(PREPWEEK);
-
-              setResponse("");
-
-              setNavText("WEEK 1: Wading into Lotide");
-              transition(WEEK_1);
+              setResponse(`Welcome to hell ${player} 😈`);
+              setNavText("PREP WEEK");
               setScenario([
-                `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
-                // "What's that smell you ask?",
-                // "Well, you can only make it inside the Lighthouse during low-tide.",
-                // "Please be careful as you trek into Lighthouse Labs",
-                // "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
-                "Where would you like to go first?",
+                "Welcome to bootcamp!",
+                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
+                "In this game, use your voice to determine your actions.",
+                "If you get stuck, say 'Hint' to get some help. Are you ready?",
               ]);
-
-
-
+              transition(PREPWEEK);
             },
             isFuzzyMatch: true,
             matchInterim: true,
@@ -894,7 +878,7 @@ export default function useCommand(props) {
                 "You might not have learned alot but you got through them.",
                 "However that wasn't the objective of studying these Objects"
               ]);
-              transition(WEEK_1B);
+              transition(WEEK_1);
               setTimeout(() => {
                 transition(WEEK_1_S2);
               }, 1);
@@ -924,7 +908,7 @@ export default function useCommand(props) {
                 "He offers you some eSTEAMed insights on how to crack open the solution.",
                 "Thankful and wiser, you continue your journey"
               ]);
-              transition(WEEK_1B);
+              transition(WEEK_1);
               setTimeout(() => {
                 transition(WEEK_1_S2);
               }, 1);
@@ -954,7 +938,7 @@ export default function useCommand(props) {
                   "Oops! It seems you are still super-sized from that mushroom earlier",
                   "you crush the Coral into sand beneth your feet as you walk away",
                 ]);
-                transition(WEEK_1B);
+                transition(WEEK_1);
                 setTimeout(() => {
                   transition(WEEK_1_S3);
                 }, 1);
@@ -993,7 +977,7 @@ export default function useCommand(props) {
                   "You shove your toes back into your now blood-red shoes.",
                   "You left before learning enough about Conditionals and Coral."
                 ]);
-                transition(WEEK_1B);
+                transition(WEEK_1);
                 setTimeout(() => {
                   transition(WEEK_1_S3);
                 }, 1);
@@ -1094,7 +1078,7 @@ export default function useCommand(props) {
                 "You whip out some Index cards and take an Array of notes.",
                 "You learn you can PUSH, POP, and even SLICE these things!"
               ]);
-              transition(WEEK_1B);
+              transition(WEEK_1);
               setTimeout(() => {
                 transition(WEEK_1_S4);
               }, 1);
@@ -1115,7 +1099,7 @@ export default function useCommand(props) {
                 "There must have been a no loitering sign, considering how fast you leave.",
                 "Anemones are fine and all but if you are going to spend any more time here, you want Arrays"
               ]);
-              transition(WEEK_1B);
+              transition(WEEK_1);
               setTimeout(() => {
                 transition(WEEK_1_S4);
               }, 1);

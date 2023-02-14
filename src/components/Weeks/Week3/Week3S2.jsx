@@ -1,5 +1,6 @@
-//import { useState, useEffect } from "react";
-// import "./week3.css";
+import { useState, useEffect } from "react";
+import "./week3.css";
+import useTTS from "../../../hooks/useTTS";
 
 const Week32S = (props) => {
   const { scenario } = props;

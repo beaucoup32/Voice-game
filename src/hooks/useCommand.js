@@ -117,7 +117,7 @@ export default function useCommand(props) {
           {
             command: ["Start", "thought", "dot", "begin"],
             callback: () => {
-              setResponse("Starting Adventure!");
+              setScenario(["Starting Adventure!", "It's time to Walk the Talk", "Please tell me your name?"]);
               setPlayer("");
               // handleTTS();
 
@@ -137,7 +137,7 @@ export default function useCommand(props) {
           {
             command: "(My name is) :name",
             callback: (name) => {
-              setResponse(`Did you say ${name}?`);
+              setScenario(`Did you say ${name}?`);
               setPlayer(name);
               transition(ConfirmName);
               // transcript resets when command is triggered

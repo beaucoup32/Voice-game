@@ -196,13 +196,16 @@ export default function App() {
         {mode === WEEK_1_S5 && (
           <Week1S5 playerName={player} scenario={scenario} />
         )}
-        {mode === WEEK_2 && <Week2 playerName={player} />}
-        {mode === WEEK_2_S1 && (
-          <Week2S1 playerName={player} scenario={scenario} />
+        
+        {mode === WEEK_2 && (
+          <Week2
+            transition={transition}
+            playerName={player}
+            setNavText={setNavText}
+          />
         )}
-        {mode === WEEK_2_S2 && (
-          <Week2S2 playerName={player} scenario={scenario} />
-        )}
+        {mode === WEEK_2_S1 && <Week2S1 scenario={scenario} />}
+        {mode === WEEK_2_S2 && <Week2S2 scenario={scenario} />}
 
         {mode === WEEK_3 && (
           <Week3

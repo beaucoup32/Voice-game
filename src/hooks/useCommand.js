@@ -42,6 +42,8 @@ export default function useCommand(props) {
 
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
+  const [async, setAsync] = useState(false);
+  const [lodash, setLodash] = useState(false);
 
   const staticCommands = [
     {
@@ -1041,6 +1043,96 @@ export default function useCommand(props) {
           },
         ]);
         break;
+      
+        case "WEEK_2":
+          setCommands([
+          ...staticCommands,
+          {
+          command: ["Asynchronous", "Async", "Awaiting"],
+          callback: () => {
+          setResponse("");
+          setScenario("");
+          if (async) {
+          setResponse("You already learned about Asynchronous programming, where to next? The moon?");
+          } else {
+          setAsync(true);
+          setScenario("");
+          setResponse("You start learning about Asynchronous programming. Get ready for some wild ride!");
+          setTimeout(() => {
+          setNavText("W2: Asynchronous Programming");
+          transition(WEEK_2_S1);
+          setScenario("");
+          setResponse("");
+          }, 3000);
+          }
+          resetTranscript();
+          },
+          isFuzzyMatch: true,
+          },
+          {
+          command: ["Lodash", "Clone", "Library"],
+          callback: () => {
+          setResponse("");
+          setScenario("");
+          if (lodash) {
+          setResponse("You already cloned the lodash library, what's next? Cloning the entire universe?");
+          } else {
+          setLodash(true);
+          setScenario("");
+          setResponse("You start cloning the lodash library. This is like making a copy of a copy, but in code form!");
+          setTimeout(() => {
+          setNavText("W2: Cloning the Lodash Library");
+          transition(WEEK_2_S2);
+          setScenario("");
+          setResponse("");
+          }, 3000);
+          }
+          resetTranscript();
+          },
+          isFuzzyMatch: true,
+          },
+          ]);
+          break;
+
+          case "WEEK_2_S1":
+          setCommands([
+          ...staticCommands,
+          {
+          command: ["Understand", "Got it", "comprehend"],
+          callback: () => {
+          setResponse("Awesome! You're now an expert in Asynchronous programming.");
+          setTimeout(() => {
+          setNavText("W2: Cloning the Lodash Library");
+          transition(WEEK_2_S2);
+          setScenario("");
+          setResponse("");
+          }, 3000);
+          resetTranscript();
+          },
+          isFuzzyMatch: true,
+          },
+          ]);
+          break;
+          case "WEEK_2_S2":
+          setCommands([
+          ...staticCommands,
+          {
+          command: ["Finished", "Complete", "Done"],
+          callback: () => {
+          setResponse("Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!");
+          setTimeout(() => {
+          setNavText("W2: Cloning the Lodash Library");
+          transition(WEEK_3);
+          setScenario("");
+          setResponse("");
+          }, 3000);
+          resetTranscript();
+          },
+          isFuzzyMatch: true,
+          },
+          ]);
+          break;
+
       case "WEEK_4":
         setCommands([
           {
@@ -1698,7 +1790,12 @@ const WEEK_1_S2 = "WEEK_1_S2";
 const WEEK_1_S3 = "WEEK_1_S3";
 const WEEK_1_S4 = "WEEK_1_S4";
 const WEEK_1_S5 = "WEEK_1_S5";
+
 const WEEK_2 = "WEEK_2";
+const WEEK_2_S1 = "WEEK_2_S1";
+const WEEK_2_S2 = "WEEK_2_S2";
+
+const WEEK_3 = "WEEK_3";
 
 const WEEK_4 = "WEEK_4";
 const WEEK_4_S1 = "WEEK_4_S1";

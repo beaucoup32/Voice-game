@@ -1,15 +1,16 @@
+import "./Week1.css";
 import useTTS from "../../../hooks/useTTS";
 
+
 export default function Week1(props) {
-  // const [output, setOutput] = useState("");
   const { scenario } = props;
 
   const currentSentence = useTTS(scenario);
 
   return (
     <>
-      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif" />
-      <h1>{currentSentence}</h1>
+      <h1>{currentSentence}</h1> 
+      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif lighthouse" />
     </>
   );
 }

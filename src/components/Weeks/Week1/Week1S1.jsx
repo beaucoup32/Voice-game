@@ -1,42 +1,16 @@
-import { useState, useEffect, useMemo } from "react";
+import "./Week1.css";
+import useTTS from "../../../hooks/useTTS";
 
 export default function Week1S1(props) {
-  const [scenario, setScenario] = useState("");
-  const [index, setIndex] = useState(0);
+  const { scenario, response } = props;
 
-
-  const welcome = useMemo(
-    () => [
-      "You make your way over to a patch of Mushrooms and sit down atop them like the Cheshire Cat",
-      "You get up close and study how they Function",
-      "You study until you can barely Function",
-      "Now let's have some fun, guy!",
-      "What do you want to do next?"      
-    ],
-    []
-  );
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => {
-        if (prev === welcome.length - 1) {
-          clearInterval(timer);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 4500);
-    return () => clearInterval(timer);
-  }, [setIndex, welcome.length]);
-
-  useEffect(() => {
-    setScenario(welcome[index]);
-  }, [index, welcome, setScenario]);
-
+  const currentSentence = useTTS(scenario);
+  const mushroom = "You grab a tasty looking 🍄"
   return (
     <>
-      <h1>{props.scenario ? props.scenario : scenario}</h1>
-      <img src="images/mushroom-patch.gif" className="scene-gif"/>
+    <h1>{currentSentence}</h1>
+      {response !== mushroom && (<img src="images/mushroom-patch.gif" className="scene-gif mushroom" />)}
+      {response === mushroom && (<img src="images/holding-mushroom.gif" alt="hold-mush-gif" className="scene-gif hold-mush" />)}
     </>
   );
 }

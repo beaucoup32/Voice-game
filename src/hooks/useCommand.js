@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Week1S3 from "../components/Weeks/Week1/Week1S3";
 import useListen from "./useListen";
 
 export default function useCommand(props) {
@@ -59,7 +60,7 @@ export default function useCommand(props) {
     {
       command: "Marco",
       callback: () => {
-        setScenario("Polo?");
+        setScenario(["Polo?"]);
         // handleTTS();
         // transcript resets when command is triggered
         resetTranscript();
@@ -75,7 +76,7 @@ export default function useCommand(props) {
       isFuzzyMatch: true,
     },
     // {
-      // testing for week 4
+    // testing for week 4
     //   command: ["week 4"],
     //   callback: () => {
     //     transition(WEEK_4);
@@ -141,8 +142,8 @@ export default function useCommand(props) {
           {
             command: "(My name is) :name",
             callback: (name) => {
-              setScenario([`Did you say ${name}?`]);
               setPlayer(name);
+              setScenario([`Did you say ${name}?`]);
               transition(ConfirmName);
               // transcript resets when command is triggered
               resetTranscript();
@@ -171,7 +172,7 @@ export default function useCommand(props) {
             command: ["reset", "clear", "no"],
             callback: () => {
               setResponse("Lets try this again..");
-              setScenario(["My bad, What is your name?"])
+              setScenario(["My bad, What is your name?"]);
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();
@@ -184,15 +185,30 @@ export default function useCommand(props) {
             callback: () => {
               resetTranscript();
               setLives(3);
-              setResponse(`Welcome to hell ${player} 😈`);
-              setNavText("PREP WEEK");
+              // setResponse(`Welcome to hell ${player} 😈`);
+              // setNavText("PREP WEEK");
+              // setScenario([
+              //   "Welcome to bootcamp!",
+              //   "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
+              //   "In this game, use your voice to determine your actions.",
+              //   "If you get stuck, say 'Hint' to get some help. Are you ready?",
+              // ]);
+              // transition(PREPWEEK);
+
+              setResponse("");
+
+              setNavText("WEEK 1: Wading into Lotide");
+              transition(WEEK_1);
               setScenario([
-                "Welcome to bootcamp!",
-                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
-                "In this game, use your voice to determine your actions.",
-                "If you get stuck, say 'Hint' to get some help. Are you ready?",
+                `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
+                // "What's that smell you ask?",
+                // "Well, you can only make it inside the Lighthouse during low-tide.",
+                // "Please be careful as you trek into Lighthouse Labs",
+                // "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+                "Where would you like to go first?",
               ]);
-              transition(PREPWEEK);
+
+
 
             },
             isFuzzyMatch: true,
@@ -216,14 +232,14 @@ export default function useCommand(props) {
             command: ["yes", "yeah", "yep", "skip"],
             callback: () => {
               setNavText("PREP WEEK: SCENARIO 1");
-              setResponse("");
+              // setResponse("");
               setScenario([
-                "Every decision you make will determine your path and impact your success.", 
-                        "It's Prep week and you are faced with your first challenge.",
-                        "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
-                        "You breeze through the first 1/4 of the challenges.",
-                        "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
-              ])
+                "Every decision you make will determine your path and impact your success.",
+                "It's Prep week and you are faced with your first challenge.",
+                "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
+                "You breeze through the first 1/4 of the challenges.",
+                "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
+              ]);
               transition(PREPWEEKS1);
               resetTranscript();
             },
@@ -255,8 +271,8 @@ export default function useCommand(props) {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
               setResponse("That was hard to watch... 😬");
-              setScenario(
-                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
+              setScenario([
+                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"]
               );
 
               // current lives is 2
@@ -266,7 +282,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("PREP WEEK: SCENARIO 2");
                 transition(PREPWEEKS2);
-                setScenario("");
+                setScenario([""]);
               }, 7000);
               resetTranscript();
             },
@@ -279,8 +295,8 @@ export default function useCommand(props) {
           {
             command: ["(ask for) help", "ask a *"],
             callback: () => {
-              setScenario(
-                "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!"
+              setScenario([
+                "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!"]
               );
 
               setResponse("Good call 👍");
@@ -289,7 +305,7 @@ export default function useCommand(props) {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
                 setResponse("");
-                setScenario("");
+                setScenario([""]);
               }, 7000);
               resetTranscript();
             },
@@ -298,8 +314,8 @@ export default function useCommand(props) {
           {
             command: ["google", "* online"],
             callback: () => {
-              setScenario(
-                "After searching online for answers you come across a helpful video tutorial. You finaly figure where your bug was and fix that pesky function!"
+              setScenario([
+                "After searching online for answers you come across a helpful video tutorial. You finaly figure where your bug was and fix that pesky function!"]
               );
 
               setResponse("Thank god for Google search 😅");
@@ -307,7 +323,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("");
+                setScenario([""]);
                 setResponse("");
               }, 7000);
               resetTranscript();
@@ -317,9 +333,9 @@ export default function useCommand(props) {
           {
             command: ["continue", "press on", "keep going"],
             callback: () => {
-              setScenario(
-                "Hours pass and its late. Very late. At 2 AM you finaly figure where your bug was and fix that pesky function... But at what cost?"
-              );
+              // setScenario(
+              //   "Hours pass and its late. Very late. At 2 AM you finaly figure where your bug was and fix that pesky function... But at what cost?"
+              // );
 
               setResponse("Maybe you should've reached out for help 🤷");
 
@@ -330,7 +346,7 @@ export default function useCommand(props) {
                 transition(PREPWEEKS3);
 
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("");
+                // setScenario("");
                 setResponse("");
               }, 7000);
               resetTranscript();
@@ -341,9 +357,9 @@ export default function useCommand(props) {
           {
             command: ["give up"],
             callback: () => {
-              setScenario(
-                "You decide this bootcamp is too difficult for you and walk away from your laptop in shame..."
-              );
+              // setScenario(
+              //   "You decide this bootcamp is too difficult for you and walk away from your laptop in shame..."
+              // );
 
               setResponse("Well... coding isnt for everyone");
 
@@ -366,25 +382,25 @@ export default function useCommand(props) {
           {
             command: ["continue", "yes", "keep going"],
             callback: () => {
-              setScenario(
-                "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week"
-              );
+              // setScenario(
+              //   "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week"
+              // );
 
               setResponse("Good luck! 😏");
 
-              setTimeout(() => {
-                setNavText("WEEK 1: Wading into Lotide");
-                setScenario([
-                  `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
-                  "What's that smell you ask?",
-                  "Well, you can only make it inside the Lighthouse during low-tide.",
-                  "Please be careful as you trek into Lighthouse Labs",
-                  "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
-                  "Where would you like to go first?",
-                ]);
-                setResponse("");
-                transition(WEEK_1);
-              }, 9000);
+              // setTimeout(() => {
+              setNavText("WEEK 1: Wading into Lotide");
+              setScenario([
+                `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
+                "What's that smell you ask?",
+                "Well, you can only make it inside the Lighthouse during low-tide.",
+                "Please be careful as you trek into Lighthouse Labs",
+                "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+                "Where would you like to go first?",
+              ]);
+              setResponse("");
+              transition(WEEK_1);
+              // }, 9000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -400,7 +416,9 @@ export default function useCommand(props) {
             ],
             callback: () => {
               setScenario(
-                "Fearing you may not be cut out to be a developer you decide to opt out and restock on your precious coffee beans. Also you slip on a banana peel and die"
+                [
+                  "Fearing you may not be cut out to be a developer you decide to opt out and restock on your precious coffee beans. Also you slip on a banana peel and die"
+                ]
               );
               setResponse("Had a feeling you'd say that 🥱");
 
@@ -420,41 +438,46 @@ export default function useCommand(props) {
       case "WEEK_1":
       case "WEEK_1B":
         setCommands([
-          ...staticCommands,
           {
             command: ["where (can I)", "repeat", "options"],
-
             callback: () => {
-              // setResponse("Spoiled with choice aren't we?");
-              setScenario([
-                "Options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
-              ]);
-              // after a delay, will continue on to next scenario
+              transition(WEEK_1B);
               setTimeout(() => {
-                // setScenario();
-                setResponse("");
-              }, 5000);
+                transition(WEEK_1);
+              }, 1);
+              setScenario([
+                "Your options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
+              ]);
+              resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
           {
             command: ["Function", "Fungus", "Mushroom(s)"],
 
             callback: () => {
               if (f) {
-                setResponse(
-                  "You already learned about Functions, Where to now?"
+                setResponse("You already learned about Functions, Where to now?");
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
+                setScenario(
+                  ["You already learned about Functions, Where to now?"]
                 );
               } else {
                 setF(true);
-                setScenario("");
                 setResponse("You mosey over to the Mushrooms");
-                setTimeout(() => {
-                  setNavText("W1: Fun Fun Fn(Fungus)");
-                  transition(WEEK_1_S1);
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
+                setScenario(["You mosey over to the Mushrooms",
+                  "You find a lovely patch of Fungi and sit down atop them like the Cheshire Cat",
+                  "You get up close and study how they Function",
+                  "You study until YOU can barely Function",
+                  "Now let's have some fun, guy!",
+                  "What do you want to do next?"
+                ]);
+                setNavText("W1: Fun Fun Fn(Fungus)");
+                transition(WEEK_1_S1);
               }
 
               resetTranscript();
@@ -467,16 +490,26 @@ export default function useCommand(props) {
             callback: () => {
               if (o) {
                 setResponse("You already learned about Objects, Where to now?");
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
+                setScenario(["You already learned about Objects, Where to now?"]);
               } else {
                 setO(true);
-                setScenario("");
                 setResponse("You saunter slowly to see some shellfish");
                 setTimeout(() => {
                   transition(WEEK_1_S2);
                   setNavText("W1: { Objective: Oysters }");
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
+                  setScenario([
+                    "You saunter slowly to see some shellfish",
+                    "You look at the Objects around you and scratch your head",
+                    "You vaguely recall Objects from your prep work studying",
+                    "However something smells fishy.... these Objects are actually Oysters!",
+                    "Unfortunately you find these Objects are a tough shell to crack",
+                    "You have been hammering away at them for hours. What do you want to do now?"
+                  ]);
+                }, 1000);
               }
               resetTranscript();
             },
@@ -487,45 +520,56 @@ export default function useCommand(props) {
 
             callback: () => {
               if (c) {
-                setResponse(
-                  "You already learned about Conditionals, Where to now?"
-                );
+                setResponse("You already learned about Conditionals, Where to now?");
+                setScenario(["You already learned about  Conditionals, Where to now?"]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
               } else {
                 setC(true);
-                setScenario("");
                 setResponse("You cruise to the cool colored Coral");
                 setTimeout(() => {
-                  setNavText("W1: If (Condition) then Coral");
                   transition(WEEK_1_S3);
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
+                  setNavText("W1: If (Condition) then Coral");
+                  setScenario([
+                    "You cruise to the cool colored Coral",
+                    "You stare at the beautiful Coral in front of you and wonder...",
+                    "Why are these called Conditional Coral? How did you get here?",
+                    "Hmm, Was it the command you just gave?",
+                    "If (conditional === Coral) { you arrive at coral }",
+                    "You pondered this as you take off your shoes.",
+                    "Maybe you think better without shoes on 🤷‍♂️? What do you do next?"
+                  ]);
+                }, 1000);
               }
               resetTranscript();
             },
             isFuzzyMatch: true,
           },
           {
-            command: [
-              "Array (of Anemones)",
-              "Anemone",
-              "An Enemy",
-              "Anemones",
-              "An Enemies",
-            ],
+            command: ["Array (of Anemones)", "Anemone", "An Enemy", "Anemones", "An Enemies"],
 
             callback: () => {
               if (a) {
                 setResponse("You already learned about Arrays, Where to now?");
+                setScenario(["You already learned about  Arrays, Where to now?"]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
               } else {
                 setA(true);
-                setScenario("");
                 setResponse("You approach an Array of Anemones");
+                setScenario([
+                  "You approach the Anenomes with caution as you don't want to make any enemies.",
+                  "You sneak to not Arrays their awareness.",
+                  "You peer under the pier they reside in and .find them",
+                  "They are in some .sort of order [0, 1, 2, 3 ]. What do you want to do next?"
+                ]);
                 setTimeout(() => {
                   setNavText("W1: Array = [ A, n, e, m, o, n, e, s ] ");
                   transition(WEEK_1_S4);
-                  setScenario("");
-                  setResponse("");
                 }, 3000);
               }
 
@@ -539,43 +583,62 @@ export default function useCommand(props) {
             callback: () => {
               if (l) {
                 setResponse("You already learned about Loops, Where to now?");
+                setScenario(["You already learned about  Loops, Where to now?"]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
               } else {
                 setL(true);
-                setScenario("");
+
                 setResponse(
                   "You'd like to linger no longer, so let's look at lots of Looping Leeches"
                 );
-                setTimeout(() => {
-                  setNavText("W1: for (Leech of Leeches)");
-                  transition(WEEK_1_S5);
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
+                setScenario([
+                  "You'd like to linger no longer, so let's look at lots of Looping Leeches",
+                  "You wade into some standing water. Look down and you see your legs covered in Leeches!",
+                  "You run out of the river like a pheonix!",
+                  "The Leeches break out in song. 🎵 Oh won't you stand by me...",
+                  "Shocked, you find yourself standing in some wading water. Look down and see your legs covered in Leeches!",
+                  "You want to run again, but keep your cool and realize you are caught in a Loop.",
+                  "Ok Corey Feldman, what will you Do-While you are here?"
+                ]);
+
+                setNavText("W1: for (Leech of Leeches)");
+                transition(WEEK_1_S5);
+
               }
               resetTranscript();
             },
             isFuzzyMatch: true,
           },
           {
-            command: [
-              "(the) Lighthouse",
-              "Entrance",
-              "Test",
-              "lighthouse (labs)",
-            ],
+            command: ["(the) Lighthouse", "Entrance", "Test", "lighthouse (labs)"],
 
             callback: () => {
-              setResponse("");
-              setScenario("");
               if (!f && !o && !c && !a && !l) {
                 setResponse(
                   `Silly ${player}, you can't just warp there through a pipe like some video game.`
                 );
+
+                setScenario(["Nice try pal!",
+                  `Silly ${player}, you can't just warp there through a pipe like some video game.`,
+                  "How about you explore the area first?",
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
               } else {
                 setResponse("Pop Quiz Hotshot!");
-                setScenario(
+                setScenario([
+                  "Pop Quiz Hotshot!",
                   "To progress further in Lighthouse Labs you must pass your Week 1 test!"
-                );
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1);
+                }, 1);
                 let score = 0;
                 if (f) {
                   score += 20;
@@ -594,24 +657,37 @@ export default function useCommand(props) {
                 }
                 setTimeout(() => {
                   if (score === 100) {
-                    setScenario(
-                      `Check out the big brain on ${player}! You got 100%. You must have studied very hard. You've earned an extra life for fully understanding our FOCAL points`
-                    );
+                    setScenario([
+                      `Check out the big brain on ${player}! You got 100%.`,
+                      "You must have studied very hard.",
+                      "You've earned an extra life for fully understanding our FOCAL points!"
+                    ]);
+                    transition(WEEK_1B);
+                    setTimeout(() => {
+                      transition(WEEK_1);
+                    }, 1);
                     setResponse(
                       "You earn a gold star! ⭐ (And an extra life 💖)"
                     );
                     setLives(lives + 1);
                   } else {
-                    setScenario(
-                      `Ooh tough break ${player}! You got ${score} out of 100. You needed 90% to pass. You are going to have to study extra hard over the weekends to get caught up. Not off to a great start, better try harder in Week 2!`
-                    );
+                    setScenario([
+                      `Ooh tough break ${player}! You got ${score} out of 100.`,
+                      "You needed 90% to pass.",
+                      "You are going to have to study extra hard over the weekends to get caught up.",
+                      "Not off to a great start, better try harder in Week 2!"
+                    ]);
+                    transition(WEEK_1B);
+                    setTimeout(() => {
+                      transition(WEEK_1);
+                    }, 1);
+                    setResponse("Heartbreaking defeat! 💔");
+                    setLives(lives - 1);
                   }
                 }, 3000);
                 setTimeout(() => {
                   setNavText("WEEK 2: Cats & ISS & API oh my!");
                   transition(WEEK_2);
-                  setScenario("");
-                  setResponse("");
                 }, 10000);
               }
               resetTranscript();
@@ -622,8 +698,9 @@ export default function useCommand(props) {
             command: ["home", "bed", "back"],
             callback: () => {
               setScenario(
-                "Fearing another step forward you choose to take a step back. The door hits you on the way out."
-              );
+                [
+                  "Fearing another step forward you choose to take a step back. The door hits you on the way out."
+                ]);
               setResponse("Wow so much self doubt. Bye I guess 👋");
 
               setLives(0);
@@ -642,70 +719,100 @@ export default function useCommand(props) {
       case "WEEK_1_S1":
         setCommands([
           {
-            command: ["eat", "taste", " bite"],
+            command: ["eat (a mushroom)", "taste", "(take a) bite"],
 
             callback: () => {
-              setResponse("You pop a tasty looking 🍄 into your mouth");
-              setScenario("As you chew you feel a weird tingling sensation");
+              setResponse("You grab a tasty looking 🍄");
+              setScenario([
+                "You don't stop to think what this is growing in",
+                "You pop a tasty looking mushroom into your mouth",
+                "As you chew you feel a weird tingling sensation",
+              ]);
+              transition(WEEK_1B);
               setTimeout(() => {
+                transition(WEEK_1_S1);
+              }, 1);
+              setTimeout(() => {
+
                 const mushrooms = ["1up", "big", "poison"];
                 const rngMush = mushrooms[Math.floor(Math.random() * 3)];
                 switch (rngMush) {
                   case "1up":
-                    setScenario(
-                      `Wow ${player}! That's what you call gamer accumen!`
-                    );
-                    setResponse("You found a secret 1up!💖");
-                    setLives(lives + 1);
+                    setScenario([
+                      `Wow ${player}! That's what I call gamer accumen!`,
+                      "You found a secret 1up!💖",
+                    ]);
+                    transition(WEEK_1B);
+                    setTimeout(() => {
+                      transition(WEEK_1_S1);
+                    }, 1);
+                    setTimeout(() => {
+                      setResponse("You found a secret 1up!💖");
+                      setLives(lives + 1);
+                    }, 6000);
                     break;
                   case "big":
-                    setScenario(
-                      "You found a Super Mushroom! You quickly double in size"
-                    );
+                    setScenario([
+                      "You found a Super Mushroom!",
+                      "I guess it just makes you feel bigger",
+                      `It's a-you, Super ${player}!`,
+                    ]);
+                    transition(WEEK_1B);
+                    setTimeout(() => {
+                      transition(WEEK_1_S1);
+                    }, 1);
+
                     setResponse(`It's a-you, Super ${player}!`);
                     setBig(true);
+
                     break;
                   case "poison":
-                    setScenario(
-                      "A few minutes pass when your tongue goes num and your stomach begins to cramp up"
-                    );
-
+                    setScenario([
+                      "A few minutes pass when your tongue goes num and your stomach begins to cramp up",
+                      "This particular mushroom is not magically delicious",
+                      "it's magically DEADLY! ☠",
+                      "The Fn(Fungus) hit you with an arrow function => ",
+                      "Oh no! You can't handle *this*!",
+                    ]);
+                    transition(WEEK_1B);
                     setTimeout(() => {
-                      setScenario(
-                        "This particular mushroom is not magically delicious"
-                      );
+                      transition(WEEK_1_S1);
+                    }, 1);
+                    setTimeout(() => {
+                      setResponse("The Fn(Fungus) hit you with an arrow function => ");
                       setTimeout(() => {
-                        setResponse("it's magically DEADLY! ☠");
-                        setTimeout(() => {
-                          setScenario(
-                            "The Fn(Fungus) hit you with an arrow function => "
+                        if (big) {
+                          setResponse(
+                            "You shrink back down to regular size"
                           );
-                          setResponse("Oh no! You can't handle *this*!");
+                          setBig(false);
+                        } else {
+                          setResponse("You lost a life! 💔");
+                          setLives(lives - 1);
+                          transition(WEEK_1B);
                           setTimeout(() => {
-                            if (big) {
-                              setResponse(
-                                "You shrink back down to regular size"
-                              );
-                              setBig(false);
-                            } else {
-                              setResponse("You lost a life! 💔");
-                              setLives(lives - 1);
-                              if (lives === 0) {
-                                setScenario(
-                                  "Many have died to mushrooms, you were just the Last of Us😏"
-                                );
-                              }
-                            }
-                          }, 3000);
-                        }, 3000);
-                      }, 3000);
-                    }, 3000);
+                            transition(WEEK_1_S1);
+                          }, 1);
+                          if (lives === 0) {
+                            setScenario(
+                              ["Many have died to mushrooms, you were just the Last of Us"]
+                            );
+                            transition(GAMEOVER);
+                            setGameOverText(
+                              "Looks like you ran out of lives. Better luck next time."
+                            );
+
+                          }
+                        }
+                      }, 6000);
+                    }, 6000);
+
                     break;
                   default:
                 }
-              }, 5000);
+              }, 12000);
               setResponse("");
-              setScenario("");
+
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -715,26 +822,31 @@ export default function useCommand(props) {
 
             callback: () => {
               if (!mushroom) {
-                setScenario("");
                 setResponse(
                   "Sure, why not. Mushroom foraging is legal, right?"
                 );
-                setScenario(
-                  "You decide to put a mushroom in your pocket for later"
-                );
+                setScenario([
+                  "You decide to put a mushroom in your pocket for later",
+                ]);
                 setMushroom(true);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S1);
+                }, 1);
               } else {
                 setResponse("Calm down greedy! You already have one.");
-                setScenario(
-                  "You overestimate your ability to carry mushrooms. You leave the rest of the mushrooms on the ground so others can have some too"
-                );
-                setMushroom(true);
+                setScenario([
+                  "You overestimate your ability to carry mushrooms.",
+                  "You leave the rest of the mushrooms so others can have some too",
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S1);
+                }, 1);
               }
-              // after a delay, will continue on to next scenario
-              setTimeout(() => {
-                setScenario("");
-                setResponse("");
-              }, 5000);
+              // setTimeout(() => {
+              //   setResponse("");
+              // }, 5000);
             },
             isFuzzyMatch: true,
           },
@@ -746,18 +858,23 @@ export default function useCommand(props) {
                 setResponse(
                   "You pounce to your feet, towering over the Functional Fungus"
                 );
-                setScenario(
+                setScenario([
+                  "You pounce to your feet, towering over the Functional Fungus",
                   "You crushed the entire room into mush with your giant feet."
-                );
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S1);
+                }, 1);
               } else {
                 setResponse("You rise to your feet to flee these fungi");
               }
               setTimeout(() => {
+                setResponse("Welcome back. Where to next?");
                 setNavText("WEEK 1: Wading into Lotide");
-                setResponse("");
-                setScenario("");
+                setScenario(["Welcome back. Where to next?"]);
                 transition(WEEK_1B);
-              }, 7000);
+              }, 5000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -772,19 +889,25 @@ export default function useCommand(props) {
 
             callback: () => {
               setResponse("Alright, stubborn brute force it is");
-              setScenario(
-                "You grab a bigger hammer, and smash apart all the Oysters. You might not have learned alot but you got through them. However that wasn't the objective of studying these Objects"
-              );
+              setScenario([
+                "You grab a bigger hammer, and smash apart all the Oysters.",
+                "You might not have learned alot but you got through them.",
+                "However that wasn't the objective of studying these Objects"
+              ]);
+              transition(WEEK_1B);
+              setTimeout(() => {
+                transition(WEEK_1_S2);
+              }, 1);
               setTimeout(() => {
                 setResponse("You lost a life! 💔");
                 setLives(lives - 1);
-              }, 4000);
+              }, 6000);
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
-                setResponse("");
-                setScenario("");
+                setResponse("Welcome back. Where to next?");
+                setScenario(["Welcome back. Where to next?"]);                
                 transition(WEEK_1B);
-              }, 10000);
+              }, 8000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -794,15 +917,21 @@ export default function useCommand(props) {
 
             callback: () => {
               setResponse("You've gained a pearl of wisdom! 🦪");
-              setScenario(
-                "You decide to make an Assistance Request and you are greeted by a mentor named Walrus. He reviews your work and notices the hammer in your carpenter like hands. He offers you some eSTEAMed insights on how to crack open the solution. Thankful and wiser, you continue your journey"
-              );
-
+              setScenario([
+                "You decide to make an Assistance Request",
+                "You are greeted by a mentor named Walrus.",
+                "He reviews your work and notices the hammer in your carpenter like hands.",
+                "He offers you some eSTEAMed insights on how to crack open the solution.",
+                "Thankful and wiser, you continue your journey"
+              ]);
+              transition(WEEK_1B);
+              setTimeout(() => {
+                transition(WEEK_1_S2);
+              }, 1);
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
-                setScenario("");
-                setResponse("");
+                setResponse("Welcome back. Where to next?");
               }, 10000);
               resetTranscript();
             },
@@ -820,19 +949,31 @@ export default function useCommand(props) {
               setResponse("You can't be de-FEET-ed now!");
               setBoolean(true);
               if (big) {
-                setScenario(
-                  "You throw on your shoes and take a step... CRUNCH!!! Oops! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet as you walk away"
-                );
+                setScenario([
+                  "You throw on your shoes and take a step... CRUNCH!!",
+                  "Oops! It seems you are still super-sized from that mushroom earlier",
+                  "you crush the Coral into sand beneth your feet as you walk away",
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
                 setTimeout(() => {
                   setNavText("WEEK 1: Wading into Lotide");
-                  setResponse("");
-                  setScenario("");
+                  setResponse("Welcome back. Where to next?");
                   transition(WEEK_1B);
+                  setBoolean(false);
                 }, 8000);
               } else {
-                setScenario(
-                  "You put your shoes back on before doing anything else because you realize the Condition your feet would be in if you didn't. Now you can walk around the Coral with your feet in-tact"
-                );
+                setScenario([
+                  "You put your shoes back on before doing anything else",
+                  "You must realize the Condition your feet would be in if you didn't.",
+                  "Now you can walk around the Coral with your feet in-tact"
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
               }
 
               resetTranscript();
@@ -845,23 +986,37 @@ export default function useCommand(props) {
             callback: () => {
               if (!boolean) {
                 setResponse("Oh no! your feet!! 👣");
-                setScenario(
-                  "Eager to return on your quest to be the best programmer, you left before learning enough about Conditionals and Coral. You severly cut your feet trying to leave without your shoes. You shove your toes back into your now blood-red shoes."
-                );
+                setScenario([
+                  "Eager to return on your quest to be the best programmer, you start to leave",
+                  "Oh no! Your feet!!",
+                  "You severly cut your feet trying to leave without your shoes.",
+                  "You shove your toes back into your now blood-red shoes.",
+                  "You left before learning enough about Conditionals and Coral."
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
                 setTimeout(() => {
                   setResponse("You lost a life! 💔");
                   setLives(lives - 1);
-                }, 8000);
+                }, 4000);
               } else {
-                setScenario(
-                  "You feel good about the Condition you are leaving the Coral in and your understanding of both Coral and Conditionals"
-                );
+                setScenario([
+                  "You feel good about the Condition you are leaving the Coral",
+                  "And in in the Condition the Coral left your feet in.",
+                  "Good job gum-shoe, impressive understanding of both Coral and Conditionals"
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
               }
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
+                setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setScenario("");
-                setResponse("");
+                setBoolean(false);
               }, 10000);
               resetTranscript();
             },
@@ -875,19 +1030,40 @@ export default function useCommand(props) {
                 "You are so eager to learn! Smart decision, probably"
               );
               if (big) {
-                setScenario(
-                  "You take a step closer to inspect the coral... CRUNCH!!! It seems you are still super-sized from that mushroom earlier... you crush the Coral into sand beneth your feet and walk away in shame."
-                );
+                setScenario([
+                  "You take a step closer to inspect the coral... CRUNCH!!!",
+                  "It seems you are still super-sized from that mushroom earlier.",
+                  "You crush the Coral into sand beneth your feet and walk away in shame."
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
               }
               if (!boolean) {
                 setResponse("Oh no! your feet!! 👣");
-                setScenario(
-                  "You severly cut your feet trying get close to the coral without your shoes. You shove your toes back into your now blood-red shoes."
-                );
+                setScenario([
+                  "You severly cut your feet trying get close to the coral without your shoes.",
+                  "You shove your toes back into your now blood-red shoes."
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
+                setTimeout(() => {
+                  setResponse("You lost a life! 💔");
+                  setLives(lives - 1);
+                }, 4000);
               } else {
-                setScenario(
-                  "You spend the exact right amount of time learning about Ifs, Thens, and everything Else. You learn so much about Conditionals, you even improve your heart Condition!"
-                );
+                setScenario([
+                  "You were smart enough to put your shoes on first.",
+                  "You spend the exact right amount of time learning about Ifs, Thens, and everything Else.",
+                  "After learning so much about Conditionals, you even improve your heart Condition!"
+                ]);
+                transition(WEEK_1B);
+                setTimeout(() => {
+                  transition(WEEK_1_S3);
+                }, 1);
                 setTimeout(() => {
                   setResponse("You found a secret 1up!💖");
                   setLives(lives + 1);
@@ -895,10 +1071,10 @@ export default function useCommand(props) {
               }
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
+                setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setScenario("");
-                setResponse("");
-              }, 8000);
+                setBoolean(false);
+              }, 16000);
 
               resetTranscript();
             },
@@ -914,12 +1090,17 @@ export default function useCommand(props) {
 
             callback: () => {
               setResponse("Index cards for Arrays? Nice.");
-              setScenario(
-                "You whip out some Index cards and take an Array of notes. You learn you can push, pop, and even slice them"
-              );
+              setScenario([
+                "You whip out some Index cards and take an Array of notes.",
+                "You learn you can PUSH, POP, and even SLICE these things!"
+              ]);
+              transition(WEEK_1B);
               setTimeout(() => {
-                setResponse("");
-                setScenario("What do you want to do now?");
+                transition(WEEK_1_S4);
+              }, 1);
+              setTimeout(() => {
+                setResponse("What do you want to do now?");
+                // setScenario(["What do you want to do now?"]);
               }, 4000);
 
               resetTranscript();
@@ -930,15 +1111,20 @@ export default function useCommand(props) {
             command: ["Leave", "go back"],
 
             callback: () => {
-              setScenario(
-                "You decide to leave. Anemones are fine and all but if you are going to spend any more time here, you want Arrays"
-              );
+              setScenario([
+                "There must have been a no loitering sign, considering how fast you leave.",
+                "Anemones are fine and all but if you are going to spend any more time here, you want Arrays"
+              ]);
+              transition(WEEK_1B);
+              setTimeout(() => {
+                transition(WEEK_1_S4);
+              }, 1);
 
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
+                setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setResponse("");
-                setScenario("");
+                setBoolean(false);
               }, 10000);
               resetTranscript();
             },
@@ -950,9 +1136,16 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("You use your Array methods on the Anemones");
 
-              setScenario(
-                "You get your hands dirty by finding, filtering, popping, pushing, splicing and slicing the Anemones. For purposes of this exercise we'll say you both had a great time. You tickled their fancy and you enjoyed learning code from these creatures. You leave the Array after having made a friend out of Anemone!"
-              );
+              setScenario([
+                "You get your hands dirty by finding, filtering, popping, pushing, splicing and slicing the Anemones.",
+                "For purposes of this exercise we'll say they had a great time.",
+                "You tickled their fancy and you enjoyed learning code from these creatures.",
+                "You leave the Array having made a friend out of Anemone!",
+              ]);
+              transition(WEEK_1B);
+              setTimeout(() => {
+                transition(WEEK_1_S4);
+              }, 1);
               setTimeout(() => {
                 setResponse("Your heart grew one size that day!💖");
                 setLives(lives + 1);
@@ -960,9 +1153,9 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
+                setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setResponse("");
-                setScenario("");
+                setBoolean(false);
               }, 10000);
 
               resetTranscript();
@@ -977,13 +1170,19 @@ export default function useCommand(props) {
           {
             command: ["Study", "(take) notes"],
             callback: () => {
-              setResponse("No Break, Continue to study? You got it sucker!");
-              setScenario(
-                "You stay amongst the Leeches and study how they were able to suck you back in. Learning about loops and realizing that you are in an infinite loop. The Leeches are positive you didn't close off your code properly. If the Looping Leeches never become false, you can't get out!"
-              );
+              setResponse("No Break, Continue to study? You got it sucker");
+              setScenario([
+                "You stay amongst the Leeches and study how they were able to suck you back in.",
+                "Learning about loops and realizing that you are in an infinite loop.",
+                "The Leeches are positive you didn't close off your code properly.",
+                "If the Looping Leeches never become false, you can't get out!"
+              ]);
+              transition(WEEK_1);
+              setTimeout(() => {
+                transition(WEEK_1_S5);
+              }, 1);
               setTimeout(() => {
                 setResponse("How now, Inspector?");
-                setScenario("");
               }, 12000);
 
               resetTranscript();
@@ -995,20 +1194,31 @@ export default function useCommand(props) {
 
             callback: () => {
               if (!boolean) {
-                setScenario(
-                  "You decide to leave. You run out of the water, ripping Leeches off of you. A second later you are back in the water, covered in Leeches again. You are still stuck in this loop. How can you break out of it?"
-                );
+                setScenario([
+                  "Yuck Leeches! Am I right? You decide to leave right away.",
+                  "You run out of the water, ripping Leeches off of you.",
+                  "A second later you are back in the water, covered in Leeches again.",
+                  "You are still stuck in this loop. How can you break out of it?"
+                ]);
+                transition(WEEK_1);
+                setTimeout(() => {
+                  transition(WEEK_1_S5);
+                }, 1);
               } else {
-                setScenario(
-                  "You decide to leave. Good thing you took that break and resolved the infinite loop. You can finally continue your coding journey!"
-                );
-
+                setScenario([
+                  "You decide now is a good time to leave.",
+                  "Good thing you took that break and resolved the infinite loop.",
+                  "You can finally continue your coding journey!"
+                ]);
+                transition(WEEK_1);
+                setTimeout(() => {
+                  transition(WEEK_1_S5);
+                }, 1);
                 setTimeout(() => {
                   setNavText("WEEK 1: Wading into Lotide");
                   transition(WEEK_1B);
                   setResponse("");
-                  setScenario("");
-                }, 10000);
+                }, 15000);
               }
               resetTranscript();
             },
@@ -1018,7 +1228,6 @@ export default function useCommand(props) {
             command: [
               "(take a quick) break",
               "(short) break",
-              "keep going",
               "(quick) break",
               "(take a) break",
             ],
@@ -1027,15 +1236,16 @@ export default function useCommand(props) {
               setBoolean(true);
               setResponse("Is this a little too meta?");
 
-              setScenario(
-                "Your Final project has an infinite loop on the main branch. You don't waste time re-writing all of the new code. Instead you take a Break and chat with your team to resolve. Both you and the Looping Leeches in your code got a Break."
-              );
-
+              setScenario([
+                "Your Final project has an infinite loop on the main branch.",
+                "You don't waste time re-writing all of the new code.",
+                "Instead you take a Break and chat with your team to resolve. Both you and the Looping Leeches in your code got a Break."
+              ]);
+              transition(WEEK_1);
               setTimeout(() => {
-                setNavText("WEEK 1: Wading into Lotide");
-                transition(WEEK_1B);
-                setScenario("");
-              }, 12000);
+                transition(WEEK_1_S5);
+              }, 1);
+
 
               resetTranscript();
             },
@@ -1043,95 +1253,95 @@ export default function useCommand(props) {
           },
         ]);
         break;
-      
-        case "WEEK_2":
-          setCommands([
-          ...staticCommands,
-          {
-          command: ["Asynchronous", "Async", "Awaiting"],
-          callback: () => {
-          setResponse("");
-          setScenario("");
-          if (async) {
-          setResponse("You already learned about Asynchronous programming, where to next? The moon?");
-          } else {
-          setAsync(true);
-          setScenario("");
-          setResponse("You start learning about Asynchronous programming. Get ready for some wild ride!");
-          setTimeout(() => {
-          setNavText("W2: Asynchronous Programming");
-          transition(WEEK_2_S1);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          }
-          resetTranscript();
-          },
-          isFuzzyMatch: true,
-          },
-          {
-          command: ["Lodash", "Clone", "Library"],
-          callback: () => {
-          setResponse("");
-          setScenario("");
-          if (lodash) {
-          setResponse("You already cloned the lodash library, what's next? Cloning the entire universe?");
-          } else {
-          setLodash(true);
-          setScenario("");
-          setResponse("You start cloning the lodash library. This is like making a copy of a copy, but in code form!");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_2_S2);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          }
-          resetTranscript();
-          },
-          isFuzzyMatch: true,
-          },
-          ]);
-          break;
 
-          case "WEEK_2_S1":
-          setCommands([
+      case "WEEK_2":
+        setCommands([
           ...staticCommands,
           {
-          command: ["Understand", "Got it", "comprehend"],
-          callback: () => {
-          setResponse("Awesome! You're now an expert in Asynchronous programming.");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_2_S2);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          resetTranscript();
+            command: ["Asynchronous", "Async", "Awaiting"],
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (async) {
+                setResponse("You already learned about Asynchronous programming, where to next? The moon?");
+              } else {
+                setAsync(true);
+                setScenario("");
+                setResponse("You start learning about Asynchronous programming. Get ready for some wild ride!");
+                setTimeout(() => {
+                  setNavText("W2: Asynchronous Programming");
+                  transition(WEEK_2_S1);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          isFuzzyMatch: true,
+          {
+            command: ["Lodash", "Clone", "Library"],
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (lodash) {
+                setResponse("You already cloned the lodash library, what's next? Cloning the entire universe?");
+              } else {
+                setLodash(true);
+                setScenario("");
+                setResponse("You start cloning the lodash library. This is like making a copy of a copy, but in code form!");
+                setTimeout(() => {
+                  setNavText("W2: Cloning the Lodash Library");
+                  transition(WEEK_2_S2);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          ]);
-          break;
-          case "WEEK_2_S2":
-          setCommands([
+        ]);
+        break;
+
+      case "WEEK_2_S1":
+        setCommands([
           ...staticCommands,
           {
-          command: ["Finished", "Complete", "Done"],
-          callback: () => {
-          setResponse("Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_3);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          resetTranscript();
+            command: ["Understand", "Got it", "comprehend"],
+            callback: () => {
+              setResponse("Awesome! You're now an expert in Asynchronous programming.");
+              setTimeout(() => {
+                setNavText("W2: Cloning the Lodash Library");
+                transition(WEEK_2_S2);
+                setScenario("");
+                setResponse("");
+              }, 3000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          isFuzzyMatch: true,
+        ]);
+        break;
+      case "WEEK_2_S2":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Finished", "Complete", "Done"],
+            callback: () => {
+              setResponse("Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!");
+              setTimeout(() => {
+                setNavText("W2: Cloning the Lodash Library");
+                transition(WEEK_3);
+                setScenario("");
+                setResponse("");
+              }, 3000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          ]);
-          break;
+        ]);
+        break;
 
       case "WEEK_4":
         setCommands([
@@ -1742,7 +1952,7 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
               setLives(lives - 1);
-              setScenario("...I think that made it stronger?");
+              // setScenario("...I think that made it stronger?");
 
               setTimeout(() => {
                 if (lives <= 0) {
@@ -1751,7 +1961,7 @@ export default function useCommand(props) {
                   setNavText("Say 'Reset' or 'Home' to return to Main menu");
                 } else {
                   transition(WEEK_5_S4);
-                  setScenario("");
+                  // setScenario("");
                 }
               }, 4000);
 

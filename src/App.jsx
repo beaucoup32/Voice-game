@@ -151,7 +151,7 @@ export default function App() {
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
         <h1 className="App-title">
-          Think you can make it all 6 weeks?
+         {response}
         </h1>
       </header>
       <main className="App-body">
@@ -169,7 +169,7 @@ export default function App() {
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} setScenario={setScenario}/>}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} setScenario={setScenario}/>}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} setScenario={setScenario}/>}
-        {mode === WEEK_1 && <Week1 playerName={player} />}
+        {mode === WEEK_1 && <Week1 scenario={scenario} response={response}/>}
         {mode === WEEK_1B && (
           <Week1b
             playerName={player}
@@ -179,6 +179,7 @@ export default function App() {
             a={a}
             l={l}
             scenario={scenario}
+            setScenario={setScenario}
           />
         )}
         {mode === WEEK_1_S1 && (

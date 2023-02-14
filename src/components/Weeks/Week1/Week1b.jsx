@@ -1,16 +1,19 @@
-import { useState } from "react";
+import "./Week1.css"
+import useTTS from "../../../hooks/useTTS";
 
 
-export default function Week1b(props) {
-  const [scenario, setScenario] = useState("Welcome back. Where to next?");  
-  if (props.f && props.o && props.c && props.a && props.l) {
-    setScenario(`Excellent job! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`)
+
+export default function Week1b(props) {  
+  const { scenario, setScenario, f, o, c, a, l } = props;
+  if (f && o && c && a && l) {
+    setScenario([`Excellent job! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`])
   }
+  const currentSentence = useTTS(scenario);
 
   return (
     <>
-      <h1>{props.scenario ? props.scenario : scenario}</h1>
-      <img src="images/lighthouse-zoom.gif" className="scene-gif"/>
+      <h1>{currentSentence}</h1>
+      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif lighthouse" />
     </>
   );
-};
+}

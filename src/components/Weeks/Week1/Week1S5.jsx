@@ -1,8 +1,18 @@
+import "./Week1.css";
+import useTTS from "../../../hooks/useTTS";
+
 export default function Week1S5(props) {
-  const {scenario} = props;
+  const { scenario } = props;
 
-  return (    
-    <p>{scenario ? scenario : "You wade into some standing water. Look down and you see your legs covered in Leeches! You run out of the river like a pheonix! The Leeches break out in song. 🎵`Oh wont you stand by me... `🎵 Shocked, you find yourself standing in some wading water. Look down and see your legs covered in Leeches! You start to run again.. but keep your cool and realize you are caught in a Loop. Ok Corey Feldman, what will you Do/While you are here?"}</p>
+  const currentSentence = useTTS(scenario);
+  return (
+    <>
+      <h1>{currentSentence}</h1>
+      <img
+        src="images/leeches.gif"
+        alt="leeches-gif"
+        className="scene-gif"
+      />
+    </>
   );
-};
-
+}

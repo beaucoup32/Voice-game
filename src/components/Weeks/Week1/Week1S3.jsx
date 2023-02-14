@@ -1,9 +1,16 @@
-export default function Week1S3(props) {
-  const {scenario} = props;
+import "./Week1.css";
+import useTTS from "../../../hooks/useTTS";
 
-  return (
-    
-    <p>{scenario ? scenario : "You stare at the beautiful Coral in front of you and wonder... `why are these called Conditional Coral? How did you get here? Was it the command you just gave?` If (condition === Coral) { you arrive at coral } you pondered as you take off your shoes. Maybe you think better that way 🤷‍♂️? What do you do next?"}</p>
-  );
-};
 
+    export default function Week1S3(props) {
+    const { scenario } = props;
+  
+    const currentSentence = useTTS(scenario);
+    return (
+      <>
+        <h1>{currentSentence}</h1>
+        <img src="images/coral-reef.gif" alt="coral-gif" className="scene-gif coral" />
+      </>
+    );
+  }
+  

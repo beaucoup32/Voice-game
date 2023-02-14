@@ -1,9 +1,5 @@
-import "./PrepWeek.css";
-import useDisplayTTS from "../../../hooks/useTTS";
-import { useEffect } from "react";
-
-
 import useTTS from "../../../hooks/useTTS";
+import "./PrepWeek.css";
 
 export default function PrepWeekS1(props) {
   const { scenario } = props;

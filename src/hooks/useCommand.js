@@ -75,7 +75,7 @@ export default function useCommand(props) {
       isFuzzyMatch: true,
     },
     // {
-      // testing for week 4
+    // testing for week 4
     //   command: ["week 4"],
     //   callback: () => {
     //     transition(WEEK_4);
@@ -171,7 +171,7 @@ export default function useCommand(props) {
             command: ["reset", "clear", "no"],
             callback: () => {
               setResponse("Lets try this again..");
-              setScenario(["My bad, What is your name?"])
+              setScenario(["My bad, What is your name?"]);
               transition(GAMESTART);
               setPlayer("");
               resetTranscript();
@@ -193,7 +193,6 @@ export default function useCommand(props) {
                 "If you get stuck, say 'Hint' to get some help. Are you ready?",
               ]);
               transition(PREPWEEK);
-
             },
             isFuzzyMatch: true,
             matchInterim: true,
@@ -218,12 +217,12 @@ export default function useCommand(props) {
               setNavText("PREP WEEK: SCENARIO 1");
               setResponse("");
               setScenario([
-                "Every decision you make will determine your path and impact your success.", 
-                        "It's Prep week and you are faced with your first challenge.",
-                        "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
-                        "You breeze through the first 1/4 of the challenges.",
-                        "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
-              ])
+                "Every decision you make will determine your path and impact your success.",
+                "It's Prep week and you are faced with your first challenge.",
+                "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
+                "You breeze through the first 1/4 of the challenges.",
+                "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?",
+              ]);
               transition(PREPWEEKS1);
               resetTranscript();
             },
@@ -245,6 +244,9 @@ export default function useCommand(props) {
 
             callback: () => {
               setResponse("That one was easy 🥱");
+              setScenario([
+                "After taking a quick break you continue on but struggle trying to get one of your functions to work, what do you do?",
+              ]);
               transition(PREPWEEKS2);
               setNavText("PREP WEEK: SCENARIO 2");
               resetTranscript();
@@ -255,9 +257,9 @@ export default function useCommand(props) {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
               setResponse("That was hard to watch... 😬");
-              setScenario(
-                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work"
-              );
+              setScenario([
+                "Unfortunatly the exictement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work",
+              ]);
 
               // current lives is 2
               setLives(lives - 1);
@@ -265,8 +267,10 @@ export default function useCommand(props) {
               // after a delay, will continue on to next scenario
               setTimeout(() => {
                 setNavText("PREP WEEK: SCENARIO 2");
+                setScenario([
+                  "After taking a quick break you continue on but struggle trying to get one of your functions to work, what do you do?",
+                ]);
                 transition(PREPWEEKS2);
-                setScenario("");
               }, 7000);
               resetTranscript();
             },
@@ -279,9 +283,9 @@ export default function useCommand(props) {
           {
             command: ["(ask for) help", "ask a *"],
             callback: () => {
-              setScenario(
-                "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!"
-              );
+              setScenario([
+                "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!",
+              ]);
 
               setResponse("Good call 👍");
 
@@ -289,7 +293,10 @@ export default function useCommand(props) {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
                 setResponse("");
-                setScenario("");
+                setScenario([
+                  "Several days pass and you've finaly submitted your last GIST.",
+                  "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                ]);
               }, 7000);
               resetTranscript();
             },
@@ -307,7 +314,10 @@ export default function useCommand(props) {
               setTimeout(() => {
                 transition(PREPWEEKS3);
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("");
+                setScenario([
+                  "Several days pass and you've finaly submitted your last GIST.",
+                  "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                ]);
                 setResponse("");
               }, 7000);
               resetTranscript();
@@ -330,7 +340,10 @@ export default function useCommand(props) {
                 transition(PREPWEEKS3);
 
                 setNavText("PREP WEEK: SCENARIO 3");
-                setScenario("");
+                setScenario([
+                  "Several days pass and you've finaly submitted your last GIST.",
+                  "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                ]);
                 setResponse("");
               }, 7000);
               resetTranscript();
@@ -341,9 +354,9 @@ export default function useCommand(props) {
           {
             command: ["give up"],
             callback: () => {
-              setScenario(
-                "You decide this bootcamp is too difficult for you and walk away from your laptop in shame..."
-              );
+              setScenario([
+                "You decide this bootcamp is too difficult for you and walk away from your laptop in shame...",
+              ]);
 
               setResponse("Well... coding isnt for everyone");
 
@@ -366,9 +379,9 @@ export default function useCommand(props) {
           {
             command: ["continue", "yes", "keep going"],
             callback: () => {
-              setScenario(
-                "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week"
-              );
+              setScenario([
+                "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week",
+              ]);
 
               setResponse("Good luck! 😏");
 
@@ -1043,95 +1056,107 @@ export default function useCommand(props) {
           },
         ]);
         break;
-      
-        case "WEEK_2":
-          setCommands([
-          ...staticCommands,
-          {
-          command: ["Asynchronous", "Async", "Awaiting"],
-          callback: () => {
-          setResponse("");
-          setScenario("");
-          if (async) {
-          setResponse("You already learned about Asynchronous programming, where to next? The moon?");
-          } else {
-          setAsync(true);
-          setScenario("");
-          setResponse("You start learning about Asynchronous programming. Get ready for some wild ride!");
-          setTimeout(() => {
-          setNavText("W2: Asynchronous Programming");
-          transition(WEEK_2_S1);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          }
-          resetTranscript();
-          },
-          isFuzzyMatch: true,
-          },
-          {
-          command: ["Lodash", "Clone", "Library"],
-          callback: () => {
-          setResponse("");
-          setScenario("");
-          if (lodash) {
-          setResponse("You already cloned the lodash library, what's next? Cloning the entire universe?");
-          } else {
-          setLodash(true);
-          setScenario("");
-          setResponse("You start cloning the lodash library. This is like making a copy of a copy, but in code form!");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_2_S2);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          }
-          resetTranscript();
-          },
-          isFuzzyMatch: true,
-          },
-          ]);
-          break;
 
-          case "WEEK_2_S1":
-          setCommands([
+      case "WEEK_2":
+        setCommands([
           ...staticCommands,
           {
-          command: ["Understand", "Got it", "comprehend"],
-          callback: () => {
-          setResponse("Awesome! You're now an expert in Asynchronous programming.");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_2_S2);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          resetTranscript();
+            command: ["Asynchronous", "Async", "Awaiting"],
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (async) {
+                setResponse(
+                  "You already learned about Asynchronous programming, where to next? The moon?"
+                );
+              } else {
+                setAsync(true);
+                setScenario("");
+                setResponse(
+                  "You start learning about Asynchronous programming. Get ready for some wild ride!"
+                );
+                setTimeout(() => {
+                  setNavText("W2: Asynchronous Programming");
+                  transition(WEEK_2_S1);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          isFuzzyMatch: true,
+          {
+            command: ["Lodash", "Clone", "Library"],
+            callback: () => {
+              setResponse("");
+              setScenario("");
+              if (lodash) {
+                setResponse(
+                  "You already cloned the lodash library, what's next? Cloning the entire universe?"
+                );
+              } else {
+                setLodash(true);
+                setScenario("");
+                setResponse(
+                  "You start cloning the lodash library. This is like making a copy of a copy, but in code form!"
+                );
+                setTimeout(() => {
+                  setNavText("W2: Cloning the Lodash Library");
+                  transition(WEEK_2_S2);
+                  setScenario("");
+                  setResponse("");
+                }, 3000);
+              }
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          ]);
-          break;
-          case "WEEK_2_S2":
-          setCommands([
+        ]);
+        break;
+
+      case "WEEK_2_S1":
+        setCommands([
           ...staticCommands,
           {
-          command: ["Finished", "Complete", "Done"],
-          callback: () => {
-          setResponse("Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!");
-          setTimeout(() => {
-          setNavText("W2: Cloning the Lodash Library");
-          transition(WEEK_3);
-          setScenario("");
-          setResponse("");
-          }, 3000);
-          resetTranscript();
+            command: ["Understand", "Got it", "comprehend"],
+            callback: () => {
+              setResponse(
+                "Awesome! You're now an expert in Asynchronous programming."
+              );
+              setTimeout(() => {
+                setNavText("W2: Cloning the Lodash Library");
+                transition(WEEK_2_S2);
+                setScenario("");
+                setResponse("");
+              }, 3000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          isFuzzyMatch: true,
+        ]);
+        break;
+      case "WEEK_2_S2":
+        setCommands([
+          ...staticCommands,
+          {
+            command: ["Finished", "Complete", "Done"],
+            callback: () => {
+              setResponse(
+                "Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!"
+              );
+              setTimeout(() => {
+                setNavText("W2: Cloning the Lodash Library");
+                transition(WEEK_3);
+                setScenario("");
+                setResponse("");
+              }, 3000);
+              resetTranscript();
+            },
+            isFuzzyMatch: true,
           },
-          ]);
-          break;
+        ]);
+        break;
 
       case "WEEK_4":
         setCommands([

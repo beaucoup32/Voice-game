@@ -1,18 +1,12 @@
-import { Fragment } from "react";
+import useTTS from "../../../hooks/useTTS";
 
 const PrepWeekS2 = (props) => {
   const { scenario } = props;
-  const text = (
-    <>
-      <p className="typed">
-        After taking a quick break you continue on but struggle trying to get
-        one of your functions to work, what do you do?
-      </p>
-    </>
-  );
+  const currentSentence = useTTS(scenario)
+
   return (
     <div className="scenario">
-      {scenario ? <p className="scenario-text">{scenario}</p> : text}
+      <p className="scenario-text">{currentSentence}</p>
     </div>
   );
 };

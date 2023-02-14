@@ -1,8 +1,8 @@
 html,
 #root,
 .App {
-  margin-bottom: 1.75em;
-  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
   background-color: #333841;
 }
 .App {
@@ -128,10 +128,8 @@ h4 {
 }
 
 .home-container {
- 
   justify-content: center;
   align-items: center;
-
 }
 
 .masonry {
@@ -175,7 +173,6 @@ h4 {
   font-size: 12px;
   margin-top: 10px;
   text-align: center;
-  
 }
 .App-title {
   color: #944dff;

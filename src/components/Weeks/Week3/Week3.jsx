@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-// import "./week3.css";
+import "./week3.css";
+import useTTS from "../../../hooks/useTTS";
 
 const Week3 = (props) => {
   const WEEK_3_S1 = "WEEK_3_S1";

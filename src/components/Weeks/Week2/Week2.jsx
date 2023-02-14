@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-// import "./week2.css";
+import "./week2.css";
+import useTTS from "../../../hooks/useTTS";
 
 export default function Week2(props) {
   const [scenario, setScenario] = useState(

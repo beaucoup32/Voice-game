@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-// import "./week2.css";
+import "./week2.css";
+import useTTS from "../../../hooks/useTTS";
 
 const Week2S2 = (props) => {
   const { scenario } = props;

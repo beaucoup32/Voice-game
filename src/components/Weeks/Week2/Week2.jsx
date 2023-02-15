@@ -10,7 +10,7 @@ export default function Week2(props) {
     <div className="week-2-container">
       <p className="week-2-intro">{currentSentence}</p>
       <img
-        src="https://miro.medium.com/max/1400/0*C-cPP9D2MIyeexAT.gif"
+        src="https://st.depositphotos.com/1429923/3996/v/600/depositphotos_39965389-stock-illustration-flat-vector-illustration-of-programmer.jpg"
         alt=""
         className="home-img"
       />

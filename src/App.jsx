@@ -27,6 +27,8 @@ import Week3 from "./components/Weeks/Week3/Week3";
 import Week3S1 from "./components/Weeks/Week3/Week3S1";
 import Week3S2 from "./components/Weeks/Week3/Week3S2";
 import Week3S3 from "./components/Weeks/Week3/Week3S3";
+import Week3S4 from "./components/Weeks/Week3/Week3S4";
+import Week3S5 from "./components/Weeks/Week3/Week3S5";
 import Week4 from "./components/Weeks/Week4/Week4";
 import Week4S1 from "./components/Weeks/Week4/Week4S1";
 import Week4S2 from "./components/Weeks/Week4/Week4S2";
@@ -99,6 +101,9 @@ export default function App() {
   // set scenario text
   const [scenario, setScenario] = useState("");
 
+  // set current image
+  const [image, setImage] = useState("")
+
   // set FOCAL validation for W1
   const [f, setF] = useState(false);
   const [o, setO] = useState(false);
@@ -140,6 +145,7 @@ export default function App() {
     boolean,
     setBoolean,
     setGameOverText,
+    setImage,
   });
 
   // browser starts recording on load
@@ -181,14 +187,11 @@ export default function App() {
             a={a}
             l={l}
             scenario={scenario}
+            setScenario={setScenario}
           />
         )}
-        {mode === WEEK_1_S1 && (
-          <Week1S1 playerName={player} scenario={scenario} />
-        )}
-        {mode === WEEK_1_S2 && (
-          <Week1S2 playerName={player} scenario={scenario} />
-        )}
+        {mode === WEEK_1_S1 && <Week1S1 playerName={player} scenario={scenario} image={image} setImage={setImage}/>}
+        {mode === WEEK_1_S2 && <Week1S2 playerName={player} scenario={scenario} image={image} setImage={setImage}/>}
         {mode === WEEK_1_S3 && (
           <Week1S3 playerName={player} scenario={scenario} />
         )}

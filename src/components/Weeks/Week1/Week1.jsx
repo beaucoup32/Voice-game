@@ -1,17 +1,26 @@
 import "./Week1.css";
 import useTTS from "../../../hooks/useTTS";
 
-
 export default function Week1(props) {
   const { scenario } = props;
 
   const currentSentence = useTTS(scenario);
+  const transitionSentence =
+    "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week";
 
   return (
-    <>
-      <h1>{currentSentence}</h1> 
-      <img src="images/lighthouse-zoom.gif" alt="" className="scene-gif lighthouse" />
-    </>
+    <div className="scenario">
+      <p className="scenario-text">{currentSentence}</p>
+      {currentSentence != transitionSentence && (
+        <div className="image-container">
+          <img
+            src="images/lighthouse-zoom.gif"
+            alt="lighthouse-gif"
+            className="scenario-gif lighthouse"
+          />
+        </div>
+      )}
+    </div>
   );
 }
 

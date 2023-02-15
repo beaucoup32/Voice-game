@@ -11,13 +11,11 @@ export default function Week2S1(props) {
       <p className="scenario-text">{currentSentence}</p>
       {currentSentence === challenge && (
         <div className="image-container">           
-          <figure className="home-figure">
-            <img
-              src="https://st.depositphotos.com/1429923/3996/v/600/depositphotos_39965389-stock-illustration-flat-vector-illustration-of-programmer.jpg"
-              alt=""
-              className="home-img"
-            />
-          </figure>
+      <img
+        src="https://st.depositphotos.com/1429923/3996/v/600/depositphotos_39965389-stock-illustration-flat-vector-illustration-of-programmer.jpg"
+        alt=""
+        className="home-img"
+            />         
         </div>
       )}
     </div>

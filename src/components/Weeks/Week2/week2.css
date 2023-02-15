@@ -1,7 +1,7 @@
 /* Set the background color and padding for the body */
 body {
   background-color: #f5f5f5;
-  padding: 2em;
+  /* padding: 2em; */
 }
 
 /* Set the font size, color, alignment, and top margin for the .week-2-intro element */

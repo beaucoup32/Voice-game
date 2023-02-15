@@ -3,20 +3,24 @@ import "./PrepWeek.css";
 
 export default function PrepWeekS1(props) {
   const { scenario } = props;
-  const currentSentence = useTTS(scenario)
-  const challenge = "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?"
-  
+  const currentSentence = useTTS(scenario);
+  const challenge =
+    "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?";
+
   return (
-        <div className="scenario">
-          <p className="scenario-text">{currentSentence}</p>
-          {currentSentence === challenge && (
-    
-          <div className="image-container">            
-            <img src="images/prepwks1tekken.gif" alt="tekken-gif" className="scenario-gif tekken" />
-          </div>
-          )}
+    <div className="scenario">
+      <p className="scenario-text">{currentSentence}</p>
+      {currentSentence === challenge && (
+        <div className="image-container">
+          <img
+            src="images/prepwks1tekken.gif"
+            alt="tekken-gif"
+            className="scenario-gif tekken"
+          />
         </div>
-      );
+      )}
+    </div>
+  );
 }
 
 // const PrepWeekS1 = (props) => {
@@ -35,7 +39,7 @@ export default function PrepWeekS1(props) {
 //   // const text = (
 //   //   <>
 //   //     <p className="typed prep">
-        
+
 //   //     </p>
 //   //     <p className="typed prep">
 //   //       Every decision you make will determine your path and impact your
@@ -50,7 +54,7 @@ export default function PrepWeekS1(props) {
 //   //     </p>
 //   //   </>
 //   // );
-  
+
 //   useEffect(() => {
 //     setScenario(textOutput)
 //   },[textOutput, setScenario])

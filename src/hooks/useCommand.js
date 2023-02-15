@@ -86,17 +86,17 @@ export default function useCommand(props) {
       },
       isFuzzyMatch: true,
     },
-    // {
-    //   // testing for week 5
-    //   command: ["week 5"],
-    //   callback: () => {
-    //     transition(WEEK_5);
-    //     setLives(3);
-    //     setPlayer("Donny");
-    //     setScenario("");
-    //   },
-    //   isFuzzyMatch: true,
-    // },
+    {
+      // testing for week 5
+      command: ["week 5"],
+      callback: () => {
+        transition(WEEK_5);
+        setLives(3);
+        setPlayer("Donny");
+        setScenario("");
+      },
+      isFuzzyMatch: true,
+    },
     {
       // manually set lives for debugging
       command: "set lives to :number",
@@ -123,8 +123,8 @@ export default function useCommand(props) {
                 "It's time to Walk the Talk",
                 "Please tell me your name",
               ]);
+
               setPlayer("");
-              // handleTTS();
 
               // changes mode to show GAMESTART component
               transition(GAMESTART);

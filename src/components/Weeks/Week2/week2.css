@@ -1,39 +1,35 @@
+/* Set the background color and padding for the body */
+body {
+  background-color: #f5f5f5;
+  padding: 2em;
+}
+
+/* Set the font size, color, alignment, and top margin for the .week-2-intro element */
 .week-2-intro {
   font-size: 3em;
-  font-weight: bold;
+  color: #333841;
   text-align: center;
-  color: rgb(255, 0, 212);
-  margin-top: 5em;
+  margin-top: 0;
 }
 
-.typed {
-  position: relative;
-  font-size: 2em;
-  width: 50ch;color: #00dffc;
-  overflow: hidden;
-  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
-    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-  background-repeat: no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  animation: t 1s forwards, b 1s 0.8s forwards;
+/* Set the width, maximum width, and top margin for the .home-img element */
+.home-img {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 2em;
 }
 
-@keyframes t {
-  from {
-    background-size: 0 95%, 0 100%;
-  }
-}
-@keyframes b {
-  100% {
-    background-position: -200% 50%, 0 0;
-  }
+/* Set the display, flex direction, alignment, gap, and width for the .week-2-container element */
+.week-2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
 }
 
+/* Set the display, flex direction, max width, alignment, background color, color, padding, and border radius for the .scenario element */
 .scenario {
-  /* margin-top: 2em; */
   display: flex;
   flex-direction: column;
   max-width: 80%;
@@ -44,20 +40,23 @@
   border-radius: 10px;
 }
 
+/* Set the font size, width, color, and text alignment for the .scenario-text element */
 .scenario-text {
-  font-size: 3em;
+  font-size: 2em;
   width: 50ch;
   color: magenta;
   text-align: center;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+/* Set the width and height for the .home-figure element */
+.home-figure {
+  width: 100%;
+  height: 100%;
 }
 
-li {
-  font-size: 16px;
-  margin-top: 10px;
-  color: #ff6600;
+/* Set the color and font size for the .home-figcaption element */
+.home-figcaption {
+  color: white;
+  font-size: 1.2em;
 }
+

@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import "./week3.css";
 import useTTS from "../../../hooks/useTTS";
 
-const Week3S3 = (props) => {
+const Week3S5 = (props) => {
   const { scenario } = props;
 
   const text = (
     <>
       <p className="typed">
-      The instructor hands you a task that's due real soon, but you're thinking "No worries, I got this! 💪🕰️💰 (offer for overtime work). But then reality hits and you're like "Oh snap, this is actually a toughie!😓🤔💭"
+      Uh oh, deadline approaching 🏃‍♂️💨 Do you hit the panic button and ask for an extension 🙏 or do you unleash your superhero powers 🦸‍♂️ and work harder to finish it on time? 💪 Bonus points if you get offered 💰 from your mentor for being a boss! 💰💼
       </p>
-
     </>
   );
 
@@ -21,4 +20,4 @@ const Week3S3 = (props) => {
   );
 };
 
-export default Week3S3;
+export default Week3S5;

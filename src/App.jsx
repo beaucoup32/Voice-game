@@ -22,6 +22,7 @@ import Week1S5 from "./components/Weeks/Week1/Week1S5";
 import Week2 from "./components/Weeks/Week2/Week2";
 import Week2S1 from "./components/Weeks/Week2/Week2S1";
 import Week2S2 from "./components/Weeks/Week2/Week2S2";
+import Week2S3 from "./components/Weeks/Week2/Week2S3";
 import Week3 from "./components/Weeks/Week3/Week3";
 import Week3S1 from "./components/Weeks/Week3/Week3S1";
 import Week3S2 from "./components/Weeks/Week3/Week3S2";
@@ -58,6 +59,7 @@ export default function App() {
   const WEEK_2 = "WEEK_2";
   const WEEK_2_S1 = "WEEK_2_S1";
   const WEEK_2_S2 = "WEEK_2_S2";
+  const WEEK_2_S3 = "WEEK_2_S3";
   const WEEK_3 = "WEEK_3";
   const WEEK_3_S1 = "WEEK_3_S1";
   const WEEK_3_S2 = "WEEK_3_S2";
@@ -206,6 +208,7 @@ export default function App() {
         )}
         {mode === WEEK_2_S1 && <Week2S1 scenario={scenario} />}
         {mode === WEEK_2_S2 && <Week2S2 scenario={scenario} />}
+        {mode === WEEK_2_S3 && <Week2S3 scenario={scenario} />}
 
         {mode === WEEK_3 && (
           <Week3

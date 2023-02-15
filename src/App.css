@@ -71,6 +71,7 @@ html,
   direction: rtl;
   margin-right: 1em;
   margin-bottom: 0;
+  color: springgreen;
 }
 
 .voiceIcon {
@@ -121,7 +122,8 @@ h4 {
   margin-left: 1.5em;
   font-size: 1.25em;
   padding-right: 1em;
-  border-right: white solid;
+  border-right: rgba(255,255,255,.5) solid;
+  color: rgba(255,255,255,.5);
 }
 
 .home-container {

@@ -48,42 +48,42 @@ export default function useCommand(props) {
   const [inventory, setInventory] = useState([]);
 
   const staticCommands = [
-    {
-      // this command will clear the response message
-      // when triggered, it will set the response message to an empty string ""
-      // and reset the voice transcript to allow for new voice commands to be recorded.
-      command: ["reset", "clear"],
-      callback: () => {
-        resetTranscript();
-      },
-      isFuzzyMatch: true,
-    },
-    {
-      command: "Marco",
-      callback: () => {
-        setScenario(["Polo?"]);
-        // handleTTS();
-        // transcript resets when command is triggered
-        resetTranscript();
-      },
-    },
-    {
-      command: ["game over", "death", "quit"],
-      callback: () => {
-        transition(GAMEOVER);
-        setGameOverText("Test: loreum ipsum loreum ipsum");
-        resetTranscript();
-      },
-      isFuzzyMatch: true,
-    },
+    // {
+    //   // this command will clear the response message
+    //   // when triggered, it will set the response message to an empty string ""
+    //   // and reset the voice transcript to allow for new voice commands to be recorded.
+    //   command: ["reset", "clear"],
+    //   callback: () => {
+    //     resetTranscript();
+    //   },
+    //   isFuzzyMatch: true,
+    // },
+    // {
+    //   command: ["Marco"],
+    //   callback: () => {
+    //     setScenario(["Polo?"]);
+    //     // handleTTS();
+    //     // transcript resets when command is triggered
+    //     resetTranscript();
+    //   },
+    // },
+    // {
+    //   command: ["game over", "death", "quit"],
+    //   callback: () => {
+    //     transition(GAMEOVER);
+    //     setGameOverText("Test: loreum ipsum loreum ipsum");
+    //     resetTranscript();
+    //   },
+    //   isFuzzyMatch: true,
+    // },
     {
       // testing for week 4
-      command: ["week 4"],
+      command: ["week one", "week 1"],
       callback: () => {
-        transition(WEEK_4);
+        transition(PREPWEEKS3);
         setLives(3);
-        setPlayer("Donny");
-        setScenario("");
+        setPlayer("Rebecca");
+        setScenario([""]);
       },
       isFuzzyMatch: true,
     },
@@ -94,13 +94,13 @@ export default function useCommand(props) {
     //     transition(WEEK_5);
     //     setLives(3);
     //     setPlayer("Donny");
-    //     setScenario("");
+    //     setScenario([""]);
     //   },
     //   isFuzzyMatch: true,
     // },
     {
       // manually set lives for debugging
-      command: "set lives to :number",
+      command: ["set lives to :number"],
       callback: (number) => {
         if (!isNaN(number)) {
           setLives(number);
@@ -118,9 +118,10 @@ export default function useCommand(props) {
           {
             command: ["Start", "thought", "dot", "begin"],
             callback: () => {
+              
               setScenario([
                 "Loading human voice",
-                "Starting Adventure!",
+                // "Starting Adventure!",
                 "It's time to Walk the Talk",
                 "Please tell me your name",
               ]);
@@ -141,7 +142,7 @@ export default function useCommand(props) {
         setCommands([
           ...staticCommands,
           {
-            command: "(My name is) :name",
+            command: ["(My name is) :name"],
             callback: (name) => {
               setPlayer(name);
               setScenario([`Did you say ${name}?`]);
@@ -223,7 +224,7 @@ export default function useCommand(props) {
                 "It's Prep week and you are faced with your first challenge.",
                 "You are tasked to complete a series of coding modules and quizzes to prepare you for the weeks ahead.",
                 "You breeze through the first 1/4 of the challenges.",
-                "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?",
+                "Feeling confident, do you choose to take a quick break and keep going or reward yourself with a round of TEKKEN?",
               ]);
               transition(PREPWEEKS1);
               resetTranscript();
@@ -721,8 +722,7 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 transition(HOME);
-                setNavText("Say 'Start' to begin.");
-                setScenario("");
+                setNavText("Say 'Start' to begin.");                
                 setResponse("");
               }, 7000);
               resetTranscript();
@@ -1454,7 +1454,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("WEEK 3: The Treasure Hunt");
                 setResponse("");
-                setScenario("");
+                setScenario([""]);
               }, 2000);
 
               resetTranscript();
@@ -1481,7 +1481,7 @@ export default function useCommand(props) {
               setTimeout(() => {
                 setNavText("WEEK 3: The Treasure Hunt");
                 setResponse("");
-                setScenario("");
+                setScenario([""]);
               }, 5000);
 
               resetTranscript();
@@ -2033,7 +2033,7 @@ export default function useCommand(props) {
               setNavText("WEEK 5: SCENARIO 1");
               transition(WEEK_5_S1);
               resetTranscript();
-              setScenario("");
+              setScenario([""]);
             },
             isFuzzyMatch: true,
             matchInterim: true,
@@ -2129,7 +2129,7 @@ export default function useCommand(props) {
 
               transition(WEEK_5_S3);
               setTimeout(() => {
-                setScenario("");
+                setScenario([""]);
               }, 9000);
 
               resetTranscript();
@@ -2164,7 +2164,7 @@ export default function useCommand(props) {
                 transition(WEEK_5_S3);
 
                 setTimeout(() => {
-                  setScenario("");
+                  setScenario([""]);
                 }, 10000);
               }
 
@@ -2207,7 +2207,7 @@ export default function useCommand(props) {
               setNavText("WEEK 5: SCENARIO 4");
               transition(WEEK_5_S4);
               setTimeout(() => {
-                setScenario("");
+                setScenario([""]);
               }, 10000);
               resetTranscript();
             },
@@ -2229,7 +2229,7 @@ export default function useCommand(props) {
               setNavText("WEEK 6");
 
               setTimeout(() => {
-                setScenario("");
+                setScenario([""]);
               }, 10000);
 
               resetTranscript();

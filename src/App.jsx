@@ -81,7 +81,7 @@ export default function App() {
   const { mode, transition } = useVisualMode(HOME);
 
   // response when command voice command triggered
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState("Say 'Start' to begin");
 
   // set player name
   const [player, setPlayer] = useState("");
@@ -96,7 +96,7 @@ export default function App() {
   const [mushroom, setMushroom] = useState(false);
 
   // set navbar text
-  const [navText, setNavText] = useState(`Say 'Start' to begin.`);
+  const [navText, setNavText] = useState(`Walk The Talk™`);
 
   // set scenario text
   const [scenario, setScenario] = useState("");

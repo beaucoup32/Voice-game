@@ -1,41 +1,85 @@
-.hint {
+.Hint {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 10px;
   position: absolute;
-  bottom: 3.7em; ;
-  left: 50px; /* or any other value that works for you */
+  bottom: 3.7em;
+  left: 50px;
   z-index: 1;
   transition: all 0.3s ease-out;
 }
-  
-  .hint p {
-  font-size: 18px;
-  margin: 10px 0;
-  }
-  
-  .hint ul {
-  list-style: none;
+
+.Hint-header {
   display: flex;
-  flex-wrap: wrap;
-  margin: 10px 0;
-  }
-  
-  .hint li {
-  margin: 10px;
-  }
-  
-  .hint button {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Hint-header p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.Hint-header button {
   background-color: #3f51b5;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
+  transition: all 0.3s ease-out;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0% {
+    background-color:#FF0000;
   }
-  
-  .hint button:hover {
+  50% {
+    background-color:  #00FF00;
+  }
+  100% {
+    background-color: #FFA500;
+  }
+}
+
+.Hint-commands {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.Hint-commands li {
+  margin: 10px;
+}
+
+.Hint-commands button {
+  background-color: #3f51b5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.Hint-commands button:hover {
   background-color: #1a237e;
-  }
+}
+
+.Hint-message {
+  font-size: 14px;
+  margin: 10px 0 0 0;
+}
+
+
+
+
+
+
 

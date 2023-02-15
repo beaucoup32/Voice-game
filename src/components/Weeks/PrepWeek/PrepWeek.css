@@ -63,6 +63,7 @@
 .scenario-gif {
   height: 28em;
   width: 28em;
+  margin-top: 2em;
 }
 
 .image-container {
@@ -75,3 +76,4 @@
   width: 32em;
   margin-top: 2em;
 }
+

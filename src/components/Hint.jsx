@@ -23,20 +23,25 @@ const Hint = (props) => {
   };
 
   return showHint ? (
-    <div className="hint">
-      <p>Click To View Hint:</p>
-      <ul>
+    <div className="Hint">
+      <div className="Hint-header">
+        <button onClick={() => setShowHint(false)}>Dismiss Hint</button>
+      </div>
+      <ul className="Hint-commands">
         {commands.map((command, index) => (
           <li key={index}>
             <button onClick={() => handleClick(command.command)}>
-              {command.command}
+              {command.command.join(", ")}
             </button>
           </li>
         ))}
       </ul>
-      <p>{message}</p>
+      <p className="Hint-message">{message}</p>
     </div>
   ) : null;
 };
 
 export default Hint;
+
+
+

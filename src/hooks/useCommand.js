@@ -45,6 +45,7 @@ export default function useCommand(props) {
     useListen(commands);
   const [async, setAsync] = useState(false);
   const [lodash, setLodash] = useState(false);
+  const [inventory, setInventory] = useState([]);
 
   const staticCommands = [
     {
@@ -76,12 +77,12 @@ export default function useCommand(props) {
       isFuzzyMatch: true,
     },
     {
-    // testing for week 4
-      command: ["week 1", "week one"],
+      // testing for week 4
+      command: ["week 4"],
       callback: () => {
-        transition(PREPWEEKS3);
+        transition(WEEK_4);
         setLives(3);
-        setPlayer("Kalim");
+        setPlayer("Donny");
         setScenario("");
       },
       isFuzzyMatch: true,
@@ -196,7 +197,7 @@ export default function useCommand(props) {
               transition(PREPWEEK);
             },
             isFuzzyMatch: true,
-            matchInterim: true,
+            // matchInterim: true,
           },
         ]);
         break;
@@ -253,7 +254,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
-            matchInterim: true,
+            // matchInterim: true,
           },
           {
             command: ["reward (myself)", "(play) tekken"],
@@ -427,10 +428,10 @@ export default function useCommand(props) {
           {
             command: ["where (can I)", "repeat", "options"],
             callback: () => {
-              transition(WEEK_1B);
-              setTimeout(() => {
-                transition(WEEK_1);
-              }, 1);
+              // transition(WEEK_1B);
+              // setTimeout(() => {
+              //   transition(WEEK_1);
+              // }, 1);
               setScenario([
                 "Your options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
               ]);
@@ -1258,106 +1259,442 @@ export default function useCommand(props) {
         ]);
         break;
 
-      case "WEEK_2":
-        setCommands([
-          ...staticCommands,
-          {
-            command: ["Asynchronous", "Async", "Awaiting"],
-            callback: () => {
-              setResponse("");
-              setScenario("");
-              if (async) {
-                setResponse(
-                  "You already learned about Asynchronous programming, where to next? The moon?"
-                );
-              } else {
-                setAsync(true);
-                setScenario("");
-                setResponse(
-                  "You start learning about Asynchronous programming. Get ready for some wild ride!"
-                );
-                setTimeout(() => {
-                  setNavText("W2: Asynchronous Programming");
-                  transition(WEEK_2_S1);
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
-              }
-              resetTranscript();
+        case "WEEK_2":
+          setCommands([
+            {
+              command: ["no", "nope", "nevermind"],
+              callback: () => {
+                setResponse("Let's dive into Week 2! 🌊🐬🦑");
+                setNavText("");
+                transition(HOME);
+                resetTranscript();
+              },
+              matchInterim: true,
             },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["Lodash", "Clone", "Library"],
-            callback: () => {
-              setResponse("");
-              setScenario("");
-              if (lodash) {
-                setResponse(
-                  "You already cloned the lodash library, what's next? Cloning the entire universe?"
-                );
-              } else {
-                setLodash(true);
-                setScenario("");
-                setResponse(
-                  "You start cloning the lodash library. This is like making a copy of a copy, but in code form!"
-                );
-                setTimeout(() => {
-                  setNavText("W2: Cloning the Lodash Library");
-                  transition(WEEK_2_S2);
-                  setScenario("");
-                  setResponse("");
-                }, 3000);
-              }
-              resetTranscript();
+            {
+              command: ["yes", "yeah", "yep", "skip"],
+              callback: () => {
+                setNavText(`Welcome to Week 2, ${props.playerName}! Let's begin!`);
+                setResponse("");
+                setScenario([
+                  "You made it to Week 2! It's time to dive in.",
+                  "In this week, you'll be learning about asynchronous programming and completing the Lotide project.",
+                  "You can always reach out to mentors or instructors if you need help.",
+                  "As you start your project, you run into an issue. You can't decide which technology to use.",
+                  "What do you do?",
+                ]);
+                transition(WEEK_2_S1);
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
             },
-            isFuzzyMatch: true,
-          },
-        ]);
-        break;
+          ]);
+          break;
 
-      case "WEEK_2_S1":
-        setCommands([
-          ...staticCommands,
-          {
-            command: ["Understand", "Got it", "comprehend"],
-            callback: () => {
-              setResponse(
-                "Awesome! You're now an expert in Asynchronous programming."
-              );
-              setTimeout(() => {
-                setNavText("W2: Cloning the Lodash Library");
-                transition(WEEK_2_S2);
-                setScenario("");
-                setResponse("");
-              }, 3000);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
+          
+            case "WEEK_2_S1":
+           
+  setCommands([
+    {
+      command: ["show me the path", "where to next", "what's next", "where do I go", "where to go", "where to head next", "what should I do", "what's next"],
+      callback: () => {
+        setResponse(" Refer to the provided documentation for guidance. Good luck!");
+
+        setScenario([
+          "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
+          "You realize that you'll need to create a basic JS component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 2.",
+          "Refer to the provided documentation for guidance.",
+          "Are you up for the challenge?",
         ]);
-        break;
-      case "WEEK_2_S2":
-        setCommands([
-          ...staticCommands,
-          {
-            command: ["Finished", "Complete", "Done"],
-            callback: () => {
-              setResponse(
-                "Well done! You've successfully cloned the lodash library. Time to celebrate with a round of digital applause!"
-              );
-              setTimeout(() => {
-                setNavText("W2: Cloning the Lodash Library");
-                transition(WEEK_3);
-                setScenario("");
-                setResponse("");
-              }, 3000);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
+        transition(WEEK_2_S2);
+        setNavText("WEEK 2: CHALLENGE 1");
+        resetTranscript();
+      },
+      isFuzzyMatch: true,
+    },
+    {
+      command: ["skip"],
+      callback: () => {
+        setResponse("Don't skip the basics! 😤");
+
+        setScenario([
+          "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
+          "You realize that you'll need to create a basic React component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 1.",
+          "Refer to the provided documentation for guidance.",
+          "Are you up for the challenge?",
         ]);
-        break;
+        transition(WEEK_2_S2);
+        setNavText("WEEK 2: CHALLENGE 1");
+        resetTranscript();
+      },
+      isFuzzyMatch: true,
+    },
+    {
+      command: ["give up"],
+      callback: () => {
+        setResponse("No pain, no gain. 💪");
+
+        setScenario([
+          "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
+          "You realize that you'll need to create a basic JS component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 1.",
+          "Refer to the provided documentation for guidance.",
+          "Are you up for the challenge?",
+        ]);
+        transition(WEEK_2_S2);
+        setNavText("WEEK 2: CHALLENGE 1");
+        resetTranscript();
+      },
+      isFuzzyMatch: true,
+    },
+  ]);
+  break;
+  case "WEEK_2_S2":
+    setCommands([
+      {
+        command: ["continue", "yes", "keep going"],
+        callback: () => {
+          setResponse("Good choice! 🚀");
+          setScenario([
+            "Week 2 continues with asynchronous programming, you'll need to be comfortable working with Promises, async/await, and the event loop.",
+            "Your first project is the Lotide project, which is inspired by the Lodash project, which is a utility library for JavaScript.",
+            "This is a challenging project, but if you can complete it, you'll have a solid foundation in asynchronous programming.",
+            "Do you feel ready for the challenge?",
+          ]);
+          setNavText("WEEK 2: LOTIDE PROJECT");
+          transition(WEEK_2_S3);
+          resetTranscript();
+        },
+        isFuzzyMatch: true,
+      },
+      {
+        command: ["no", "stop", "(I) quit", "give up"],
+        callback: () => {
+          setScenario([
+            "It's okay to take a break, but remember that the road to success is rarely an easy one",
+          ]);
+          setNavText("WEEK 2: WADING INTO LOW-TIDE");
+          transition(WEEK_2_S3);
+          resetTranscript();
+        },
+        isFuzzyMatch: true,
+      },
+    ]);
+    break;
+    case "WEEK_2_S3":
+      setCommands([
+        {
+          command: ["continue", "yes", "keep going"],
+          callback: () => {
+            setResponse("Good luck! 😏");
+            setScenario([
+              "You've arrived at Lighthouse Labs and your first project is assigned. Working with a small team, you're tasked to build a project in 2 days.",
+              "Despite some roadblocks, your team is able to deliver a working product just in time for the demo.",
+              "But the journey doesn't stop here, the next challenge is a solo project. You have to build a functional application from scratch using React.",
+              "Feeling confident and eager to learn, do you choose to continue? or go back to your old life?",
+            ]);
+    
+            transition(WEEK_3);
+            setNavText("WEEK 3: Time to Solo");
+    
+            resetTranscript();
+          },
+          isFuzzyMatch: true,
+          // matchInterim: true,
+        },
+        {
+          command: [
+            "no",
+            "stop",
+            "(I) quit",
+            "(return to) old life",
+            "give up",
+          ],
+          callback: () => {
+            setScenario([
+              "Fearing you may not be cut out for a career in tech, you decide to opt out and return to the comfort of your old life.",
+              "Months later, you still think about what could have been...",
+            ]);
+            setResponse("Coding isn't for everyone. 🤷‍♀️");
+    
+            setLives(0);
+    
+            transition(GAMEOVER);
+            setGameOverText("Say 'restart' to return to Main Menu");
+    
+            setTimeout(() => {
+              setNavText("");
+            }, 7000);
+            resetTranscript();
+          },
+          isFuzzyMatch: true,
+        },
+      ]);
+      break;
+    
+          
+
+
+          
+        
+
+        case "WEEK_3":
+          setCommands([
+            {
+              command: ["explore", "look around", "search"],
+              callback: () => {
+                setResponse("What would you like to search for?");
+                
+                setScenario([
+                  "You find yourself in a dimly lit dungeon, with no idea how you got here.",
+                  "There are several chests scattered throughout the room.",
+                  "You notice that one of the chests has a keyhole.",
+                ]);
+                
+                transition(WEEK_3_S1);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Treasure Hunt");
+                  setResponse("");
+                  setScenario("");
+                }, 2000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["run", "escape"],
+              callback: () => {
+                setScenario([
+                  "You panic and run around aimlessly until you tire yourself out.",
+                  "You turn around to find that you're back to where you started.",
+                ]);
+                setResponse("Maybe try searching for a way out?");
+                
+                setScenario([
+                  "You look around frantically for an exit, but there doesn't seem to be one in sight.",
+                  "As you catch your breath, you notice a glint of metal from one of the chests.",
+                  "Could it be a key?",
+                ]);
+        
+                transition(WEEK_3_S1);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Treasure Hunt");
+                  setResponse("");
+                  setScenario("");
+                }, 5000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["inventory", "items"],
+              callback: () => {
+                setResponse(
+                  `You have ${inventory.length} items: ${inventory.join(", ")}`
+                );
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["start project"],
+              callback: () => {
+                setResponse("You begin your technical interview project.");
+                setScenario([
+                  "You are interviewing for a web developer position and have been given a project to complete.",
+                  "The task is to create a simple app that retrieves data from an API and displays it on a webpage.",
+                  "You will need to use AJAX to make the API call and parse the JSON response.",
+                ]);
+                transition(WEEK_3_S2);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Technical Interview");
+                  setResponse("");
+                }, 5000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+          ]);
+          break;
+        case "WEEK_3_S1":
+          setCommands([
+            {
+              command: ["look for a map", "map"],
+              callback: () => {
+                setResponse("You find a map in one of the chests!");
+                setInventory([...inventory, "Map"]);
+        
+                setTimeout(() => {
+                  setResponse("");
+                }, 3000);
+        
+                transition(WEEK_3_S2);
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["look for a key", "key"],
+              callback: () => {
+                setResponse(
+                  "You find a key, but it doesn't seem to fit any of the doors in this room."
+                );
+                setInventory([...inventory, "Key"]);
+        
+                setTimeout(() => {
+                  setResponse("");
+                }, 5000);
+        
+                transition(WEEK_3_S2);
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["look for an exit", "exit"],
+              callback: () => {
+                setResponse("There doesn't seem to be an exit in this room. You should keep searching for clues.");
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["inventory", "items"],
+              callback: () => {
+                setResponse(
+                  `You have ${inventory.length} items: ${inventory.join(", ")}`
+                );
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+          ]);
+          break;
+          case "WEEK_3_S2":
+            setCommands([
+              {
+                command: ["send request", "make api call", "retrieve data"],
+                callback: () => {
+                  setResponse("You successfully make the API call and retrieve data!");
+                  setInventory([...inventory, "API Data"]);
+          
+                  setTimeout(() => {
+                    setResponse("");
+                  }, 3000);
+          
+                  transition(WEEK_3_S3);
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+              {
+                command: ["parse data", "display on webpage"],
+                callback: () => {
+                  setResponse("You successfully parse the data and display it on the webpage!");
+                  setInventory([...inventory, "Webpage"]);
+          
+                  setTimeout(() => {
+                    setResponse("");
+                  }, 3000);
+          
+                  transition(WEEK_3_S3);
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+              {
+                command: ["inventory", "items"],
+                callback: () => {
+                  setResponse(
+                    `You have ${inventory.length} items: ${inventory.join(", ")}`
+                  );
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+            ]);
+            break;
+            case "WEEK_3_S3":
+              setCommands([
+                {
+                  command: ["submit project", "finish project"],
+                  callback: () => {
+                    setResponse("You submit your project and feel a sense of accomplishment!");
+                    setScenario([
+                      "You eagerly await the response from the hiring team.",
+                      "Days pass, but you finally receive an email from the company.",
+                      `Congratulations, ${player}! You've been offered the web developer position!`,
+                    ]);
+            
+                    setTimeout(() => {
+                      setNavText("WEEK 4: The Job Offer");
+                      setResponse("");
+                    }, 6000);
+            
+                    transition(WEEK_4);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+                {
+                  command: ["improve project", "revise project"],
+                  callback: () => {
+                    setResponse(
+                      "You spend some time improving your project and submitting a revised version."
+                    );
+                    setScenario([
+                      "The hiring team is impressed with your dedication and hard work.",
+                      "They offer you the web developer position!",
+                    ]);
+            
+                    setTimeout(() => {
+                      setNavText("WEEK 4: The Job Offer");
+                      setResponse("");
+                    }, 6000);
+            
+                    transition(WEEK_4);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+                {
+                  command: ["quit"],
+                  callback: () => {
+                    setResponse(
+                      "You give up on the project and decide to move on to something else."
+                    );
+                    setScenario([
+                      "The hiring team is disappointed with your lack of commitment and decides not to offer you the position.",
+                    ]);
+            
+                    setTimeout(() => {
+                      setNavText("WEEK 4: The Job Offer");
+                      setResponse("");
+                    }, 6000);
+            
+                    transition(WEEK_4);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+                {
+                  command: ["inventory", "items"],
+                  callback: () => {
+                    setResponse(
+                      `You have ${inventory.length} items: ${inventory.join(", ")}`
+                    );
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+              ]);
+              break;
+            
 
       case "WEEK_4":
         setCommands([
@@ -1365,6 +1702,10 @@ export default function useCommand(props) {
             command: ["skip"],
             callback: () => {
               setResponse("");
+
+              setScenario([
+                "You begin your day by reasearching the issue, but quickly realize you need to access to more information. What do you do?",
+              ]);
               setNavText("WEEK 4: SCENARIO 1");
               transition(WEEK_4_S1);
               resetTranscript();
@@ -1386,33 +1727,37 @@ export default function useCommand(props) {
             ],
             callback: () => {
               setResponse("🚨🚨🚨");
-              setScenario(
-                "You successfully hack into Tweeter's systems, but trigger the security alarms."
-              );
-
               setLives(lives - 1);
-              setTimeout(() => {
-                setScenario(
-                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a (not so) secure system"
-                );
-                setTimeout(() => {
-                  if (lives <= 0) {
-                    setScenario("");
-                    transition(GAMEOVER);
-                    setGameOverText(
-                      "Looks like you ran out of lives. Better luck next time."
-                    );
-                    setNavText(
-                      "Say 'Restart' or 'Home' to return to Main menu"
-                    );
-                    setResponse("");
-                  }
 
-                  setScenario("");
+              if (lives <= 0) {
+                setScenario([
+                  "You successfully hack into Tweeter's systems, but trigger the security alarms.",
+                  "Not even getting a chance to commit your work, you're arrested by the Tweeter police.",
+                ]);
+
+                transition(GAMEOVER);
+                setGameOverText(
+                  "Looks like you ran out of lives. Better luck next time."
+                );
+                setNavText("Say 'Restart' or 'Home' to return to Main menu");
+                setTimeout(() => {
+                  setResponse("");
+                }, 7000);
+              } else {
+                setScenario([
+                  "You successfully hack into Tweeter's systems, but trigger the security alarms.",
+                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a (not so) secure system",
+                  "You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.",
+                  "Convieniently. In your cell, there happens to be a dusty laptop that still manages to power on.",
+                  "Alternatively, you could take your chances with the gaurds who seem to be busy outside your cell.",
+                  "What do you choose to do?",
+                ]);
+                transition(WEEK_4_S2);
+                setTimeout(() => {
                   setNavText("WEEK 4: SCENARIO 2");
-                  transition(WEEK_4_S2);
                 }, 6000);
-              }, 7000);
+              }
+
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1422,44 +1767,31 @@ export default function useCommand(props) {
             command: ["(ask) classmates", "(ask) peers"],
             callback: () => {
               setNavText("WEEK 4: SCENARIO 1");
-              setScenario(
-                "You ask your classmates for help, but they are all too busy with their own projects."
-              );
+              setScenario([
+                "You ask your classmates for help, but they are all too busy with their own projects.",
+                "You begin your day by reasearching the issue, but quickly realize you need to access to more information. What do you do?",
+              ]);
 
-              setTimeout(() => {
-                setScenario("");
-                transition(WEEK_4_S1);
-              }, 6000);
+              transition(WEEK_4_S1);
               resetTranscript();
             },
             isFuzzyMatch: true,
             matchInterim: true,
           },
           {
-            command: ["mentor", "queue"],
+            command: ["mentor", "queue", "assistance (request)"],
             callback: () => {
               setLives(lives + 1);
 
-              setScenario(
-                "After waiting in the queue for what feels like ages, you finaly connect with a Mentor and explain your situation."
-              );
+              setScenario([
+                "After waiting in the queue for what feels like ages, you finaly connect with a Mentor and explain your situation.",
+                "Lucky for you, this mentor was an Ex Tweeter employee who knew the ins and outs of Tweeter's source code.",
+                "The mentor shares their knowledge and you carry on with your research",
+                "You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers. How will you get there?",
+              ]);
 
-              setTimeout(() => {
-                setScenario(
-                  "Lucky for you, this mentor was an Ex Tweeter employee who knew the ins and outs of Tweeter's source code."
-                );
-                setTimeout(() => {
-                  setScenario(
-                    "The mentor shares their knowledge and you carry on with your research"
-                  );
-                  setTimeout(() => {
-                    setNavText("WEEK 4: SCENARIO 3");
-                    setScenario("");
-                    transition(WEEK_4_S3);
-                  }, 5000);
-                }, 6000);
-              }, 6000);
-
+              setNavText("WEEK 4: SCENARIO 3");
+              transition(WEEK_4_S3);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1474,32 +1806,20 @@ export default function useCommand(props) {
             callback: () => {
               if (randInt() > 4) {
                 setResponse("Jailbreak! 😈");
-                setScenario(
-                  "You grab the laptop and use your coding skills to open your jail cell"
-                );
+                setScenario([
+                  "You grab the laptop and use your coding skills to open your jail cell",
+                  "While the guards are looking away you sneak out and successfully escape",
+                  "You get back home safely continue your mission to save Tweeter.",
+                  "You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers. How will you get there?",
+                ]);
 
-                setTimeout(() => {
-                  setScenario(
-                    "While the guards are looking away you sneak out and successfully escape"
-                  );
-
-                  setTimeout(() => {
-                    setScenario(
-                      "You get back home safely continue your mission to save Tweeter."
-                    );
-
-                    setTimeout(() => {
-                      setNavText("WEEK 4: SCENARIO 3");
-                      setScenario("");
-                      transition(WEEK_4_S3);
-                    }, 6000);
-                  }, 6500);
-                }, 7000);
+                setNavText("WEEK 4: SCENARIO 3");
+                transition(WEEK_4_S3);
               } else {
                 setLives(lives - 1);
-                setScenario(
-                  "Whoops...You pick up the laptop, but it slips and lands right on your toe"
-                );
+                setScenario([
+                  "Whoops...You pick up the laptop, but it slips and lands right on your toe",
+                ]);
 
                 if (lives <= 0) {
                   transition(GAMEOVER);
@@ -1507,13 +1827,15 @@ export default function useCommand(props) {
                     "Death by dusty laptop. Thats pretty embarassing..."
                   );
                   setNavText("Say 'Restart' or 'Home' to return to Main menu");
-                  setScenario("");
-                }
-
-                setTimeout(() => {
-                  setScenario("");
+                } else {
+                  setScenario([
+                    "You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.",
+                    "Convieniently. In your cell, there happens to be a dusty laptop that still manages to power on.",
+                    "Alternatively, you could take your chances with the gaurds who seem to be busy outside your cell.",
+                    "What do you choose to do?",
+                  ]);
                   transition(WEEK_4_S2);
-                }, 7000);
+                }
               }
               resetTranscript();
             },
@@ -1527,19 +1849,14 @@ export default function useCommand(props) {
               setResponse("");
 
               if (randInt() < 4) {
-                setScenario(
-                  "You bribe the guards with the last of your coffee bean fund and successfully escape jail."
-                );
+                setScenario([
+                  "You bribe the guards with the last of your coffee bean fund and successfully escape jail.",
+                  "You get back home safely continue your mission to save Tweeter.",
+                  "You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers. How will you get there?",
+                ]);
 
-                setTimeout(() => {
-                  setScenario(
-                    "You get back home safely continue your mission to save Tweeter."
-                  );
-                  setTimeout(() => {
-                    setNavText("WEEK 4: SCENARIO 3");
-                    transition(WEEK_4_S3);
-                  }, 4000);
-                }, 7000);
+                setNavText("WEEK 4: SCENARIO 3");
+                transition(WEEK_4_S3);
               } else {
                 setLives(lives - 1);
 
@@ -1547,20 +1864,19 @@ export default function useCommand(props) {
                   transition(GAMEOVER);
                   setGameOverText("Maybe the guard went a bit overboard...");
                   setNavText("Say 'Restart' or 'Home' to return to Main menu");
-                  setScenario("");
+                } else {
+                  setScenario([
+                    "The guard roasts your haircut and goes back to his duties.",
+                    "It was super effective.",
+                    "You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.",
+                    "Convieniently. In your cell, there happens to be a dusty laptop that still manages to power on.",
+                    "Alternatively, you could take your chances with the gaurds who seem to be busy outside your cell.",
+                    "What do you choose to do?",
+                  ]);
+
+                  transition(WEEK_4_S2);
+                  setNavText("WEEK 4: SCENARIO 2");
                 }
-
-                setScenario(
-                  "The guard roasts your haircut and goes back to his duties."
-                );
-
-                setTimeout(() => {
-                  setScenario("It was super effective.");
-                  setTimeout(() => {
-                    transition(WEEK_4_S2);
-                    setNavText();
-                  }, 5000);
-                }, 6000);
               }
             },
             isFuzzyMatch: true,
@@ -1574,35 +1890,33 @@ export default function useCommand(props) {
             command: ["fly", "* helicopter"],
             callback: () => {
               setResponse("");
-              setScenario("You use your TELUS benefits to rent a helicopter");
               setLives(lives - 1);
+
+              if (lives <= 0) {
+                setScenario([
+                  "You use your TELUS benefits to rent a helicopter",
+                  "But you crash as soon as you take off because you forgot you're a programmer, not a pilot",
+                ]);
+
+                transition(GAMEOVER);
+                setGameOverText("Should've probably packed a parachute too.");
+
+                setNavText("Say 'Restart' or 'Home' to return to Main menu");
+              } else {
+                setScenario([
+                  "You use your TELUS benefits to rent a helicopter",
+                  "But you crash as soon as you take off because you forgot you're a programmer, not a pilot",
+                  "You walk back home in shame",
+                  "With very little time left, you decide to get creative and come up with a new plan to save Tweeter.",
+                  "After days of planning, you settle on two options:",
+                  " Use your coding skills to create a virtual version of Tweeter. Or use those skills to build a time machine and prevent the problem from even happening",
+                ]);
+
+                transition(WEEK_4_S4);
+              }
+
               setTimeout(() => {
-                setScenario(
-                  "But you crash as soon as you take off because you forgot you're a programmer, not a pilot"
-                );
-
-                if (lives <= 0) {
-                  setTimeout(() => {
-                    transition(GAMEOVER);
-                    setGameOverText(
-                      "Should've probably packed a parachute too."
-                    );
-                    setNavText(
-                      "Say 'Restart' or 'Home' to return to Main menu"
-                    );
-                    setScenario("");
-                  }, 6000);
-                } else {
-                  setTimeout(() => {
-                    setScenario("You walk back home in shame");
-
-                    setTimeout(() => {
-                      transition(WEEK_4_S4);
-                      setNavText("WEEK 4: SCENARIO 4");
-                      setScenario("");
-                    });
-                  }, 6000);
-                }
+                setNavText("WEEK 4: SCENARIO 4");
               }, 7000);
 
               resetTranscript();
@@ -1614,13 +1928,16 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario(
-                "After checking transit routes, you find out it will be a 7 hour commute, you take emotional damage and reconcider."
-              );
+              setScenario([
+                "After checking transit routes, you find out it will be a 7 hour commute, you take emotional damage and reconcider.",
+                "With very little time left, you decide to get creative and come up with a new plan to save Tweeter.",
+                "After days of planning, you settle on two options:",
+                " Use your coding skills to create a virtual version of Tweeter. Or use those skills to build a time machine and prevent the problem from even happening.",
+              ]);
 
+              transition(WEEK_4_S4);
               setTimeout(() => {
                 setNavText("WEEK 4: SCENARIO 4");
-                transition(WEEK_4_S4);
               }, 7000);
 
               resetTranscript();
@@ -1633,14 +1950,16 @@ export default function useCommand(props) {
               setResponse("...really?");
 
               setScenario(
-                "After a couple steps outside you return home exhausted and embarassed."
+                "After a couple steps outside you return home exhausted and embarassed.",
+                "You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers. How will you get there?"
               );
+
+              transition(WEEK_4_S3);
 
               setTimeout(() => {
                 setResponse("");
-                transition(WEEK_4_S3);
-                setScenario("");
               }, 6000);
+
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1655,24 +1974,25 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario(
-                "You use your coding skills to create a virtual version of Tweeter called 'Two-weeter' and successfully save all the tweets."
-              );
+              setScenario([
+                "You use your coding skills to create a virtual version of Tweeter called 'Two-weeter' and successfully save all the tweets.",
+                "You are hailed as a hero and thanked personally from the CEO of Tweeter. Just in time for week 5 of bootcamp 😉",
+                "A cheque would've been nice though...",
+                "Wow. You actually managed to save Tweeter..",
+                "Not bad, im impressed.",
+                "Unfortunatly for us however, it looks like you upset the hackers...",
+                "Now they are targeting our bootcamps' Databases!",
+                "Get into our database and drop them once and for all!",
+                "You open up your terminal and proceed to type 'psql'. To connect to the database.",
+                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean?What do we do?",
+              ]);
+
+              transition(WEEK_5_S1);
 
               setTimeout(() => {
-                setScenario(
-                  "You are hailed as a hero and thanked personally from the CEO of Tweeter. Just in time for week 5 of bootcamp 😉"
-                );
+                setNavText("WEEK 5: SCENARIO 1");
+              }, 16000);
 
-                setTimeout(() => {
-                  setScenario("A cheque would've been nice though...");
-                  setTimeout(() => {
-                    setNavText("WEEK 4: SCENARIO 1");
-                    transition(WEEK_5);
-                    setScenario("");
-                  }, 5000);
-                }, 6000);
-              }, 7000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1686,27 +2006,18 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario(
-                "You decide to build a time machine, but it sends you to the year 2077."
-              );
+              setLives(0);
+              setScenario([
+                "You decide to build a time machine, but it sends you to the year 2077.",
+                "You discover that Tweeter no longer exists. With no place for people to post thier questionable Tweets, the world has plunged into utter chaos.",
+                "Mission Failed.",
+              ]);
 
-              setTimeout(() => {
-                setScenario(
-                  "You discover that Tweeter no longer exists. With no place for people to post thier questionable Tweets, the world has plunged into utter chaos."
-                );
+              setNavText("Say 'Restart' or 'Home' to return to Main menu");
 
-                setTimeout(() => {
-                  setScenario("Mission Failed.");
-                  setTimeout(() => {
-                    setNavText(
-                      "Say 'Restart' or 'Home' to return to Main menu"
-                    );
-                    transition(GAMEOVER);
-                    setGameOverText("And its allll your fault 🙂");
-                    setLives(0);
-                  }, 5000);
-                }, 6000);
-              }, 7000);
+              setGameOverText("And its allll your fault 🙂");
+              transition(GAMEOVER);
+
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1736,6 +2047,10 @@ export default function useCommand(props) {
             command: ["startpostgres", "start postgres", "thought postgres"],
             callback: () => {
               setResponse("");
+              setScenario([
+                "You are greeted with a password input!",
+                "I wonder what the password could be...",
+              ]);
               setNavText("WEEK 5: SCENARIO 2");
               transition(WEEK_5_S2);
               resetTranscript();
@@ -1748,17 +2063,15 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario("You attempt to hack into the bootcamps database!");
+              setScenario([
+                "You attempt to hack into the bootcamps database!",
+                "It wasnt very effective...",
+                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean?What do we do?",
+              ]);
 
-              setTimeout(() => {
-                setScenario("It wasnt very effective...");
+              setNavText("WEEK 5: SCENARIO 1");
+              transition(WEEK_5_S1);
 
-                setTimeout(() => {
-                  transition(WEEK_5_S1);
-                  setNavText("WEEK 5: SCENARIO 1");
-                  setScenario("");
-                }, 5000);
-              }, 5000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1770,24 +2083,27 @@ export default function useCommand(props) {
               setResponse("");
 
               setLives(lives - 1);
-              setScenario("You take out a $4000 loan to buy a macbook.");
+              if (lives <= 0) {
+                setScenario([
+                  "You take out a $4000 loan to buy a macbook.",
+                  "I really hope it was worth it.",
+                ]);
 
-              setTimeout(() => {
-                setScenario("I really hope it was worth it.");
+                transition(GAMEOVER);
+                setResponse("");
+                setGameOverText("Spoiler: It wasnt.");
+                setNavText("Say 'Reset' or 'Home' to return to Main menu");
+              } else {
+                setNavText("WEEK 5: SCENARIO 2");
+                setScenario([
+                  "You take out a $4000 loan to buy a macbook.",
+                  "I really hope it was worth it.",
+                  "You are greeted with a password input!",
+                  "I wonder what the password could be...",
+                ]);
+                transition(WEEK_5_S2);
+              }
 
-                setTimeout(() => {
-                  if (lives <= 0) {
-                    transition(GAMEOVER);
-                    setResponse("");
-                    setGameOverText("Spoiler: It wasnt.");
-                    setNavText("Say 'Reset' or 'Home' to return to Main menu");
-                  } else {
-                    transition(WEEK_5_S2);
-                    setNavText("WEEK 5: SCENARIO 2");
-                    setScenario("");
-                  }
-                }, 5000);
-              }, 6000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1800,19 +2116,23 @@ export default function useCommand(props) {
           {
             command: ["monkeyfuzz", "monkey fuzz"],
             callback: () => {
-              setResponse("");
+              setResponse("🙈🙉🙊");
 
-              setScenario("It Worked!");
+              setScenario([
+                "It Worked!",
+                "I think I see why we got hacked...",
+                "We're finally in the Database!",
+                " You find an out of place table named 'hackers(do not touch)'.",
+                "Suddenly, your phone rings.",
+                "Its mom. Oh no. Its been 5 weeks since youve facetimed her and she's not happy. What do you do?",
+              ]);
+              setNavText("WEEK 5: SCENARIO 3");
 
+              transition(WEEK_5_S3);
               setTimeout(() => {
-                setScenario("I think I see why we got hacked...");
+                setScenario("");
+              }, 9000);
 
-                setTimeout(() => {
-                  setNavText("WEEK 5: SCENARIO 3");
-                  transition(WEEK_5_S3);
-                  setScenario("");
-                }, 3000);
-              }, 3000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1824,26 +2144,29 @@ export default function useCommand(props) {
               setResponse("");
 
               if (randInt() > 2) {
-                setScenario("Incorrect Password. Try again.");
+                setScenario([
+                  "Incorrect Password. Try again.",
+                  "You are greeted with a password input!",
+                  "I wonder what the password could be...",
+                ]);
 
-                setTimeout(() => {
-                  transition(WEEK_5_S2);
-                  setScenario("");
-                }, 2000);
+                transition(WEEK_5_S2);
               } else {
                 setResponse("lucky lucky 🍀");
-                setScenario(
-                  `Wow. You guessed it... ${password} was really the password.`
-                );
+                setScenario([
+                  `Wow. You guessed it... ${password} was really the password.`,
+                  "I think I see how we got hacked...",
+                  "We're finally in the Database!",
+                  " You find an out of place table named 'hackers(do not touch)'.",
+                  "Suddenly, your phone rings.",
+                  "Its mom. Oh no. Its been 5 weeks since youve facetimed her and she's not happy. What do you do?",
+                ]);
+                setNavText("WEEK 5: SCENARIO 3");
+                transition(WEEK_5_S3);
 
                 setTimeout(() => {
-                  setScenario("I think I see how we got hacked...");
-                  setTimeout(() => {
-                    setNavText("WEEK 5: SCENARIO 3");
-                    transition(WEEK_5_S3);
-                    setScenario("");
-                  }, 4000);
-                }, 4000);
+                  setScenario("");
+                }, 10000);
               }
 
               resetTranscript();
@@ -1858,16 +2181,14 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario(
-                "With no regard for your life, you let call goto voicemail and SELECT the hacker table"
-              );
+              setScenario([
+                "With no regard for your life, you let call goto voicemail and SELECT the hacker table",
+                "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
+              ]);
 
-              setTimeout(() => {
-                setNavText("WEEK 5: SCENARIO 4");
-                transition(WEEK_5_S4);
+              setNavText("WEEK 5: SCENARIO 4");
+              transition(WEEK_5_S4);
 
-                setScenario("");
-              }, 5000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1879,15 +2200,16 @@ export default function useCommand(props) {
               setResponse("Aww.. 🥺");
               setLives(lives + 1);
 
-              setScenario(
-                "You pick up the phone expecting to get an earfull but you are greeted with encouragement and some words of wisdom 🙂"
-              );
+              setScenario([
+                "You pick up the phone expecting to get an earfull but you are greeted with encouragement and some words of wisdom 🙂",
+                "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
+              ]);
 
+              setNavText("WEEK 5: SCENARIO 4");
+              transition(WEEK_5_S4);
               setTimeout(() => {
-                setNavText("WEEK 5: SCENARIO 4");
-                transition(WEEK_5_S4);
                 setScenario("");
-              }, 6000);
+              }, 10000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1902,16 +2224,14 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario("TABLE DELETED");
-              setTimeout(() => {
-                setScenario("Look at you, another day saved!");
+              setScenario(["TABLE DELETED", "Look at you, another day saved!"]);
 
-                setTimeout(() => {
-                  transition(WEEK_6);
-                  setNavText("WEEK 6");
-                  setScenario("");
-                }, 4000);
-              }, 4000);
+              transition(WEEK_6);
+              setNavText("WEEK 6");
+
+              setTimeout(() => {
+                setScenario("");
+              }, 10000);
 
               resetTranscript();
             },
@@ -1922,18 +2242,14 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario("ERROR: table has dependencies");
-              setTimeout(() => {
-                setScenario("That didnt work?!");
+              setScenario([
+                "ERROR: table has dependencies",
+                "That didnt work?!",
+                "I wonder if we are missing something...",
+                "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
+              ]);
 
-                setTimeout(() => {
-                  setScenario("I wonder if we are missing something...");
-                  setTimeout(() => {
-                    transition(WEEK_5_S4);
-                    setScenario("");
-                  }, 4000);
-                }, 4000);
-              }, 5000);
+              transition(WEEK_5_S4);
 
               resetTranscript();
             },
@@ -1944,20 +2260,14 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
 
-              setScenario("You delete the contents of the hackers table!");
-              setTimeout(() => {
-                setScenario(
-                  "But suddenly see the table repopulate before your eyes"
-                );
+              setScenario([
+                "You delete the contents of the hackers table!",
+                "But suddenly see the table repopulate before your eyes",
+                "There has to be a better way.",
+                "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
+              ]);
 
-                setTimeout(() => {
-                  setScenario("There has to be a better way.");
-                  setTimeout(() => {
-                    transition(WEEK_5_S4);
-                    setScenario("");
-                  }, 2500);
-                }, 4000);
-              }, 5000);
+              transition(WEEK_5_S4);
 
               resetTranscript();
             },
@@ -1968,18 +2278,19 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("");
               setLives(lives - 1);
-              // setScenario("...I think that made it stronger?");
 
-              setTimeout(() => {
-                if (lives <= 0) {
-                  transition(GAMEOVER);
-                  setGameOverText("...I mean, what did you expect?");
-                  setNavText("Say 'Reset' or 'Home' to return to Main menu");
-                } else {
-                  transition(WEEK_5_S4);
-                  // setScenario("");
-                }
-              }, 4000);
+              if (lives <= 0) {
+                setScenario(["...I think that made it stronger?"]);
+                transition(GAMEOVER);
+                setGameOverText("...I mean, what did you expect?");
+                setNavText("Say 'Reset' or 'Home' to return to Main menu");
+              } else {
+                setScenario([
+                  "...I think that made it stronger?",
+                  "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
+                ]);
+                transition(WEEK_5_S4);
+              }
 
               resetTranscript();
             },
@@ -2020,8 +2331,14 @@ const WEEK_1_S5 = "WEEK_1_S5";
 const WEEK_2 = "WEEK_2";
 const WEEK_2_S1 = "WEEK_2_S1";
 const WEEK_2_S2 = "WEEK_2_S2";
+const WEEK_2_S3 = "WEEK_2_S3";
 
 const WEEK_3 = "WEEK_3";
+const WEEK_3_S1 = "WEEK_3_S1";
+const WEEK_3_S2 = "WEEK_3_S2";
+const WEEK_3_S3 = "WEEK_3_S3";
+const WEEK_3_S4 = "WEEK_3_S4";
+const WEEK_3_S5 = "WEEK_3_S5";
 
 const WEEK_4 = "WEEK_4";
 const WEEK_4_S1 = "WEEK_4_S1";

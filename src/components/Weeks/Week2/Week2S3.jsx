@@ -1,6 +1,7 @@
+import "./week2.css";
 import useTTS from "../../../hooks/useTTS";
 
-const Week4S2 = (props) => {
+const Week2S3 = (props) => {
   const { scenario } = props;
 
   const currentSentence = useTTS(scenario);
@@ -12,4 +13,4 @@ const Week4S2 = (props) => {
   );
 };
 
-export default Week4S2;
+export default Week2S3;

@@ -27,6 +27,8 @@ import Week3 from "./components/Weeks/Week3/Week3";
 import Week3S1 from "./components/Weeks/Week3/Week3S1";
 import Week3S2 from "./components/Weeks/Week3/Week3S2";
 import Week3S3 from "./components/Weeks/Week3/Week3S3";
+import Week3S4 from "./components/Weeks/Week3/Week3S4";
+import Week3S5 from "./components/Weeks/Week3/Week3S5";
 import Week4 from "./components/Weeks/Week4/Week4";
 import Week4S1 from "./components/Weeks/Week4/Week4S1";
 import Week4S2 from "./components/Weeks/Week4/Week4S2";

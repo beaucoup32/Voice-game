@@ -36,16 +36,17 @@ body {
   align-items: center;
   background-color: #333841;
   color: turquoise;
+  text-align: left; 
   padding: 20px;
   border-radius: 10px;
 }
 
 /* Set the font size, width, color, and text alignment for the .scenario-text element */
 .scenario-text {
-  font-size: 2em;
+  font-size: 1.75em;
   width: 50ch;
   color: magenta;
-  text-align: center;
+  text-align: left; 
 }
 
 /* Set the width and height for the .home-figure element */

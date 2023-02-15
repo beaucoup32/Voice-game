@@ -534,7 +534,7 @@ export default function useCommand(props) {
                     "You cruise to the cool colored Coral",
                     "You stare at the beautiful Coral in front of you and wonder...",
                     "Why are these called Conditional Coral? How did you get here?",
-                    "Hmm, Was it the command you just gave?",
+                    "Hm, Was it the command you just gave?",
                     "If (conditional === Coral) { you arrive at coral }",
                     "You pondered this as you take off your shoes.",
                     "Maybe you think better without shoes on 🤷‍♂️? What do you do next?",
@@ -701,6 +701,7 @@ export default function useCommand(props) {
                 setTimeout(() => {
                   setNavText("WEEK 2: Cats & ISS & API oh my!");
                   transition(WEEK_2);
+                  setBoolean(false);
                 }, 10000);
               }
               resetTranscript();
@@ -826,13 +827,14 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["pick up", "take", "pocket", "keep"],
+            command: ["pick up (a mushroom)", "take (a mushroom)", "(put in)(my) pocket", "keep"],
 
             callback: () => {
               if (!mushroom) {
                 setResponse(
                   "Sure, why not. Mushroom foraging is legal, right?"
                 );
+                setImage("holding")
                 setScenario([
                   "You decide to put a mushroom in your pocket for later",
                 ]);
@@ -852,9 +854,9 @@ export default function useCommand(props) {
                   transition(WEEK_1_S1);
                 }, 1);
               }
-              // setTimeout(() => {
-              //   setResponse("");
-              // }, 5000);
+              setTimeout(() => {
+                setImage("");
+              }, 4000);
             },
             isFuzzyMatch: true,
           },
@@ -882,7 +884,7 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setScenario(["Welcome back. Where to next?"]);
                 transition(WEEK_1B);
-              }, 8000);
+              }, 9000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -929,18 +931,19 @@ export default function useCommand(props) {
                 "You decide to make an Assistance Request",
                 "You are greeted by a mentor named Walrus.",
                 "He reviews your work and notices the hammer in your carpenter like hands.",
-                "He offers you some eSTEAMed insights on how to crack open the solution.",
+                "He offers you some e-STEAMed insights on how to crack open the solution.",
                 "Thankful and wiser, you continue your journey",
               ]);
               transition(WEEK_1);
               setTimeout(() => {
-                transition(WEEK_1_S2);
+                  transition(WEEK_1_S2);
               }, 1);
+              setImage("walrus")
               setTimeout(() => {
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
-                setResponse("Welcome back. Where to next?");
-              }, 10000);
+                setScenario(["Welcome back. Where to next?"]);
+              }, 20000);
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -970,7 +973,7 @@ export default function useCommand(props) {
                   setNavText("WEEK 1: Wading into Lotide");
                   setResponse("Welcome back. Where to next?");
                   transition(WEEK_1B);
-                  setBoolean(false);
+                  
                 }, 8000);
               } else {
                 setScenario([
@@ -994,6 +997,7 @@ export default function useCommand(props) {
             callback: () => {
               if (!boolean) {
                 setResponse("Oh no! your feet!! 👣");
+                setImage("ouch")
                 setScenario([
                   "Eager to return on your quest to be the best programmer, you start to leave",
                   "Oh no! Your feet!!",
@@ -1008,7 +1012,7 @@ export default function useCommand(props) {
                 setTimeout(() => {
                   setResponse("You lost a life! 💔");
                   setLives(lives - 1);
-                }, 4000);
+                }, 8000);
               } else {
                 setScenario([
                   "You feel good about the Condition you are leaving the Coral",
@@ -1024,7 +1028,6 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setBoolean(false);
               }, 10000);
               resetTranscript();
             },
@@ -1050,6 +1053,7 @@ export default function useCommand(props) {
               }
               if (!boolean) {
                 setResponse("Oh no! your feet!! 👣");
+                setImage("ouch")
                 setScenario([
                   "You severly cut your feet trying get close to the coral without your shoes.",
                   "You shove your toes back into your now blood-red shoes.",
@@ -1081,7 +1085,6 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setBoolean(false);
               }, 16000);
 
               resetTranscript();
@@ -1132,7 +1135,6 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setBoolean(false);
               }, 10000);
               resetTranscript();
             },
@@ -1163,7 +1165,6 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("Welcome back. Where to next?");
                 transition(WEEK_1B);
-                setBoolean(false);
               }, 10000);
 
               resetTranscript();

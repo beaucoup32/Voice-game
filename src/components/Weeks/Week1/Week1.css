@@ -75,3 +75,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.scene-gif {
+  height: 90vh;
+  width: 90vw;
+  height: 90%;
+}

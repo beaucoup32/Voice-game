@@ -13,8 +13,8 @@ const PrepWeekS3 = (props) => {
       {currentSentence === challenge && (
         <div className="image-container">
           <img
-            className="comp-pic"
-            src="images/prepwks2func.png"
+            className="scenario-gif fork"
+            src="images/prepwks3fork.gif"
             alt="error-comp"
           />
         </div>

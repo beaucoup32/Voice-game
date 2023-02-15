@@ -6,9 +6,6 @@ html,
   background-color: #333841;
 }
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   text-align: center;
 }
 

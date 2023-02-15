@@ -60,20 +60,16 @@
   width: 100%;
 }
 
-.scenario-gif {
-  height: 28em;
-  width: 28em;
-  margin-top: 2em;
-}
-
 .image-container {
   display: flex;
   justify-content: space-between;
 }
 
-.comp-pic {
-  height: 28em;
-  width: 32em;
+.comp-pic, .tekken, .fork {
+  height: 100%;
+  width: 100%;
   margin-top: 2em;
 }
+
+
 

@@ -30,7 +30,7 @@ export default function useCommand(props) {
     setL,
     boolean,
     setBoolean,
-    setImage
+    setImage,
   } = props;
 
   // returns rand int between 0 - 9
@@ -192,7 +192,8 @@ export default function useCommand(props) {
                 "Welcome to bootcamp!",
                 "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
                 "In this game, use your voice to determine your actions.",
-                "If you get stuck, say 'Hint' to get some help. Are you ready?",
+                "If you get stuck, say 'Hint' to get some help",
+                "Are you ready?",
               ]);
               transition(PREPWEEK);
             },
@@ -828,7 +829,12 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["pick up (a mushroom)", "take", "(put in)(my) pocket", "keep"],
+            command: [
+              "pick up (a mushroom)",
+              "take",
+              "(put in)(my) pocket",
+              "keep",
+            ],
 
             callback: () => {
               if (!mushroom) {
@@ -866,9 +872,7 @@ export default function useCommand(props) {
 
             callback: () => {
               if (big) {
-                setResponse(
-                  `Look out! it's Super ${player}!!`
-                );
+                setResponse(`Look out! it's Super ${player}!!`);
                 setScenario([
                   "You pounce to your feet, towering over the Functional Fungus",
                   "You crush the entire ROOM into MUSH with your giant feet.",
@@ -974,7 +978,6 @@ export default function useCommand(props) {
                   setNavText("WEEK 1: Wading into Lotide");
                   setResponse("Welcome back. Where to next?");
                   transition(WEEK_1B);
-
                 }, 8000);
               } else {
                 setScenario([
@@ -1274,7 +1277,9 @@ export default function useCommand(props) {
           {
             command: ["yes", "yeah", "yep", "skip"],
             callback: () => {
-              setNavText(`Welcome to Week 2, ${props.playerName}! Let's begin!`);
+              setNavText(
+                `Welcome to Week 2, ${props.playerName}! Let's begin!`
+              );
               setResponse("");
               setScenario([
                 "You made it to Week 2! It's time to dive in.",
@@ -1290,14 +1295,24 @@ export default function useCommand(props) {
           },
         ]);
         break;
-        
-      case "WEEK_2_S1":
 
+      case "WEEK_2_S1":
         setCommands([
           {
-            command: ["show me the path", "where to next", "what's next", "where do I go", "where to go", "where to head next", "what should I do", "what's next"],
+            command: [
+              "show me the path",
+              "where to next",
+              "what's next",
+              "where do I go",
+              "where to go",
+              "where to head next",
+              "what should I do",
+              "what's next",
+            ],
             callback: () => {
-              setResponse(" Refer to the provided documentation for guidance. Good luck!");
+              setResponse(
+                " Refer to the provided documentation for guidance. Good luck!"
+              );
 
               setScenario([
                 "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
@@ -1430,12 +1445,6 @@ export default function useCommand(props) {
         ]);
         break;
 
-
-
-
-
-
-
       case "WEEK_3":
         setCommands([
           {
@@ -1557,7 +1566,9 @@ export default function useCommand(props) {
           {
             command: ["look for an exit", "exit"],
             callback: () => {
-              setResponse("There doesn't seem to be an exit in this room. You should keep searching for clues.");
+              setResponse(
+                "There doesn't seem to be an exit in this room. You should keep searching for clues."
+              );
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -1579,7 +1590,9 @@ export default function useCommand(props) {
           {
             command: ["send request", "make api call", "retrieve data"],
             callback: () => {
-              setResponse("You successfully make the API call and retrieve data!");
+              setResponse(
+                "You successfully make the API call and retrieve data!"
+              );
               setInventory([...inventory, "API Data"]);
 
               setTimeout(() => {
@@ -1594,7 +1607,9 @@ export default function useCommand(props) {
           {
             command: ["parse data", "display on webpage"],
             callback: () => {
-              setResponse("You successfully parse the data and display it on the webpage!");
+              setResponse(
+                "You successfully parse the data and display it on the webpage!"
+              );
               setInventory([...inventory, "Webpage"]);
 
               setTimeout(() => {
@@ -1623,7 +1638,9 @@ export default function useCommand(props) {
           {
             command: ["submit project", "finish project"],
             callback: () => {
-              setResponse("You submit your project and feel a sense of accomplishment!");
+              setResponse(
+                "You submit your project and feel a sense of accomplishment!"
+              );
               setScenario([
                 "You eagerly await the response from the hiring team.",
                 "Days pass, but you finally receive an email from the company.",
@@ -1693,7 +1710,6 @@ export default function useCommand(props) {
           },
         ]);
         break;
-
 
       case "WEEK_4":
         setCommands([

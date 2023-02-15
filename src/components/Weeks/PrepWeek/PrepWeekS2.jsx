@@ -12,7 +12,7 @@ const PrepWeekS2 = (props) => {
       <p className="scenario-text">{currentSentence}</p>
       {currentSentence === challenge && (
         <div className="image-container">
-          <img className="comp-pic" src="images/prepwks2func.png" alt="error-comp" />
+          <img className="scenario-gif comp-pic" src="images/prepwks2func.gif" alt="error-comp" />
         </div>
       )}
     </div>

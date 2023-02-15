@@ -30,6 +30,7 @@ export default function useCommand(props) {
     setL,
     boolean,
     setBoolean,
+    setImage
   } = props;
 
   // returns rand int between 0 - 9
@@ -76,11 +77,11 @@ export default function useCommand(props) {
     },
     {
     // testing for week 4
-      command: ["week 4"],
+      command: ["week 1", "week one"],
       callback: () => {
-        transition(WEEK_4);
+        transition(PREPWEEKS3);
         setLives(3);
-        setPlayer("Donny");
+        setPlayer("Kalim");
         setScenario("");
       },
       isFuzzyMatch: true,
@@ -381,7 +382,9 @@ export default function useCommand(props) {
                 "The ground is wet, reeking of Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
                 "Where would you like to go first?",
               ]);
-
+              setTimeout(() => {
+                setResponse("")
+              }, 4000)
               transition(WEEK_1);
               setNavText("WEEK 1: Wading into Lotide");
               resetTranscript();
@@ -420,6 +423,7 @@ export default function useCommand(props) {
       case "WEEK_1":
       case "WEEK_1B":
         setCommands([
+          ...staticCommands,
           {
             command: ["where (can I)", "repeat", "options"],
             callback: () => {
@@ -457,8 +461,8 @@ export default function useCommand(props) {
                   "You mosey over to the Mushrooms",
                   "You find a lovely patch of Fungi and sit down atop them like the Cheshire Cat",
                   "You get up close and study how they Function",
-                  "You study until YOU can barely Function",
-                  "Now let's have some fun, guy!",
+                  "You study until 'YOU' can barely Function",
+                  "Now let's have some fun guy!",
                   "What do you want to do next?",
                 ]);
                 setNavText("W1: Fun Fun Fn(Fungus)");
@@ -521,7 +525,10 @@ export default function useCommand(props) {
                 setC(true);
                 setResponse("You cruise to the cool colored Coral");
                 setTimeout(() => {
+                  transition(WEEK_1B);
+                setTimeout(() => {
                   transition(WEEK_1_S3);
+                }, 1);
                   setNavText("W1: If (Condition) then Coral");
                   setScenario([
                     "You cruise to the cool colored Coral",
@@ -724,12 +731,12 @@ export default function useCommand(props) {
       case "WEEK_1_S1":
         setCommands([
           {
-            command: ["eat (a mushroom)", "taste", "(take a) bite"],
+            command: ["eat (a mushroom)", "eat one", "(take a) bite"],
 
             callback: () => {
               setResponse("You grab a tasty looking 🍄");
+              setImage("holding");
               setScenario([
-                "You don't stop to think what this is growing in",
                 "You pop a tasty looking mushroom into your mouth",
                 "As you chew you feel a weird tingling sensation",
               ]);
@@ -753,6 +760,7 @@ export default function useCommand(props) {
                     setTimeout(() => {
                       setResponse("You found a secret 1up!💖");
                       setLives(lives + 1);
+                      setImage("")
                     }, 6000);
                     break;
                   case "big":
@@ -766,16 +774,15 @@ export default function useCommand(props) {
                       transition(WEEK_1_S1);
                     }, 1);
 
-                    setResponse(`It's a-you, Super ${player}!`);
+                    setResponse(`Wow that's Super ${player}!`);
                     setBig(true);
-
+                    setImage("");
                     break;
                   case "poison":
                     setScenario([
-                      "A few minutes pass when your tongue goes num and your stomach begins to cramp up",
+                      "A few minutes pass when your tongue goes numb and your stomach begins to cramp up",
                       "This particular mushroom is not magically delicious",
-                      "it's magically DEADLY! ☠",
-                      "The Fn(Fungus) hit you with an arrow function => ",
+                      "it's magically DEADLY!",                     
                       "Oh no! You can't handle *this*!",
                     ]);
                     transition(WEEK_1B);
@@ -783,9 +790,9 @@ export default function useCommand(props) {
                       transition(WEEK_1_S1);
                     }, 1);
                     setTimeout(() => {
-                      // setResponse(
-                      //   "The Fn(Fungus) hit you with an arrow function => "
-                      // );
+                      setResponse(
+                        "The Fn(Fungus) hit you with an arrow function => "
+                      );
                       setTimeout(() => {
                         if (big) {
                           setResponse("You shrink back down to regular size");
@@ -793,10 +800,7 @@ export default function useCommand(props) {
                         } else {
                           setResponse("You lost a life! 💔");
                           setLives(lives - 1);
-                          transition(WEEK_1B);
-                          setTimeout(() => {
-                            transition(WEEK_1_S1);
-                          }, 1);
+                     
                           if (lives === 0) {
                             setScenario([
                               "Many have died to mushrooms, you were just the Last of Us",
@@ -807,13 +811,14 @@ export default function useCommand(props) {
                             );
                           }
                         }
-                      }, 6000);
+                        setImage("");
+                      }, 8000);
                     }, 6000);
 
                     break;
                   default:
                 }
-              }, 12000);
+              }, 10000);
               setResponse("");
 
               resetTranscript();
@@ -859,11 +864,11 @@ export default function useCommand(props) {
             callback: () => {
               if (big) {
                 setResponse(
-                  "You pounce to your feet, towering over the Functional Fungus"
+                  `Look out! it's Super ${player}!!`
                 );
                 setScenario([
                   "You pounce to your feet, towering over the Functional Fungus",
-                  "You crushed the entire room into mush with your giant feet.",
+                  "You crush the entire ROOM into MUSH with your giant feet.",
                 ]);
                 transition(WEEK_1B);
                 setTimeout(() => {
@@ -877,7 +882,7 @@ export default function useCommand(props) {
                 setNavText("WEEK 1: Wading into Lotide");
                 setScenario(["Welcome back. Where to next?"]);
                 transition(WEEK_1B);
-              }, 5000);
+              }, 8000);
               resetTranscript();
             },
             isFuzzyMatch: true,

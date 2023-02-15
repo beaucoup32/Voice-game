@@ -828,7 +828,7 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["pick up (a mushroom)", "take (a mushroom)", "(put in)(my) pocket", "keep"],
+            command: ["pick up (a mushroom)", "take", "(put in)(my) pocket", "keep"],
 
             callback: () => {
               if (!mushroom) {

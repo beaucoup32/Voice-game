@@ -33,8 +33,8 @@
   }
 }
 
-.scenario {
-  /* margin-top: 2em; */
+/* .scenario {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   max-width: 80%;
@@ -43,14 +43,15 @@
   color: turquoise;
   padding: 20px;
   border-radius: 10px;
-}
+} */
 
+/* 
 .scenario-text {
   font-size: 3em;
   width: 50ch;
   color: magenta;
   text-align: center;
-}
+} */
 
 ul {
   list-style-type: none;

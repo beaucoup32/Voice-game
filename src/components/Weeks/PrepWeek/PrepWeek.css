@@ -1,34 +1,32 @@
-
 .prep-week-container {
-  margin-top: 2em;
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2em;
   width: 100%;
 }
+
+.prep-week-intro {
+  font-size: 2.5em;
+  width: 80%;
+  color: springgreen;
+  margin-top: 1em;
+}
+
 .scenario {
-  margin-top: 2em;
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
-  width: 80%;
   align-items: center;
-  background-color: #333841;
-  text-align: center;
-  gap: 2em;
+  gap: 1.25em;
+  width: 80%;
 }
 
 .scenario-text {
-  font-size: 3em;
+  font-size: 2.5em;
   width: 90%;
   color: magenta;
-}
-
-.prep-week-intro {
-  font-size: 3em;
-  width: 80%;
-  color: springgreen;
-  margin-top: 2em;
 }
 
 .image-container {
@@ -36,11 +34,9 @@
   justify-content: space-between;
 }
 
-.comp-pic, .tekken, .fork {
+.comp-pic,
+.tekken,
+.fork {
   height: 100%;
   width: 100%;
-  margin-top: 2em;
 }
-
-
-

@@ -46,7 +46,9 @@ export default function useTTS(sentences) {
 
     //assigns voice
     utterance.voice = femaleVoice;
-    utterance.rate = 1.3;
+
+    //sets speech rate
+    utterance.rate = 1.1;
 
     //reads utterance content
     window.speechSynthesis.speak(utterance);

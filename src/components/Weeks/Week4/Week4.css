@@ -1,22 +1,13 @@
-.scenario {
-  /* margin-top: 2em; */
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  align-items: center;
-  background-color: #333841;
-  color: turquoise;
-}
-
-.scenario-text {
-  font-size: 2em;
-  width: 80%;
-  color: magenta;
-}
-
-.week4-intro {
-  font-size: 3em;
-  width: 80%;
-  color: springgreen;
-  margin-top: 5em;
+.mentor,
+.heli,
+.screen,
+.plan,
+.hack-tweeter,
+.future,
+.access,
+.jail,
+.guards,
+.tweeter {
+  height: 100%;
+  width: 100%;
 }

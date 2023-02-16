@@ -1,58 +1,5 @@
-.scenario {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  align-items: center;
-  background-color: #333841;
-  color: turquoise;
-  text-align-last: center;
-  gap: 1.25em;
-}
-
-.typed {
-  position: relative;
-  font-size: 2em;
-  width: 50ch;
-  color: #0000;
-  /* line-height: 1.2; */
-  overflow: hidden;
-  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
-    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-  background-repeat: no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  animation: t 1s forwards, b 1s 0.8s forwards;
-}
-
-
-@keyframes t {
-  from {
-    background-size: 0 95%, 0 100%;
-  }
-}
-@keyframes b {
-  100% {
-    background-position: -200% 50%, 0 0;
-  }
-}
-
-.scenario-text {
-  font-size: 3em;
-  width: 90%;
-  color: magenta;
-}
-
-.prep-week-intro {
-  font-size: 3em;
-  width: 80%;
-  color: springgreen;
-  margin-top: 2em;
-}
-
 .prep-week-container {
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,15 +7,36 @@
   width: 100%;
 }
 
+.prep-week-intro {
+  font-size: 2.5em;
+  width: 80%;
+  color: springgreen;
+  margin-top: 1em;
+}
+
+.scenario {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25em;
+  width: 80%;
+}
+
+.scenario-text {
+  font-size: 2.5em;
+  width: 90%;
+  color: magenta;
+}
+
 .image-container {
   display: flex;
   justify-content: space-between;
 }
 
-.comp-pic, .tekken, .fork {
+.comp-pic,
+.tekken,
+.fork {
   height: 100%;
   width: 100%;
-  margin-top: 2em;
 }
-
-

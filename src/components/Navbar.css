@@ -4,6 +4,7 @@
   height: 5em;
   background-size: cover;
   background-repeat: no-repeat;
+  font-size: 20px;
 }
 
 
@@ -20,7 +21,6 @@
 
 .navbar-dark .navbar-brand {
   color: #944dff;
-
 }
 
 .navbar-text {

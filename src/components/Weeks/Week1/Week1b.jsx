@@ -14,11 +14,11 @@ export default function Week1b(props) {
     <div className="W1scenario">
       <p className="W1scenario-text">{currentSentence}</p>
 
-      <div className="image-container">
+      <div className="W1image-container">
         <img
-          src="images/lighthouse-zoom.gif"
+          src="W1images/lighthouse-zoom.gif"
           alt="lighthouse-gif"
-          className="scenario-gif lighthouse"
+          className="W1scenario-gif lighthouse"
         />
       </div>
     </div>

@@ -7,23 +7,23 @@ export default function Week1S3(props) {
   const currentSentence = useTTS(scenario);
 
   return (
-    <div className="scenario">
-      <p className="scenario-text">{currentSentence}</p>
+    <div className="W1scenario">
+      <p className="W1scenario-text">{currentSentence}</p>
       {image !== "ouch" && (
-        <div className="image-container">
+        <div className="W1image-container">
           <img
             src="images/coral-reef.gif"
             alt="coral-gif"
-            className="scenario-gif coral"
+            className="W1scenario-gif coral"
           />
         </div>
       )}
       {image === "ouch" && (
-        <div className="image-container">
+        <div className="W1image-container">
           <img
             src="images/coral-feet.gif"
             alt="coralfeet-gif"
-            className="scenario-gif coral-feet"
+            className="W1scenario-gif coral-feet"
           />
         </div>
       )}

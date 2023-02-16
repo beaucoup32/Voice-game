@@ -380,7 +380,7 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("Good luck! 😏");
               setScenario([
-                "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week",
+                // "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week",
                 `Congratulations ${player}! It looks like you've completed all your Prep Work.`,
                 "What's that smell you ask?",
                 "Well, you can only make it inside the Lighthouse during low-tide.",
@@ -467,7 +467,7 @@ export default function useCommand(props) {
                   "You mosey over to the Mushrooms",
                   "You find a lovely patch of Fungi and sit down atop them like the Cheshire Cat",
                   "You get up close and study how they Function",
-                  "You study until 'YOU' can barely Function",
+                  "You study until YOU can barely Function",
                   "Now let's have some fun guy!",
                   "What do you want to do next?",
                 ]);
@@ -758,6 +758,7 @@ export default function useCommand(props) {
                     setScenario([
                       `Wow ${player}! That's what I call gamer accumen!`,
                       "You found a secret 1up!💖",
+                      "",
                     ]);
                     transition(WEEK_1B);
                     setTimeout(() => {
@@ -774,6 +775,7 @@ export default function useCommand(props) {
                       "You found a Super Mushroom!",
                       "I guess it just makes you feel bigger",
                       `It's a-you, Super ${player}!`,
+                      "",
                     ]);
                     transition(WEEK_1B);
                     setTimeout(() => {
@@ -790,6 +792,7 @@ export default function useCommand(props) {
                       "This particular mushroom is not magically delicious",
                       "it's magically DEADLY!",
                       "Oh no! You can't handle *this*!",
+                      "",
                     ]);
                     transition(WEEK_1B);
                     setTimeout(() => {
@@ -824,7 +827,7 @@ export default function useCommand(props) {
                     break;
                   default:
                 }
-              }, 10000);
+              }, 8500);
               setResponse("");
 
               resetTranscript();

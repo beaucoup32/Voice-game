@@ -9,7 +9,7 @@ import useTTS from "../../../hooks/useTTS";
     return (
       <>
         <h1>{currentSentence}</h1>
-        <img src="images/anemones.gif" alt="anemones-gif" className="scene-gif anemones" />
+        <img src="images/anemones.gif" alt="anemones-gif" className="W1scene-gif anemones" />
       </>
     );
   }

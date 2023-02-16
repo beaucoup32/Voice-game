@@ -8,23 +8,23 @@ export default function Week1S2(props) {
   const transitionSentence = "You decide to make an Assistance Request";
 
   return (
-    <div className="scenario">
-      <p className="scenario-text">{currentSentence}</p>
+    <div className="W1scenario">
+      <p className="W1scenario-text">{currentSentence}</p>
       {(image !== "walrus" || currentSentence === transitionSentence) && (
-        <div className="image-container">
+        <div className="W1image-container">
           <img
             src="images/oysters.gif"
             alt="oysters-gif"
-            className="scenario-gif oysters"
+            className="W1scenario-gif oysters"
           />
         </div>
       )}
       {image === "walrus" && currentSentence != transitionSentence && (
-        <div className="image-container">
+        <div className="W1image-container">
           <img
             src="https://img.buzzfeed.com/buzzfeed-static/static/2015-04/13/1/enhanced/webdr03/anigif_original-grid-image-21537-1428901407-4.gif"
             alt="walrus-gif"
-            className="scene-gif walrus"
+            className="W1scene-gif walrus"
           />
         </div>
       )}

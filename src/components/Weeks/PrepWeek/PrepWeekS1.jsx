@@ -5,7 +5,7 @@ export default function PrepWeekS1(props) {
   const { scenario } = props;
   const currentSentence = useTTS(scenario);
   const challenge =
-    "Feeling confident, do you choose to take a quick break and continue or reward yourself with a round of TEKKEN?";
+    "Feeling confident, do you choose to take a quick break and keep going or reward yourself with a round of TEKKEN?";
 
   return (
     <div className="scenario">

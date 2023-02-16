@@ -10,15 +10,29 @@ export default function Week1(props) {
 
   return (
     <div className="W1scenario">
-      <p className="W1scenario-text">{currentSentence}</p>
       {currentSentence !== transitionSentence && (
-        <div className="W1image-container">
-          <img
-            src="images/lighthouse-zoom.gif"
-            alt="lighthouse-gif"
-            className="W1scenario-gif lighthouse"
-          />
-        </div>
+        <>
+          <p className="W1scenario-text">{currentSentence}</p>
+          <div className="W1image-container">
+            <img
+              src="images/lighthouse-zoom.gif"
+              alt="lighthouse-gif"
+              className="W1scenario-gif lighthouse"
+            />
+          </div>
+        </>
+      )}
+      {currentSentence === transitionSentence && (
+        <>
+          <p className="W1scenario-text2">{currentSentence}</p>
+          <div className="W1image-container">
+            <img
+              src="images/eyes.gif"
+              alt="lighthouse-gif"
+              className="W1scenario-gif lighthouse"
+            />
+          </div>
+        </>
       )}
     </div>
   );

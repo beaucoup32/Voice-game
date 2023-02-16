@@ -3,6 +3,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
 import useVisualMode from "./hooks/useVisualMode";
+import Demo from "./components/Demo";
 import GameStart from "./components/GameStart";
 import GameOver from "./components/GameOver";
 import ConfirmName from "./components/ConfirmName";
@@ -44,6 +45,7 @@ export default function App() {
   // modes to change layout
 
   const HOME = "HOME";
+  const DEMO = "DEMO";
   const GAMESTART = "GAMESTART";
   const GAMEOVER = "GAME_OVER";
   const CONFIRM_NAME = "ConfirmName";
@@ -77,7 +79,7 @@ export default function App() {
   const WEEK_5_S3 = "WEEK_5_S3";
   const WEEK_5_S4 = "WEEK_5_S4";
 
-  const welcomeText = "You ready to Walk the Talk?";
+  const welcomeText = "Say 'Start' to begin.";
 
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
@@ -169,6 +171,7 @@ export default function App() {
       </header>
       <main className="App-body">
         {mode === HOME && <HomePage />}
+        {mode === DEMO && <Demo scenario={scenario} />}
         {mode === GAMESTART && (
           <GameStart playerName={player} scenario={scenario} />
         )}
@@ -186,43 +189,22 @@ export default function App() {
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
-        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} />}
-        {mode === WEEK_1B && (
-          <Week1b
-            playerName={player}
-            f={f}
-            o={o}
-            c={c}
-            a={a}
-            l={l}
-            scenario={scenario}
-            setScenario={setScenario}
-          />
-        )}
+        {mode === WEEK_1 && <Week1 scenario={scenario} />}
+        {mode === WEEK_1B && <Week1b scenario={scenario} />}
         {mode === WEEK_1_S1 && (
-          <Week1S1
-            playerName={player}
-            scenario={scenario}
-            image={image}
-            setImage={setImage}
-          />
+          <Week1S1 playerName={player} scenario={scenario} image={image} />
         )}
         {mode === WEEK_1_S2 && (
-          <Week1S2
-            playerName={player}
-            scenario={scenario}
-            image={image}
-            setImage={setImage}
-          />
+          <Week1S2 playerName={player} scenario={scenario} image={image} />
         )}
         {mode === WEEK_1_S3 && (
-          <Week1S3 playerName={player} scenario={scenario} />
+          <Week1S3 playerName={player} scenario={scenario} image={image} />
         )}
         {mode === WEEK_1_S4 && (
-          <Week1S4 playerName={player} scenario={scenario} />
+          <Week1S4 playerName={player} scenario={scenario} image={image} />
         )}
         {mode === WEEK_1_S5 && (
-          <Week1S5 playerName={player} scenario={scenario} />
+          <Week1S5 playerName={player} scenario={scenario} image={image} />
         )}
 
         {mode === WEEK_2 && (
@@ -247,12 +229,12 @@ export default function App() {
         {mode === WEEK_3_S2 && <Week3S2 scenario={scenario} />}
         {mode === WEEK_3_S3 && <Week3S3 scenario={scenario} />}
 
-        {mode === WEEK_4    && <Week4   scenario={scenario} />}
+        {mode === WEEK_4 && <Week4 scenario={scenario} />}
         {mode === WEEK_4_S1 && <Week4S1 scenario={scenario} />}
         {mode === WEEK_4_S2 && <Week4S2 scenario={scenario} />}
         {mode === WEEK_4_S3 && <Week4S3 scenario={scenario} />}
         {mode === WEEK_4_S4 && <Week4S4 scenario={scenario} />}
-        {mode === WEEK_5    && <Week5   scenario={scenario} />}
+        {mode === WEEK_5 && <Week5 scenario={scenario} />}
         {mode === WEEK_5_S1 && <Week5S1 scenario={scenario} />}
         {mode === WEEK_5_S2 && <Week5S2 scenario={scenario} />}
         {mode === WEEK_5_S3 && <Week5S3 scenario={scenario} />}

@@ -31,7 +31,7 @@ const Hint = (props) => {
         {commands.map((command, index) => (
           <li key={index}>
             <button onClick={() => handleClick(command.command)}>
-              {command.command.join(", ")}
+              {Array.isArray(command.command) && command.command.join(", ")}
             </button>
           </li>
         ))}

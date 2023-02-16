@@ -20,7 +20,7 @@ export default function Week1S2(props) {
         </div>
       )}
       {image === "walrus" && currentSentence != transitionSentence && (
-        <div className="W1image-container">
+        <div className="W1gif-container">
           <img
             src="https://img.buzzfeed.com/buzzfeed-static/static/2015-04/13/1/enhanced/webdr03/anigif_original-grid-image-21537-1428901407-4.gif"
             alt="walrus-gif"

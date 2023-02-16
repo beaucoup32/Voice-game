@@ -1,20 +1,17 @@
 import "./Navbar.css";
-import icon from "./favicon.png"
+import icon from "./favicon.png";
 
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;
 
-  const heartIcon = <i className="fa-solid fa-heart fa-beat" />;
-
   const formatLives = () => {
     const lives = [];
     for (let life = 0; life < playerLives; life++) {
-      lives.push(heartIcon);
+      lives.push(<i key={life} className="fa-solid fa-heart fa-beat" />);
     }
     return lives;
   };
 
-  // formatLives().map()
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

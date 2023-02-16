@@ -1,50 +1,7 @@
-.scenario {
+.terminal,
+.mac,
+.password {
+  height: 100%;
+  width: 100%;
   margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  align-items: center;
-  background-color: #333841;
-  color: turquoise;
-}
-
-.typed {
-  position: relative;
-  font-size: 2em;
-  width: 50ch;
-  color: #0000;
-  /* line-height: 1.2; */
-  overflow: hidden;
-  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
-    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-  background-repeat: no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  animation: t 1s forwards, b 1s 0.8s forwards;
-}
-
-@keyframes t {
-  from {
-    background-size: 0 95%, 0 100%;
-  }
-}
-@keyframes b {
-  100% {
-    background-position: -200% 50%, 0 0;
-  }
-}
-
-.scenario-text {
-  font-size: 2em;
-  width: 80%;
-  color: magenta;
-}
-
-.week5-intro {
-  font-size: 3em;
-  width: 80%;
-  color: springgreen;
-  margin-top: 5em;
 }

@@ -77,6 +77,9 @@ export default function App() {
   const WEEK_5_S3 = "WEEK_5_S3";
   const WEEK_5_S4 = "WEEK_5_S4";
 
+  const welcomeText = "You ready to Walk the Talk?"
+
+
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
 
@@ -153,10 +156,10 @@ export default function App() {
 
   return (
     <div className="App">
-      <Navbar playerName={player} playerLives={lives} text={navText} />
+      <Navbar currentMode={mode} playerName={player} playerLives={lives} text={navText} />
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
-        <h1 className="App-title">{response}</h1>
+        <h1 className="App-title">{mode === "HOME" ? welcomeText : response}</h1>
       </header>
       <main className="App-body">
         {mode === HOME && <HomePage />}

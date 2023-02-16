@@ -2,9 +2,7 @@
   display: flex;
   justify-content: space-between;
   height: 5em;
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-size: 20px;
+  font-size: 1em;
 }
 
 
@@ -12,8 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: solid;
-  border-radius: 1em; */
   padding-left: 1em;
   padding-right: 1em;
   width: 6em;

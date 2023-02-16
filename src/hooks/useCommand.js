@@ -127,6 +127,7 @@ export default function useCommand(props) {
         setLives(3);
         setPlayer("Donny");
         setScenario([
+          "Initializing Voice",
           "Wow. You actually managed to save Tweeter...",
           "Not bad, im impressed.",
           "Unfortunatly for us however, it looks like you upset the hackers...",
@@ -363,7 +364,7 @@ export default function useCommand(props) {
               setScenario([
                 "After searching online for answers you come across a helpful video tutorial. You finaly figure where your bug was and fix that pesky function!",
                 "Several days pass and you've finaly submitted your last GIST.",
-                "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
               ]);
 
               transition(PREPWEEKS3);

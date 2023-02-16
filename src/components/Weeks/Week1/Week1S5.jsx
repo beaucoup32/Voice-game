@@ -5,7 +5,7 @@ export default function Week1S5(props) {
   const { scenario } = props; 
 
   const currentSentence = useTTS(scenario);
-  const transitionSentence = "Ok Corey Feldman, what will you Do-While you are here?";
+  const transitionSentence = "You are still stuck in this loop. How can you break out of it?";
   const feldman = "https://images5.fanpop.com/image/photos/27000000/my-prime-stand-by-me-27043905-498-238.gif"
 
   return (

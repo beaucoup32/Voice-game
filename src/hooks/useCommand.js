@@ -82,7 +82,7 @@ export default function useCommand(props) {
       callback: () => {
         transition(PREPWEEKS3);
         setLives(3);
-        setPlayer("Rebecca");
+        setPlayer("Rick");
         setScenario([""]);
       },
       isFuzzyMatch: true,
@@ -433,10 +433,10 @@ export default function useCommand(props) {
           {
             command: ["where (can I)", "repeat", "options"],
             callback: () => {
-              // transition(WEEK_1B);
-              // setTimeout(() => {
-              //   transition(WEEK_1);
-              // }, 1);
+              transition(WEEK_1B);
+              setTimeout(() => {
+                transition(WEEK_1);
+              }, 1);
               setScenario([
                 "Your options include: Lighthouse, Functional Fungus, Objective Oysters, Conditional Coral, Arrays of Anemones, and Looping Leeches",
               ]);
@@ -450,13 +450,13 @@ export default function useCommand(props) {
 
             callback: () => {
               if (f) {
-                // setResponse("You already learned about Functions, Where to now?");
                 transition(WEEK_1B);
                 setTimeout(() => {
                   transition(WEEK_1);
                 }, 1);
                 setScenario([
-                  "You already learned about Functions, Where to now?",
+                  "You already learned about Functions.",
+                  "Now where do you want to go?"
                 ]);
               } else {
                 setF(true);
@@ -482,13 +482,14 @@ export default function useCommand(props) {
 
             callback: () => {
               if (o) {
-                // setResponse("You already learned about Objects, Where to now?");
+                
                 transition(WEEK_1B);
                 setTimeout(() => {
                   transition(WEEK_1);
                 }, 1);
                 setScenario([
-                  "You already learned about Objects, Where to now?",
+                  "You already learned about Objects.",
+                  "The world is your Oyster, where to next?",
                 ]);
               } else {
                 setO(true);
@@ -515,9 +516,8 @@ export default function useCommand(props) {
 
             callback: () => {
               if (c) {
-                // setResponse("You already learned about Conditionals, Where to now?");
                 setScenario([
-                  "You already learned about  Conditionals, Where to now?",
+                  "You already learned about  Conditionals, Which direction now?",
                 ]);
                 transition(WEEK_1B);
                 setTimeout(() => {
@@ -536,7 +536,7 @@ export default function useCommand(props) {
                     "You cruise to the cool colored Coral",
                     "You stare at the beautiful Coral in front of you and wonder...",
                     "Why are these called Conditional Coral? How did you get here?",
-                    "Hm, Was it the command you just gave?",
+                    "Perhaps it was the command you just gave",
                     "If (conditional === Coral) { you arrive at coral }",
                     "You pondered this as you take off your shoes.",
                     "Maybe you think better without shoes on 🤷‍♂️? What do you do next?",
@@ -558,9 +558,8 @@ export default function useCommand(props) {
 
             callback: () => {
               if (a) {
-                // setResponse("You already learned about Arrays, Where to now?");
                 setScenario([
-                  "You already learned about  Arrays, Where to now?",
+                  "You already learned about  Arrays, Where do we go from here?",
                 ]);
                 transition(WEEK_1B);
                 setTimeout(() => {
@@ -568,17 +567,15 @@ export default function useCommand(props) {
                 }, 1);
               } else {
                 setA(true);
-                setResponse("You approach an Array of Anemones");
+                setResponse("Anatomy of an Array of Anemones");
                 setScenario([
                   "You approach the Anenomes with caution as you don't want to make any enemies.",
                   "You sneak to not Arrays their awareness.",
                   "You peer under the pier they reside in and .find them",
                   "They are in some .sort of order [0, 1, 2, 3 ]. What do you want to do next?",
                 ]);
-                // setTimeout(() => {
                 setNavText("W1: Array = [ A, n, e, m, o, n, e, s ] ");
                 transition(WEEK_1_S4);
-                // }, 3000);
               }
 
               resetTranscript();
@@ -590,7 +587,6 @@ export default function useCommand(props) {
 
             callback: () => {
               if (l) {
-                // setResponse("You already learned about Loops, Where to now?");
                 setScenario([
                   "You already learned about  Loops, Where to now?",
                 ]);
@@ -632,7 +628,7 @@ export default function useCommand(props) {
             callback: () => {
               if (!f && !o && !c && !a && !l) {
                 setResponse(
-                  `Silly ${player}, you can't just warp there through a pipe like some video game.`
+                  `Silly ${player}, tricks are for kids!`
                 );
 
                 setScenario([
@@ -647,7 +643,6 @@ export default function useCommand(props) {
               } else {
                 setResponse("Pop Quiz Hotshot!");
                 setScenario([
-                  "Pop Quiz Hotshot!",
                   "To progress further in Lighthouse Labs you must pass your Week 1 test!",
                 ]);
                 transition(WEEK_1B);
@@ -699,12 +694,12 @@ export default function useCommand(props) {
                     setResponse("Heartbreaking defeat! 💔");
                     setLives(lives - 1);
                   }
-                }, 7000);
+                }, 3000);
                 setTimeout(() => {
                   setNavText("WEEK 2: Cats & ISS & API oh my!");
                   transition(WEEK_2);
                   setBoolean(false);
-                }, 10000);
+                }, 22000);
               }
               resetTranscript();
             },
@@ -747,12 +742,13 @@ export default function useCommand(props) {
                 transition(WEEK_1_S1);
               }, 1);
               setTimeout(() => {
-                const mushrooms = ["1up", "big", "poison"];
+                // const mushrooms = ["1up", "big", "poison"];
+                const mushrooms = ["big", "big", "big"];
                 const rngMush = mushrooms[Math.floor(Math.random() * 3)];
                 switch (rngMush) {
                   case "1up":
                     setScenario([
-                      `Wow ${player}! That's what I call gamer accumen!`,
+                      `Check out the big brain on ${player}!`,
                       "You found a secret 1up!💖",
                       "What do you want to do next?",
                     ]);
@@ -767,9 +763,9 @@ export default function useCommand(props) {
                     }, 6000);
                     break;
                   case "big":
+                    setBig(true);
                     setScenario([
                       "You found a Super Mushroom!",
-                      // "I guess it just makes you feel bigger",
                       `It's a-you, Super ${player}!`,
                       "What do you want to do next?",
                     ]);
@@ -779,7 +775,6 @@ export default function useCommand(props) {
                     }, 1);
 
                     setResponse(`Wow that's Super, ${player}!`);
-                    setBig(true);
                     setImage("");
                     break;
                   case "poison":
@@ -870,7 +865,7 @@ export default function useCommand(props) {
             isFuzzyMatch: true,
           },
           {
-            command: ["Leave", "get up", "stand"],
+            command: [ "stand (up)", "Leave (here)", "get up" ],
 
             callback: () => {
               if (big) {
@@ -900,7 +895,7 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. Where to next?"]);
+                  setScenario(["Welcome back. Where do we go from here?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 transition(WEEK_1B);
               }, 9000);
@@ -967,7 +962,7 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. Where to next?"]);
+                  setScenario(["Welcome back. H?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("The Lighthouse FOCAL Point");
                 transition(WEEK_1B);
@@ -1000,7 +995,7 @@ export default function useCommand(props) {
                 setTimeout(() => {
                   (f && o && c && a && l) ?
                   setScenario([
-                    `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
+                    `Excellent job ${player}!`, `You are Ready for the Week 1 Test. Say "Lighthouse" to proceed.`,
                   ]) :
                   setScenario(["Welcome back. Where to next?"]);
                 setNavText("WEEK 1: Wading into Lotide");
@@ -1038,9 +1033,9 @@ export default function useCommand(props) {
                 ]);
                 transition(WEEK_1);
                 setTimeout(() => {
-                  setImage("ouch");
                   transition(WEEK_1_S3);
                 }, 1);
+                setImage("ouch");
                 setTimeout(() => {
                   setResponse("You lost a life! 💔");
                   setLives(lives - 1);
@@ -1094,11 +1089,11 @@ export default function useCommand(props) {
                   "You severly cut your feet trying get close to the coral without your shoes.",
                   "You shove your toes back into your now blood-red shoes.",
                 ]);
-                transition(WEEK_1B);
+                transition(WEEK_1);
                 setTimeout(() => {
-                  setImage("ouch");
                   transition(WEEK_1_S3);
                 }, 1);
+                setImage("ouch");
                 setTimeout(() => {
                   setResponse("You lost a life! 💔");
                   setLives(lives - 1);
@@ -1109,7 +1104,7 @@ export default function useCommand(props) {
                   "You spend the exact right amount of time learning about Ifs, Thens, and everything Else.",
                   "After learning so much about Conditionals, you even improve your heart Condition!",
                 ]);
-                transition(WEEK_1B);
+                transition(WEEK_1);
                 setTimeout(() => {
                   transition(WEEK_1_S3);
                 }, 1);
@@ -1123,9 +1118,10 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. Where to next?"]);
+                  setScenario(["Welcome back. Which is the way that's clear?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("The Lighthouse FOCAL Point");
+                setBoolean(false);
                 transition(WEEK_1B);
               }, 16000);
 
@@ -1174,7 +1170,7 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. Where to next?"]);
+                  setScenario(["Welcome back. Where shall we head to?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("The Lighthouse FOCAL Point");
                 transition(WEEK_1B);
@@ -1209,11 +1205,11 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. Where to next?"]);
+                  setScenario(["Welcome back. Which location is next?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("The Lighthouse FOCAL Point");
                 transition(WEEK_1B);
-              }, 10000);
+              }, 20000);
 
               resetTranscript();
             },
@@ -1239,7 +1235,7 @@ export default function useCommand(props) {
                 transition(WEEK_1_S5);
               }, 1);
               setTimeout(() => {
-                setResponse("How now, Inspector?");
+                setResponse("OK, now what?");
               }, 12000);
 
               resetTranscript();
@@ -1267,20 +1263,20 @@ export default function useCommand(props) {
                   "Good thing you took that break and resolved the infinite loop.",
                   "You can finally continue your coding journey!",
                 ]);
+                transition(WEEK_1);
                 setTimeout(() => {
                   transition(WEEK_1_S5);
                 }, 1);
                 setTimeout(() => {
-                  if (f && o && c && a && l) {
-                    setScenario([
-                      `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
-                    ]);
-                  }
+                  (f && o && c && a && l) ?
+                  setScenario([
+                    `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
+                  ]) :
+                  setScenario(["Welcome back. Where do you want to go now?"]);
                   setNavText("WEEK 1: Wading into Lotide");
                   setResponse("The Lighthouse FOCAL Point");
-                  transition(WEEK_1B);
-                  setResponse("");
-                }, 15000);
+                  transition(WEEK_1B);                  
+                }, 13000);
               }
               resetTranscript();
             },
@@ -1301,9 +1297,8 @@ export default function useCommand(props) {
               setScenario([
                 "Your Final project has an infinite loop on the main branch.",
                 "You don't waste time re-writing all of the new code.",
-                "Instead you take a Break and chat with your team to resolve.",
-                "You got a Break and the Leeches' Loop got a Break too.",
-                "Let's get out of here!"
+                "Instead you take a Break and chat with your team to resolve it.",
+                "You got a Break and the Leeches' infinite Loop broke too!",
               ]);
               transition(WEEK_1);
               setTimeout(() => {

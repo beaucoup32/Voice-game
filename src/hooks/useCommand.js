@@ -87,17 +87,7 @@ export default function useCommand(props) {
       },
       isFuzzyMatch: true,
     },
-    // {
-    //   // testing for week 5
-    //   command: ["week 5"],
-    //   callback: () => {
-    //     transition(WEEK_5);
-    //     setLives(3);
-    //     setPlayer("Donny");
-    //     setScenario([""]);
-    //   },
-    //   isFuzzyMatch: true,
-    // },
+ 
     {
       // manually set lives for debugging
       command: ["set lives to :number"],
@@ -120,17 +110,15 @@ export default function useCommand(props) {
             callback: () => {
               
               setScenario([
-                "Loading human voice",
-                // "Starting Adventure!",
+                "Loading human voice",              
                 "It's time to Walk the Talk",
                 "Please tell me your name",
               ]);
               setPlayer("");
-              // handleTTS();
 
               // changes mode to show GAMESTART component
               transition(GAMESTART);
-              setNavText("Speak into the mic 🎙️");
+              setResponse("Speak into the mic 🎙️");              
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -160,7 +148,8 @@ export default function useCommand(props) {
             callback: () => {
               transition(HOME);
               setPlayer("");
-              setNavText("Say 'Start' to begin.");
+              setNavText("Walk The Talk™");
+              setResponse("Say 'Start' to begin.");
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -208,7 +197,10 @@ export default function useCommand(props) {
             command: ["no", "nope", "nevermind"],
             callback: () => {
               setResponse("🐔🐔🐔");
-              setNavText("Say 'Start' to begin.");
+              setTimeout(() => {
+                setResponse("Say 'Start' to begin.");
+              }, 5000)
+              setNavText("Walk The Talk™");
               transition(HOME);
               resetTranscript();
             },
@@ -722,8 +714,8 @@ export default function useCommand(props) {
 
               setTimeout(() => {
                 transition(HOME);
-                setNavText("Say 'Start' to begin.");                
-                setResponse("");
+                setNavText("Walk The Talk™");                
+                setResponse("Say 'Start' to begin.");
               }, 7000);
               resetTranscript();
             },

@@ -1,4 +1,11 @@
-/* .scenario {
+.W1scenario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  width: 100%;
+}
+/* 
   margin-top: 2em;
   display: flex;
   flex-direction: column;
@@ -11,52 +18,23 @@
   flex-wrap: wrap;
 
 } */
-/* scenario commented out initially */
 
-.typed {
-  position: relative;
-  font-size: 2em;
-  width: 50ch;
-  color: #0000;
-  /* line-height: 1.2; */
-  overflow: hidden;
-  background: linear-gradient(#00dffc 0 0) 0 50%/150% 95%,
-    linear-gradient(#00dffc 0 0) 0 0 /100% 100%;
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-  background-repeat: no-repeat;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  animation: t 1s forwards, b 1s 0.8s forwards;
-}
-/* 
 
-@keyframes t {
-  from {
-    background-size: 0 95%, 0 100%;
-  }
-}
-@keyframes b {
-  100% {
-    background-position: -200% 50%, 0 0;
-  }
-} */
-
-/* .scenario-text {
+ .W1scenario-text {
   font-size: 2.5em;
   width: 90%;
   color: magenta;
-} */
+}
 
-/* this for   current sentence */
-.scenario-text {
+/* this for current sentence */
+.W1scenario-text {
   font-size: 3em;
   width: 90%;
   color: springgreen;
   margin-top: 2em;
 }
 /* and this to align */
-.scenario-container {
+.W1scenario-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,19 +43,19 @@
   height: 80%;
 }
 
-.scenario-gif {
+.W1scenario-gif {
   height: 90vh;
   width: 90vw;
-  height: 71%;
-  object-fit: cover;
+  height: 70%;
+  object-fit: cover;  
 }
 
-.image-container {
+.W1image-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between;  
 }
 
-.scene-gif {
+.w1scene-gif {
   height: 90vh;
   width: 90vw;
   height: 90%;

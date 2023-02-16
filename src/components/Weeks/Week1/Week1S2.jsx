@@ -10,7 +10,7 @@ export default function Week1S2(props) {
   return (
     <div className="scenario">
       <p className="scenario-text">{currentSentence}</p>
-      {(image != "walrus" || currentSentence === transitionSentence) && (
+      {(image !== "walrus" || currentSentence === transitionSentence) && (
         <div className="image-container">
           <img
             src="images/oysters.gif"

@@ -9,14 +9,14 @@ export default function Week1(props) {
     "Your eyes light up with new found determination as you add an order of instant coffee to your Amazon cart and prepare for the following week";
 
   return (
-    <div className="scenario">
-      <p className="scenario-text">{currentSentence}</p>
-      {currentSentence != transitionSentence && (
-        <div className="image-container">
+    <div className="W1scenario">
+      <p className="W1scenario-text">{currentSentence}</p>
+      {currentSentence !== transitionSentence && (
+        <div className="W1image-container">
           <img
             src="images/lighthouse-zoom.gif"
             alt="lighthouse-gif"
-            className="scenario-gif lighthouse"
+            className="W1scenario-gif lighthouse"
           />
         </div>
       )}

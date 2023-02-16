@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import icon from "./favicon.png"
+import icon from "./logo.png"
 
 const Navbar = function (props) {
   const { playerName, text, playerLives } = props;

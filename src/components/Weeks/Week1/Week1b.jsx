@@ -11,8 +11,8 @@ export default function Week1b(props) {
   const currentSentence = useTTS(scenario);
 
   return (
-    <div className="scenario">
-      <p className="scenario-text">{currentSentence}</p>
+    <div className="W1scenario">
+      <p className="W1scenario-text">{currentSentence}</p>
 
       <div className="image-container">
         <img

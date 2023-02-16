@@ -8,7 +8,7 @@ const Week4S4 = (props) => {
     "Use your coding skills to create a virtual version of Tweeter. Or use those skills to build a time machine and prevent the problem from even happening.";
 
   const heli =
-    "But you crash as soon as you take off because you forgot you're a programmer, not a pilot";
+  "But crash as soon as you take off because you forgot you're a programmer, not a pilot"
 
   return (
     <div className="scenario">

@@ -115,7 +115,7 @@ export default function useCommand(props) {
           `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge`,
           "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
         ]);
-        transition(WEEK_4_S2);
+        transition(WEEK_4_S1);
       },
       isFuzzyMatch: true,
       matchInterim: true,
@@ -2074,7 +2074,7 @@ export default function useCommand(props) {
           {
             command: [
               "bribe guards",
-              "talk to *",
+              "talk to (guards)",
               "talk to gods",
               "bribe gods",
             ],

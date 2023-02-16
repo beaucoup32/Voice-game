@@ -13,7 +13,7 @@
 } */
 /* scenario commented out initially */
 
-.W1typed {
+.W3typed {
   position: relative;
   font-size: 2em;
   width: 50ch;
@@ -49,14 +49,14 @@
 } */
 
 /* this for   current sentence */
-.W1scenario-text {
+.W3scenario-text {
   font-size: 3em;
   width: 90%;
   color: springgreen;
   margin-top: 2em;
 }
 /* and this to align */
-.W1scenario-container {
+.W3scenario-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,19 +65,19 @@
   height: 80%;
 }
 
-.W1scenario-gif {
+.W3scenario-gif {
   height: 90vh;
   width: 90vw;
   height: 71%;
   object-fit: cover;
 }
 
-.W1image-container {
+.W3image-container {
   display: flex;
   justify-content: space-between;
 }
 
-.W1scene-gif {
+.W3scene-gif {
   height: 90vh;
   width: 90vw;
   height: 90%;

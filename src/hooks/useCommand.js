@@ -157,7 +157,7 @@ export default function useCommand(props) {
         setCommands([
           ...staticCommands,
           {
-            command: ["Start (new game)", "thought", "dot", "begin"],
+            command: ["Start", "thought", "dot", "begin", "Start (new game)"],
             callback: () => {
 
               setScenario([
@@ -1019,7 +1019,7 @@ export default function useCommand(props) {
                   setScenario([
                     `Excellent job ${player}! You are Ready for the Week 1 Test. say "Lighthouse" to proceed.`,
                   ]) :
-                  setScenario(["Welcome back. H?"]);
+                  setScenario(["Welcome back. The world is your oyster, where to?"]);
                 setNavText("WEEK 1: Wading into Lotide");
                 setResponse("The Lighthouse FOCAL Point");
                 transition(WEEK_1B);

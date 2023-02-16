@@ -27,7 +27,6 @@
 }
 
 
-/* and this to align */
 .W1scenario-container {
   display: flex;
   flex-direction: column;
@@ -35,23 +34,25 @@
   gap: 2em;
 }
 
-.W1scenario-gif {
-  /* height: 80vh; */
-  width: 85vw;
-  /* height: 100%; */
-  object-fit: cover;  
-}
-
+/* this is for primary images */
 .W1image-container {
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  height: 90%;
 }
+.W1scenario-gif {
+  /* height: 80vh; */
+  width: 85vw;
+  height: 70%;
+  object-fit: cover;
+}
+
+/* this is for secondary (smaller) gifs */
 .W1gif-container {
   display: flex;
   justify-content: space-between;
-  height: 60%;  
-  width: 60%;
+  height: 50%;  
+  width: 90%;
 }
 .w1scene-gif {
   /* height: 90vh; */

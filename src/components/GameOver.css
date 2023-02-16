@@ -1,15 +1,15 @@
 .game-over-container {
-  margin-top: 2em;
   display: flex;
   flex-direction: column;
   width: 80%;
   align-items: center;
+  align-self: center;
 }
 
 .game-over-title {
   color: orangered;
   font-size: 6em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .game-over-text {

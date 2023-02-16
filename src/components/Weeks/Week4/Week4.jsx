@@ -3,7 +3,7 @@ import useTTS from "../../../hooks/useTTS";
 const Week4 = (props) => {
   const { scenario } = props;
 
-  const currentSentence = useTTS(scenario);
+  const currentSentence = useTTS(scenario || "");
 
   return (
     <div className="scenario">

@@ -30,7 +30,7 @@ export default function useCommand(props) {
     setL,
     boolean,
     setBoolean,
-    setImage,
+    setImage,    
   } = props;
 
   // returns rand int between 0 - 9
@@ -40,11 +40,11 @@ export default function useCommand(props) {
   };
 
   const [commands, setCommands] = useState([]);
+  const [ttsText, setTtsText] = useState("");
 
   const { listenContinuously, transcript, resetTranscript, listening } =
     useListen(commands);
-  const [async, setAsync] = useState(false);
-  const [lodash, setLodash] = useState(false);
+
   const [inventory, setInventory] = useState([]);
 
   const staticCommands = [
@@ -1445,271 +1445,294 @@ export default function useCommand(props) {
         ]);
         break;
 
-      case "WEEK_3":
-        setCommands([
-          {
-            command: ["explore", "look around", "search"],
-            callback: () => {
-              setResponse("What would you like to search for?");
-
-              setScenario([
-                "You find yourself in a dimly lit dungeon, with no idea how you got here.",
-                "There are several chests scattered throughout the room.",
-                "You notice that one of the chests has a keyhole.",
+        case "WEEK_3":
+          setCommands([
+            {
+              command: ["explore", "look around", "search"],
+              callback: () => {
+                setResponse("What would you like to search for?");
+        
+                setScenario([
+                  "Welcome to Week 3! This week you'll be working on the TinyApp project, learning about AJAX, JSON, and jQuery, and preparing for technical interviews.",
+                  "You find yourself in a dimly lit dungeon, with no idea how you got here.",
+                  "There are several chests scattered throughout the room.",
+                  "You notice that one of the chests has a keyhole.",
+                ]);
+        
+                transition(WEEK_3_S1);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Treasure Hunt");
+                  setResponse("");
+                  setScenario("");
+                }, 2000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["run", "escape"],
+              callback: () => {
+                setScenario([
+                  "You panic and run around aimlessly until you tire yourself out.",
+                  "You turn around to find that you're back to where you started.",
+                ]);
+                setResponse("Maybe try searching for a way out?");
+        
+                setScenario([
+                  "Welcome to Week 3! This week you'll be working on the TinyApp project, learning about AJAX, JSON, and jQuery, and preparing for technical interviews.",
+                  "You look around frantically for an exit, but there doesn't seem to be one in sight.",
+                  "As you catch your breath, you notice a glint of metal from one of the chests.",
+                  "Could it be a key?",
+                ]);
+        
+                transition(WEEK_3_S1);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Treasure Hunt");
+                  setResponse("");
+                  setScenario("");
+                }, 5000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["inventory", "items"],
+              callback: () => {
+                setResponse(
+                  `You have ${inventory.length} items: ${inventory.join(", ")}`
+                );
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+            {
+              command: ["start project"],
+              callback: () => {
+                setResponse("You begin your technical interview project.");
+                setScenario([
+                  "You are interviewing for a web developer position and have been given a project to complete.",
+                  "The task is to create a simple app that retrieves data from an API and displays it on a webpage.",
+                  "You will need to use AJAX to make the API call and parse the JSON response.",
+                ]);
+                transition(WEEK_3_S1);
+        
+                setTimeout(() => {
+                  setNavText("WEEK 3: The Technical Interview");
+                  setResponse("");
+                }, 5000);
+        
+                resetTranscript();
+              },
+              isFuzzyMatch: true,
+            },
+          ]);
+          break;
+          case "WEEK_3_S1":
+            setCommands([
+              {
+                command: ["look for a map", "map"],
+                callback: () => {
+                  setResponse("You find a map in one of the chests!");
+                  setInventory([...inventory, "Map"]);
+          
+                  setTimeout(() => {
+                    setResponse("");
+                  }, 3000);
+          
+                  setTtsText("You found a map! Keep exploring to find more treasures.");
+                  transition(WEEK_3_S2);
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+              {
+                command: ["look for a key", "key"],
+                callback: () => {
+                  setResponse(
+                    "You find a key, but it doesn't seem to fit any of the doors in this room."
+                  );
+                  setInventory([...inventory, "Key"]);
+          
+                  setTimeout(() => {
+                    setResponse("");
+                  }, 5000);
+          
+                  setTtsText("You found a key, but it doesn't seem to be useful right now. Keep exploring to find more treasures.");
+                  transition(WEEK_3_S2);
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+              {
+                command: ["look for an exit", "exit"],
+                callback: () => {
+                  setResponse(
+                    "There doesn't seem to be an exit in this room. You should keep searching for clues."
+                  );
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+              {
+                command: ["inventory", "items"],
+                callback: () => {
+                  setResponse(
+                    `You have ${inventory.length} items: ${inventory.join(", ")}`
+                  );
+                  setTtsText(`You have ${inventory.length} items: ${inventory.join(", ")}`);
+                  resetTranscript();
+                },
+                isFuzzyMatch: true,
+              },
+            ]);
+            break;
+            case "WEEK_3_S2":
+              setCommands([
+                {
+                  command: ["open chest", "search for treasure", "treasure"],
+                  callback: () => {
+                    setResponse(
+                      "You search the chest and find a piece of paper with strange symbols on it."
+                    );
+                    setInventory([...inventory, "Strange Symbols"]);
+            
+                    setTimeout(() => {
+                      setResponse("");
+                    }, 5000);
+            
+                    setTtsText("You found a piece of paper with strange symbols on it. Keep searching for more treasures.");
+                    transition(WEEK_3_S3);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+                {
+                  command: ["look for a way out", "find the exit", "exit"],
+                  callback: () => {
+                    setResponse(
+                      "You continue searching the dungeon and find a staircase leading upwards."
+                    );
+                    setTtsText("You found a staircase leading upwards. Keep exploring to find more treasures.");
+                    transition(WEEK_3_S3);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
+                {
+                  command: ["inventory", "items"],
+                  callback: () => {
+                    setResponse(
+                      `You have ${inventory.length} items: ${inventory.join(", ")}`
+                    );
+                    setTtsText(`You have ${inventory.length} items: ${inventory.join(", ")}`);
+                    resetTranscript();
+                  },
+                  isFuzzyMatch: true,
+                },
               ]);
-
-              transition(WEEK_3_S1);
-
-              setTimeout(() => {
-                setNavText("WEEK 3: The Treasure Hunt");
-                setResponse("");
-                setScenario("");
-              }, 2000);
-
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["run", "escape"],
-            callback: () => {
-              setScenario([
-                "You panic and run around aimlessly until you tire yourself out.",
-                "You turn around to find that you're back to where you started.",
-              ]);
-              setResponse("Maybe try searching for a way out?");
-
-              setScenario([
-                "You look around frantically for an exit, but there doesn't seem to be one in sight.",
-                "As you catch your breath, you notice a glint of metal from one of the chests.",
-                "Could it be a key?",
-              ]);
-
-              transition(WEEK_3_S1);
-
-              setTimeout(() => {
-                setNavText("WEEK 3: The Treasure Hunt");
-                setResponse("");
-                setScenario("");
-              }, 5000);
-
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["inventory", "items"],
-            callback: () => {
-              setResponse(
-                `You have ${inventory.length} items: ${inventory.join(", ")}`
-              );
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["start project"],
-            callback: () => {
-              setResponse("You begin your technical interview project.");
-              setScenario([
-                "You are interviewing for a web developer position and have been given a project to complete.",
-                "The task is to create a simple app that retrieves data from an API and displays it on a webpage.",
-                "You will need to use AJAX to make the API call and parse the JSON response.",
-              ]);
-              transition(WEEK_3_S2);
-
-              setTimeout(() => {
-                setNavText("WEEK 3: The Technical Interview");
-                setResponse("");
-              }, 5000);
-
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-        ]);
-        break;
-      case "WEEK_3_S1":
-        setCommands([
-          {
-            command: ["look for a map", "map"],
-            callback: () => {
-              setResponse("You find a map in one of the chests!");
-              setInventory([...inventory, "Map"]);
-
-              setTimeout(() => {
-                setResponse("");
-              }, 3000);
-
-              transition(WEEK_3_S2);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["look for a key", "key"],
-            callback: () => {
-              setResponse(
-                "You find a key, but it doesn't seem to fit any of the doors in this room."
-              );
-              setInventory([...inventory, "Key"]);
-
-              setTimeout(() => {
-                setResponse("");
-              }, 5000);
-
-              transition(WEEK_3_S2);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["look for an exit", "exit"],
-            callback: () => {
-              setResponse(
-                "There doesn't seem to be an exit in this room. You should keep searching for clues."
-              );
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["inventory", "items"],
-            callback: () => {
-              setResponse(
-                `You have ${inventory.length} items: ${inventory.join(", ")}`
-              );
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-        ]);
-        break;
-      case "WEEK_3_S2":
-        setCommands([
-          {
-            command: ["send request", "make api call", "retrieve data"],
-            callback: () => {
-              setResponse(
-                "You successfully make the API call and retrieve data!"
-              );
-              setInventory([...inventory, "API Data"]);
-
-              setTimeout(() => {
-                setResponse("");
-              }, 3000);
-
-              transition(WEEK_3_S3);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["parse data", "display on webpage"],
-            callback: () => {
-              setResponse(
-                "You successfully parse the data and display it on the webpage!"
-              );
-              setInventory([...inventory, "Webpage"]);
-
-              setTimeout(() => {
-                setResponse("");
-              }, 3000);
-
-              transition(WEEK_3_S3);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["inventory", "items"],
-            callback: () => {
-              setResponse(
-                `You have ${inventory.length} items: ${inventory.join(", ")}`
-              );
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-        ]);
-        break;
-      case "WEEK_3_S3":
-        setCommands([
-          {
-            command: ["submit project", "finish project"],
-            callback: () => {
-              setResponse(
-                "You submit your project and feel a sense of accomplishment!"
-              );
-              setScenario([
-                "You eagerly await the response from the hiring team.",
-                "Days pass, but you finally receive an email from the company.",
-                `Congratulations, ${player}! You've been offered the web developer position!`,
-              ]);
-
-              setTimeout(() => {
-                setNavText("WEEK 4: The Job Offer");
-                setResponse("");
-              }, 6000);
-
-              transition(WEEK_4);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["improve project", "revise project"],
-            callback: () => {
-              setResponse(
-                "You spend some time improving your project and submitting a revised version."
-              );
-              setScenario([
-                "The hiring team is impressed with your dedication and hard work.",
-                "They offer you the web developer position!",
-              ]);
-
-              setTimeout(() => {
-                setNavText("WEEK 4: The Job Offer");
-                setResponse("");
-              }, 6000);
-
-              transition(WEEK_4);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["quit"],
-            callback: () => {
-              setResponse(
-                "You give up on the project and decide to move on to something else."
-              );
-              setScenario([
-                "The hiring team is disappointed with your lack of commitment and decides not to offer you the position.",
-              ]);
-
-              setTimeout(() => {
-                setNavText("WEEK 4: The Job Offer");
-                setResponse("");
-              }, 6000);
-
-              transition(WEEK_4);
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-          {
-            command: ["inventory", "items"],
-            callback: () => {
-              setResponse(
-                `You have ${inventory.length} items: ${inventory.join(", ")}`
-              );
-              resetTranscript();
-            },
-            isFuzzyMatch: true,
-          },
-        ]);
-        break;
+              break;
+              case "WEEK_3_S3":
+                setCommands([
+                  {
+                    command: ["yes", "overtime", "work extra", "work more"],
+                    callback: () => {
+                      setResponse(
+                        "Good job! 💪🕰️💰 Just remember to take care of yourself too. 😴🍏🏃‍♀️"
+                      );
+              
+                      setScenario(
+                        "The instructor hands you a task that's due real soon, but you're thinking 'No worries, I got this!'. But then reality hits and you're like 'Oh snap, this is actually a toughie!'. You're cruising along, working on your task like a boss 💪, but then BAM! Reality hits you like a ton of bricks 💥🧱...you might not be able to finish it in the allotted time frame. 😔🤯😤 Time to start negotiating for that extension or busting out some super-human productivity skills 💰💪😎."
+                      );
+                      transition(WEEK_3_S4);
+                      setNavText("WEEK 3: TINYAPP PROJECT");
+                      resetTranscript();
+                    },
+                    isFuzzyMatch: true,
+                  },
+                  {
+                    command: ["no", "rest", "take a break", "sleep", "eat", "exercise"],
+                    callback: () => {
+                      setResponse("Taking care of yourself is important too. 🍏🏃‍♀️😴");
+              
+                      setScenario(
+                        "The instructor hands you a task that's due real soon, but you're thinking 'No worries, I got this!'. But then reality hits and you're like 'Oh snap, this is actually a toughie!'. You're cruising along, working on your task like a boss 💪, but then BAM! Reality hits you like a ton of bricks 💥🧱...you might not be able to finish it in the allotted time frame. 😔🤯😤 Time to start negotiating for that extension or busting out some super-human productivity skills 💰💪😎."
+                      );
+                      transition(WEEK_3_S4);
+                      setNavText("WEEK 3: TINYAPP PROJECT");
+                      resetTranscript();
+                    },
+                    isFuzzyMatch: true,
+                  },
+                ]);
+                break;
+                case "WEEK_3_S4":
+                  setCommands([
+                    {
+                      command: ["extension", "extra time", "overtime"],
+                      callback: () => {
+                        setResponse(
+                          "Good thinking! 💡 It's always better to ask for an extension than to submit a project that's incomplete or not up to your standards."
+                        );
+                        setScenario(
+                          "You work hard and manage to complete the task before the deadline. Congratulations on a job well done! 🎉🎊🥳"
+                        );
+                        transition(WEEK_3_S5);
+                        setNavText("WEEK 3: TINYAPP PROJECT");
+                        resetTranscript();
+                      },
+                      isFuzzyMatch: true,
+                    },
+                    {
+                      command: ["push through", "work harder", "superhuman productivity"],
+                      callback: () => {
+                        setResponse(
+                          "You got this! 💪 You put in the extra effort and manage to complete the task before the deadline. Congratulations on a job well done! 🎉🎊🥳"
+                        );
+                        setScenario("The tinyApp project is still waiting for you...");
+                        transition(WEEK_3_S5);
+                        setNavText("WEEK 3: TINYAPP PROJECT");
+                        resetTranscript();
+                      },
+                      isFuzzyMatch: true,
+                    },
+                  ]);
+                  break;
+                  case "WEEK_3_S5":
+                    setCommands([
+                      {
+                        command: ["start", "begin", "work on"],
+                        callback: () => {
+                          setResponse(
+                            `Good choice! 💡 It's always helpful to practice and brush up on your skills. ${props.playerName}, you're on your way to becoming a coding ninja! 🥷`
+                          );
+                          setScenario(
+                            "You start working on the tinyApp project, a URL shortening application, using Node.js, Express, and MongoDB. As you're working on the project, you start to encounter several bugs and issues."
+                          );
+                          setNavText("WEEK 3: AJAX, JSON, and jQuery");
+                          transition(WEEK_4);
+                          resetTranscript();
+                        },
+                        isFuzzyMatch: true,
+                      },
+                      {
+                        command: ["skip", "no", "not now"],
+                        callback: () => {
+                          setResponse("Okay, we can come back to this later. 😎");
+                          setScenario(
+                            `You decide to take a break from the tinyApp project and take some time to prepare for the technical interview. You know that the developers and instructors are all secretly coding wizards who can write entire apps in a single night, but you're not intimidated! You've got this! 💪💻🔥`
+                          );
+                          setNavText("WEEK 3: AJAX, JSON, and jQuery");
+                          transition(WEEK_4);
+                          resetTranscript();
+                        },
+                        isFuzzyMatch: true,
+                      },
+                    ]);
+                    break;       
 
       case "WEEK_4":
         setCommands([

@@ -33,6 +33,48 @@ export default function useCommand(props) {
     setImage,
   } = props;
 
+  const HOME = "HOME";
+  const GAMESTART = "GAMESTART";
+  const GAMEOVER = "GAME_OVER";
+  const ConfirmName = "ConfirmName";
+  const PREPWEEK = "PREP_WEEK";
+  const PREPWEEKS1 = "PREP_WEEK_S1";
+  const PREPWEEKS2 = "PREP_WEEK_S2";
+  const PREPWEEKS3 = "PREP_WEEK_S3";
+  const WEEK_1 = "WEEK_1";
+  const WEEK_1B = "WEEK_1B";
+  const WEEK_1_S1 = "WEEK_1_S1";
+  const WEEK_1_S2 = "WEEK_1_S2";
+  const WEEK_1_S3 = "WEEK_1_S3";
+  const WEEK_1_S4 = "WEEK_1_S4";
+  const WEEK_1_S5 = "WEEK_1_S5";
+
+  const WEEK_2 = "WEEK_2";
+  const WEEK_2_S1 = "WEEK_2_S1";
+  const WEEK_2_S2 = "WEEK_2_S2";
+  const WEEK_2_S3 = "WEEK_2_S3";
+
+  const WEEK_3 = "WEEK_3";
+  const WEEK_3_S1 = "WEEK_3_S1";
+  const WEEK_3_S2 = "WEEK_3_S2";
+  const WEEK_3_S3 = "WEEK_3_S3";
+  const WEEK_3_S4 = "WEEK_3_S4";
+  const WEEK_3_S5 = "WEEK_3_S5";
+
+  const WEEK_4 = "WEEK_4";
+  const WEEK_4_S1 = "WEEK_4_S1";
+  const WEEK_4_S2 = "WEEK_4_S2";
+  const WEEK_4_S3 = "WEEK_4_S3";
+  const WEEK_4_S4 = "WEEK_4_S4";
+
+  const WEEK_5 = "WEEK_5";
+  const WEEK_5_S1 = "WEEK_5_S1";
+  const WEEK_5_S2 = "WEEK_5_S2";
+  const WEEK_5_S3 = "WEEK_5_S3";
+  const WEEK_5_S4 = "WEEK_5_S4";
+
+  const WEEK_6 = "WEEK_6";
+
   // returns rand int between 0 - 9
   const randInt = () => {
     const max = 10;
@@ -48,25 +90,6 @@ export default function useCommand(props) {
   const [inventory, setInventory] = useState([]);
 
   const staticCommands = [
-    {
-      // this command will clear the response message
-      // when triggered, it will set the response message to an empty string ""
-      // and reset the voice transcript to allow for new voice commands to be recorded.
-      command: ["reset", "clear"],
-      callback: () => {
-        resetTranscript();
-      },
-      isFuzzyMatch: true,
-    },
-    {
-      command: "Marco",
-      callback: () => {
-        setScenario(["Polo?"]);
-        // handleTTS();
-        // transcript resets when command is triggered
-        resetTranscript();
-      },
-    },
     {
       command: ["game over", "death", "quit"],
       callback: () => {
@@ -233,7 +256,7 @@ export default function useCommand(props) {
             matchInterim: true,
           },
           {
-            command: ["yes", "yeah", "yep", "skip"],
+            command: ["yes", "yeah", "yep", "skip", "yes i am"],
             callback: () => {
               setNavText("PREP WEEK: SCENARIO 1");
               setResponse("");
@@ -1937,7 +1960,7 @@ export default function useCommand(props) {
                     "What do you choose to do?",
                   ]);
 
-                  transition(WEEK_4_S1);
+                  transition(WEEK_4);
                   setTimeout(() => {
                     transition(WEEK_4_S2);
                   }, 1);
@@ -1990,7 +2013,7 @@ export default function useCommand(props) {
                     "Alternatively, you could take your chances with the guards who seem to be busy outside your cell. What do you choose to do?",
                   ]);
                   setNavText("WEEK 4: SCENARIO 2");
-                  transition(WEEK_4_S1);
+                  transition(WEEK_4);
                   setTimeout(() => {
                     transition(WEEK_4_S2);
                   }, 1);
@@ -2078,7 +2101,7 @@ export default function useCommand(props) {
                 "You finally find the source of the problem and realize that the issue can be fixed by manually going into Tweeter's servers. How will you get there?"
               );
 
-              transition(WEEK_4_S2);
+              transition(WEEK_4);
               setTimeout(() => {
                 transition(WEEK_4_S3);
                 setResponse("");
@@ -2291,7 +2314,7 @@ export default function useCommand(props) {
                   "I wonder what the password could be...",
                 ]);
 
-                transition(WEEK_5_S1);
+                transition(WEEK_5);
                 setTimeout(() => {
                   transition(WEEK_5_S2);
                 }, 1);
@@ -2392,7 +2415,7 @@ export default function useCommand(props) {
                 "I wonder if we are missing something...",
                 "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
               ]);
-              transition(WEEK_5_S3);
+              transition(WEEK_5);
               setTimeout(() => {
                 transition(WEEK_5_S4);
               }, 1);
@@ -2413,7 +2436,7 @@ export default function useCommand(props) {
                 "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
               ]);
 
-              transition(WEEK_5_S3);
+              transition(WEEK_5);
               setTimeout(() => {
                 transition(WEEK_5_S4);
               }, 1);
@@ -2442,7 +2465,7 @@ export default function useCommand(props) {
                   "After inspecting the hackers database table you find the only solution is to get rid of it.What command will get the job done?",
                 ]);
 
-                transition(WEEK_5_S3);
+                transition(WEEK_5);
                 setTimeout(() => {
                   transition(WEEK_5_S4);
                 }, 1);
@@ -2467,45 +2490,3 @@ export default function useCommand(props) {
     listening,
   };
 }
-
-const HOME = "HOME";
-const GAMESTART = "GAMESTART";
-const GAMEOVER = "GAME_OVER";
-const ConfirmName = "ConfirmName";
-const PREPWEEK = "PREP_WEEK";
-const PREPWEEKS1 = "PREP_WEEK_S1";
-const PREPWEEKS2 = "PREP_WEEK_S2";
-const PREPWEEKS3 = "PREP_WEEK_S3";
-const WEEK_1 = "WEEK_1";
-const WEEK_1B = "WEEK_1B";
-const WEEK_1_S1 = "WEEK_1_S1";
-const WEEK_1_S2 = "WEEK_1_S2";
-const WEEK_1_S3 = "WEEK_1_S3";
-const WEEK_1_S4 = "WEEK_1_S4";
-const WEEK_1_S5 = "WEEK_1_S5";
-
-const WEEK_2 = "WEEK_2";
-const WEEK_2_S1 = "WEEK_2_S1";
-const WEEK_2_S2 = "WEEK_2_S2";
-const WEEK_2_S3 = "WEEK_2_S3";
-
-const WEEK_3 = "WEEK_3";
-const WEEK_3_S1 = "WEEK_3_S1";
-const WEEK_3_S2 = "WEEK_3_S2";
-const WEEK_3_S3 = "WEEK_3_S3";
-const WEEK_3_S4 = "WEEK_3_S4";
-const WEEK_3_S5 = "WEEK_3_S5";
-
-const WEEK_4 = "WEEK_4";
-const WEEK_4_S1 = "WEEK_4_S1";
-const WEEK_4_S2 = "WEEK_4_S2";
-const WEEK_4_S3 = "WEEK_4_S3";
-const WEEK_4_S4 = "WEEK_4_S4";
-
-const WEEK_5 = "WEEK_5";
-const WEEK_5_S1 = "WEEK_5_S1";
-const WEEK_5_S2 = "WEEK_5_S2";
-const WEEK_5_S3 = "WEEK_5_S3";
-const WEEK_5_S4 = "WEEK_5_S4";
-
-const WEEK_6 = "WEEK_6";

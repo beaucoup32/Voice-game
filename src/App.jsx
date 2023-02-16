@@ -77,8 +77,7 @@ export default function App() {
   const WEEK_5_S3 = "WEEK_5_S3";
   const WEEK_5_S4 = "WEEK_5_S4";
 
-  const welcomeText = "You ready to Walk the Talk?"
-
+  const welcomeText = "You ready to Walk the Talk?";
 
   // custom hook that sets
   const { mode, transition } = useVisualMode(HOME);
@@ -105,7 +104,7 @@ export default function App() {
   const [scenario, setScenario] = useState("");
 
   // set current image
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
 
   // set FOCAL validation for W1
   const [f, setF] = useState(false);
@@ -156,10 +155,17 @@ export default function App() {
 
   return (
     <div className="App">
-      <Navbar currentMode={mode} playerName={player} playerLives={lives} text={navText} />
+      <Navbar
+        currentMode={mode}
+        playerName={player}
+        playerLives={lives}
+        text={navText}
+      />
       <Hint commands={commands} transcript={transcript} />
       <header className="App-header">
-        <h1 className="App-title">{mode === "HOME" ? welcomeText : response}</h1>
+        <h1 className="App-title">
+          {mode === "HOME" ? welcomeText : response}
+        </h1>
       </header>
       <main className="App-body">
         {mode === HOME && <HomePage />}
@@ -180,7 +186,7 @@ export default function App() {
         {mode === PREPWEEKS1 && <PrepWeekS1 scenario={scenario} />}
         {mode === PREPWEEKS2 && <PrepWeekS2 scenario={scenario} />}
         {mode === PREPWEEKS3 && <PrepWeekS3 scenario={scenario} />}
- {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario}/>}
+        {mode === WEEK_1 && <Week1 playerName={player} scenario={scenario} />}
         {mode === WEEK_1B && (
           <Week1b
             playerName={player}
@@ -193,8 +199,22 @@ export default function App() {
             setScenario={setScenario}
           />
         )}
-        {mode === WEEK_1_S1 && <Week1S1 playerName={player} scenario={scenario} image={image} setImage={setImage}/>}
-        {mode === WEEK_1_S2 && <Week1S2 playerName={player} scenario={scenario} image={image} setImage={setImage}/>}
+        {mode === WEEK_1_S1 && (
+          <Week1S1
+            playerName={player}
+            scenario={scenario}
+            image={image}
+            setImage={setImage}
+          />
+        )}
+        {mode === WEEK_1_S2 && (
+          <Week1S2
+            playerName={player}
+            scenario={scenario}
+            image={image}
+            setImage={setImage}
+          />
+        )}
         {mode === WEEK_1_S3 && (
           <Week1S3 playerName={player} scenario={scenario} />
         )}

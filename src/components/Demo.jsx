@@ -8,11 +8,11 @@ export default function Demo(props) {
   return (
     <div className="W1scenario">
       <p className="W1scenario-text">{currentSentence}</p>
-             <div className="W1gif-container">
+             <div className="W1image-container">
           <img
             src="images/demo-hack.gif"
             alt="tekken-gif"
-            className="W1scene-gif hacker2"
+            className="W1scenario-gif hacker"
           />
         </div>
      

@@ -2181,7 +2181,7 @@ export default function useCommand(props) {
             callback: () => {
               setTimeout(() => {
                 setResponse("That looked like a hard landing 💔");
-              }, 3000);
+              }, 6000);
               setLives(lives - 1);
 
               if (lives <= 1) {

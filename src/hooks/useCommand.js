@@ -130,8 +130,8 @@ export default function useCommand(props) {
           "Initializing Voice...",
           "You wake up to an emergency Zoom meeting by the Head director of the bootcamp.",
           "Tweeter has been hacked and is on the brink of destruction!",
-          `Totally at random, the Head Director assigns the task of saving Tweeter to Donny`,
-          `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge.`,
+          `Totally at random, the Head Director assigns the task of saving Tweeter to ${player}`,
+          `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge`,
           "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
         ]);
         transition(WEEK_4_S1);
@@ -497,7 +497,6 @@ export default function useCommand(props) {
       case "WEEK_1":
       case "WEEK_1B":
         setCommands([
-          ...staticCommands,
           {
             command: ["where (can I)", "repeat", "options"],
             callback: () => {
@@ -977,7 +976,6 @@ export default function useCommand(props) {
         break;
       case "WEEK_1_S2":
         setCommands([
-          ...staticCommands,
           {
             command: ["(keep) hammering (away)", "hammer", "keep going"],
 
@@ -1047,7 +1045,6 @@ export default function useCommand(props) {
         break;
       case "WEEK_1_S3":
         setCommands([
-          ...staticCommands,
           {
             command: ["(put on) shoes", "lace (up)"],
 
@@ -1208,7 +1205,6 @@ export default function useCommand(props) {
         break;
       case "WEEK_1_S4":
         setCommands([
-          ...staticCommands,
           {
             command: ["Study", "(take) notes"],
 
@@ -1294,7 +1290,6 @@ export default function useCommand(props) {
         break;
       case "WEEK_1_S5":
         setCommands([
-          ...staticCommands,
           {
             command: ["Study", "(take) notes"],
             callback: () => {

@@ -1,7 +1,6 @@
 /* Set the background color and padding for the body */
 body {
   background-color: #f5f5f5;
-  /* padding: 2em; */
 }
 
 /* Set the font size, color, alignment, and top margin for the .week-2-intro element */
@@ -27,27 +26,6 @@ body {
   gap: 2em;
   width: 100%;
 }
-
-/* Set the display, flex direction, max width, alignment, background color, color, padding, and border radius for the .scenario element */
-/* .scenario {
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-  align-items: center;
-  background-color: #333841;
-  color: turquoise;
-  text-align: left; 
-  padding: 20px;
-  border-radius: 10px;
-} */
-
-/* Set the font size, width, color, and text alignment for the .scenario-text element */
-/* .scenario-text {
-  font-size: 1.75em;
-  width: 50ch;
-  color: magenta;
-  text-align: left; 
-} */
 
 /* Set the width and height for the .home-figure element */
 .home-figure {

@@ -10,9 +10,16 @@
   color: orangered;
   font-size: 6em;
   margin-bottom: 1em;
+  animation: blinker 2s step-start infinite;
 }
 
 .game-over-text {
   color: azure;
   font-size: 4em;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

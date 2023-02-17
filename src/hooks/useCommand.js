@@ -1395,7 +1395,7 @@ export default function useCommand(props) {
                 "Please be careful, it is dangerous to go alone",
                 "Take this .... 💖",
               ]);
-              setTimeout(() => {                
+              setTimeout(() => {              
                 setLives(lives +1);
                 setResponse("You are granted an extra life 💖");
               }, 2000);
@@ -1414,7 +1414,7 @@ export default function useCommand(props) {
                 ]);
                 transition(WEEK_4_S1);
                 resetTranscript();
-              }, 10000);
+              }, 8000);
             },
             isFuzzyMatch: true,
           },
@@ -2168,7 +2168,7 @@ export default function useCommand(props) {
       case "WEEK_4_S3":
         setCommands([
           {
-            command: ["fly", "* helicopter", "flay (a helicopter)"],
+            command: ["(I will) fly (there)", "* helicopter", "flay (a helicopter)"],
             callback: () => {
               setTimeout(() => {
                 setResponse("That looked like a hard landing 💔");
@@ -2315,7 +2315,7 @@ export default function useCommand(props) {
                 setResponse("");
                 setNavText("Say 'Restart' or 'Home' to return to Main menu");
 
-                setGameOverText("And its allll your fault. 🙂");
+                setGameOverText("And its AAALLLLLL your fault. 🙂");
                 transition(GAMEOVER);
               }, 18500);
 

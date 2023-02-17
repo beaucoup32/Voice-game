@@ -112,7 +112,7 @@ export default function useCommand(props) {
           "Initializing Voice...",
           "You wake up to an emergency Zoom meeting by the Head director of the bootcamp.",
           "Tweeter has been hacked and is on the brink of destruction!",
-          `Totally at random, the Head Director assigns the task of saving Tweeter to Donny`,
+          `Totally at random, the Head Director assigns the task of saving Tweeter to ${player}`,
           `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge`,
           "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
         ]);
@@ -1376,7 +1376,7 @@ export default function useCommand(props) {
             callback: () => {
               setResponse("You're 1337 5P34K1N6 my language!");
               setNavText("DEMO timer intesifying!");
-              transition(WEEK_4); //or whichever you go to
+              transition(WEEK_4_S1); //or whichever you go to
               resetTranscript();
             },
             isFuzzyMatch: true,
@@ -2132,7 +2132,7 @@ export default function useCommand(props) {
       case "WEEK_4_S3":
         setCommands([
           {
-            command: ["fly", "* helicopter"],
+            command: ["fly", "* helicopter", "flay (a helicopter)"],
             callback: () => {
               setResponse("");
               setLives(lives - 1);

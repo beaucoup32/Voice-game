@@ -112,8 +112,8 @@ export default function useCommand(props) {
           "Initializing Voice...",
           "You wake up to an emergency Zoom meeting by the Head director of the bootcamp.",
           "Tweeter has been hacked and is on the brink of destruction!",
-          `Totally at random, the Head Director assigns the task of saving Tweeter to ${player}`,
-          `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge`,
+          `Totally at random, the Head Director assigns the task of saving Tweeter to Donny`,
+          `Donny, fearing being called a chicken in front of their peers, decides to take on the challenge.`,
           "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
         ]);
         transition(WEEK_4_S1);
@@ -1863,7 +1863,7 @@ export default function useCommand(props) {
                 "You wake up to an emergency Zoom meeting by the Head director of the bootcamp.",
                 "Tweeter has been hacked and is on the brink of destruction!",
                 `Totally at random, the Head Director assigns the task of saving Tweeter to ${player}`,
-                `${player}, fearing being called a chicken in front of their peers, decides to take on the challenge`,
+                `${player}, fearing being called a chicken in front of their peers, decides to take on the challenge.`,
                 "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
               ]);
 
@@ -1889,7 +1889,7 @@ export default function useCommand(props) {
                 "You wake up to an emergency Zoom meeting by the Head director of the bootcamp.",
                 "Tweeter has been hacked and is on the brink of destruction!",
                 `Totally at random, the Head Director assigns the task of saving Tweeter to ${player}`,
-                `${player}, fearing being called a chicken in front of their peers, decides to take on the challenge`,
+                `${player}, fearing being called a chicken in front of their peers, decides to take on the challenge.`,
                 "You begin your day by researching the issue, but quickly realize you need access to more information. What do you do?",
               ]);
 
@@ -1937,8 +1937,11 @@ export default function useCommand(props) {
             ],
             callback: () => {
               setResponse("🚨🚨🚨");
-              setLives(lives - 1);
 
+              setLives(lives - 1);
+              setTimeout(() => {
+                setResponse("Hope this doesnt go on your permanent record.  💔")
+              }, 7000)
               if (lives < 1) {
                 setScenario([
                   "You successfully hack into Tweeter's systems, but trigger the security alarms. Not even getting a chance to commit your work, you're arrested by the Tweeter police.",
@@ -1951,11 +1954,11 @@ export default function useCommand(props) {
                 setNavText("Say 'Restart' or 'Home' to return to Main menu");
                 setTimeout(() => {
                   setResponse("");
-                }, 7000);
+                }, 9000);
               } else {
                 setScenario([
                   "You successfully hack into Tweeter's systems, but trigger the security alarms.",
-                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a, not so, secure system",
+                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a, not so, secure system.",
                   "You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.",
                   "Conveniently, in the corner of your cell, there happens to be a dusty laptop that still manages to power on.",
                   "Alternatively, you could take your chances with the guards who seem to be busy outside your cell. What do you choose to do?",
@@ -1965,7 +1968,7 @@ export default function useCommand(props) {
                 setTimeout(() => {
                   setNavText("WEEK 4: SCENARIO 2");
                   setResponse("");
-                }, 8000);
+                }, 15000);
               }
 
               resetTranscript();
@@ -2034,7 +2037,7 @@ export default function useCommand(props) {
               } else {
                 setLives(lives - 1);
 
-                if (lives <= 0) {
+                if (lives < 1) {
                   setScenario([
                     "You pick up the laptop, but it slips and lands right on your good toe...whoops.",
                     "It's a critical hit.",
@@ -2121,6 +2124,7 @@ export default function useCommand(props) {
               resetTranscript();
             },
             isFuzzyMatch: true,
+            matchInterim: true,
           },
         ]);
         break;
@@ -2129,7 +2133,10 @@ export default function useCommand(props) {
           {
             command: ["fly", "* helicopter", "flay (a helicopter)"],
             callback: () => {
-              setResponse("");
+              setTimeout(() => {
+                setResponse("That looked like a hard landing 💔");
+
+              }, 3000)
               setLives(lives - 1);
 
               if (lives < 1) {
@@ -2150,7 +2157,7 @@ export default function useCommand(props) {
                 setScenario([
                   "You use your TELUS benefits to rent a helicopter",
                   "But crash as soon as you take off because you forgot you're a programmer, not a pilot",
-                  "You walk back home in shame",
+                  "You walk back home in shame.",
                   "With very little time left, you decide to get creative and come up with a new plan to save Tweeter.",
                   "After days of planning, you settle on two options:",
                   "Use your coding skills to create a virtual version of Tweeter. Or use those skills to build a time machine and prevent the problem from even happening.",
@@ -2160,8 +2167,9 @@ export default function useCommand(props) {
               }
 
               setTimeout(() => {
+                setResponse("")
                 setNavText("WEEK 4: SCENARIO 4");
-              }, 7000);
+              }, 10000);
 
               resetTranscript();
             },
@@ -2270,9 +2278,9 @@ export default function useCommand(props) {
                 setResponse("");
                 setNavText("Say 'Restart' or 'Home' to return to Main menu");
 
-                setGameOverText("And its allll your fault 🙂");
+                setGameOverText("And its allll your fault. 🙂");
                 transition(GAMEOVER);
-              }, 19000);
+              }, 18500);
 
               resetTranscript();
             },

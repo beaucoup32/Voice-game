@@ -8,7 +8,7 @@
 
 .game-over-title {
   color: orangered;
-  font-size: 6em;
+  font-size: 8em;
   margin-bottom: 1em;
   animation: blinker 2s step-start infinite;
 }

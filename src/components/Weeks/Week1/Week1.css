@@ -13,7 +13,7 @@
   width: 90%;
   color: rgb(1, 217, 255);
   margin-top: 0.5em;
-  height: 25%;
+  height: 23%;
   justify-content: center;
 }
 
@@ -46,7 +46,7 @@
 }
 .W1scenario-gif {
   /* height: 80vh; */
-  height: 55%;
+  height: 60%;
   width: 48%;
   margin-bottom: auto;
   
@@ -58,7 +58,7 @@
 .W1gif-container {
   display: flex;
   justify-content:center;
-  height: 50%;
+  height: 00%;
   width: 90%;
 }
 .w1scene-gif {

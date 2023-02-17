@@ -2120,6 +2120,7 @@ export default function useCommand(props) {
               "bribe guards",
               "talk to (guards)",
               "talk to the *",
+              "talk to a (guard)",
               "talk to gods",
               "bribe the *",
             ],
@@ -2177,7 +2178,7 @@ export default function useCommand(props) {
       case "WEEK_4_S3":
         setCommands([
           {
-            command: ["fly", "* helicopter", "flay (a helicopter)"],
+            command: ["(I will) fly (there)", "* helicopter", "flay (a helicopter)"],
             callback: () => {
               setTimeout(() => {
                 setResponse("That looked like a hard landing 💔");

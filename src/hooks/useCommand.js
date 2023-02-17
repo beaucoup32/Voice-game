@@ -197,7 +197,7 @@ export default function useCommand(props) {
       case "GAME_OVER":
         setCommands([
           {
-            command: ["home", "restart", "reset"],
+            command: ["home", "restart", "reset", "play again", "replay"],
             callback: () => {
               transition(HOME);
               setPlayer("");
@@ -233,9 +233,9 @@ export default function useCommand(props) {
               setNavText("PREP WEEK");
               setScenario([
                 "Welcome to bootcamp!",
-                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
+                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer.",
                 "In this game, use your voice to determine your actions.",
-                "If you get stuck, say 'Hint' to get some help",
+                "If you get stuck, say 'Hint' to get some help.",
                 "Are you ready?",
               ]);
 
@@ -307,10 +307,11 @@ export default function useCommand(props) {
           {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
-              setResponse("That was hard to watch... 😬");
+              setResponse("That was hard to watch... 😬💔");
 
               // current lives is 2
               setLives(lives - 1);
+
               setScenario([
                 "Unfortunatly the excitement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work",
 

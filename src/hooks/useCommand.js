@@ -137,7 +137,7 @@ export default function useCommand(props) {
         transition(WEEK_4_S1);
       },
       isFuzzyMatch: true,
-      matchInterim: true,
+      // matchInterim: true,
     },
     {
       // testing for week 5
@@ -148,12 +148,12 @@ export default function useCommand(props) {
         setScenario([
           "Initializing Voice",
           "Wow. You actually managed to save Tweeter...",
-          "Not bad, im impressed.",
+          "Not bad, I'm impressed.",
           "Unfortunatly for us however, it looks like you upset the hackers...",
           "Now they are targeting our bootcamps' Databases!",
           "Get into our database and drop them once and for all!",
           "You open up your terminal and proceed to type 'psql'. To connect to the database.",
-          "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do?",
+          "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do!?",
         ]);
         transition(WEEK_5_S1);
       },
@@ -215,7 +215,7 @@ export default function useCommand(props) {
       case "GAME_OVER":
         setCommands([
           {
-            command: ["home", "restart", "reset"],
+            command: ["home", "restart", "reset", "play again", "replay"],
             callback: () => {
               transition(HOME);
               setPlayer("");
@@ -251,9 +251,9 @@ export default function useCommand(props) {
               setNavText("PREP WEEK");
               setScenario([
                 "Welcome to bootcamp!",
-                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer",
+                "Here you will be put through an impossible set of scenarios to hone your coding skills and become an expert programmer.",
                 "In this game, use your voice to determine your actions.",
-                "If you get stuck, say 'Hint' to get some help",
+                "If you get stuck, say 'Hint' to get some help.",
                 "Are you ready?",
               ]);
 
@@ -325,10 +325,11 @@ export default function useCommand(props) {
           {
             command: ["reward (myself)", "(play) tekken"],
             callback: () => {
-              setResponse("That was hard to watch... 😬");
+              setResponse("That was hard to watch... 😬💔");
 
               // current lives is 2
               setLives(lives - 1);
+
               setScenario([
                 "Unfortunatly the excitement from making it into bootcamp threw off your game. After losing your rank to a kid half your age, you decide to continue on with your course work",
 
@@ -2284,7 +2285,7 @@ export default function useCommand(props) {
                 "Now they are targeting our bootcamps' Databases!",
                 "Get into our database and drop them once and for all!",
                 "You open up your terminal and proceed to type 'psql'. To connect to the database.",
-                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do?",
+                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do!?",
               ]);
 
               transition(WEEK_5_S1);
@@ -2371,7 +2372,7 @@ export default function useCommand(props) {
               setScenario([
                 "You attempt to hack into the bootcamps database!",
                 "It wasnt very effective...",
-                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do?",
+                "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do!?",
               ]);
 
               transition(WEEK_5);
@@ -2478,7 +2479,7 @@ export default function useCommand(props) {
                 transition(WEEK_5_S3);
 
                 setTimeout(() => {
-                  setScenario([""]);
+                  setResponse("");
                 }, 10000);
               }
 
@@ -2521,7 +2522,7 @@ export default function useCommand(props) {
               setNavText("WEEK 5: SCENARIO 4");
               transition(WEEK_5_S4);
               setTimeout(() => {
-                setScenario([""]);
+                setResponse("");
               }, 10000);
               resetTranscript();
             },
@@ -2543,7 +2544,7 @@ export default function useCommand(props) {
               setNavText("WEEK 6");
 
               setTimeout(() => {
-                setScenario([""]);
+                setResponse("");
               }, 10000);
 
               resetTranscript();

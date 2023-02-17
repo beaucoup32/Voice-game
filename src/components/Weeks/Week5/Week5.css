@@ -1,6 +1,15 @@
-.terminal,
-.mac,
-.password {
+.mac {
+  margin-top: 2em;
   height: 100%;
   width: 100%;
+}
+
+.terminal {
+  margin-top: 2em;
+  height: 110%;
+}
+
+.password {
+  margin-top: 2em;
+  height: 140%;
 }

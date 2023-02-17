@@ -2325,7 +2325,7 @@ export default function useCommand(props) {
 
                 setGameOverText("And its allll your fault. 🙂");
                 transition(GAMEOVER);
-              }, 17500);
+              }, 16500);
 
               resetTranscript();
             },

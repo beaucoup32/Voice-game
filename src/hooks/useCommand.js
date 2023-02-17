@@ -1988,7 +1988,7 @@ export default function useCommand(props) {
                 );
               }, 7000);
 
-              if (lives < 1) {
+              if (lives <= 1) {
                 setScenario([
                   "You successfully hack into Tweeter's systems, but trigger the security alarms. Not even getting a chance to commit your work, you're arrested by the Tweeter police.",
                 ]);
@@ -2083,7 +2083,7 @@ export default function useCommand(props) {
               } else {
                 setLives(lives - 1);
 
-                if (lives < 1) {
+                if (lives <= 1) {
                   setScenario([
                     "You pick up the laptop, but it slips and lands right on your good toe...whoops.",
                     "It's a critical hit.",
@@ -2136,7 +2136,7 @@ export default function useCommand(props) {
               } else {
                 setLives(lives - 1);
 
-                if (lives < 1) {
+                if (lives <= 1) {
                   setScenario([
                     "The guard roasts your haircut and goes back to his duties.",
                     "It was super effective.",
@@ -2184,7 +2184,7 @@ export default function useCommand(props) {
               }, 3000);
               setLives(lives - 1);
 
-              if (lives === 1) {
+              if (lives <= 1) {
                 setScenario([
                   "You use your TELUS benefits to rent a helicopter",
                   "But crash as soon as you take off because you forgot you're a programmer, not a pilot",
@@ -2395,7 +2395,7 @@ export default function useCommand(props) {
 
               setLives(lives - 1);
 
-              if (lives < 1) {
+              if (lives <= 1) {
                 setScenario([
                   "You take out a $4000 loan to buy a macbook.",
                   "I really hope it was worth it.",
@@ -2601,7 +2601,7 @@ export default function useCommand(props) {
               setResponse("");
               setLives(lives - 1);
 
-              if (lives < 1) {
+              if (lives <= 1) {
                 setScenario(["...I think that made it stronger?"]);
 
                 setTimeout(() => {

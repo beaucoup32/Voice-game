@@ -2275,7 +2275,7 @@ export default function useCommand(props) {
                 "You are hailed as a hero and thanked personally from the CEO of Tweeter. Just in time for week 5 of bootcamp 😉",
                 "A cheque would've been nice though...",
                 "Wow. You actually managed to save Tweeter...",
-                "Not bad, im impressed.",
+                "Not bad, I'm impressed.",
                 "Unfortunatly for us however, it looks like you upset the hackers...",
                 "Now they are targeting our bootcamps' Databases!",
                 "Get into our database and drop them once and for all!",
@@ -2317,7 +2317,7 @@ export default function useCommand(props) {
 
                 setGameOverText("And its AAALLLLLL your fault. 🙂");
                 transition(GAMEOVER);
-              }, 18500);
+              }, 17500);
 
               resetTranscript();
             },

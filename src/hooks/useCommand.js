@@ -1389,11 +1389,10 @@ export default function useCommand(props) {
               );
               setResponse("Let's dive into Week 2! 🌊🐬🦑");
               setScenario([
-                "You made it to Week 2! It's time to dive in.",
-                "In this week, you'll be learning about asynchronous programming and completing the Lotide project.",
-                "You can always reach out to mentors or instructors if you need help.",
-                "As you start your project, you run into an issue. You can't decide which technology to use.",
-                "What do you do?",
+                "You made it to Week 2! It's time to dive in. But don't dive too deep, or you might end up in the Upside Down. Just ask Mentor.",
+                "In this week, you'll be learning about asynchronous programming and completing the Lotide project. Don't worry, the only thing that will be async is your sleep schedule.",
+                "You can always reach out to mentors or instructors if you need help. Just don't call them at 3am unless you want to hear their sleepy voice",
+                "You start working on your project, but your code doesn't work. You ask your rubber duck for help, but it just quacks at you.", "What do you do?",
               ]);
               transition(WEEK_2_S1);
               resetTranscript();
@@ -1423,11 +1422,10 @@ export default function useCommand(props) {
               );
               setResponse("");
               setScenario([
-                "You made it to Week 2! It's time to dive in.",
-                "In this week, you'll be learning about asynchronous programming and completing the Lotide project.",
-                "You can always reach out to mentors or instructors if you need help.",
-                "As you start your project, you run into an issue. You can't decide which technology to use.",
-                "What do you do?",
+                "You made it to Week 2! It's time to dive in. But don't dive too deep, or you might end up in the Upside Down. Just ask Mentor.",
+                "In this week, you'll be learning about asynchronous programming and completing the Lotide project. Don't worry, the only thing that will be async is your sleep schedule.",
+                "You can always reach out to mentors or instructors if you need help. Just don't call them at 3am unless you want to hear their sleepy voice",
+                "You start working on your project, but your code doesn't work. You ask your rubber duck for help, but it just quacks at you.", "What do you do?",
               ]);
               transition(WEEK_2_S1);
               resetTranscript();
@@ -1456,10 +1454,9 @@ export default function useCommand(props) {
               );
 
               setScenario([
-                "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
-                "You realize that you'll need to create a basic JS component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 2.",
-                "Refer to the provided documentation for guidance.",
-                "Are you up for the challenge?",
+                "To succeed in Week 2, you'll need to become a coding superhero, battling bugs and glitches to save the day. It's like being a caped crusader, but with a keyboard instead of a utility belt",
+                "You open the directories and files and you feel like you've stumbled into a secret society of programmers. There are mysterious names and symbols everywhere. Who knew coding could be so mystical?",
+                "Are you ready for the challenge? You're a coding ninja, stealthily weaving your code to perfection, like a master martial artist in action.",
               ]);
               transition(WEEK_2_S2);
               setNavText("WEEK 2: CHALLENGE 1");
@@ -1473,10 +1470,9 @@ export default function useCommand(props) {
               setResponse("Don't skip the basics! 😤");
 
               setScenario([
-                "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
-                "You realize that you'll need to create a basic React component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 1.",
-                "Refer to the provided documentation for guidance.",
-                "Are you up for the challenge?",
+                "To succeed in Week 2, you'll need to become a coding superhero, battling bugs and glitches to save the day. It's like being a caped crusader, but with a keyboard instead of a utility belt",
+                "You open the directories and files and you feel like you've stumbled into a secret society of programmers. There are mysterious names and symbols everywhere. Who knew coding could be so mystical?",
+                "Are you ready for the challenge? You're a coding ninja, stealthily weaving your code to perfection, like a master martial artist in action.",
               ]);
               transition(WEEK_2_S2);
               setNavText("WEEK 2: CHALLENGE 1");
@@ -1490,10 +1486,9 @@ export default function useCommand(props) {
               setResponse("No pain, no gain. 💪");
 
               setScenario([
-                "As you embark on your journey into Week 2, you're greeted with a complex structure of directories and files.",
-                "You realize that you'll need to create a basic JS component called `App.js` which will hold your application state, as well as your conditional rendering for each of the scenes in Week 1.",
-                "Refer to the provided documentation for guidance.",
-                "Are you up for the challenge?",
+                "To succeed in Week 2, you'll need to become a coding superhero, battling bugs and glitches to save the day. It's like being a caped crusader, but with a keyboard instead of a utility belt",
+                "You open the directories and files and you feel like you've stumbled into a secret society of programmers. There are mysterious names and symbols everywhere. Who knew coding could be so mystical?",
+                "Are you ready for the challenge? You're a coding ninja, stealthily weaving your code to perfection, like a master martial artist in action.",
               ]);
               transition(WEEK_2_S2);
               setNavText("WEEK 2: CHALLENGE 1");

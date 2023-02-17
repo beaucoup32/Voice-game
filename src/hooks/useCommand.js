@@ -319,7 +319,7 @@ export default function useCommand(props) {
               ]);
               transition(PREPWEEKS2); 
               */
-                "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
               ]);
 
               transition(PREPWEEKS3);
@@ -345,7 +345,7 @@ export default function useCommand(props) {
               setScenario([
                 "After reaching out for some assistance, a peer offers to lend a hand. You finaly figure where your bug was and fix that pesky function!",
                 "Several days pass and you've finaly submitted your last GIST.",
-                "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
               ]);
 
               transition(PREPWEEKS3);
@@ -384,7 +384,7 @@ export default function useCommand(props) {
               setScenario([
                 "Hours pass and its late. Very late. At 2 AM you finaly figure where your bug was and fix that pesky function... But at what cost?",
                 "Several days pass and you've finaly submitted your last GIST.",
-                "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
+                "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?",
               ]);
 
               transition(PREPWEEKS3);
@@ -2276,7 +2276,7 @@ export default function useCommand(props) {
 
                 setGameOverText("And its allll your fault 🙂");
                 transition(GAMEOVER);
-              }, 24500);
+              }, 19000);
 
               resetTranscript();
             },

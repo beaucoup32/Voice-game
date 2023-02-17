@@ -5,7 +5,7 @@ const PrepWeekS3 = (props) => {
 
   const currentSentence = useTTS(scenario);
   const challenge =
-    "Fresh out of coffee beans and hallucinating code arithmatic, do you choose to continue this grueling journey? or return to the comfort of your old life?";
+    "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?";
 
   return (
     <div className="scenario">

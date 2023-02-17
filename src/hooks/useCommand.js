@@ -1995,7 +1995,7 @@ export default function useCommand(props) {
               } else {
                 setScenario([
                   "You successfully hack into Tweeter's systems, but trigger the security alarms.",
-                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a, not so, secure system.",
+                  "After pushing to main, the Tweeter Police show up and you are arrested for hacking into a, not so secure system.",
                   "You are now in jail and need to find a way to escape so you can continue your mission to save Tweeter.",
                   "Conveniently, in the corner of your cell, there happens to be a dusty laptop that still manages to power on.",
                   "Alternatively, you could take your chances with the guards who seem to be busy outside your cell. What do you choose to do?",

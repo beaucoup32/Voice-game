@@ -4,10 +4,14 @@
 .plan,
 .hack-tweeter,
 .future,
-.access,
 .jail,
 .guards,
 .tweeter {
   height: 100%;
   width: 100%;
+}
+
+.access {
+  margin-top: 2em;
+  height: 110%;
 }

@@ -2194,7 +2194,7 @@ export default function useCommand(props) {
 
                 setTimeout(() => {
                   transition(GAMEOVER);
-                  setGameOverText("Should've probably packed a parachute too.");
+                  setGameOverText("Should've probably packed a parachute too. 🪂");
 
                   setNavText("Say 'Restart' or 'Home' to return to Main menu");
                 }, 12000);

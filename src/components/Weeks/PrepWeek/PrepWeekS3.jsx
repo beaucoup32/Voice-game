@@ -7,6 +7,8 @@ const PrepWeekS3 = (props) => {
   const challenge =
     "Fresh out of coffee beans and hallucinating code arithmetic, do you choose to continue this grueling journey? or return to the comfort of your old life?";
 
+  
+
   return (
     <div className="scenario">
       <p className="scenario-text">{currentSentence}</p>

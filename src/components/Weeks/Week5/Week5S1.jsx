@@ -6,7 +6,7 @@ const Week5S1 = (props) => {
 
   const currentSentence = useTTS(scenario);
   const challenge =
-    "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean?";
+  "Uh oh, we got an error. 'psql: could not connect to server'? What does that even mean? What do we do!?";
   const timeMachine =
     "You discover that Tweeter no longer exists. With no place for people to post their questionable Tweets, the world has plunged into utter chaos.";
   const tweeter =
